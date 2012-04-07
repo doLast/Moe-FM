@@ -1,0 +1,285 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2535788A15309190008185BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788915309190008185BD /* UIKit.framework */; };
+		2535788C15309190008185BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788B15309190008185BD /* Foundation.framework */; };
+		2535788E15309190008185BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788D15309190008185BD /* CoreGraphics.framework */; };
+		2535789015309190008185BD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788F15309190008185BD /* CoreData.framework */; };
+		2535789615309190008185BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2535789415309190008185BD /* InfoPlist.strings */; };
+		2535789815309190008185BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2535789715309190008185BD /* main.m */; };
+		2535789C15309191008185BD /* MFMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2535789B15309191008185BD /* MFMAppDelegate.m */; };
+		2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2535789D15309191008185BD /* Moe_FM.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2535788515309190008185BD /* Moe FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moe FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2535788915309190008185BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2535788B15309190008185BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2535788D15309190008185BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2535788F15309190008185BD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2535789315309190008185BD /* Moe FM-Info.plist */ = {isa = PBXFileReference; path = "Moe FM-Info.plist"; sourceTree = "<group>"; };
+		2535789515309190008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2535789715309190008185BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2535789915309190008185BD /* Moe FM-Prefix.pch */ = {isa = PBXFileReference; path = "Moe FM-Prefix.pch"; sourceTree = "<group>"; };
+		2535789A15309190008185BD /* MFMAppDelegate.h */ = {isa = PBXFileReference; path = MFMAppDelegate.h; sourceTree = "<group>"; };
+		2535789B15309191008185BD /* MFMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFMAppDelegate.m; sourceTree = "<group>"; };
+		2535789E15309191008185BD /* Moe_FM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moe_FM.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		253578821530918F008185BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2535788A15309190008185BD /* UIKit.framework in Frameworks */,
+				2535788C15309190008185BD /* Foundation.framework in Frameworks */,
+				2535788E15309190008185BD /* CoreGraphics.framework in Frameworks */,
+				2535789015309190008185BD /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2535787A1530918E008185BD = {
+			isa = PBXGroup;
+			children = (
+				2535789115309190008185BD /* Moe FM */,
+				2535788815309190008185BD /* Frameworks */,
+				2535788615309190008185BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2535788615309190008185BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2535788515309190008185BD /* Moe FM.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2535788815309190008185BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2535788915309190008185BD /* UIKit.framework */,
+				2535788B15309190008185BD /* Foundation.framework */,
+				2535788D15309190008185BD /* CoreGraphics.framework */,
+				2535788F15309190008185BD /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2535789115309190008185BD /* Moe FM */ = {
+			isa = PBXGroup;
+			children = (
+				2535789A15309190008185BD /* MFMAppDelegate.h */,
+				2535789B15309191008185BD /* MFMAppDelegate.m */,
+				2535789D15309191008185BD /* Moe_FM.xcdatamodeld */,
+				2535789215309190008185BD /* Supporting Files */,
+			);
+			path = "Moe FM";
+			sourceTree = "<group>";
+		};
+		2535789215309190008185BD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2535789315309190008185BD /* Moe FM-Info.plist */,
+				2535789415309190008185BD /* InfoPlist.strings */,
+				2535789715309190008185BD /* main.m */,
+				2535789915309190008185BD /* Moe FM-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		253578841530918F008185BD /* Moe FM */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 253578A215309191008185BD /* Build configuration list for PBXNativeTarget "Moe FM" */;
+			buildPhases = (
+				253578811530918F008185BD /* Sources */,
+				253578821530918F008185BD /* Frameworks */,
+				253578831530918F008185BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Moe FM";
+			productName = "Moe FM";
+			productReference = 2535788515309190008185BD /* Moe FM.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2535787C1530918E008185BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MFM;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 2535787F1530918E008185BD /* Build configuration list for PBXProject "Moe FM" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2535787A1530918E008185BD;
+			productRefGroup = 2535788615309190008185BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				253578841530918F008185BD /* Moe FM */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		253578831530918F008185BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2535789615309190008185BD /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		253578811530918F008185BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2535789815309190008185BD /* main.m in Sources */,
+				2535789C15309191008185BD /* MFMAppDelegate.m in Sources */,
+				2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2535789415309190008185BD /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2535789515309190008185BD /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		253578A015309191008185BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		253578A115309191008185BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		253578A315309191008185BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
+				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		253578A415309191008185BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
+				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2535787F1530918E008185BD /* Build configuration list for PBXProject "Moe FM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				253578A015309191008185BD /* Debug */,
+				253578A115309191008185BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		253578A215309191008185BD /* Build configuration list for PBXNativeTarget "Moe FM" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				253578A315309191008185BD /* Debug */,
+				253578A415309191008185BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2535789D15309191008185BD /* Moe_FM.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2535789E15309191008185BD /* Moe_FM.xcdatamodel */,
+			);
+			currentVersion = 2535789E15309191008185BD /* Moe_FM.xcdatamodel */;
+			path = Moe_FM.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2535787C1530918E008185BD /* Project object */;
+}
