@@ -15,6 +15,11 @@
 		2535789815309190008185BD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2535789715309190008185BD /* main.m */; };
 		2535789C15309191008185BD /* MFMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2535789B15309191008185BD /* MFMAppDelegate.m */; };
 		2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2535789D15309191008185BD /* Moe_FM.xcdatamodeld */; };
+		253578B21530A0C0008185BD /* buttons.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578AE1530A0C0008185BD /* buttons.png */; };
+		253578B31530A0C0008185BD /* cover_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578AF1530A0C0008185BD /* cover_large.png */; };
+		253578B41530A0C0008185BD /* cover_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B01530A0C0008185BD /* cover_medium.png */; };
+		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
+		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +28,20 @@
 		2535788B15309190008185BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2535788D15309190008185BD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2535788F15309190008185BD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		2535789315309190008185BD /* Moe FM-Info.plist */ = {isa = PBXFileReference; path = "Moe FM-Info.plist"; sourceTree = "<group>"; };
+		2535789315309190008185BD /* Moe FM-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Moe FM-Info.plist"; sourceTree = "<group>"; };
 		2535789515309190008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2535789715309190008185BD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		2535789915309190008185BD /* Moe FM-Prefix.pch */ = {isa = PBXFileReference; path = "Moe FM-Prefix.pch"; sourceTree = "<group>"; };
-		2535789A15309190008185BD /* MFMAppDelegate.h */ = {isa = PBXFileReference; path = MFMAppDelegate.h; sourceTree = "<group>"; };
+		2535789915309190008185BD /* Moe FM-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moe FM-Prefix.pch"; sourceTree = "<group>"; };
+		2535789A15309190008185BD /* MFMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MFMAppDelegate.h; sourceTree = "<group>"; };
 		2535789B15309191008185BD /* MFMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MFMAppDelegate.m; sourceTree = "<group>"; };
 		2535789E15309191008185BD /* Moe_FM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moe_FM.xcdatamodel; sourceTree = "<group>"; };
+		253578AE1530A0C0008185BD /* buttons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttons.png; sourceTree = "<group>"; };
+		253578AF1530A0C0008185BD /* cover_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_large.png; sourceTree = "<group>"; };
+		253578B01530A0C0008185BD /* cover_medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_medium.png; sourceTree = "<group>"; };
+		253578B11530A0C0008185BD /* cover_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_small.png; sourceTree = "<group>"; };
+		253578BC1530A173008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/gregwang/Dropbox/Projects/iOS/Moe FM/Moe FM/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		253578C11530A37B008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
+		253578C31530A384008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Storyboard.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 				2535789A15309190008185BD /* MFMAppDelegate.h */,
 				2535789B15309191008185BD /* MFMAppDelegate.m */,
 				2535789D15309191008185BD /* Moe_FM.xcdatamodeld */,
+				253578AD1530A0C0008185BD /* Resources */,
 				2535789215309190008185BD /* Supporting Files */,
 			);
 			path = "Moe FM";
@@ -89,12 +102,24 @@
 		2535789215309190008185BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				253578C21530A37B008185BD /* Storyboard.storyboard */,
 				2535789315309190008185BD /* Moe FM-Info.plist */,
 				2535789415309190008185BD /* InfoPlist.strings */,
 				2535789715309190008185BD /* main.m */,
 				2535789915309190008185BD /* Moe FM-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		253578AD1530A0C0008185BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				253578AE1530A0C0008185BD /* buttons.png */,
+				253578AF1530A0C0008185BD /* cover_large.png */,
+				253578B01530A0C0008185BD /* cover_medium.png */,
+				253578B11530A0C0008185BD /* cover_small.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +157,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 2535787A1530918E008185BD;
 			productRefGroup = 2535788615309190008185BD /* Products */;
@@ -149,6 +175,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2535789615309190008185BD /* InfoPlist.strings in Resources */,
+				253578B21530A0C0008185BD /* buttons.png in Resources */,
+				253578B31530A0C0008185BD /* cover_large.png in Resources */,
+				253578B41530A0C0008185BD /* cover_medium.png in Resources */,
+				253578B51530A0C0008185BD /* cover_small.png in Resources */,
+				253578C01530A37B008185BD /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +203,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				2535789515309190008185BD /* en */,
+				253578BC1530A173008185BD /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		253578C21530A37B008185BD /* Storyboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				253578C11530A37B008185BD /* en */,
+				253578C31530A384008185BD /* zh-Hans */,
+			);
+			name = Storyboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
