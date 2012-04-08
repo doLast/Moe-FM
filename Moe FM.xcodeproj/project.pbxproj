@@ -20,6 +20,13 @@
 		253578B41530A0C0008185BD /* cover_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B01530A0C0008185BD /* cover_medium.png */; };
 		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
 		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
+		25B35B1015314F7500D1EAEC /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */; };
+		25B35B1F1531B30200D1EAEC /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B1E1531B30200D1EAEC /* AudioStreamer.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		25B35B261531DA1100D1EAEC /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B281531DC7900D1EAEC /* MediaPlayer.framework */; };
+		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
+		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
+		25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,7 +48,16 @@
 		253578B11530A0C0008185BD /* cover_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_small.png; sourceTree = "<group>"; };
 		253578BC1530A173008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/gregwang/Dropbox/Projects/iOS/Moe FM/Moe FM/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		253578C11530A37B008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
-		253578C31530A384008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Storyboard.storyboard"; sourceTree = "<group>"; };
+		25B35B0E15314F7500D1EAEC /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
+		25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
+		25B35B1D1531B30200D1EAEC /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		25B35B1E1531B30200D1EAEC /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		25B35B241531DA1000D1EAEC /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		25B35B281531DC7900D1EAEC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +65,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */,
+				25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */,
+				25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */,
+				25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */,
 				2535788A15309190008185BD /* UIKit.framework in Frameworks */,
 				2535788C15309190008185BD /* Foundation.framework in Frameworks */,
 				2535788E15309190008185BD /* CoreGraphics.framework in Frameworks */,
@@ -79,6 +99,10 @@
 		2535788815309190008185BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */,
+				25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */,
+				25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */,
+				25B35B281531DC7900D1EAEC /* MediaPlayer.framework */,
 				2535788915309190008185BD /* UIKit.framework */,
 				2535788B15309190008185BD /* Foundation.framework */,
 				2535788D15309190008185BD /* CoreGraphics.framework */,
@@ -92,7 +116,10 @@
 			children = (
 				2535789A15309190008185BD /* MFMAppDelegate.h */,
 				2535789B15309191008185BD /* MFMAppDelegate.m */,
+				25B35B0E15314F7500D1EAEC /* MFMPlayerViewController.h */,
+				25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */,
 				2535789D15309191008185BD /* Moe_FM.xcdatamodeld */,
+				25B35B1C1531B30200D1EAEC /* AudioStreamer */,
 				253578AD1530A0C0008185BD /* Resources */,
 				2535789215309190008185BD /* Supporting Files */,
 			);
@@ -120,6 +147,17 @@
 				253578B11530A0C0008185BD /* cover_small.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		25B35B1C1531B30200D1EAEC /* AudioStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				25B35B241531DA1000D1EAEC /* UIDevice+Hardware.h */,
+				25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */,
+				25B35B1D1531B30200D1EAEC /* AudioStreamer.h */,
+				25B35B1E1531B30200D1EAEC /* AudioStreamer.m */,
+			);
+			path = AudioStreamer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +231,9 @@
 				2535789815309190008185BD /* main.m in Sources */,
 				2535789C15309191008185BD /* MFMAppDelegate.m in Sources */,
 				2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */,
+				25B35B1015314F7500D1EAEC /* MFMPlayerViewController.m in Sources */,
+				25B35B1F1531B30200D1EAEC /* AudioStreamer.m in Sources */,
+				25B35B261531DA1100D1EAEC /* UIDevice+Hardware.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +253,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				253578C11530A37B008185BD /* en */,
-				253578C31530A384008185BD /* zh-Hans */,
 			);
 			name = Storyboard.storyboard;
 			sourceTree = "<group>";
@@ -271,6 +311,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -282,6 +323,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -306,6 +348,7 @@
 				253578A415309191008185BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
