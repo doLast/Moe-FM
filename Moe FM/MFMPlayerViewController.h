@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MoeFmPlayer.h"
 
-@interface MFMPlayerViewController : UIViewController
+@interface MFMPlayerViewController : UIViewController <MoeFmPlayerDelegate>
 
 @property (assign, nonatomic) IBOutlet UILabel *songNameLable;
 @property (assign, nonatomic) IBOutlet UILabel *songArtistLabel;
 @property (assign, nonatomic) IBOutlet UILabel *songAlbumLabel;
-@property (assign, nonatomic) IBOutlet UIProgressView *songTimeIndicator;
+@property (assign, nonatomic) IBOutlet UIProgressView *songProgressIndicator;
 @property (assign, nonatomic) IBOutlet UIImageView *songArtworkImage;
-@property (assign, nonatomic) IBOutlet UIButton *playOrPauseButton;
-@property (assign, nonatomic) IBOutlet UIButton *favouriteButton;
-@property (assign, nonatomic) IBOutlet UIButton *dislikeButton;
-@property (assign, nonatomic) IBOutlet UIButton *nextButton;
 
-
+- (IBAction)togglePlaybackState:(UIButton *)sender;
+- (IBAction)toggleFavourite:(UIButton *)sender;
+- (IBAction)toggleDislike:(UIButton *)sender;
+- (IBAction)nextTrack:(UIButton *)sender;
 
 @end
