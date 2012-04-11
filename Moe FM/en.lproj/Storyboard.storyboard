@@ -19,9 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Mou FM" id="B0i-bB-Zh8">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="Jjz-eU-owJ"/>
-                                    </navigationItem>
+                                    <navigationItem title="Mou FM" id="B0i-bB-Zh8"/>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" id="1mO-HJ-RIg">
@@ -43,6 +41,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="toggleDislike:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="wix-b8-MtN"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kih-YP-WiC">
                                                 <rect key="frame" x="20" y="26" width="72" height="37"/>
@@ -55,6 +56,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="toggleFavourite:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="q0z-Gu-qqw"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qau-S4-tCD">
                                                 <rect key="frame" x="228" y="26" width="72" height="37"/>
@@ -67,6 +71,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="nextTrack:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="MUV-Oo-bOI"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
@@ -75,12 +82,12 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
-                                            <progressView opaque="NO" contentMode="scaleToFill" progress="0.5" id="QLF-vb-3Du">
-                                                <rect key="frame" x="0.0" y="95" width="320" height="9"/>
+                                            <progressView opaque="NO" contentMode="scaleToFill" progress="1" id="QLF-vb-3Du">
+                                                <rect key="frame" x="-5" y="0.0" width="330" height="9"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </progressView>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SONG_NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" id="n5b-Ez-PTd">
-                                                <rect key="frame" x="40" y="20" width="240" height="26"/>
+                                                <rect key="frame" x="20" y="28" width="280" height="26"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -89,7 +96,7 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="/" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="PYN-iB-eYL">
-                                                <rect key="frame" x="156" y="63" width="8" height="21"/>
+                                                <rect key="frame" x="156" y="71" width="8" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -98,7 +105,7 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ARTIST" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="OiM-5t-pem">
-                                                <rect key="frame" x="40" y="63" width="108" height="21"/>
+                                                <rect key="frame" x="20" y="71" width="128" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -107,7 +114,7 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ALBUM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="1AU-NX-uEH">
-                                                <rect key="frame" x="172" y="63" width="108" height="21"/>
+                                                <rect key="frame" x="172" y="71" width="128" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -138,6 +145,9 @@
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="togglePlaybackState:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="udI-sg-1kz"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -149,15 +159,11 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="dislikeButton" destination="47m-zx-rHA" id="oZC-8H-A9h"/>
-                        <outlet property="favouriteButton" destination="Kih-YP-WiC" id="oXE-XB-JlG"/>
-                        <outlet property="nextButton" destination="Qau-S4-tCD" id="NLT-3X-fkP"/>
-                        <outlet property="playOrPauseButton" destination="SaF-ad-KJr" id="Iee-mY-xEJ"/>
                         <outlet property="songAlbumLabel" destination="1AU-NX-uEH" id="xN9-Np-MDQ"/>
                         <outlet property="songArtistLabel" destination="OiM-5t-pem" id="yjJ-RP-mw8"/>
                         <outlet property="songArtworkImage" destination="Yqi-7F-20s" id="ftH-oS-2k3"/>
                         <outlet property="songNameLable" destination="n5b-Ez-PTd" id="xw3-J1-yrA"/>
-                        <outlet property="songTimeIndicator" destination="QLF-vb-3Du" id="MG5-NW-U88"/>
+                        <outlet property="songProgressIndicator" destination="QLF-vb-3Du" id="dYn-7X-p5L"/>
                     </connections>
                 </viewController>
             </objects>
@@ -171,15 +177,15 @@
         <class className="MFMPlayerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlayerViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favouriteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="playOrPauseButton" candidateClass="UIButton"/>
+                <relationship kind="action" name="nextTrack:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleDislike:" candidateClass="UIButton"/>
+                <relationship kind="action" name="toggleFavourite:" candidateClass="UIButton"/>
+                <relationship kind="action" name="togglePlaybackState:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="songAlbumLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songArtistLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songArtworkImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="songNameLable" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="songTimeIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
             </relationships>
         </class>
     </classes>
