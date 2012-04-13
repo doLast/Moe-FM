@@ -8,76 +8,202 @@
 
 #import "MoeFmAPI.h"
 
+typedef enum
+{
+	MFMAPI_JSON = 0,
+	MFMAPI_PLAYLIST, 
+	MFMAPI_IMAGE
+} MoeFmAPIRequestType;
+
 NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist?api=json";
 
 @interface MoeFmAPI ()
+@property (assign, nonatomic) NSObject <MoeFmAPIDelegate> *delegate;
 @property (retain, nonatomic) NSString *apiKey;
+@property (assign, nonatomic) MoeFmAPIRequestType requestType;
+@property (retain, nonatomic) NSURLConnection *theConnection;
+@property (retain, nonatomic) NSMutableData *receivedData;
+
+- (BOOL)createConnectionWithURL:(NSURL *)url 
+					requestType:(MoeFmAPIRequestType)type
+				timeoutInterval:(NSTimeInterval)timeout;
 
 @end
 
 @implementation MoeFmAPI
 
+@synthesize delegate = _delegate;
 @synthesize apiKey = _apiKey;
+@synthesize requestType = _requestType;
+@synthesize theConnection = _theConnection;
+@synthesize receivedData = _receivedData;
 
-- (MoeFmAPI *) initWithApiKey:(NSString *)apiKey
+- (MoeFmAPI *) initWithApiKey:(NSString *)apiKey delegate:(NSObject <MoeFmAPIDelegate> *)delegate
 {
 	self = [super init];
 	
 	self.apiKey = apiKey;
+	self.delegate = delegate;
 	
 	return self;
 }
 
-- (NSArray *)getListenPlaylistWithPage:(NSInteger)page
+#pragma mark - NSURLConnection
+
+- (BOOL)createConnectionWithURL:(NSURL *)url 
+					requestType:(MoeFmAPIRequestType)type
+				timeoutInterval:(NSTimeInterval)timeout
+{
+	// If currently having a connection, abort the new one
+	if(self.theConnection){
+		return NO;
+	}
+	
+	// Create the request.
+	NSURLRequest *theRequest = [NSURLRequest requestWithURL:url
+												cachePolicy:NSURLRequestReloadRevalidatingCacheData
+											timeoutInterval:timeout];
+	self.requestType = type;
+	
+	// create the connection with the request
+	// and start loading the data
+	self.theConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+	
+	if (self.theConnection) {
+		// Create the NSMutableData to hold the received data.
+		// receivedData is an instance variable declared elsewhere.
+		self.receivedData = [NSMutableData data];
+	} else {
+		// Inform the user that the connection failed.
+		return NO;
+	}
+	return YES;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    // This method is called when the server has determined that it
+    // has enough information to create the NSURLResponse.
+	
+    // It can be called multiple times, for example in the case of a
+    // redirect, so each time we reset the data.
+	
+    // receivedData is an instance variable declared elsewhere.
+    [self.receivedData setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    // Append the new data to receivedData.
+    // receivedData is an instance variable declared elsewhere.
+    [self.receivedData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+    // receivedData is declared as a method instance elsewhere
+	self.theConnection = nil;
+    self.receivedData = nil;
+	
+    // inform the user
+    NSLog(@"Connection failed! Error - %@ %@",
+          [error localizedDescription],
+          [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]);
+	
+	if([self.delegate respondsToSelector:@selector(api:requestFailedWithError:)]){
+		[self.delegate api:self requestFailedWithError:error];
+	}
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    // do something with the data
+    // receivedData is declared as a method instance elsewhere
+    NSLog(@"Succeeded! Received %d bytes of data",[self.receivedData length]);
+	
+	if(self.requestType == MFMAPI_PLAYLIST){
+		NSError* error;
+		NSDictionary* json = [NSJSONSerialization 
+							  JSONObjectWithData:[NSData dataWithData:self.receivedData]
+							  options:kNilOptions 
+							  error:&error];
+		if(json == nil){
+			// TODO
+			NSLog(@"Json data is nil");
+		}
+		
+		NSDictionary * response = [json objectForKey:@"response"];
+		if(response == nil){
+			// TODO
+			NSLog(@"Response data is nil");
+		}
+		
+		NSArray* playlist = [response objectForKey:@"playlist"];
+		if(playlist == nil){
+			// TODO
+			NSLog(@"Playlist data is nil");
+		}
+		
+		if([self.delegate respondsToSelector:@selector(api:readyWithPlaylist:)]){
+			[self.delegate api:self readyWithPlaylist:playlist];
+		}
+	}
+	else if(self.requestType == MFMAPI_IMAGE){
+		UIImage *image = [UIImage imageWithData:self.receivedData];
+		if([self.delegate respondsToSelector:@selector(api:readyWithImage:)]){
+			[self.delegate api:self readyWithImage:image];
+		}
+	}
+	
+	
+    // release the connection, and the data object
+    self.theConnection = nil;
+    self.receivedData = nil;
+}
+
+# pragma mark - public methods
+
+- (BOOL)requestListenPlaylistWithPage:(NSInteger)page
 {
 	NSURL *url = [NSURL URLWithString:[MoeFmAPIListenPlaylistAddress 
 									   stringByAppendingFormat:@"&page=%d&api_key=%@", page, self.apiKey]];
-	//parse out the json data
-	NSData* data = [NSData dataWithContentsOfURL: url];
-    NSError* error;
-    NSDictionary* json = [NSJSONSerialization 
-						  JSONObjectWithData:data 
-						  options:kNilOptions 
-						  error:&error];
-	if(json == nil){
-		// TODO
-		NSLog(@"Json data is nil");
-		return nil;
-	}
 	
-	NSDictionary * response = [json objectForKey:@"response"];
-	if(response == nil){
-		// TODO
-		NSLog(@"Response data is nil");
-		return nil;
-	}
-	
-    NSArray* playlist = [response objectForKey:@"playlist"];
-	if(playlist == nil){
-		// TODO
-		NSLog(@"Playlist data is nil");
-		return nil;
-	}
-	
-    return playlist;
+    return [self createConnectionWithURL:url 
+							 requestType:MFMAPI_PLAYLIST 
+						 timeoutInterval:10.0];
 }
 
-- (NSArray *)getListenPlaylistWithFav:(NSString *)fav 
-								 page:(NSInteger)page
+- (BOOL)requestListenPlaylistWithFav:(NSString *)fav 
+									 page:(NSInteger)page
 {
 	// TODO
-	return nil;
+	return NO;
 }
 
-- (NSArray *)getListenPlaylistWithMusic:(NSString *)music 
-								   song:(NSString *)song
-								  radio:(NSString *)radio 
-								   page:(NSInteger)page
+- (BOOL)requestListenPlaylistWithMusic:(NSString *)music 
+									   song:(NSString *)song
+									  radio:(NSString *)radio 
+									   page:(NSInteger)page
 {
 	// TODO
-	return nil;
+	return NO;
 }
 
+- (BOOL)requestJsonWithURL:(NSURL *)url
+{
+	return [self createConnectionWithURL:url 
+							 requestType:MFMAPI_JSON
+						 timeoutInterval:10.0];
+}
+
+
+- (BOOL)requestImageWithURL:(NSURL *)url
+{
+	return [self createConnectionWithURL:url 
+							 requestType:MFMAPI_IMAGE
+						 timeoutInterval:10.0];
+}
 
 
 @end

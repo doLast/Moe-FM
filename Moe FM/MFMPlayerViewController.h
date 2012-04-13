@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MoeFmPlayer.h"
+#import "MoeFmAPI.h"
 
-@interface MFMPlayerViewController : UIViewController <MoeFmPlayerDelegate>
+@interface MFMPlayerViewController : UIViewController <MoeFmPlayerDelegate, MoeFmAPIDelegate>
 
 @property (assign, nonatomic) IBOutlet UILabel *songNameLable;
-@property (assign, nonatomic) IBOutlet UILabel *songArtistLabel;
-@property (assign, nonatomic) IBOutlet UILabel *songAlbumLabel;
+@property (assign, nonatomic) IBOutlet UILabel *songInfoLabel;
 @property (assign, nonatomic) IBOutlet UIProgressView *songProgressIndicator;
 @property (assign, nonatomic) IBOutlet UIImageView *songArtworkImage;
 

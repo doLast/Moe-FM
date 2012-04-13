@@ -208,6 +208,7 @@ extern NSString * const ASUpdateMetadataNotification;
 - (float)peakPowerForChannel:(NSUInteger)channelNumber;
 - (float)averagePowerForChannel:(NSUInteger)channelNumber;
 
++ (NSString *)stringForErrorCode:(AudioStreamerErrorCode)anErrorCode;
 
 @end
 

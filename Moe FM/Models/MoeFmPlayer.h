@@ -7,22 +7,32 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AudioStreamer.h"
+
+@class MoeFmPlayer;
 
 @protocol MoeFmPlayerDelegate
 
-- (void)updateProgressIndicator:(float)percentage;
-- (void)updateMetadate:(NSDictionary *)metadata;
-- (NSArray *)getNewPlaylist;
+- (void)player:(MoeFmPlayer *)player needToUpdatePlaylist:(NSArray *)currentplaylist;
+
+@optional
+- (void)player:(MoeFmPlayer *)player updateProgress:(float)percentage;
+- (void)player:(MoeFmPlayer *)player updateMetadata:(NSDictionary *)metadata;
+- (void)player:(MoeFmPlayer *)player stateChangesTo:(AudioStreamerState)state;
+
+@optional
+- (void)player:(MoeFmPlayer *)player stoppingWithError:(NSString *)error;
 
 @end
 
 @interface MoeFmPlayer : NSObject
 
-- (MoeFmPlayer *) initWithDelegate:(id <MoeFmPlayerDelegate>)delegate;
-- (MoeFmPlayer *) initWithPlaylist:(NSArray *)playlist delegate:(id <MoeFmPlayerDelegate>)delegate;
+@property (retain, nonatomic) NSArray *playlist;
+@property (readonly) NSString *playerErrorReason;
+
+- (MoeFmPlayer *) initWithDelegate:(NSObject <MoeFmPlayerDelegate> *)delegate;
 
 - (void)setPlaylist:(NSArray *)playlist;
-- (void)appendPlaylist:(NSArray *)playlist;
 - (void)start;
 - (void)startTrack:(NSUInteger) trackNum;
 - (void)pause;

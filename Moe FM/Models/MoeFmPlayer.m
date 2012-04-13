@@ -6,13 +6,13 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
+#import "MFMAppDelegate.h"
 #import "MoeFmPlayer.h"
 #import "AudioStreamer.h"
 
 @interface MoeFmPlayer ()
 
-@property (assign, nonatomic) id <MoeFmPlayerDelegate> delegate;
-@property (retain, nonatomic) NSArray *playlist;
+@property (assign, nonatomic) NSObject <MoeFmPlayerDelegate> *delegate;
 @property (retain, nonatomic) AudioStreamer *streamer;
 @property (retain, nonatomic) NSTimer *updateTimer;
 
@@ -29,39 +29,52 @@
 
 @synthesize trackNum = _trackNum;
 
-- (MoeFmPlayer *) initWithDelegate:(id <MoeFmPlayerDelegate>)delegate{
+- (MoeFmPlayer *) initWithDelegate:(NSObject <MoeFmPlayerDelegate> *)delegate{
 	self = [super init];
 	
 	self.delegate = delegate;
-	self.trackNum = 1;
 	
 	return self;
 }
 
-- (MoeFmPlayer *) initWithPlaylist:(NSArray *)playlist 
-						  delegate:(id <MoeFmPlayerDelegate>)delegate
+- (void)createStreamerWithURL:(NSURL *)streamURL
 {
-	self = [super init];
+	if(self.streamer){
+		[self destroyStreamer];
+	}
 	
-	self.playlist = playlist;
-	self.delegate = delegate;
-	self.trackNum = 1;
+	self.streamer = [[AudioStreamer alloc] initWithURL:streamURL];
 	
-	return self;
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self 
+	 selector:@selector(streamerStateChanged:) 
+	 name:ASStatusChangedNotification 
+	 object:self.streamer];
+	
+	NSLog(@"New streamer created");
 }
 
-//
-// createTimers
-//
-// Creates or destoys the timers
-//
--(void)createTimers:(BOOL)create {
+- (void)destroyStreamer
+{
+	if(self.streamer){
+		[self.streamer stop];
+		self.streamer = nil;
+		
+		[[NSNotificationCenter defaultCenter]
+		 removeObserver:self
+		 name:ASStatusChangedNotification
+		 object:self.streamer];
+	}
+}
+
+- (void)toggleTimers:(BOOL)create 
+{
 	if (create) {
 		if (self.streamer) {
-			[self createTimers:NO];
+			[self toggleTimers:NO];
 			self.updateTimer =
 			[NSTimer
-			 scheduledTimerWithTimeInterval:0.1
+			 scheduledTimerWithTimeInterval:0.5
 			 target:self
 			 selector:@selector(updateProgress:)
 			 userInfo:nil
@@ -77,43 +90,72 @@
 	}
 }
 
+- (void)streamerStateChanged:(NSNotification *)aNotification
+{
+//	MFMAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	
+	[self.delegate player:self stateChangesTo:[self.streamer state]];
+	
+	if ([self.streamer isWaiting])
+	{
+		NSLog(@"Streamer is waiting");
+		[self toggleTimers:NO];
+	}
+	else if ([self.streamer isPlaying])
+	{
+		NSLog(@"Streamer is playing");
+		[self toggleTimers:YES];
+	}
+	else if ([self.streamer isPaused]) {
+		NSLog(@"Streamer is paused");
+		[self toggleTimers:NO];
+	}
+	else if ([self.streamer isIdle])
+	{
+		NSLog(@"Streamer is idle");
+		[self toggleTimers:NO];
+		if(self.streamer.stopReason == AS_STOPPING_EOF){
+			[self next];
+		}
+		else if(self.streamer.stopReason == AS_STOPPING_ERROR){
+			if([self.delegate respondsToSelector:@selector(player:stoppingWithError:)]){
+				[self.delegate player:self 
+					stoppingWithError:[AudioStreamer stringForErrorCode:[self.streamer errorCode]]];
+			}
+		}
+	}
+}
+
 - (void)updateProgress:(NSTimer *)timer
 {
 	if(self.streamer){
 //		NSLog(@"Played %f, %f", self.streamer.progress, self.streamer.duration);
-		[self.delegate updateProgressIndicator:self.streamer.progress / self.streamer.duration];
-		
-		if([self.streamer isIdle]){
-			[self next];
-		}
+		[self.delegate player:self updateProgress:self.streamer.progress / self.streamer.duration];
 	}
 }
 
 - (void)updateMetadata
 {
-	[self.delegate updateMetadate:[self.playlist objectAtIndex:self.trackNum]];
+	[self.delegate player:self updateMetadata:[self.playlist objectAtIndex:self.trackNum]];
 }
 
-- (void) setPlaylist:(NSArray *)playlist
+- (void)setPlaylist:(NSArray *)playlist
 {
 	_playlist = playlist;
+	self.trackNum = 0;
 	[self stop];
+	[self start];
 }
 
-- (void) appendPlaylist:(NSArray *)playlist
+- (NSString *)playerErrorReason
 {
-	if(self.playlist){
-		self.playlist = [self.playlist arrayByAddingObjectsFromArray:playlist];
-	}
-	else {
-		self.playlist = playlist;
-	}
+	return [AudioStreamer stringForErrorCode:[self.streamer errorCode]];
 }
 
 - (void)start
 {
 	if(!self.playlist){
-		NSLog(@"No playlist assigned");
+		[self.delegate player:self needToUpdatePlaylist:self.playlist];
 		return;
 	}
 	if(!self.streamer){
@@ -121,33 +163,33 @@
 		NSString *audioAddress = [music objectForKey:@"url"];
 		NSURL *audioURL = [NSURL URLWithString:audioAddress];
 		
-		self.streamer = [[AudioStreamer alloc] initWithURL:audioURL];
+		[self createStreamerWithURL:audioURL];
 		[self updateMetadata];
-		NSLog(@"New streamer created");
 	}
 	
 	[self.streamer start];
-	[self createTimers:YES];
 	
 	NSLog(@"Player start on track %d", self.trackNum);
 }
 
 - (void)startTrack:(NSUInteger) trackNum
 {
-	if(trackNum == self.trackNum){
+	if(!self.streamer){}
+	else if(trackNum == self.trackNum && [self.streamer isPlaying]){
 		return;
 	}
-	if(trackNum < 1 || trackNum > [self.playlist count]){
-		NSLog(@"TrackNum out of bound");
+	else if([self.streamer isWaiting]){
 		return;
 	}
-	if(trackNum == [self.playlist count]){
-		self.playlist = [self.delegate getNewPlaylist];
-		trackNum = 1;
-	}
-	[self stop];
 	
 	self.trackNum = trackNum;
+	
+	if(trackNum >= [self.playlist count]){
+		[self.delegate player:self needToUpdatePlaylist:self.playlist];
+		return;
+	}
+	
+	[self stop];
 	[self start];
 }
 
@@ -156,16 +198,15 @@
 	if(self.streamer){
 		[self.streamer pause];
 	}
-	[self createTimers:NO];
 	NSLog(@"Player pause");
 }
 
 - (void)startOrPause
 {
-	if(!self.streamer || ![self.streamer isPlaying]){
+	if(!self.streamer || [self.streamer isPaused] || [self.streamer isIdle]){
 		[self start];
 	}
-	else {
+	else if([self.streamer isPlaying]) {
 		[self pause];
 	}
 }
@@ -174,9 +215,8 @@
 {
 	if(self.streamer){
 		[self.streamer stop];
-		self.streamer = nil;
+		[self destroyStreamer];
 	}
-	[self createTimers:NO];
 	NSLog(@"Player stop");
 }
 
@@ -187,7 +227,12 @@
 
 - (void)previous
 {
-	[self startTrack:self.trackNum - 1];
+	if(self.streamer){
+		[self.streamer seekToTime:0];
+	}
+//	else {
+//		[self startTrack:self.trackNum - 1];	
+//	}
 }
 
 
