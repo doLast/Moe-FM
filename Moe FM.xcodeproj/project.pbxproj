@@ -47,6 +47,10 @@
 		25E3F5F61539B866003FABD2 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5EF1539B866003FABD2 /* next@2x.png */; };
 		25E3F5F71539B866003FABD2 /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5F01539B866003FABD2 /* pause@2x.png */; };
 		25E3F5F81539B866003FABD2 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5F11539B866003FABD2 /* play@2x.png */; };
+		25E3F5FC1539C87D003FABD2 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FA1539C87C003FABD2 /* default.png */; };
+		25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FB1539C87C003FABD2 /* default@2x.png */; };
+		25E3F6001539D3DB003FABD2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FE1539D3DA003FABD2 /* Icon.png */; };
+		25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +106,10 @@
 		25E3F5F01539B866003FABD2 /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		25E3F5F11539B866003FABD2 /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
 		25E3F5F91539C2E8003FABD2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		25E3F5FA1539C87C003FABD2 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		25E3F5FB1539C87C003FABD2 /* default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@2x.png"; sourceTree = "<group>"; };
+		25E3F5FE1539D3DA003FABD2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +210,10 @@
 		253578AD1530A0C0008185BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				25E3F5FE1539D3DA003FABD2 /* Icon.png */,
+				25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */,
+				25E3F5FA1539C87C003FABD2 /* default.png */,
+				25E3F5FB1539C87C003FABD2 /* default@2x.png */,
 				25E3F5EB1539B866003FABD2 /* dislike_no@2x.png */,
 				25E3F5EC1539B866003FABD2 /* dislike_yes@2x.png */,
 				25E3F5ED1539B866003FABD2 /* fav_no@2x.png */,
@@ -310,6 +322,10 @@
 				25E3F5F61539B866003FABD2 /* next@2x.png in Resources */,
 				25E3F5F71539B866003FABD2 /* pause@2x.png in Resources */,
 				25E3F5F81539B866003FABD2 /* play@2x.png in Resources */,
+				25E3F5FC1539C87D003FABD2 /* default.png in Resources */,
+				25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */,
+				25E3F6001539D3DB003FABD2 /* Icon.png in Resources */,
+				25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +386,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -385,6 +402,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -395,6 +413,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -404,6 +423,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -412,11 +432,13 @@
 		253578A315309191008185BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -424,11 +446,13 @@
 		253578A415309191008185BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
