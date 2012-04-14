@@ -17,7 +17,10 @@ typedef enum
 
 NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist?api=json";
 
+
 @interface MoeFmAPI ()
+@property (assign, nonatomic, readwrite)BOOL isBusy;
+
 @property (assign, nonatomic) NSObject <MoeFmAPIDelegate> *delegate;
 @property (retain, nonatomic) NSString *apiKey;
 @property (assign, nonatomic) MoeFmAPIRequestType requestType;
@@ -30,7 +33,11 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
 
 @end
 
+
 @implementation MoeFmAPI
+
+@synthesize isBusy = _isBusy;
+@synthesize allowNetworkAccess = _allowNetworkAccess;
 
 @synthesize delegate = _delegate;
 @synthesize apiKey = _apiKey;
@@ -48,12 +55,31 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
 	return self;
 }
 
+#pragma mark - Getter and Setter
+
+-(void)setAllowNetworkAccess:(BOOL)allowNetworkAccess
+{
+	_allowNetworkAccess = allowNetworkAccess;
+	if(!allowNetworkAccess){
+		[self cancelRequest];
+	}
+}
+
 #pragma mark - NSURLConnection
 
 - (BOOL)createConnectionWithURL:(NSURL *)url 
 					requestType:(MoeFmAPIRequestType)type
 				timeoutInterval:(NSTimeInterval)timeout
 {
+	if(!self.allowNetworkAccess){
+		NSLog(@"No network access allowed");
+		if([self.delegate respondsToSelector:@selector(api:needNetworkAccess:)]){
+			[self.delegate api:self needNetworkAccess:YES];
+		}
+		return NO;
+	}
+	
+	self.isBusy = YES;
 	// If currently having a connection, abort the new one
 	if(self.theConnection){
 		return NO;
@@ -80,6 +106,18 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
 	return YES;
 }
 
+- (void)cancelConnection
+{
+	if(self.theConnection && self.isBusy){
+		[self.theConnection cancel];
+		self.theConnection = nil;
+		self.receivedData = nil;
+		self.isBusy = NO;
+	}
+}
+
+# pragma mark - NSURLConnectionDelegate
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     // This method is called when the server has determined that it
@@ -105,6 +143,8 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
     // receivedData is declared as a method instance elsewhere
 	self.theConnection = nil;
     self.receivedData = nil;
+	
+	self.isBusy = NO;
 	
     // inform the user
     NSLog(@"Connection failed! Error - %@ %@",
@@ -160,9 +200,26 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
     // release the connection, and the data object
     self.theConnection = nil;
     self.receivedData = nil;
+	
+	self.isBusy = NO;
 }
 
 # pragma mark - public methods
+
+- (BOOL)requestJsonWithURL:(NSURL *)url
+{
+	return [self createConnectionWithURL:url 
+							 requestType:MFMAPI_JSON
+						 timeoutInterval:10.0];
+}
+
+
+- (BOOL)requestImageWithURL:(NSURL *)url
+{
+	return [self createConnectionWithURL:url 
+							 requestType:MFMAPI_IMAGE
+						 timeoutInterval:10.0];
+}
 
 - (BOOL)requestListenPlaylistWithPage:(NSInteger)page
 {
@@ -190,20 +247,11 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
 	return NO;
 }
 
-- (BOOL)requestJsonWithURL:(NSURL *)url
+- (void)cancelRequest
 {
-	return [self createConnectionWithURL:url 
-							 requestType:MFMAPI_JSON
-						 timeoutInterval:10.0];
+	if(self.theConnection == nil){
+		[self.theConnection cancel];
+	}
 }
-
-
-- (BOOL)requestImageWithURL:(NSURL *)url
-{
-	return [self createConnectionWithURL:url 
-							 requestType:MFMAPI_IMAGE
-						 timeoutInterval:10.0];
-}
-
 
 @end

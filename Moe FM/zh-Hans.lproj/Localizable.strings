@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Moe FM
+
+  Created by Greg Wang on 12-4-14.
+  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+*/
+
+/* Global */
+"APP_NAME" = "萌否电台";
+
+/* Metadata */
+"UNKNOWN_SONG" = "未知歌曲";
+"UNKNOWN_ARTIST" = "未知艺术家";
+"UNKNOWN_ALBUM" = "未知专辑";
+"DEFAULT_SONG" = "点击播放键开始";
+"DEFAULT_INFO_LABEL" = "";
+
+/* Alert */
+"ALERT_YES" = "没问题";
+"ALERT_NO" = "不要><";
+"ALERT_OK" = "好";
+"USE_CELLULAR_ALERT_TITLE" = "使用手机网络进行连接？";
+"USE_CELLULAR_ALERT_MSG" = "黑心的运营商可能会收钱哦";

@@ -19,22 +19,22 @@
 - (void)player:(MoeFmPlayer *)player updateProgress:(float)percentage;
 - (void)player:(MoeFmPlayer *)player updateMetadata:(NSDictionary *)metadata;
 - (void)player:(MoeFmPlayer *)player stateChangesTo:(AudioStreamerState)state;
-
-@optional
 - (void)player:(MoeFmPlayer *)player stoppingWithError:(NSString *)error;
 
+- (void)player:(MoeFmPlayer *)player needNetworkAccess:(BOOL)allow;
+
 @end
+
 
 @interface MoeFmPlayer : NSObject
 
 @property (retain, nonatomic) NSArray *playlist;
-@property (readonly) NSString *playerErrorReason;
+@property (assign, nonatomic) BOOL allowNetworkAccess;
 
 - (MoeFmPlayer *) initWithDelegate:(NSObject <MoeFmPlayerDelegate> *)delegate;
 
-- (void)setPlaylist:(NSArray *)playlist;
 - (void)start;
-- (void)startTrack:(NSUInteger) trackNum;
+- (void)startTrack:(NSUInteger)trackNum;
 - (void)pause;
 - (void)startOrPause;
 - (void)stop;

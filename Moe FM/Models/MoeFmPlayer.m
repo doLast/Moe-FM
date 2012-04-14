@@ -11,7 +11,6 @@
 #import "AudioStreamer.h"
 
 @interface MoeFmPlayer ()
-
 @property (assign, nonatomic) NSObject <MoeFmPlayerDelegate> *delegate;
 @property (retain, nonatomic) AudioStreamer *streamer;
 @property (retain, nonatomic) NSTimer *updateTimer;
@@ -20,16 +19,20 @@
 
 @end
 
+
 @implementation MoeFmPlayer
+@synthesize playlist = _playlist;
+@synthesize allowNetworkAccess = _allowNetworkAccess;
 
 @synthesize delegate = _delegate;
-@synthesize playlist = _playlist;
 @synthesize streamer = _streamer;
 @synthesize updateTimer = _updateTimer;
 
 @synthesize trackNum = _trackNum;
 
-- (MoeFmPlayer *) initWithDelegate:(NSObject <MoeFmPlayerDelegate> *)delegate{
+
+- (MoeFmPlayer *) initWithDelegate:(NSObject <MoeFmPlayerDelegate> *)delegate
+{
 	self = [super init];
 	
 	self.delegate = delegate;
@@ -37,8 +40,36 @@
 	return self;
 }
 
+# pragma mark - Getter and Setter
+
+- (void)setPlaylist:(NSArray *)playlist
+{
+	_playlist = playlist;
+	self.trackNum = 0;
+	[self stop];
+	[self start];
+}
+
+-(void)setAllowNetworkAccess:(BOOL)allowNetworkAccess
+{
+	_allowNetworkAccess = allowNetworkAccess;
+	if(!allowNetworkAccess){
+		[self stop];
+	}
+}
+
+# pragma mark - Streamer
+
 - (void)createStreamerWithURL:(NSURL *)streamURL
 {
+	if(!self.allowNetworkAccess){
+		NSLog(@"No network access allowed");
+		if([self.delegate respondsToSelector:@selector(player:needNetworkAccess:)]){
+			[self.delegate player:self needNetworkAccess:YES];
+		}
+		return;
+	}
+	
 	if(self.streamer){
 		[self destroyStreamer];
 	}
@@ -96,15 +127,16 @@
 	
 	[self.delegate player:self stateChangesTo:[self.streamer state]];
 	
-	if ([self.streamer isWaiting])
-	{
-		NSLog(@"Streamer is waiting");
-		[self toggleTimers:NO];
-	}
-	else if ([self.streamer isPlaying])
+	if ([self.streamer isPlaying])
 	{
 		NSLog(@"Streamer is playing");
 		[self toggleTimers:YES];
+		return;
+	}
+	else if ([self.streamer isWaiting])
+	{
+		NSLog(@"Streamer is waiting");
+		[self toggleTimers:NO];
 	}
 	else if ([self.streamer isPaused]) {
 		NSLog(@"Streamer is paused");
@@ -114,15 +146,20 @@
 	{
 		NSLog(@"Streamer is idle");
 		[self toggleTimers:NO];
-		if(self.streamer.stopReason == AS_STOPPING_EOF){
-			[self next];
+	}
+	
+	if(self.streamer.errorCode != AS_NO_ERROR){
+		NSLog(@"Streamer stoped with error %@", [AudioStreamer stringForErrorCode:[self.streamer errorCode]]);
+		if([self.delegate respondsToSelector:@selector(player:stoppingWithError:)]){
+			[self.delegate player:self 
+				stoppingWithError:[AudioStreamer stringForErrorCode:[self.streamer errorCode]]];
 		}
-		else if(self.streamer.stopReason == AS_STOPPING_ERROR){
-			if([self.delegate respondsToSelector:@selector(player:stoppingWithError:)]){
-				[self.delegate player:self 
-					stoppingWithError:[AudioStreamer stringForErrorCode:[self.streamer errorCode]]];
-			}
-		}
+		[self stop];
+	}
+	
+	if(self.streamer.stopReason == AS_STOPPING_EOF){
+		NSLog(@"Streamer reach EOF, play next");
+		[self next];
 	}
 }
 
@@ -137,19 +174,6 @@
 - (void)updateMetadata
 {
 	[self.delegate player:self updateMetadata:[self.playlist objectAtIndex:self.trackNum]];
-}
-
-- (void)setPlaylist:(NSArray *)playlist
-{
-	_playlist = playlist;
-	self.trackNum = 0;
-	[self stop];
-	[self start];
-}
-
-- (NSString *)playerErrorReason
-{
-	return [AudioStreamer stringForErrorCode:[self.streamer errorCode]];
 }
 
 - (void)start
@@ -167,12 +191,13 @@
 		[self updateMetadata];
 	}
 	
-	[self.streamer start];
-	
-	NSLog(@"Player start on track %d", self.trackNum);
+	if (![self.streamer isPlaying]) {
+		[self.streamer start];
+		NSLog(@"Player start on track %d", self.trackNum);
+	}
 }
 
-- (void)startTrack:(NSUInteger) trackNum
+- (void)startTrack:(NSUInteger)trackNum
 {
 	if(!self.streamer){}
 	else if(trackNum == self.trackNum && [self.streamer isPlaying]){
@@ -182,12 +207,12 @@
 		return;
 	}
 	
-	self.trackNum = trackNum;
-	
 	if(trackNum >= [self.playlist count]){
 		[self.delegate player:self needToUpdatePlaylist:self.playlist];
 		return;
 	}
+	
+	self.trackNum = trackNum;
 	
 	[self stop];
 	[self start];

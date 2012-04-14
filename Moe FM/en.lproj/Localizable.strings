@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  Moe FM
+
+  Created by Greg Wang on 12-4-14.
+  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+*/
+
+/* Global */
+"APP_NAME" = "Moe FM";
+
+/* Metadata */
+"UNKNOWN_SONG" = "Unknown Song";
+"UNKNOWN_ARTIST" = "Unknown Artist";
+"UNKNOWN_ALBUM" = "Unknown Album";
+"DEFAULT_SONG" = "Press play to start";
+"DEFAULT_INFO_LABEL" = "";
+
+/* Alert */
+"ALERT_YES" = "Yes";
+"ALERT_NO" = "No";
+"ALERT_OK" = "OK";
+"USE_CELLULAR_ALERT_TITLE" = "Use Cellular Data to Connect?";
+"USE_CELLULAR_ALERT_MSG" = "Your carrier may charge you";
