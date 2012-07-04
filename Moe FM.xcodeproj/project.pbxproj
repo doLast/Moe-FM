@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2513DEDE1535FCA200CB0B0A /* MoeFmAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2513DEDD1535FCA200CB0B0A /* MoeFmAPI.m */; };
-		2513DEE11535FCB800CB0B0A /* MoeFmPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2513DEE01535FCB800CB0B0A /* MoeFmPlayer.m */; };
 		2535788A15309190008185BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788915309190008185BD /* UIKit.framework */; };
 		2535788C15309190008185BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788B15309190008185BD /* Foundation.framework */; };
 		2535788E15309190008185BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788D15309190008185BD /* CoreGraphics.framework */; };
@@ -22,9 +20,21 @@
 		253578B41530A0C0008185BD /* cover_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B01530A0C0008185BD /* cover_medium.png */; };
 		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
 		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
-		25B35B1015314F7500D1EAEC /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */; };
-		25B35B1F1531B30200D1EAEC /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B1E1531B30200D1EAEC /* AudioStreamer.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
-		25B35B261531DA1100D1EAEC /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
+		2539E7B215A4DFDC00E5668A /* MFMDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */; };
+		2539E7BA15A4E07C00E5668A /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2539E7B915A4E07C00E5668A /* SenTestingKit.framework */; };
+		2539E7BB15A4E07C00E5668A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788915309190008185BD /* UIKit.framework */; };
+		2539E7BC15A4E07C00E5668A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788B15309190008185BD /* Foundation.framework */; };
+		2539E7C215A4E07C00E5668A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2539E7C015A4E07C00E5668A /* InfoPlist.strings */; };
+		254ECA7F15A2333F00251A0F /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		254ECA8215A233CE00251A0F /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		254ECA8715A233DC00251A0F /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		254ECA8815A233DC00251A0F /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254ECA8915A2343A00251A0F /* Security.framework */; };
+		254ECA9415A236B700251A0F /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */; };
+		254ECAB415A4BC1A00251A0F /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */; };
+		254ECAB715A4BE1D00251A0F /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAB615A4BE1D00251A0F /* AudioStreamer.m */; };
+		254ECABB15A4BEFA00251A0F /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */; };
+		254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */; };
 		25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B281531DC7900D1EAEC /* MediaPlayer.framework */; };
 		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
@@ -54,10 +64,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2513DEDC1535FCA200CB0B0A /* MoeFmAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoeFmAPI.h; sourceTree = "<group>"; };
-		2513DEDD1535FCA200CB0B0A /* MoeFmAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoeFmAPI.m; sourceTree = "<group>"; };
-		2513DEDF1535FCB800CB0B0A /* MoeFmPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoeFmPlayer.h; sourceTree = "<group>"; };
-		2513DEE01535FCB800CB0B0A /* MoeFmPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoeFmPlayer.m; sourceTree = "<group>"; };
 		2535788515309190008185BD /* Moe FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moe FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2535788915309190008185BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2535788B15309190008185BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,12 +82,31 @@
 		253578B11530A0C0008185BD /* cover_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_small.png; sourceTree = "<group>"; };
 		253578BC1530A173008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/gregwang/Dropbox/Projects/iOS/Moe FM/Moe FM/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		253578C11530A37B008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
-		25B35B0E15314F7500D1EAEC /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
-		25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
-		25B35B1D1531B30200D1EAEC /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		25B35B1E1531B30200D1EAEC /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		25B35B241531DA1000D1EAEC /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
-		25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; path = MFMDataFetcher.h; sourceTree = "<group>"; };
+		2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMDataFetcher.m; sourceTree = "<group>"; };
+		2539E7B815A4E07C00E5668A /* Moe FM Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moe FM Test.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2539E7B915A4E07C00E5668A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2539E7BF15A4E07C00E5668A /* Moe FM Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Moe FM Test-Info.plist"; sourceTree = "<group>"; };
+		2539E7C115A4E07C00E5668A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2539E7C615A4E07C00E5668A /* Moe FM Test-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moe FM Test-Prefix.pch"; sourceTree = "<group>"; };
+		254ECA7D15A2333B00251A0F /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
+		254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
+		254ECA8015A233CE00251A0F /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		254ECA8315A233DC00251A0F /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
+		254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
+		254ECA8515A233DC00251A0F /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
+		254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
+		254ECA8915A2343A00251A0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
+		254ECAB215A4BC1A00251A0F /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
+		254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
+		254ECAB515A4BE1D00251A0F /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		254ECAB615A4BE1D00251A0F /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		254ECAB915A4BEFA00251A0F /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
+		254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
+		254ECAC415A4C0F800251A0F /* MFMStartingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMStartingViewController.h; sourceTree = "<group>"; };
+		254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMStartingViewController.m; sourceTree = "<group>"; };
 		25B35B281531DC7900D1EAEC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -117,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */,
 				25E3F5CA15396020003FABD2 /* SystemConfiguration.framework in Frameworks */,
 				25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */,
 				25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */,
@@ -129,6 +155,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2539E7B415A4E07C00E5668A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2539E7BA15A4E07C00E5668A /* SenTestingKit.framework in Frameworks */,
+				2539E7BB15A4E07C00E5668A /* UIKit.framework in Frameworks */,
+				2539E7BC15A4E07C00E5668A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -137,10 +173,8 @@
 			children = (
 				25E3F5BE15395723003FABD2 /* Reachability.h */,
 				25E3F5BF15395723003FABD2 /* Reachability.m */,
-				2513DEDC1535FCA200CB0B0A /* MoeFmAPI.h */,
-				2513DEDD1535FCA200CB0B0A /* MoeFmAPI.m */,
-				2513DEDF1535FCB800CB0B0A /* MoeFmPlayer.h */,
-				2513DEE01535FCB800CB0B0A /* MoeFmPlayer.m */,
+				2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */,
+				2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -149,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				2535789115309190008185BD /* Moe FM */,
+				2539E7BD15A4E07C00E5668A /* Moe FM Test */,
 				2535788815309190008185BD /* Frameworks */,
 				2535788615309190008185BD /* Products */,
 			);
@@ -158,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				2535788515309190008185BD /* Moe FM.app */,
+				2539E7B815A4E07C00E5668A /* Moe FM Test.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,6 +201,7 @@
 		2535788815309190008185BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				254ECA8915A2343A00251A0F /* Security.framework */,
 				25E3F5C915396020003FABD2 /* SystemConfiguration.framework */,
 				25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */,
 				25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */,
@@ -174,6 +211,7 @@
 				2535788B15309190008185BD /* Foundation.framework */,
 				2535788D15309190008185BD /* CoreGraphics.framework */,
 				2535788F15309190008185BD /* CoreData.framework */,
+				2539E7B915A4E07C00E5668A /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,10 +221,11 @@
 			children = (
 				2535789A15309190008185BD /* MFMAppDelegate.h */,
 				2535789B15309191008185BD /* MFMAppDelegate.m */,
-				25B35B0E15314F7500D1EAEC /* MFMPlayerViewController.h */,
-				25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */,
 				2535789D15309191008185BD /* Moe_FM.xcdatamodeld */,
+				254ECAB115A4BB9500251A0F /* ViewControllers */,
 				2513DEDB1535FCA200CB0B0A /* Models */,
+				254ECA7B15A2331500251A0F /* GTMOAuth */,
+				254ECAB815A4BEF900251A0F /* PPRevealSideviewController */,
 				25B35B1C1531B30200D1EAEC /* AudioStreamer */,
 				253578AD1530A0C0008185BD /* Resources */,
 				2535789215309190008185BD /* Supporting Files */,
@@ -237,13 +276,65 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		2539E7BD15A4E07C00E5668A /* Moe FM Test */ = {
+			isa = PBXGroup;
+			children = (
+				2539E7BE15A4E07C00E5668A /* Supporting Files */,
+			);
+			path = "Moe FM Test";
+			sourceTree = "<group>";
+		};
+		2539E7BE15A4E07C00E5668A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2539E7BF15A4E07C00E5668A /* Moe FM Test-Info.plist */,
+				2539E7C015A4E07C00E5668A /* InfoPlist.strings */,
+				2539E7C615A4E07C00E5668A /* Moe FM Test-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		254ECA7B15A2331500251A0F /* GTMOAuth */ = {
+			isa = PBXGroup;
+			children = (
+				254ECA8015A233CE00251A0F /* GTMHTTPFetcher.h */,
+				254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */,
+				254ECA8315A233DC00251A0F /* GTMOAuthAuthentication.h */,
+				254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */,
+				254ECA8515A233DC00251A0F /* GTMOAuthSignIn.h */,
+				254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */,
+				254ECA7D15A2333B00251A0F /* GTMOAuthViewControllerTouch.h */,
+				254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */,
+				254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */,
+			);
+			path = GTMOAuth;
+			sourceTree = "<group>";
+		};
+		254ECAB115A4BB9500251A0F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				254ECAB215A4BC1A00251A0F /* MFMPlayerViewController.h */,
+				254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */,
+				254ECAC415A4C0F800251A0F /* MFMStartingViewController.h */,
+				254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		254ECAB815A4BEF900251A0F /* PPRevealSideviewController */ = {
+			isa = PBXGroup;
+			children = (
+				254ECAB915A4BEFA00251A0F /* PPRevealSideViewController.h */,
+				254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */,
+			);
+			path = PPRevealSideviewController;
+			sourceTree = "<group>";
+		};
 		25B35B1C1531B30200D1EAEC /* AudioStreamer */ = {
 			isa = PBXGroup;
 			children = (
-				25B35B241531DA1000D1EAEC /* UIDevice+Hardware.h */,
-				25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */,
-				25B35B1D1531B30200D1EAEC /* AudioStreamer.h */,
-				25B35B1E1531B30200D1EAEC /* AudioStreamer.m */,
+				254ECAB515A4BE1D00251A0F /* AudioStreamer.h */,
+				254ECAB615A4BE1D00251A0F /* AudioStreamer.m */,
 			);
 			path = AudioStreamer;
 			sourceTree = "<group>";
@@ -268,6 +359,24 @@
 			productReference = 2535788515309190008185BD /* Moe FM.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2539E7B715A4E07C00E5668A /* Moe FM Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2539E7C715A4E07C00E5668A /* Build configuration list for PBXNativeTarget "Moe FM Test" */;
+			buildPhases = (
+				2539E7B315A4E07C00E5668A /* Sources */,
+				2539E7B415A4E07C00E5668A /* Frameworks */,
+				2539E7B515A4E07C00E5668A /* Resources */,
+				2539E7B615A4E07C00E5668A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Moe FM Test";
+			productName = "Moe FM Test";
+			productReference = 2539E7B815A4E07C00E5668A /* Moe FM Test.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -291,6 +400,7 @@
 			projectRoot = "";
 			targets = (
 				253578841530918F008185BD /* Moe FM */,
+				2539E7B715A4E07C00E5668A /* Moe FM Test */,
 			);
 		};
 /* End PBXProject section */
@@ -326,10 +436,35 @@
 				25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */,
 				25E3F6001539D3DB003FABD2 /* Icon.png in Resources */,
 				25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */,
+				254ECA9415A236B700251A0F /* GTMOAuthViewTouch.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2539E7B515A4E07C00E5668A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2539E7C215A4E07C00E5668A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2539E7B615A4E07C00E5668A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		253578811530918F008185BD /* Sources */ = {
@@ -339,12 +474,23 @@
 				2535789815309190008185BD /* main.m in Sources */,
 				2535789C15309191008185BD /* MFMAppDelegate.m in Sources */,
 				2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */,
-				25B35B1015314F7500D1EAEC /* MFMPlayerViewController.m in Sources */,
-				25B35B1F1531B30200D1EAEC /* AudioStreamer.m in Sources */,
-				25B35B261531DA1100D1EAEC /* UIDevice+Hardware.m in Sources */,
-				2513DEDE1535FCA200CB0B0A /* MoeFmAPI.m in Sources */,
-				2513DEE11535FCB800CB0B0A /* MoeFmPlayer.m in Sources */,
 				25E3F5C015395B78003FABD2 /* Reachability.m in Sources */,
+				254ECA7F15A2333F00251A0F /* GTMOAuthViewControllerTouch.m in Sources */,
+				254ECA8215A233CE00251A0F /* GTMHTTPFetcher.m in Sources */,
+				254ECA8715A233DC00251A0F /* GTMOAuthAuthentication.m in Sources */,
+				254ECA8815A233DC00251A0F /* GTMOAuthSignIn.m in Sources */,
+				254ECAB415A4BC1A00251A0F /* MFMPlayerViewController.m in Sources */,
+				254ECAB715A4BE1D00251A0F /* AudioStreamer.m in Sources */,
+				254ECABB15A4BEFA00251A0F /* PPRevealSideViewController.m in Sources */,
+				254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */,
+				2539E7B215A4DFDC00E5668A /* MFMDataFetcher.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2539E7B315A4E07C00E5668A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +512,14 @@
 				253578C11530A37B008185BD /* en */,
 			);
 			name = Storyboard.storyboard;
+			sourceTree = "<group>";
+		};
+		2539E7C015A4E07C00E5668A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2539E7C115A4E07C00E5668A /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		25E3F5D31539A474003FABD2 /* Localizable.strings */ = {
@@ -457,6 +611,38 @@
 			};
 			name = Release;
 		};
+		2539E7C815A4E07C00E5668A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Moe FM Test/Moe FM Test-Prefix.pch";
+				INFOPLIST_FILE = "Moe FM Test/Moe FM Test-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		2539E7C915A4E07C00E5668A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Moe FM Test/Moe FM Test-Prefix.pch";
+				INFOPLIST_FILE = "Moe FM Test/Moe FM Test-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -477,6 +663,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		2539E7C715A4E07C00E5668A /* Build configuration list for PBXNativeTarget "Moe FM Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2539E7C815A4E07C00E5668A /* Debug */,
+				2539E7C915A4E07C00E5668A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
