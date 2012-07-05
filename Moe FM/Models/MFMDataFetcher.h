@@ -10,8 +10,8 @@
 
 
 typedef enum {
-	kMFMDataJson = 0,
-	kMFMDataImage, 
+	MFMDataTypeImage = 0,
+	MFMDataTypeJson, 
 } MFMDataType;
 
 @class MFMDataFetcher;

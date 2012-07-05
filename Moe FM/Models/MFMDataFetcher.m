@@ -54,11 +54,11 @@
 		self.fetcher = [GTMHTTPFetcher fetcherWithRequest:self.request];
 
 		switch (self.type) {
-			case kMFMDataImage:
+			case MFMDataTypeImage:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
 				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
 				break;
-			case kMFMDataJson:
+			case MFMDataTypeJson:
 			default:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(jsonFetcher:finishedWithData:error:)];
 				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
