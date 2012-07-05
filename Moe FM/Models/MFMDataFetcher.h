@@ -9,19 +9,19 @@
 #import "GTMHTTPFetcher.h"
 
 
-enum {
-	kMFMDataFetcherJson = 0,
-	kMFMDataFetcherImage
-};
+typedef enum {
+	kMFMDataJson = 0,
+	kMFMDataImage, 
+} MFMDataType;
 
 @class MFMDataFetcher;
 
 @protocol MFMDataFetcherDelegate <NSObject>
 
 @optional
-- (void) fetcher:(MFMDataFetcher *)dataFetcher didFinishWithJson:(NSDictionary *)json;
-- (void) fetcher:(MFMDataFetcher *)dataFetcher didFinishWithImage:(UIImage *)image;
-- (void) fetcher:(MFMDataFetcher *)dataFetcher didFinishWithError:(NSError *)error;
+- (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithJson:(NSDictionary *)json;
+- (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithImage:(UIImage *)image;
+- (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithError:(NSError *)error;
 
 @end
 
@@ -30,7 +30,7 @@ enum {
 @property (readonly, assign, nonatomic) BOOL didFinish;
 @property (readonly, nonatomic) BOOL isFetching;
 
-- (MFMDataFetcher *)initWithURL:(NSURL *)url dataType:(NSInteger)type;
+- (MFMDataFetcher *)initWithURL:(NSURL *)url dataType:(MFMDataType)type;
 - (void)beginFetchWithDelegate:(id <MFMDataFetcherDelegate>)delegate;
 - (void)stop;
 

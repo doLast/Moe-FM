@@ -33,7 +33,7 @@
 	return self.fetcher.isFetching;
 }
 
-- (MFMDataFetcher *)initWithURL:(NSURL *)url dataType:(NSInteger)type
+- (MFMDataFetcher *)initWithURL:(NSURL *)url dataType:(MFMDataType)type
 {
 	self = [super init];
 	if (self) {
@@ -54,11 +54,11 @@
 		self.fetcher = [GTMHTTPFetcher fetcherWithRequest:self.request];
 
 		switch (self.type) {
-			case kMFMDataFetcherImage:
+			case kMFMDataImage:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
 				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
 				break;
-			case kMFMDataFetcherJson:
+			case kMFMDataJson:
 			default:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(jsonFetcher:finishedWithData:error:)];
 				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
