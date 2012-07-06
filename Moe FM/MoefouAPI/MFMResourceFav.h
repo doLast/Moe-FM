@@ -33,5 +33,12 @@ typedef enum {
 
 @interface MFMResourceFav : MFMResource
 
+@property (retain, nonatomic, readonly) NSNumber *favId;
+@property (retain, nonatomic, readonly) NSNumber *favObjId;
+@property (assign, nonatomic, readonly) MFMFavObjType favObjType;
+@property (retain, nonatomic, readonly) NSNumber *favUid;
+@property (retain, nonatomic, readonly) NSDate *favDate;
+@property (assign, nonatomic, readonly) MFMFavType favType;
+@property (retain, nonatomic, readonly) MFMResource *obj;
 
 @end

@@ -20,6 +20,15 @@ extern NSString * const MFMAPIFormat;
 
 extern NSString * const MFMResourceNotification;
 
+
+@protocol MFMResourceSubsInterface <NSObject>
+@property (readonly, nonatomic) NSArray *resourceSubs;
+@end
+
+@protocol MFMResourceWikisInterface <NSObject>
+@property (readonly, nonatomic) NSArray *resourceWikis;
+@end
+
 @interface MFMResource : NSObject <MFMDataFetcherDelegate>
 
 @property (readonly, retain, nonatomic) NSDictionary *response;
@@ -29,5 +38,6 @@ extern NSString * const MFMResourceNotification;
 - (MFMResource *)initWithURL:(NSURL *)url andStartFetch:(BOOL)inst;
 - (MFMResource *)initWithResouce:(NSDictionary *)resource;
 - (BOOL)startFetch;
+- (void)stopFetch;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "MFMResourceFavs.h"
+#import "MFMResourceSub.h"
+#import "MFMResourceWiki.h"
 
 static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 
@@ -57,22 +59,12 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 	
 	self = [super initWithURL:url];
 	if (self != nil) {
-		// Do extra setup
+		self.page = nil;
+		self.perpage = nil;
+		self.count = nil;
+		self.resourceFavs = nil;
 	}
 	return self;
-}
-
-
-+ (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters
-{
-	NSMutableString *urlStr = [urlPrefix mutableCopy];
-	for (NSString *key in parameters.keyEnumerator) {
-		[urlStr appendFormat:@"%@=%@&", key, [parameters objectForKey:key]];
-	}
-	[urlStr appendString:@"api_key=302182858672af62ebf4524ee8d9a06304f7db527"];
-	
-	NSURL *url = [NSURL URLWithString:urlStr];
-	return url;
 }
 
 + (MFMResourceFavs *)favsWithUid:(NSNumber *)uid
@@ -89,6 +81,56 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 	return instance;
 }
 
+# pragma mark - class helpers
+
++ (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters
+{
+	NSMutableString *urlStr = [urlPrefix mutableCopy];
+	for (NSString *key in parameters.keyEnumerator) {
+		[urlStr appendFormat:@"%@=%@&", key, [parameters objectForKey:key]];
+	}
+	[urlStr appendString:@"api_key=302182858672af62ebf4524ee8d9a06304f7db527"];
+	
+	NSURL *url = [NSURL URLWithString:urlStr];
+	return url;
+}
+
+# pragma mark - getter & setter
+
+- (NSArray *)resourceSubs
+{
+	if (self.resourceFavs == nil) {
+		NSLog(@"No resource yet!");
+		return nil;
+	}
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType>%d", MFMFavObjTypeWiki];
+	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:filtered.count];
+	for (MFMResourceFav *fav in filtered) {
+		MFMResourceSub *sub = (MFMResourceSub *)fav.obj;
+		[result addObject:sub];
+	}
+	return result;
+}
+
+- (NSArray *)resourceWikis
+{
+	if (self.resourceFavs == nil) {
+		NSLog(@"No resource yet!");
+		return nil;
+	}
+	
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType<%d", MFMFavObjTypeWiki];
+	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:filtered.count];
+	for (MFMResourceFav *fav in filtered) {
+		MFMResourceWiki *wiki = (MFMResourceWiki *)fav.obj;
+		[result addObject:wiki];
+	}
+	return result;
+}
+
 # pragma mark - Override MFMResource Methods
 
 - (NSString *)description
@@ -102,9 +144,10 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {
-	NSDictionary *favsInfo = [resource objectForKey:@"favs_infomation"];
+	NSDictionary *favsInfo = [resource objectForKey:@"information"];
 	NSArray *favs = [resource objectForKey:@"favs"];
 	if (favsInfo == nil || favs == nil) {
+		NSLog(@"Favs info: %@, Favs: %@", favsInfo, favs);
 		return NO;
 	}
 	

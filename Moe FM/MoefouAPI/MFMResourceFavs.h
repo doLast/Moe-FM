@@ -9,12 +9,15 @@
 #import "MFMResource.h"
 #import "MFMResourceFav.h"
 
-@interface MFMResourceFavs : MFMResource
+@interface MFMResourceFavs : MFMResource <MFMResourceSubsInterface, MFMResourceWikisInterface>
 
 @property (retain, nonatomic, readonly) NSNumber *page;
 @property (retain, nonatomic, readonly) NSNumber *perpage;
 @property (retain, nonatomic, readonly) NSNumber *count;
 @property (retain, nonatomic, readonly) NSArray *resourceFavs;
+
+@property (readonly, nonatomic) NSArray *resourceSubs;
+@property (readonly, nonatomic) NSArray *resourceWikis;
 
 + (MFMResourceFavs *)favsWithUid:(NSNumber *)uid
 						userName:(NSString *)userName

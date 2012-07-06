@@ -18,6 +18,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 
 @property (retain, nonatomic) NSDictionary *response;
 @property (retain, nonatomic) NSError *error;
+@property (retain, nonatomic) NSURL *url;
 @property (retain, nonatomic) MFMDataFetcher *fetcher;
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource;
@@ -28,6 +29,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 
 @synthesize response = _response;
 @synthesize error = _error;
+@synthesize url = _url;
 @synthesize fetcher = _fetcher;
 
 - (MFMResource *)initWithURL:(NSURL *)url
@@ -40,7 +42,8 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 	self = [super init];
 	if (self != nil) {
 		self.response = nil;
-		self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
+		self.url = url;
+		
 		if (inst && ![self startFetch]) {
 			NSLog(@"Fail to start fetcher");
 		}
@@ -62,8 +65,20 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 
 - (BOOL)startFetch
 {
+	if (self.fetcher != nil){
+		return NO;
+	}
+	
+	self.fetcher = [[MFMDataFetcher alloc] initWithURL:self.url dataType:MFMDataTypeJson];
 	[self.fetcher beginFetchWithDelegate:self];
-	return self.fetcher != nil;
+	
+	return YES;
+}
+
+- (void)stopFetch
+{
+	[self.fetcher stop];
+	self.fetcher = nil;
 }
 
 # pragma mark - Override NSObject Methods
@@ -81,6 +96,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 	if (self.response == nil || [self prepareTheResource:self.response] == NO) {
 		return [self fetcher:dataFetcher didFinishWithError:nil];
 	}
+	self.fetcher = nil;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MFMResourceNotification object:self];
 }
@@ -88,6 +104,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 - (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithError:(NSError *)error
 {
 	self.error = error;
+	self.fetcher = nil;
 	[[NSNotificationCenter defaultCenter] postNotificationName:MFMResourceNotification object:self];
 }
 

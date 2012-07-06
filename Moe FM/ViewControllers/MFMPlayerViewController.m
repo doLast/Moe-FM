@@ -8,6 +8,11 @@
 
 #import "MFMPlayerViewController.h"
 #import "PPRevealSideViewController.h"
+#import "MFMResource.h"
+#import "MFMResourceWiki.h"
+#import "MFMResourceSub.h"
+#import "MFMResourceFav.h"
+#import "MFMResourceFavs.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -76,7 +81,17 @@
 
 - (IBAction)togglePlaybackState:(UIButton *)sender
 {
+//	NSString *urlStr = @"http://api.moefou.org/user/favs/sub.json?user_name=gregwym&obj_type=song&api_key=302182858672af62ebf4524ee8d9a06304f7db527";
+//	NSURL *url = [NSURL URLWithString:urlStr];
+	static MFMResourceFavs *resourceFavs;
+	if (resourceFavs == nil) {
+		resourceFavs = [MFMResourceFavs favsWithUid:nil userName:@"gregwym" objType:MFMFavObjTypeSong favType:MFMFavTypeHeart page:nil perpage:[NSNumber numberWithInt:2]];
+	}
 	
+	[[NSNotificationCenter defaultCenter]
+	 addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:resourceFavs];
+	
+	[resourceFavs startFetch];
 }
 
 - (IBAction)toggleFavourite:(UIButton *)sender
@@ -92,6 +107,33 @@
 - (IBAction)nextTrack:(UIButton *)sender
 {
 	
+}
+
+- (void)handleNotification:(NSNotification *)notification
+{
+//	MFMResource *resource = [notification object];
+//	NSDictionary *result = resource.resource;
+//	NSLog(@"%@", result);
+//	NSArray *wikis = [result objectForKey:@"wikis"];
+//	for (NSDictionary *wiki in wikis) {
+//		MFMResourceWiki *resourceWiki = [[MFMResourceWiki alloc] initWithResouce:wiki];
+//		NSLog(@"%@", resourceWiki);
+//	}
+	
+//	NSArray *subs = [result objectForKey:@"subs"];
+//	for (NSDictionary *sub in subs) {
+//		MFMResourceSub *resourceSub = [[MFMResourceSub alloc] initWithResouce:sub];
+//		NSLog(@"%@", resourceSub);
+//	}
+	
+//	NSArray *favs = [result objectForKey:@"favs"];
+//	for (NSDictionary *fav in favs) {
+//		MFMResourceFav *resourceFav = [[MFMResourceFav alloc] initWithResouce:fav];
+//		NSLog(@"%@", resourceFav);
+//	}
+	
+	MFMResourceFavs *resourceFavs = [notification object];
+	NSLog(@"%@", resourceFavs);
 }
 
 @end
