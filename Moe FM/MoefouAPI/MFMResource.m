@@ -42,12 +42,12 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 	self = [super init];
 	if (self != nil) {
 		self.response = nil;
-		self.url = url;
+		self.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, @"api_key=302182858672af62ebf4524ee8d9a06304f7db527"]];
 		
 		if (inst && ![self startFetch]) {
 			NSLog(@"Fail to start fetcher");
 		}
-		NSLog(@"Resource created with url %@", url);
+		NSLog(@"Resource created with url: %@", self.url);
 	}
 	return self;
 }
@@ -79,6 +79,19 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 {
 	[self.fetcher stop];
 	self.fetcher = nil;
+}
+
+# pragma mark - class helpers
+
++ (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters
+{
+	NSMutableString *urlStr = [urlPrefix mutableCopy];
+	for (NSString *key in parameters.keyEnumerator) {
+		[urlStr appendFormat:@"%@=%@&", key, [parameters objectForKey:key]];
+	}
+	
+	NSURL *url = [NSURL URLWithString:urlStr];
+	return url;
 }
 
 # pragma mark - Override NSObject Methods

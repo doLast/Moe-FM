@@ -20,13 +20,16 @@ extern NSString * const MFMAPIFormat;
 
 extern NSString * const MFMResourceNotification;
 
+@class MFMResourcePlaylist;
 
 @protocol MFMResourceSubsInterface <NSObject>
 @property (readonly, nonatomic) NSArray *resourceSubs;
+@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
 @end
 
 @protocol MFMResourceWikisInterface <NSObject>
 @property (readonly, nonatomic) NSArray *resourceWikis;
+@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
 @end
 
 @interface MFMResource : NSObject <MFMDataFetcherDelegate>
@@ -39,5 +42,6 @@ extern NSString * const MFMResourceNotification;
 - (MFMResource *)initWithResouce:(NSDictionary *)resource;
 - (BOOL)startFetch;
 - (void)stopFetch;
++ (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters;
 
 @end

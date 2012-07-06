@@ -9,8 +9,10 @@
 #import "MFMResourceFavs.h"
 #import "MFMResourceSub.h"
 #import "MFMResourceWiki.h"
+#import "MFMResourcePlaylist.h"
 
 static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
+static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourceFavs ()
 
@@ -18,6 +20,8 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 @property (retain, nonatomic) NSNumber *perpage;
 @property (retain, nonatomic) NSNumber *count;
 @property (retain, nonatomic) NSArray *resourceFavs;
+
+@property (retain, nonatomic) NSURL *playlistUrl;
 
 @end
 
@@ -28,6 +32,8 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 @synthesize perpage = _perpage;
 @synthesize count = _count;
 @synthesize resourceFavs = _resourceFavs;
+
+@synthesize playlistUrl = _playlistUrl;
 
 - (MFMResourceFavs *)initWithUid:(NSNumber *)uid
 						userName:(NSString *)userName
@@ -46,6 +52,7 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 	
 	NSString *urlPrefix = [kUserFavsUrlStr stringByAppendingFormat:@"%@.%@?", 
 						   category, MFMAPIFormat];
+	NSString *playlistPrefix = [kPlaylistUrlStr stringByAppendingFormat:@"%@&fav=%@&", MFMAPIFormat, MFMFavObjTypeStr[objType]];
 	
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 	if (uid) [parameters setValue:uid forKey:@"uid"];
@@ -55,7 +62,13 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 	if (page) [parameters setValue:page forKey:@"page"];
 	if (perpage) [parameters setValue:perpage forKey:@"perpage"];
 	
-	NSURL *url = [MFMResourceFavs urlWithPrefix:urlPrefix parameters:parameters];
+	NSMutableDictionary *playlistParameters = [NSMutableDictionary dictionary];
+	if (page) [playlistParameters setValue:page forKey:@"page"];
+	if (perpage) [playlistParameters setValue:perpage forKey:@"perpage"];
+	
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
+	NSURL *playlistUrl = [MFMResource urlWithPrefix:playlistPrefix parameters:playlistParameters];
+	NSLog(@"ResourceFavs playlist url: %@", playlistUrl);
 	
 	self = [super initWithURL:url];
 	if (self != nil) {
@@ -63,6 +76,7 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 		self.perpage = nil;
 		self.count = nil;
 		self.resourceFavs = nil;
+		self.playlistUrl = playlistUrl;
 	}
 	return self;
 }
@@ -81,54 +95,43 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 	return instance;
 }
 
-# pragma mark - class helpers
-
-+ (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters
-{
-	NSMutableString *urlStr = [urlPrefix mutableCopy];
-	for (NSString *key in parameters.keyEnumerator) {
-		[urlStr appendFormat:@"%@=%@&", key, [parameters objectForKey:key]];
-	}
-	[urlStr appendString:@"api_key=302182858672af62ebf4524ee8d9a06304f7db527"];
-	
-	NSURL *url = [NSURL URLWithString:urlStr];
-	return url;
-}
-
 # pragma mark - getter & setter
 
-- (NSArray *)resourceSubs
+- (NSArray *)extraObjects
 {
 	if (self.resourceFavs == nil) {
 		NSLog(@"No resource yet!");
 		return nil;
 	}
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType>%d", MFMFavObjTypeWiki];
-	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
-	NSMutableArray *result = [NSMutableArray arrayWithCapacity:filtered.count];
-	for (MFMResourceFav *fav in filtered) {
-		MFMResourceSub *sub = (MFMResourceSub *)fav.obj;
-		[result addObject:sub];
+	NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.resourceFavs.count];
+	for (MFMResourceFav *fav in self.resourceFavs) {
+		id obj = (MFMResourceSub *)fav.obj;
+		[result addObject:obj];
 	}
 	return result;
+}
+
+- (NSArray *)resourceSubs
+{	
+//	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType>%d", MFMFavObjTypeWiki];
+//	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
+	
+	return [self extraObjects];
 }
 
 - (NSArray *)resourceWikis
 {
-	if (self.resourceFavs == nil) {
-		NSLog(@"No resource yet!");
-		return nil;
-	}
+//	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType<%d", MFMFavObjTypeWiki];
+//	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
 	
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"favObjType<%d", MFMFavObjTypeWiki];
-	NSArray *filtered = [self.resourceFavs filteredArrayUsingPredicate:predicate];
-	NSMutableArray *result = [NSMutableArray arrayWithCapacity:filtered.count];
-	for (MFMResourceFav *fav in filtered) {
-		MFMResourceWiki *wiki = (MFMResourceWiki *)fav.obj;
-		[result addObject:wiki];
-	}
-	return result;
+	return [self extraObjects];
+}
+
+- (MFMResourcePlaylist *)playlist
+{
+	MFMResourcePlaylist *resourcePlaylist = [[MFMResourcePlaylist alloc] initWithURL:self.playlistUrl];
+	return resourcePlaylist;
 }
 
 # pragma mark - Override MFMResource Methods
@@ -144,16 +147,16 @@ static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {
-	NSDictionary *favsInfo = [resource objectForKey:@"information"];
+	NSDictionary *responseInfo = [resource objectForKey:@"information"];
 	NSArray *favs = [resource objectForKey:@"favs"];
-	if (favsInfo == nil || favs == nil) {
-		NSLog(@"Favs info: %@, Favs: %@", favsInfo, favs);
+	if (responseInfo == nil || favs == nil) {
+		NSLog(@"Response info: %@, Favs: %@", responseInfo, favs);
 		return NO;
 	}
 	
-	self.page = [favsInfo objectForKey:@"page"];
-	self.perpage = [favsInfo objectForKey:@"perpage"];
-	self.count = [favsInfo objectForKey:@"count"];
+	self.page = [responseInfo objectForKey:@"page"];
+	self.perpage = [responseInfo objectForKey:@"perpage"];
+	self.count = [responseInfo objectForKey:@"count"];
 	
 	NSMutableArray *resourceFavs = [NSMutableArray array];
 	for (NSDictionary *fav in favs) {

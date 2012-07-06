@@ -57,7 +57,7 @@
 	[[NSNotificationCenter defaultCenter]
 	 addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.resource];
 	
-	[self.tableView.pullToRefreshView reloadInputViews];
+	[self.tableView.pullToRefreshView triggerRefresh];
 }
 
 - (void)viewDidUnload
@@ -101,7 +101,7 @@
     MFMResourceSub *resourceSub = [self.resourceSubs objectAtIndex:indexPath.row];
 	
 	cell.textLabel.text = resourceSub.subTitle;
-	cell.detailTextLabel.text = resourceSub.subUrl.description;
+	cell.detailTextLabel.text = [resourceSub.subId stringValue];
     
     return cell;
 }
@@ -167,7 +167,8 @@
 
 - (void)handleNotification:(NSNotification *)notification
 {
-	if ([notification object] == self.resource) {
+	if (notification.name == MFMResourceNotification  && 
+		notification.object == self.resource) {
 		self.resourceSubs = self.resource.resourceSubs;
 		if (self.resourceSubs == nil) {
 			NSLog(@"Got error: %@", self.resource.error.localizedDescription);

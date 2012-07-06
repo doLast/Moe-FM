@@ -7,8 +7,11 @@
 //
 
 #import "MFMMenuViewController.h"
+#import "PPRevealSideViewController.h"
 #import "MFMSongsViewController.h"
+#import "MFMPlayerManager.h"
 
+#import "MFMResourcePlaylist.h"
 #import "MFMResourceFavs.h"
 
 @interface MFMMenuViewController ()
@@ -119,13 +122,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	if (indexPath.row == 0) {
+		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist magicPlaylist];
+		MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+		playerManager.nextPlaylist = resourcePlaylist;
+		playerManager.nextTrackNum = 0;
+		[playerManager play];
+		
+		PPRevealSideViewController *revealSideVC = (PPRevealSideViewController *)self.navigationController.parentViewController;
+		[revealSideVC popViewControllerAnimated:YES];
+	}
 }
 
 #pragma mark - segue

@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) NSArray *resourceSubs;
 @property (readonly, nonatomic) NSArray *resourceWikis;
+@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
 
 + (MFMResourceFavs *)favsWithUid:(NSNumber *)uid
 						userName:(NSString *)userName

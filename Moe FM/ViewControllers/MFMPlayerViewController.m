@@ -8,11 +8,8 @@
 
 #import "MFMPlayerViewController.h"
 #import "PPRevealSideViewController.h"
-#import "MFMResource.h"
-#import "MFMResourceWiki.h"
-#import "MFMResourceSub.h"
-#import "MFMResourceFav.h"
-#import "MFMResourceFavs.h"
+#import "MFMPlayerManager.h"
+#import "MFMResourceSong.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -49,6 +46,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 	
+	// Allow application to recieve remote control
+	UIApplication *application = [UIApplication sharedApplication];
+	if([application respondsToSelector:@selector(beginReceivingRemoteControlEvents)])
+		[application beginReceivingRemoteControlEvents];
+	[self becomeFirstResponder]; // this enables listening for events
+	
 	// Decorate the songArtworkImage
 	CALayer *layer = self.songArtworkImage.layer;
     [layer setBorderColor: [[UIColor whiteColor] CGColor]];
@@ -58,6 +61,10 @@
     [layer setShadowOffset: CGSizeMake(1, 3)];
     [layer setShadowRadius:2.0];
     [self.songArtworkImage setClipsToBounds:NO];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerSongChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerStatusChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
+	
 }
 
 - (void)viewDidUnload
@@ -71,6 +78,11 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (BOOL)canBecomeFirstResponder
+{
+	return YES;
+}
+
 #pragma mark - Actions
 
 - (IBAction)showMenu:(UIBarButtonItem *)sender
@@ -81,17 +93,11 @@
 
 - (IBAction)togglePlaybackState:(UIButton *)sender
 {
-//	NSString *urlStr = @"http://api.moefou.org/user/favs/sub.json?user_name=gregwym&obj_type=song&api_key=302182858672af62ebf4524ee8d9a06304f7db527";
-//	NSURL *url = [NSURL URLWithString:urlStr];
-	static MFMResourceFavs *resourceFavs;
-	if (resourceFavs == nil) {
-		resourceFavs = [MFMResourceFavs favsWithUid:nil userName:@"gregwym" objType:MFMFavObjTypeSong favType:MFMFavTypeHeart page:nil perpage:[NSNumber numberWithInt:2]];
+	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+	if ([playerManager pause] == NO) {
+		NSLog(@"Toggle to Play");
+		[playerManager play];
 	}
-	
-	[[NSNotificationCenter defaultCenter]
-	 addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:resourceFavs];
-	
-	[resourceFavs startFetch];
 }
 
 - (IBAction)toggleFavourite:(UIButton *)sender
@@ -106,34 +112,29 @@
 
 - (IBAction)nextTrack:(UIButton *)sender
 {
-	
+	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+	[playerManager next];
+}
+
+#pragma mark - NotificationCenter
+
+- (void)updateSongInfo
+{
+	MFMResourceSong *currentSong = [MFMPlayerManager sharedPlayerManager].currentSong;
+	if (currentSong != nil) {
+		self.songNameLabel.text = currentSong.subTitle;
+		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ / %@", currentSong.artist, currentSong.wikiTitle];
+	}
 }
 
 - (void)handleNotification:(NSNotification *)notification
 {
-//	MFMResource *resource = [notification object];
-//	NSDictionary *result = resource.resource;
-//	NSLog(@"%@", result);
-//	NSArray *wikis = [result objectForKey:@"wikis"];
-//	for (NSDictionary *wiki in wikis) {
-//		MFMResourceWiki *resourceWiki = [[MFMResourceWiki alloc] initWithResouce:wiki];
-//		NSLog(@"%@", resourceWiki);
-//	}
-	
-//	NSArray *subs = [result objectForKey:@"subs"];
-//	for (NSDictionary *sub in subs) {
-//		MFMResourceSub *resourceSub = [[MFMResourceSub alloc] initWithResouce:sub];
-//		NSLog(@"%@", resourceSub);
-//	}
-	
-//	NSArray *favs = [result objectForKey:@"favs"];
-//	for (NSDictionary *fav in favs) {
-//		MFMResourceFav *resourceFav = [[MFMResourceFav alloc] initWithResouce:fav];
-//		NSLog(@"%@", resourceFav);
-//	}
-	
-	MFMResourceFavs *resourceFavs = [notification object];
-	NSLog(@"%@", resourceFavs);
+	if (notification.name == MFMPlayerSongChangedNotification) {
+		[self updateSongInfo];
+	}
+	else if (notification.name == MFMPlayerStatusChangedNotification) {
+		
+	}
 }
 
 @end
