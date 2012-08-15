@@ -23,10 +23,10 @@
 @property (assign, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (assign, nonatomic) IBOutlet UIButton *nextButton;
 
-- (IBAction)showMenu:(UIBarButtonItem *)sender;
-- (IBAction)togglePlaybackState:(UIButton *)sender;
-- (IBAction)toggleFavourite:(UIButton *)sender;
-- (IBAction)toggleDislike:(UIButton *)sender;
-- (IBAction)nextTrack:(UIButton *)sender;
+- (IBAction)showMenu:(id)sender;
+- (IBAction)togglePlaybackState:(id)sender;
+- (IBAction)toggleFavourite:(id)sender;
+- (IBAction)toggleDislike:(id)sender;
+- (IBAction)nextTrack:(id)sender;
 
 @end

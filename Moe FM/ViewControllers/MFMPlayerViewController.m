@@ -11,10 +11,12 @@
 #import "MFMPlayerManager.h"
 #import "MFMResourceSong.h"
 
+#import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 
-
 @interface MFMPlayerViewController ()
+
+@property (strong, nonatomic) NSTimer *progressTimer;
 
 @end
 
@@ -32,14 +34,9 @@
 @synthesize dislikeButton = _dislikeButton;
 @synthesize nextButton = _nextButton;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize progressTimer = _progressTimer;
+
+#pragma mark - view life cycle
 
 - (void)viewDidLoad
 {
@@ -83,15 +80,104 @@
 	return YES;
 }
 
+#pragma mark - view updates
+
+- (void)updateSongInfo
+{
+	MFMResourceSong *currentSong = [MFMPlayerManager sharedPlayerManager].currentSong;
+	if (currentSong != nil) {
+		NSMutableDictionary *nowPlayingInfo = [NSMutableDictionary dictionary];
+		
+		// Update Song Title
+		self.songNameLabel.text = currentSong.subTitle;
+		if([self.songNameLabel.text length] == 0) {
+			self.songNameLabel.text = NSLocalizedString(@"UNKNOWN_SONG", @"");
+		}
+		[nowPlayingInfo setValue:self.songNameLabel.text forKey:MPMediaItemPropertyTitle];
+		
+		// Update Artist
+		NSString *artist = currentSong.artist;
+		if([artist length] == 0) {
+			artist = NSLocalizedString(@"UNKNOWN_ARTIST", @"");;
+		}
+		[nowPlayingInfo setValue:artist forKey:MPMediaItemPropertyArtist];
+		
+		// Update Album
+		NSString *album = currentSong.wikiTitle;
+		if([album length] == 0) {
+			album = NSLocalizedString(@"UNKNOWN_ALBUM", @"");
+		}
+		[nowPlayingInfo setValue:album forKey:MPMediaItemPropertyAlbumTitle];
+		
+		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ / %@", artist, album];
+		
+		// Post to NowPlayingInfoCenter
+		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
+	}
+}
+
+- (void)updateProgress
+{
+	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+	double percentage = playerManager.progress / playerManager.duration;
+	[self.songProgressIndicator setProgress:percentage animated:YES];
+}
+
+- (void)updatePlaybackStatus
+{
+	MFMPlayerStatus status = [MFMPlayerManager sharedPlayerManager].playerStatus;
+	switch (status) {
+		case MFMPlayerStatusPlaying:
+			self.playButton.alpha = 0;
+			[self.songBufferingIndicator stopAnimating];
+			[self toggleTimer:YES];
+			break;
+		case MFMPlayerStatusPaused:
+			self.playButton.alpha = 0.5;
+			[self.songBufferingIndicator stopAnimating];
+			[self toggleTimer:NO];
+			break;
+		case MFMPlayerStatusWaiting:
+			self.playButton.alpha = 0;
+			[self.songBufferingIndicator startAnimating];
+			break;
+		default:
+			break;
+	}
+}
+
+- (void)toggleTimer:(BOOL)create
+{
+	if (create) {
+		if (self.progressTimer) {
+			[self toggleTimer:NO];
+		}
+		self.progressTimer =
+		[NSTimer
+		 scheduledTimerWithTimeInterval:0.5
+		 target:self
+		 selector:@selector(updateProgress)
+		 userInfo:nil
+		 repeats:YES];
+	}
+	else {
+		if (self.progressTimer)
+		{
+			[self.progressTimer invalidate];
+			self.progressTimer = nil;
+		}
+	}
+}
+
 #pragma mark - Actions
 
-- (IBAction)showMenu:(UIBarButtonItem *)sender
+- (IBAction)showMenu:(id)sender
 {
 	PPRevealSideViewController *revealSideViewController = (PPRevealSideViewController *)self.navigationController.parentViewController;
 	[revealSideViewController pushOldViewControllerOnDirection:PPRevealSideDirectionTop withOffset:53 animated:YES];
 }
 
-- (IBAction)togglePlaybackState:(UIButton *)sender
+- (IBAction)togglePlaybackState:(id)sender
 {
 	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
 	if ([playerManager pause] == NO) {
@@ -100,32 +186,48 @@
 	}
 }
 
-- (IBAction)toggleFavourite:(UIButton *)sender
+- (IBAction)toggleFavourite:(id)sender
 {
 	
 }
 
-- (IBAction)toggleDislike:(UIButton *)sender
+- (IBAction)toggleDislike:(id)sender
 {
 	
 }
 
-- (IBAction)nextTrack:(UIButton *)sender
+- (IBAction)nextTrack:(id)sender
 {
 	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
 	[playerManager next];
 }
 
-#pragma mark - NotificationCenter
-
-- (void)updateSongInfo
+/* The iPod controls will send these events when the app is in the background */
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
-	MFMResourceSong *currentSong = [MFMPlayerManager sharedPlayerManager].currentSong;
-	if (currentSong != nil) {
-		self.songNameLabel.text = currentSong.subTitle;
-		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ / %@", currentSong.artist, currentSong.wikiTitle];
+	switch (event.subtype) {
+		case UIEventSubtypeRemoteControlTogglePlayPause:
+			[self togglePlaybackState:self];
+			break;
+		case UIEventSubtypeRemoteControlPlay:
+			[self togglePlaybackState:self];
+			break;
+		case UIEventSubtypeRemoteControlPause:
+			[self togglePlaybackState:self];
+			break;
+		case UIEventSubtypeRemoteControlStop:
+			break;
+		case UIEventSubtypeRemoteControlNextTrack:
+			[self nextTrack:self];
+			break;
+		case UIEventSubtypeRemoteControlPreviousTrack:
+			break;
+		default:
+			break;
 	}
 }
+
+#pragma mark - NotificationCenter
 
 - (void)handleNotification:(NSNotification *)notification
 {
@@ -133,7 +235,7 @@
 		[self updateSongInfo];
 	}
 	else if (notification.name == MFMPlayerStatusChangedNotification) {
-		
+		[self updatePlaybackStatus];
 	}
 }
 

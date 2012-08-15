@@ -51,6 +51,22 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	}
 }
 
+- (double)progress
+{
+	if (self.audioStreamer) {
+		return self.audioStreamer.progress;
+	}
+	return 0;
+}
+
+- (double)duration
+{
+	if (self.audioStreamer) {
+		return self.audioStreamer.duration;
+	}
+	return 0;
+}
+
 #pragma mark - initializations
 + (MFMPlayerManager *)sharedPlayerManager
 {
