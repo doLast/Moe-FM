@@ -12,6 +12,7 @@
 		250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */; };
 		250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2415A662D4001B2D10 /* MFMResourceSong.m */; };
 		250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */; };
+		25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 25161FA015DC46DE00B16227 /* MFMOAuth.m */; };
 		2535788A15309190008185BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788915309190008185BD /* UIKit.framework */; };
 		2535788C15309190008185BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788B15309190008185BD /* Foundation.framework */; };
 		2535788E15309190008185BD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788D15309190008185BD /* CoreGraphics.framework */; };
@@ -82,6 +83,8 @@
 		250E7F2415A662D4001B2D10 /* MFMResourceSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceSong.m; sourceTree = "<group>"; };
 		250E7F2E15A68811001B2D10 /* MFMPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerManager.h; sourceTree = "<group>"; };
 		250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerManager.m; sourceTree = "<group>"; };
+		25161F9F15DC46DE00B16227 /* MFMOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMOAuth.h; sourceTree = "<group>"; };
+		25161FA015DC46DE00B16227 /* MFMOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMOAuth.m; sourceTree = "<group>"; };
 		2535788515309190008185BD /* Moe FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moe FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2535788915309190008185BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2535788B15309190008185BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,6 +192,8 @@
 		2513DEDB1535FCA200CB0B0A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				25161F9F15DC46DE00B16227 /* MFMOAuth.h */,
+				25161FA015DC46DE00B16227 /* MFMOAuth.m */,
 				2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */,
 				2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */,
 				250E7F2E15A68811001B2D10 /* MFMPlayerManager.h */,
@@ -370,8 +375,8 @@
 			isa = PBXGroup;
 			children = (
 				2508D1D315DBEECB0035126A /* AudioStreamer.h */,
-				2508D1D415DBEECB0035126A /* UIDevice+Hardware.h */,
 				2508D1D515DBEECB0035126A /* AudioStreamer.m */,
+				2508D1D415DBEECB0035126A /* UIDevice+Hardware.h */,
 				2508D1D615DBEECB0035126A /* UIDevice+Hardware.m */,
 			);
 			path = AudioStreamer;
@@ -491,6 +496,7 @@
 				250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */,
 				2508D1D715DBEECB0035126A /* AudioStreamer.m in Sources */,
 				2508D1D915DBEECB0035126A /* UIDevice+Hardware.m in Sources */,
+				25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 
 #import "MFMResourcePlaylist.h"
 #import "MFMResourceFavs.h"
+#import "MFMOAuth.h"
 
 @interface MFMMenuViewController ()
 
@@ -21,36 +22,33 @@
 
 @implementation MFMMenuViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize authorizationButton = _authorizationButton;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidUnload
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	[self updateAuthorization];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - view updates
+
+- (void)updateAuthorization
+{
+	if ([MFMOAuth sharedOAuth].canAuthorize) {
+		self.authorizationButton.title = NSLocalizedString(@"SIGN_OUT", @"");
+	}
+	else {
+		self.authorizationButton.title = NSLocalizedString(@"SIGN_IN", @"");
+	}
 }
 
 #pragma mark - Table view data source
@@ -134,15 +132,44 @@
 	}
 }
 
+#pragma mark - Actions
+
+- (IBAction)showLogin:(id)sender
+{
+	[[MFMOAuth sharedOAuth] signInWithNavigationController:self.navigationController];
+}
+
+- (IBAction)logout:(id)sender
+{
+	[[MFMOAuth sharedOAuth] signOut];
+}
+
+- (IBAction)toggleSignIn:(id)sender
+{
+	if ([MFMOAuth sharedOAuth].canAuthorize) {
+		[self logout:sender];
+	}
+	else {
+		[self showLogin:sender];
+	}
+	[self updateAuthorization];
+}
+
 #pragma mark - segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"ShowSongs"]) {
+	if ([segue.identifier isEqualToString:@"ShowFavSongs"]) {
 		MFMSongsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *resourceFavs = [MFMResourceFavs favsWithUid:nil userName:@"gregwym" objType:MFMFavObjTypeSong favType:MFMFavTypeHeart page:nil perpage:nil];
+		MFMResourceFavs *resourceFavs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMFavObjTypeSong favType:MFMFavTypeHeart page:nil perpage:nil];
 		
 		vc.resource = resourceFavs;
+	}
+	else if ([segue.identifier isEqualToString:@"ShowFavMusics"]) {
+		
+	}
+	else if ([segue.identifier isEqualToString:@"ShowFavRadios"]) {
+		
 	}
 }
 

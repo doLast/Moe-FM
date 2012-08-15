@@ -9,6 +9,10 @@
 /* Global */
 "APP_NAME" = "萌否电台";
 
+/* Controls */
+"SIGN_IN" = "登录";
+"SIGN_OUT" = "登出";
+
 /* Metadata */
 "UNKNOWN_SONG" = "未知歌曲";
 "UNKNOWN_ARTIST" = "未知艺术家";

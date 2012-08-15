@@ -78,7 +78,7 @@
                                                 <rect key="frame" x="-5" y="0.0" width="330" height="9"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </progressView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SONG_NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" id="n5b-Ez-PTd">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SONG_NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" id="n5b-Ez-PTd">
                                                 <rect key="frame" x="20" y="28" width="280" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -156,6 +156,7 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="MOE_FM" id="TTs-sI-1Ts">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="z8P-md-e8x"/>
                         <barButtonItem key="rightBarButtonItem" title="≣≣" id="eN6-aI-81U">
                             <connections>
                                 <action selector="showMenu:" destination="FYs-Kr-2oo" id="eYk-2o-3Z2"/>
@@ -227,7 +228,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="L8C-wo-0nW" kind="push" id="W15-3q-ak4"/>
+                                            <segue destination="L8C-wo-0nW" kind="push" identifier="ShowFavMusics" id="W15-3q-ak4"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="fSQ-Yv-X5I" style="IBUITableViewCellStyleDefault" id="yZu-bv-Wxt">
@@ -248,7 +249,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowSongs" id="8Ii-3h-xOM"/>
+                                            <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavSongs" id="8Ii-3h-xOM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="m5u-JC-oOr" style="IBUITableViewCellStyleDefault" id="uYN-NS-odk">
@@ -269,14 +270,23 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="9rR-qf-4ZI" kind="push" id="mxg-73-5ev"/>
+                                            <segue destination="9rR-qf-4ZI" kind="push" identifier="ShowFavRadios" id="mxg-73-5ev"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="MOE_FM" id="ImM-3s-B29"/>
+                    <navigationItem key="navigationItem" title="MOE_FM" id="ImM-3s-B29">
+                        <barButtonItem key="leftBarButtonItem" title="AUTHORIZATION" id="MUB-rG-kTX">
+                            <connections>
+                                <action selector="toggleSignIn:" destination="tVI-E8-mQT" id="PXX-ZO-xRU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="authorizationButton" destination="MUB-rG-kTX" id="pyu-ad-w2f"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="91" y="622"/>

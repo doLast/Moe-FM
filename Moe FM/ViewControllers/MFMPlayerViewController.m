@@ -109,7 +109,7 @@
 		}
 		[nowPlayingInfo setValue:album forKey:MPMediaItemPropertyAlbumTitle];
 		
-		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ / %@", artist, album];
+		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ | %@", artist, album];
 		
 		// Post to NowPlayingInfoCenter
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;

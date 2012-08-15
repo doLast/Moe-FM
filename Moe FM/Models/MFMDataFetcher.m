@@ -7,6 +7,7 @@
 //
 
 #import "MFMDataFetcher.h"
+#import "MFMOAuth.h"
 
 @interface MFMDataFetcher ()
 
@@ -37,9 +38,15 @@
 {
 	self = [super init];
 	if (self) {
-		self.request = [NSURLRequest requestWithURL:url];
-		// If signned in, sign the request with OAuth
+		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+		// If signed in, sign the request with OAuth
+		NSLog(@"Authorizing");
+		BOOL authorized = [[MFMOAuth sharedOAuth] authorizeRequest:request];
+		if (!authorized) {
+			NSLog(@"Failed to authorized");
+		}
 		
+		self.request = request;
 		self.type = type;
 		self.didFinish = NO;
 	}

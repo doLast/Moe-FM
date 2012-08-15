@@ -9,6 +9,10 @@
 /* Global */
 "APP_NAME" = "Moe FM";
 
+/* Controls */
+"SIGN_IN" = "Sign in";
+"SIGN_OUT" = "Sign out";
+
 /* Metadata */
 "UNKNOWN_SONG" = "Unknown Song";
 "UNKNOWN_ARTIST" = "Unknown Artist";
