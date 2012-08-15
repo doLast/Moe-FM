@@ -77,7 +77,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (AudioStreamer *)streamerWithURL:(NSURL *)url
 {
-	AudioStreamer *streamer = [AudioStreamer streamWithURL:url];
+	AudioStreamer *streamer = [[AudioStreamer alloc] initWithURL:url];
 	// Do extra config to the streamer if needed
 	return streamer;
 }
@@ -180,9 +180,10 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		[[NSNotificationCenter defaultCenter] postNotificationName:MFMPlayerSongChangedNotification object:self];
 	}
 	
-	if ([self.audioStreamer start] == NO) {
-		return [self.audioStreamer play];
-	} 
+//	if ([self.audioStreamer start] == NO) {
+//		return [self.audioStreamer play];
+//	}
+	[self.audioStreamer start];
 	
 	return YES;
 //	return [self.audioStreamer isPlaying] || [self.audioStreamer isWaiting];
@@ -190,7 +191,8 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (BOOL)pause
 {
-	return [self.audioStreamer pause];
+	[self.audioStreamer pause];
+	return YES;
 }
 
 - (void)next
@@ -236,8 +238,8 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 			NSLog(@"Is Playing");
 		} else if ([streamer isPaused]) {
 			NSLog(@"Is Paused");
-		} else if ([streamer isDone]) {
-			NSLog(@"Is Done");
+		} else if ([streamer isIdle]) {
+			NSLog(@"Is Idle");
 			[self next];
 		} else if ([streamer isWaiting]){
 			// stream is waiting for data, probably nothing to do
