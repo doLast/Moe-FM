@@ -15,7 +15,6 @@ typedef enum {
 	MFMPlayerStatusPlaying = 0, 
 	MFMPlayerStatusPaused, 
 	MFMPlayerStatusWaiting, 
-	MFMPlayerStatusDone, 
 	MFMPlayerStatusTotal
 } MFMPlayerStatus;
 

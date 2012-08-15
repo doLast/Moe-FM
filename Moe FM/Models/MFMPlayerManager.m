@@ -25,6 +25,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 @implementation MFMPlayerManager
 
+#pragma mark - getter & setter
 @synthesize nextPlaylist = _nextPlaylist;
 @synthesize nextTrackNum = _nextTrackNum;
 @synthesize playerStatus = _playerStatus;
@@ -33,6 +34,24 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 @synthesize trackNum = _trackNum;
 @synthesize audioStreamer = _audioStreamer;
 
+- (MFMResourceSong *)currentSong
+{
+	if (self.playlist == nil || self.playlist.resourceSongs == nil) {
+		return nil;
+	}
+	return [self.playlist.resourceSongs objectAtIndex:self.trackNum];
+}
+
+- (void)setPlayerStatus:(MFMPlayerStatus)playerStatus
+{
+	if (_playerStatus != playerStatus) {
+		_playerStatus = playerStatus;
+		[[NSNotificationCenter defaultCenter]
+		 postNotificationName:MFMPlayerStatusChangedNotification object:self];
+	}
+}
+
+#pragma mark - initializations
 + (MFMPlayerManager *)sharedPlayerManager
 {
 	static MFMPlayerManager *playerManager;
@@ -61,16 +80,6 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:nil];
 	}
 	return self;
-}
-
-#pragma mark - getter & setter
-
-- (MFMResourceSong *)currentSong
-{
-	if (self.playlist == nil || self.playlist.resourceSongs == nil) {
-		return nil;
-	}
-	return [self.playlist.resourceSongs objectAtIndex:self.trackNum];
 }
 
 #pragma mark - Player controls
@@ -233,20 +242,23 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		if (streamer.errorCode != AS_NO_ERROR) {
 			// handle the error via a UI, retrying the stream, etc.
 			NSLog(@"Streamer error: %@", [AudioStreamer stringForErrorCode:streamer.errorCode]);
+			self.playerStatus = MFMPlayerStatusPaused;
 			[self next];
 		} else if ([streamer isPlaying]) {
 			NSLog(@"Is Playing");
+			self.playerStatus = MFMPlayerStatusPlaying;
 		} else if ([streamer isPaused]) {
 			NSLog(@"Is Paused");
+			self.playerStatus = MFMPlayerStatusPaused;
 		} else if ([streamer isIdle]) {
 			NSLog(@"Is Idle");
+			self.playerStatus = MFMPlayerStatusPaused;
 			[self next];
 		} else if ([streamer isWaiting]){
 			// stream is waiting for data, probably nothing to do
 			NSLog(@"Is Waiting");
+			self.playerStatus = MFMPlayerStatusWaiting;
 		}
-		
-		[[NSNotificationCenter defaultCenter] postNotificationName:MFMPlayerStatusChangedNotification object:self];
 	}
 }
 
