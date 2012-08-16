@@ -117,7 +117,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	
 	NSLog(@"Creating streamer");
 	
-	NSURL *url = self.currentSong.url;
+	NSURL *url = self.currentSong.streamUrl;
 	self.audioStreamer = [self streamerWithURL:url];
 }
 

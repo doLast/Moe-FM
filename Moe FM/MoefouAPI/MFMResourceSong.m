@@ -11,7 +11,7 @@
 @interface MFMResourceSong ()
 
 @property (retain, nonatomic) NSNumber *upId;
-@property (retain, nonatomic) NSURL *url;
+@property (retain, nonatomic) NSURL *streamUrl;
 @property (retain, nonatomic) NSNumber *streamLength;
 @property (retain, nonatomic) NSString *streamTime;
 @property (retain, nonatomic) NSNumber *fileSize;
@@ -35,7 +35,7 @@
 @implementation MFMResourceSong
 
 @synthesize upId = _upId;
-@synthesize url = _url;
+@synthesize streamUrl = _streamUrl;
 @synthesize streamLength = _streamLength;
 @synthesize streamTime = _streamTime;
 @synthesize fileSize = _fileSize;
@@ -58,13 +58,13 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiUrl: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubUrl: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.url, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMWikiTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiUrl, self.subId, MFMSubTypeStr[self.subType], self.subTitle, self.subUrl, self.artist, self.favWiki, self.favSub, nil];
+	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiUrl: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubUrl: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.streamUrl, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMWikiTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiUrl, self.subId, MFMSubTypeStr[self.subType], self.subTitle, self.subUrl, self.artist, self.favWiki, self.favSub, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {	
 	self.upId = [resource objectForKey:@"up_id"];
-	self.url = [NSURL URLWithString:[resource objectForKey:@"url"]];
+	self.streamUrl = [NSURL URLWithString:[resource objectForKey:@"url"]];
 	self.streamLength = [resource objectForKey:@"stream_length"];
 	self.streamTime = [resource objectForKey:@"stream_time"];
 	self.fileSize = [resource objectForKey:@"file_size"];

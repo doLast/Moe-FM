@@ -13,7 +13,7 @@
 @interface MFMResourceSong : MFMResource
 
 @property (retain, nonatomic, readonly) NSNumber *upId;
-@property (retain, nonatomic, readonly) NSURL *url;
+@property (retain, nonatomic, readonly) NSURL *streamUrl;
 @property (retain, nonatomic, readonly) NSNumber *streamLength;
 @property (retain, nonatomic, readonly) NSString *streamTime;
 @property (retain, nonatomic, readonly) NSNumber *fileSize;
