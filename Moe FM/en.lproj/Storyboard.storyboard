@@ -30,6 +30,7 @@
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="selected" image="dislike_yes"/>
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -45,6 +46,7 @@
                                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="selected" image="fav_yes"/>
                                                 <state key="highlighted">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -67,10 +69,6 @@
                                                     <action selector="nextTrack:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="MUV-Oo-bOI"/>
                                                 </connections>
                                             </button>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="sL1-uA-rKB">
-                                                <rect key="frame" x="58" y="40" width="20" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -170,7 +168,6 @@
                     <connections>
                         <outlet property="dislikeButton" destination="47m-zx-rHA" id="eW4-GQ-mw6"/>
                         <outlet property="favButton" destination="Kih-YP-WiC" id="IS8-Ww-h9Q"/>
-                        <outlet property="favProcessingIndicator" destination="sL1-uA-rKB" id="DTo-rE-8a4"/>
                         <outlet property="navTitle" destination="TTs-sI-1Ts" id="WGx-ca-ORp"/>
                         <outlet property="nextButton" destination="Qau-S4-tCD" id="ait-gM-vSV"/>
                         <outlet property="playButton" destination="SaF-ad-KJr" id="a7p-Zv-qyC"/>
@@ -445,7 +442,9 @@
     </scenes>
     <resources>
         <image name="dislike_no" width="16" height="16"/>
+        <image name="dislike_yes" width="16" height="16"/>
         <image name="fav_no" width="16" height="16"/>
+        <image name="fav_yes" width="16" height="16"/>
         <image name="next" width="16" height="16"/>
         <image name="play" width="16" height="16"/>
     </resources>

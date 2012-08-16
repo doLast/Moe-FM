@@ -126,13 +126,11 @@
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
 		
 		// Toggle like
-		if (currentSong.favSub != nil && ![currentSong.favSub isKindOfClass:[NSNull class]]) {
-			UIImage *image = [UIImage imageNamed:@"fav_yes"];
-			self.favButton.imageView.image = image;
+		if ([currentSong.favSub didAddToFavAsType:MFMFavTypeHeart]) {
+			self.favButton.selected = YES;
 		}
 		else {
-			UIImage *image = [UIImage imageNamed:@"fav_no"];
-			self.favButton.imageView.image = image;
+			self.favButton.selected = NO;
 		}
 	}
 }
@@ -209,12 +207,17 @@
 
 - (IBAction)toggleFavourite:(id)sender
 {
-	
+	self.favButton.enabled = NO;
+	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:favSub];
+	[favSub toggleFavAsType:MFMFavTypeHeart];
 }
 
 - (IBAction)toggleDislike:(id)sender
 {
-	
+	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
+	[favSub toggleFavAsType:MFMFavTypeTrash];
+	[self nextTrack:self];
 }
 
 - (IBAction)nextTrack:(id)sender
@@ -254,12 +257,19 @@
 {
 	if (notification.name == MFMPlayerSongChangedNotification) {
 		[self updateSongInfo];
+		[self updateAuthorization];
 	}
 	else if (notification.name == MFMPlayerStatusChangedNotification) {
 		[self updatePlaybackStatus];
 	}
 	else if (notification.name == MFMOAuthStatusChangedNotification) {
 		[self updateAuthorization];
+	}
+	else if (notification.name == MFMResourceNotification) {
+		[self updateSongInfo];
+		[self updateAuthorization];
+
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:notification.object];
 	}
 }
 
