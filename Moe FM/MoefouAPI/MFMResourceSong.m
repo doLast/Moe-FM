@@ -27,8 +27,8 @@
 @property (retain, nonatomic) NSString *subTitle;
 @property (retain, nonatomic) NSURL *subUrl;
 @property (retain, nonatomic) NSString *artist;
-@property (retain, nonatomic) NSDictionary *favWiki;
-@property (retain, nonatomic) NSDictionary *favSub;
+@property (retain, nonatomic) MFMResourceFav *favWiki;
+@property (retain, nonatomic) MFMResourceFav *favSub;
 
 @end
 
@@ -81,11 +81,19 @@
 	self.subTitle = [resource objectForKey:@"sub_title"];
 	self.subUrl	= [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
 	self.artist = [resource objectForKey:@"artist"];
-	self.favWiki = [resource objectForKey:@"fav_wiki"];
-	self.favSub = [resource objectForKey:@"fav_sub"];
-	
-//	NSLog(@"Resource prepared\n%@", self);
-	
+	if (![[resource objectForKey:@"fav_wiki"] isKindOfClass:[NSNull class]]) {
+		self.favWiki = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_wiki"]];
+	}
+	else {
+		self.favWiki = [[MFMResourceFav alloc] initWithObjId:self.wikiId andType:MFMFavObjTypeWiki];
+	}
+	if (![[resource objectForKey:@"fav_sub"] isKindOfClass:[NSNull class]]) {
+		self.favSub = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_sub"]];
+	}
+	else {
+		self.favSub = [[MFMResourceFav alloc] initWithObjId:self.subId andType:MFMFavObjTypeSub];
+	}
+			
 	return YES;
 }
 

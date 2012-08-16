@@ -108,7 +108,6 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
 - (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithJson:(NSDictionary *)json
 {
-	NSLog(@"JSON: %@", json);
 	self.response = [json objectForKey:@"response"];
 	if (self.response == nil || [self prepareTheResource:self.response] == NO) {
 		return [self fetcher:dataFetcher didFinishWithError:nil];

@@ -9,6 +9,7 @@
 #import "MFMResource.h"
 #import "MFMResourceWiki.h"
 #import "MFMResourceSub.h"
+#import "MFMResourceFav.h"
 
 @interface MFMResourceSong : MFMResource
 
@@ -29,7 +30,7 @@
 @property (retain, nonatomic, readonly) NSString *subTitle;
 @property (retain, nonatomic, readonly) NSURL *subUrl;
 @property (retain, nonatomic, readonly) NSString *artist;
-@property (retain, nonatomic, readonly) NSDictionary *favWiki;
-@property (retain, nonatomic, readonly) NSDictionary *favSub;
+@property (retain, nonatomic, readonly) MFMResourceFav *favWiki;
+@property (retain, nonatomic, readonly) MFMResourceFav *favSub;
 
 @end
