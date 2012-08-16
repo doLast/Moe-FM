@@ -27,10 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOAuthStatusChanged:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 	[self updateAuthorization];
 }
 
@@ -152,6 +150,12 @@
 	else {
 		[self showLogin:sender];
 	}
+}
+
+#pragma mark - handle notification
+
+- (void)handleOAuthStatusChanged:(NSNotification *)notification
+{
 	[self updateAuthorization];
 }
 
