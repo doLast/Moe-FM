@@ -14,6 +14,8 @@ NSString * const MFMAPIFormat = @"json";
 
 NSString * const MFMResourceNotification = @"MFMResourceNotification";
 
+NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
+
 @interface MFMResource ()
 
 @property (retain, nonatomic) NSDictionary *response;
@@ -42,7 +44,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 	self = [super init];
 	if (self != nil) {
 		self.response = nil;
-		self.url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", url, @"api_key=302182858672af62ebf4524ee8d9a06304f7db527"]];
+		self.url = url;
 		
 		if (inst && ![self startFetch]) {
 			NSLog(@"Fail to start fetcher");
@@ -89,6 +91,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 	for (NSString *key in parameters.keyEnumerator) {
 		[urlStr appendFormat:@"%@=%@&", key, [parameters objectForKey:key]];
 	}
+	[urlStr appendFormat:@"api_key=%@", kApiKey];
 	
 	NSURL *url = [NSURL URLWithString:urlStr];
 	return url;
@@ -105,6 +108,7 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 
 - (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithJson:(NSDictionary *)json
 {
+	NSLog(@"JSON: %@", json);
 	self.response = [json objectForKey:@"response"];
 	if (self.response == nil || [self prepareTheResource:self.response] == NO) {
 		return [self fetcher:dataFetcher didFinishWithError:nil];
