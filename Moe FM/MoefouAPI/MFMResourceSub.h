@@ -27,8 +27,8 @@ extern const NSString * const MFMSubTypeStr[];
 @property (retain, nonatomic, readonly) NSString *subAbout;
 @property (retain, nonatomic, readonly) NSDate *subDate;
 @property (retain, nonatomic, readonly) NSDate *subModified;
-@property (retain, nonatomic, readonly) NSURL *subFmUrl;
-@property (retain, nonatomic, readonly) NSURL *subUrl;
+@property (retain, nonatomic, readonly) NSURL *subFmURL;
+@property (retain, nonatomic, readonly) NSURL *subURL;
 @property (retain, nonatomic, readonly) NSString *subViewTitle;
 
 @end

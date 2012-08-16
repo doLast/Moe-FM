@@ -12,7 +12,7 @@ const NSString * const MFMWikiTypeStr[] =
 const NSString * const MFMWikiCoverStr[] = 
 {@"small", @"medium", @"square", @"large"};
 
-NSString * const MFMWikisUrlStr = @"http://api.moefou.org/wikis.json?";
+NSString * const MFMWikisURLStr = @"http://api.moefou.org/wikis.json?";
 
 @interface MFMResourceWiki ()
 
@@ -24,8 +24,8 @@ NSString * const MFMWikisUrlStr = @"http://api.moefou.org/wikis.json?";
 @property (retain, nonatomic) NSDate *wikiModified;
 @property (retain, nonatomic) NSNumber *wikiModifiedUser;
 @property (retain, nonatomic) NSArray *wikiMeta;
-@property (retain, nonatomic) NSURL *wikiFmUrl;
-@property (retain, nonatomic) NSURL *wikiUrl;
+@property (retain, nonatomic) NSURL *wikiFmURL;
+@property (retain, nonatomic) NSURL *wikiURL;
 @property (retain, nonatomic) NSDictionary *wikiCover;
 
 @end
@@ -40,15 +40,15 @@ NSString * const MFMWikisUrlStr = @"http://api.moefou.org/wikis.json?";
 @synthesize wikiModified = _wikiModified;
 @synthesize wikiModifiedUser = _wikiModifiedUser;
 @synthesize wikiMeta = _wikiMeta;
-@synthesize wikiFmUrl = _wikiFmUrl;
-@synthesize wikiUrl = _wikiUrl;
+@synthesize wikiFmURL = _wikiFmURL;
+@synthesize wikiURL = _wikiURL;
 @synthesize wikiCover = _wikiCover;
 
 # pragma mark - Override MFMResource Methods
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceWiki\nid: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\ndate: %@\nmodified: %@\nmodifiedUser: %@\nmeta: %@\nfmUrl: %@\nurl: %@\ncover: %@\n", self.wikiId, self.wikiTitle, self.wikiTitleEncode, MFMWikiTypeStr[self.wikiType], self.wikiDate, self.wikiModified, self.wikiModifiedUser, self.wikiMeta, self.wikiFmUrl, self.wikiUrl, self.wikiCover, nil];
+	return [NSString stringWithFormat:@"MFMResourceWiki\nid: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\ndate: %@\nmodified: %@\nmodifiedUser: %@\nmeta: %@\nfmURL: %@\nurl: %@\ncover: %@\n", self.wikiId, self.wikiTitle, self.wikiTitleEncode, MFMWikiTypeStr[self.wikiType], self.wikiDate, self.wikiModified, self.wikiModifiedUser, self.wikiMeta, self.wikiFmURL, self.wikiURL, self.wikiCover, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -62,8 +62,8 @@ NSString * const MFMWikisUrlStr = @"http://api.moefou.org/wikis.json?";
 	self.wikiModified = [NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[resource objectForKey:@"wiki_modified"] doubleValue]];
 	self.wikiModifiedUser = [resource objectForKey:@"wiki_modified_user"];
 	self.wikiMeta = [resource objectForKey:@"wiki_meta"];
-	self.wikiFmUrl = [NSURL URLWithString:[resource objectForKey:@"wiki_fm_url"]];
-	self.wikiUrl = [NSURL URLWithString:[resource objectForKey:@"wiki_url"]];
+	self.wikiFmURL = [NSURL URLWithString:[resource objectForKey:@"wiki_fm_url"]];
+	self.wikiURL = [NSURL URLWithString:[resource objectForKey:@"wiki_url"]];
 	self.wikiCover = [resource objectForKey:@"wiki_cover"];
 	
 	return YES;

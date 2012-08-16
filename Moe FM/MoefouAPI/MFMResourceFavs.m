@@ -11,8 +11,8 @@
 #import "MFMResourceWiki.h"
 #import "MFMResourcePlaylist.h"
 
-static NSString * const kUserFavsUrlStr = @"http://api.moefou.org/user/favs/";
-static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
+static NSString * const kUserFavsURLStr = @"http://api.moefou.org/user/favs/";
+static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourceFavs ()
 
@@ -21,7 +21,7 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 @property (retain, nonatomic) NSNumber *count;
 @property (retain, nonatomic) NSArray *resourceFavs;
 
-@property (retain, nonatomic) NSURL *playlistUrl;
+@property (retain, nonatomic) NSURL *playlistURL;
 
 @end
 
@@ -33,7 +33,7 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 @synthesize count = _count;
 @synthesize resourceFavs = _resourceFavs;
 
-@synthesize playlistUrl = _playlistUrl;
+@synthesize playlistURL = _playlistURL;
 
 - (MFMResourceFavs *)initWithUid:(NSNumber *)uid
 						userName:(NSString *)userName
@@ -50,9 +50,9 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 		category = MFMFavObjTypeStr[MFMFavObjTypeSub];
 	}
 	
-	NSString *urlPrefix = [kUserFavsUrlStr stringByAppendingFormat:@"%@.%@?", 
+	NSString *urlPrefix = [kUserFavsURLStr stringByAppendingFormat:@"%@.%@?", 
 						   category, MFMAPIFormat];
-	NSString *playlistPrefix = [kPlaylistUrlStr stringByAppendingFormat:@"%@&fav=%@&", MFMAPIFormat, MFMFavObjTypeStr[objType]];
+	NSString *playlistPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&fav=%@&", MFMAPIFormat, MFMFavObjTypeStr[objType]];
 	
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
 	if (uid) [parameters setValue:uid forKey:@"uid"];
@@ -67,8 +67,8 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 	if (perpage) [playlistParameters setValue:perpage forKey:@"perpage"];
 	
 	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
-	NSURL *playlistUrl = [MFMResource urlWithPrefix:playlistPrefix parameters:playlistParameters];
-	NSLog(@"ResourceFavs playlist url: %@", playlistUrl);
+	NSURL *playlistURL = [MFMResource urlWithPrefix:playlistPrefix parameters:playlistParameters];
+	NSLog(@"ResourceFavs playlist url: %@", playlistURL);
 	
 	self = [super initWithURL:url];
 	if (self != nil) {
@@ -76,7 +76,7 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 		self.perpage = nil;
 		self.count = nil;
 		self.resourceFavs = nil;
-		self.playlistUrl = playlistUrl;
+		self.playlistURL = playlistURL;
 	}
 	return self;
 }
@@ -130,7 +130,7 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 
 - (MFMResourcePlaylist *)playlist
 {
-	MFMResourcePlaylist *resourcePlaylist = [[MFMResourcePlaylist alloc] initWithURL:self.playlistUrl];
+	MFMResourcePlaylist *resourcePlaylist = [[MFMResourcePlaylist alloc] initWithURL:self.playlistURL];
 	return resourcePlaylist;
 }
 

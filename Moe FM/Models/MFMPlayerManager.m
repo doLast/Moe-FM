@@ -116,7 +116,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	
 	NSLog(@"Creating streamer");
 	
-	NSURL *url = self.currentSong.streamUrl;
+	NSURL *url = self.currentSong.streamURL;
 	self.audioStreamer = [self streamerWithURL:url];
 }
 
@@ -191,7 +191,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	// If no more song
 	if (self.trackNum >= self.playlist.resourceSongs.count) {
 		if ([self.playlist.mayHaveNext boolValue]) {
-			NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&", self.playlist.nextUrl]];
+			NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&", self.playlist.nextURL]];
 			self.nextPlaylist = [[MFMResourcePlaylist alloc] initWithURL:url];
 			self.nextTrackNum = 0;
 			[self start];

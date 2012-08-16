@@ -11,7 +11,7 @@
 @interface MFMResourceSong ()
 
 @property (retain, nonatomic) NSNumber *upId;
-@property (retain, nonatomic) NSURL *streamUrl;
+@property (retain, nonatomic) NSURL *streamURL;
 @property (retain, nonatomic) NSNumber *streamLength;
 @property (retain, nonatomic) NSString *streamTime;
 @property (retain, nonatomic) NSNumber *fileSize;
@@ -21,11 +21,11 @@
 @property (retain, nonatomic) NSArray *cover;
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) NSString *wikiTitle;
-@property (retain, nonatomic) NSURL *wikiUrl;
+@property (retain, nonatomic) NSURL *wikiURL;
 @property (retain, nonatomic) NSNumber *subId;
 @property (assign, nonatomic) MFMSubType subType;
 @property (retain, nonatomic) NSString *subTitle;
-@property (retain, nonatomic) NSURL *subUrl;
+@property (retain, nonatomic) NSURL *subURL;
 @property (retain, nonatomic) NSString *artist;
 @property (retain, nonatomic) MFMResourceFav *favWiki;
 @property (retain, nonatomic) MFMResourceFav *favSub;
@@ -35,7 +35,7 @@
 @implementation MFMResourceSong
 
 @synthesize upId = _upId;
-@synthesize streamUrl = _streamUrl;
+@synthesize streamURL = _streamURL;
 @synthesize streamLength = _streamLength;
 @synthesize streamTime = _streamTime;
 @synthesize fileSize = _fileSize;
@@ -45,11 +45,11 @@
 @synthesize cover = _cover;
 @synthesize title = _title;
 @synthesize wikiTitle = _wikiTitle;
-@synthesize wikiUrl = _wikiUrl;
+@synthesize wikiURL = _wikiURL;
 @synthesize subId = _subId;
 @synthesize subType = _subType;
 @synthesize subTitle = _subTitle;
-@synthesize subUrl = _subUrl;
+@synthesize subURL = _subURL;
 @synthesize artist = _artist;
 @synthesize favWiki = _favWiki;
 @synthesize favSub = _favSub;
@@ -58,13 +58,13 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiUrl: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubUrl: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.streamUrl, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMWikiTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiUrl, self.subId, MFMSubTypeStr[self.subType], self.subTitle, self.subUrl, self.artist, self.favWiki, self.favSub, nil];
+	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiURL: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubURL: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.streamURL, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMWikiTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiURL, self.subId, MFMSubTypeStr[self.subType], self.subTitle, self.subURL, self.artist, self.favWiki, self.favSub, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {	
 	self.upId = [resource objectForKey:@"up_id"];
-	self.streamUrl = [NSURL URLWithString:[resource objectForKey:@"url"]];
+	self.streamURL = [NSURL URLWithString:[resource objectForKey:@"url"]];
 	self.streamLength = [resource objectForKey:@"stream_length"];
 	self.streamTime = [resource objectForKey:@"stream_time"];
 	self.fileSize = [resource objectForKey:@"file_size"];
@@ -75,11 +75,11 @@
 	self.cover = [resource objectForKey:@"cover"];
 	self.title = [resource objectForKey:@"title"];
 	self.wikiTitle = [resource objectForKey:@"wiki_title"];
-	self.wikiUrl = [NSURL URLWithString:[resource objectForKey:@"wiki_url"]];
+	self.wikiURL = [NSURL URLWithString:[resource objectForKey:@"wiki_url"]];
 	self.subId = [resource objectForKey:@"sub_id"];
 	self.subType = [[NSArray arrayWithObjects:MFMSubTypeStr count:MFMSubTypeTotal] indexOfObject:[resource objectForKey:@"sub_type"]];
 	self.subTitle = [resource objectForKey:@"sub_title"];
-	self.subUrl	= [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
+	self.subURL	= [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
 	self.artist = [resource objectForKey:@"artist"];
 	if (![[resource objectForKey:@"fav_wiki"] isKindOfClass:[NSNull class]]) {
 		self.favWiki = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_wiki"]];

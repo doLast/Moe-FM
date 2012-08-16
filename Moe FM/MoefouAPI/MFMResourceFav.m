@@ -13,8 +13,8 @@
 const NSString * const MFMFavObjTypeStr[] = 
 {@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio",  @"wiki", @"ep", @"song", @"sub"};
 
-NSString * const kAddFavUrlStr = @"http://api.moefou.org/fav/add.";
-NSString * const kDeleteFavUrlStr = @"http://api.moefou.org/fav/delete.";
+NSString * const kAddFavURLStr = @"http://api.moefou.org/fav/add.";
+NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
 @interface MFMResourceFav ()
 
@@ -67,10 +67,10 @@ NSString * const kDeleteFavUrlStr = @"http://api.moefou.org/fav/delete.";
 	[parameters setValue:self.favObjId forKey:@"fav_obj_id"];
 	
 	if ([self didAddToFavAsType:favType]) {
-		urlPrefix = [kDeleteFavUrlStr stringByAppendingFormat:@"%@?", MFMAPIFormat];
+		urlPrefix = [kDeleteFavURLStr stringByAppendingFormat:@"%@?", MFMAPIFormat];
 	}
 	else {
-		urlPrefix = [kAddFavUrlStr stringByAppendingFormat:@"%@?", MFMAPIFormat];
+		urlPrefix = [kAddFavURLStr stringByAppendingFormat:@"%@?", MFMAPIFormat];
 		self.favType = favType;
 		[parameters setValue:[NSNumber numberWithInt:self.favType] forKey:@"fav_type"];
 	}

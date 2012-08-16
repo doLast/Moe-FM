@@ -14,7 +14,7 @@
 @interface MFMResourceSong : MFMResource
 
 @property (retain, nonatomic, readonly) NSNumber *upId;
-@property (retain, nonatomic, readonly) NSURL *streamUrl;
+@property (retain, nonatomic, readonly) NSURL *streamURL;
 @property (retain, nonatomic, readonly) NSNumber *streamLength;
 @property (retain, nonatomic, readonly) NSString *streamTime;
 @property (retain, nonatomic, readonly) NSNumber *fileSize;
@@ -24,11 +24,11 @@
 @property (retain, nonatomic, readonly) NSArray *cover;
 @property (retain, nonatomic, readonly) NSString *title;
 @property (retain, nonatomic, readonly) NSString *wikiTitle;
-@property (retain, nonatomic, readonly) NSURL *wikiUrl;
+@property (retain, nonatomic, readonly) NSURL *wikiURL;
 @property (retain, nonatomic, readonly) NSNumber *subId;
 @property (assign, nonatomic, readonly) MFMSubType subType;
 @property (retain, nonatomic, readonly) NSString *subTitle;
-@property (retain, nonatomic, readonly) NSURL *subUrl;
+@property (retain, nonatomic, readonly) NSURL *subURL;
 @property (retain, nonatomic, readonly) NSString *artist;
 @property (retain, nonatomic, readonly) MFMResourceFav *favWiki;
 @property (retain, nonatomic, readonly) MFMResourceFav *favSub;

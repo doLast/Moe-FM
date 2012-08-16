@@ -23,8 +23,8 @@ const NSString * const MFMSubTypeStr[] =
 @property (retain, nonatomic) NSString *subAbout;
 @property (retain, nonatomic) NSDate *subDate;
 @property (retain, nonatomic) NSDate *subModified;
-@property (retain, nonatomic) NSURL *subFmUrl;
-@property (retain, nonatomic) NSURL *subUrl;
+@property (retain, nonatomic) NSURL *subFmURL;
+@property (retain, nonatomic) NSURL *subURL;
 @property (retain, nonatomic) NSString *subViewTitle;
 
 @end
@@ -41,15 +41,15 @@ const NSString * const MFMSubTypeStr[] =
 @synthesize subAbout;
 @synthesize subDate;
 @synthesize subModified;
-@synthesize subFmUrl;
-@synthesize subUrl;
+@synthesize subFmURL;
+@synthesize subURL;
 @synthesize subViewTitle;
 
 # pragma mark - Override MFMResource Methods
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmUrl: %@\nurl: %@\nviewTitle: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMSubTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmUrl, self.subUrl, self.subViewTitle, nil];
+	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmURL: %@\nurl: %@\nviewTitle: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMSubTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmURL, self.subURL, self.subViewTitle, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -65,8 +65,8 @@ const NSString * const MFMSubTypeStr[] =
 	self.subAbout = [resource objectForKey:@"sub_about"];
 	self.subDate = [NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[resource objectForKey:@"sub_date"] doubleValue]];
 	self.subModified = [NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[resource objectForKey:@"sub_modified"] doubleValue]];
-	self.subFmUrl = [NSURL URLWithString:[resource objectForKey:@"sub_fm_url"]];
-	self.subUrl = [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
+	self.subFmURL = [NSURL URLWithString:[resource objectForKey:@"sub_fm_url"]];
+	self.subURL = [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
 	self.subViewTitle = [resource objectForKey:@"sub_view_title"];
 	
 	return YES;

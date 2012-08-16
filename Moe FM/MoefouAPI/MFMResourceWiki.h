@@ -40,8 +40,8 @@ extern const NSString * const MFMWikiCoverStr[];
 @property (retain, nonatomic, readonly) NSDate *wikiModified;
 @property (retain, nonatomic, readonly) NSNumber *wikiModifiedUser;
 @property (retain, nonatomic, readonly) NSArray *wikiMeta;
-@property (retain, nonatomic, readonly) NSURL *wikiFmUrl;
-@property (retain, nonatomic, readonly) NSURL *wikiUrl;
+@property (retain, nonatomic, readonly) NSURL *wikiFmURL;
+@property (retain, nonatomic, readonly) NSURL *wikiURL;
 @property (retain, nonatomic, readonly) NSDictionary *wikiCover;
 
 

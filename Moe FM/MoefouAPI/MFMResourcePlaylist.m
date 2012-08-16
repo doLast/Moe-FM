@@ -8,14 +8,14 @@
 
 #import "MFMResourcePlaylist.h"
 
-static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
+static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourcePlaylist ()
 
 @property (retain, nonatomic) NSNumber *page;
 @property (retain, nonatomic) NSNumber *itemCount;
 @property (assign, nonatomic) NSNumber *mayHaveNext;
-@property (retain, nonatomic) NSURL *nextUrl;
+@property (retain, nonatomic) NSURL *nextURL;
 @property (retain, nonatomic) NSArray *resourceSongs;
 
 @end
@@ -25,14 +25,14 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 @synthesize page = _page;
 @synthesize itemCount = _itemCount;
 @synthesize mayHaveNext = _mayHaveNext;
-@synthesize nextUrl = _nextUrl;
+@synthesize nextURL = _nextURL;
 @synthesize resourceSongs = _resourceSongs;
 
 + (MFMResourcePlaylist *)magicPlaylist
 {
 	static MFMResourcePlaylist *magicPlaylist;
 	if (magicPlaylist == nil) {
-		NSString *urlPrefix = [kPlaylistUrlStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
+		NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
 		NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:nil];
 		magicPlaylist = [[MFMResourcePlaylist alloc] initWithURL:url];
 	}
@@ -62,7 +62,7 @@ static NSString * const kPlaylistUrlStr = @"http://moe.fm/listen/playlist?api=";
 	self.page = [responseInfo objectForKey:@"page"];
 	self.itemCount = [responseInfo objectForKey:@"item_count"];
 	self.mayHaveNext = [responseInfo objectForKey:@"may_have_next"];
-	self.nextUrl = [NSURL URLWithString:[responseInfo objectForKey:@"next_url"]];
+	self.nextURL = [NSURL URLWithString:[responseInfo objectForKey:@"next_url"]];
 	
 	NSMutableArray *resourceSongs = [NSMutableArray array];
 	for (NSDictionary *song in songs) {
