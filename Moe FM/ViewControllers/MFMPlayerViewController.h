@@ -20,6 +20,7 @@
 @property (assign, nonatomic) IBOutlet UIActivityIndicatorView *songBufferingIndicator;
 @property (assign, nonatomic) IBOutlet UIButton *playButton;
 @property (assign, nonatomic) IBOutlet UIButton *favButton;
+@property (assign, nonatomic) IBOutlet UIActivityIndicatorView *favProcessingIndicator;
 @property (assign, nonatomic) IBOutlet UIButton *dislikeButton;
 @property (assign, nonatomic) IBOutlet UIButton *nextButton;
 

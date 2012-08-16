@@ -10,6 +10,7 @@
 #import "PPRevealSideViewController.h"
 #import "MFMPlayerManager.h"
 #import "MFMResourceSong.h"
+#import "MFMOAuth.h"
 
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
@@ -31,6 +32,7 @@
 @synthesize songBufferingIndicator = _songBufferingIndicator;
 @synthesize playButton = _playButton;
 @synthesize favButton = _favButton;
+@synthesize favProcessingIndicator = _favProcessingIndicator;
 @synthesize dislikeButton = _dislikeButton;
 @synthesize nextButton = _nextButton;
 
@@ -61,13 +63,10 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerSongChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerStatusChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 	
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
+	[self updatePlaybackStatus];
+	[self updateAuthorization];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,6 +80,18 @@
 }
 
 #pragma mark - view updates
+
+- (void)updateAuthorization
+{
+	if ([MFMOAuth sharedOAuth].canAuthorize) {
+		self.favButton.enabled = YES;
+		self.dislikeButton.enabled = YES;
+	}
+	else {
+		self.favButton.enabled = NO;
+		self.dislikeButton.enabled = NO;
+	}
+}
 
 - (void)updateSongInfo
 {
@@ -113,6 +124,16 @@
 		
 		// Post to NowPlayingInfoCenter
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
+		
+		// Toggle like
+		if (currentSong.favSub != nil && ![currentSong.favSub isKindOfClass:[NSNull class]]) {
+			UIImage *image = [UIImage imageNamed:@"fav_yes"];
+			self.favButton.imageView.image = image;
+		}
+		else {
+			UIImage *image = [UIImage imageNamed:@"fav_no"];
+			self.favButton.imageView.image = image;
+		}
 	}
 }
 
@@ -236,6 +257,9 @@
 	}
 	else if (notification.name == MFMPlayerStatusChangedNotification) {
 		[self updatePlaybackStatus];
+	}
+	else if (notification.name == MFMOAuthStatusChangedNotification) {
+		[self updateAuthorization];
 	}
 }
 
