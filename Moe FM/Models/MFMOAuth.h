@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * MFMOAuthStatusChangedNotification;
+
 @interface MFMOAuth : NSObject
 
 @property (readonly) BOOL canAuthorize;

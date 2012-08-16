@@ -11,6 +11,8 @@
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
 
+NSString * MFMOAuthStatusChangedNotification = @"MFMOAuthStatusChangedNotification";
+
 NSString * const kConsumerKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 NSString * const kConsumerSecret = @"dd1d8a2678f44dda3432efcb93dc8b9b";
 NSString * const kServiceName = @"Moe FM";
@@ -62,8 +64,12 @@ NSString * const kAppServiceName = @"Moe FM: Moe FM";
 
 - (void)updateFromKeychain
 {
+	BOOL couldAuthorize = self.canAuthorize;
 	[GTMOAuthViewControllerTouch authorizeFromKeychainForName:kAppServiceName
 											   authentication:self.authentication];
+	if (couldAuthorize != self.canAuthorize) {
+		[[NSNotificationCenter defaultCenter] postNotificationName:MFMOAuthStatusChangedNotification object:self];
+	}
 }
 
 - (void)signInWithNavigationController:(UINavigationController *)controller
@@ -104,8 +110,10 @@ NSString * const kAppServiceName = @"Moe FM: Moe FM";
                  error:(NSError *)error {
 	if (error != nil) {
 		// Authentication failed
+		NSLog(@"OAuth failed with error: %@", error.localizedDescription);
 	} else {
 		// Authentication succeeded
+		[[NSNotificationCenter defaultCenter] postNotificationName:MFMOAuthStatusChangedNotification object:self];
 	}
 }
 
@@ -113,9 +121,9 @@ NSString * const kAppServiceName = @"Moe FM: Moe FM";
 {
 	if (self.canAuthorize) {
 		[self.authentication authorizeRequest:urlRequest];
-		return NO;
+		return YES;
 	}
-	return YES;
+	return NO;
 }
 
 @end
