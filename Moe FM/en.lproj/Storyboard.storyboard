@@ -67,6 +67,10 @@
                                                     <action selector="nextTrack:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="MUV-Oo-bOI"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="sL1-uA-rKB">
+                                                <rect key="frame" x="58" y="40" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
                                     </view>
@@ -166,6 +170,7 @@
                     <connections>
                         <outlet property="dislikeButton" destination="47m-zx-rHA" id="eW4-GQ-mw6"/>
                         <outlet property="favButton" destination="Kih-YP-WiC" id="IS8-Ww-h9Q"/>
+                        <outlet property="favProcessingIndicator" destination="sL1-uA-rKB" id="DTo-rE-8a4"/>
                         <outlet property="navTitle" destination="TTs-sI-1Ts" id="WGx-ca-ORp"/>
                         <outlet property="nextButton" destination="Qau-S4-tCD" id="ait-gM-vSV"/>
                         <outlet property="playButton" destination="SaF-ad-KJr" id="a7p-Zv-qyC"/>
@@ -444,6 +449,43 @@
         <image name="next" width="16" height="16"/>
         <image name="play" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="MFMMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleSignIn:"/>
+                <relationship kind="outlet" name="authorizationButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MFMPlayerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlayerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="nextTrack:"/>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="toggleDislike:"/>
+                <relationship kind="action" name="toggleFavourite:"/>
+                <relationship kind="action" name="togglePlaybackState:"/>
+                <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favProcessingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="navTitle" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songArtworkImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songInfoLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="MFMSongsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMSongsViewController.h"/>
+        </class>
+        <class className="MFMStartingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
