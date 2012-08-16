@@ -93,7 +93,6 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		self.audioStreamer = nil;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:ASStatusChangedNotification object:nil];
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:nil];
 	}
 	return self;
 }
@@ -150,10 +149,12 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	}
 	else {
 		// Got new playlist, prepare to fetch resource
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.playlist];
 		
 		// If start failed
 		if ([self.playlist startFetch] == NO) {
 			NSLog(@"Fail to start fetching");
+			[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
 			self.playlist = nil;
 		}
 		else {
@@ -248,7 +249,14 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 - (void)handleNotificationFromResource:(MFMResource *)resource
 {
 	if (resource == self.playlist) {
-		[self play];
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
+		if (self.playlist.error == nil) {
+			[self play];
+		}
+		else {
+			NSLog(@"Fail to obtain the playlist, error: %@", [self.playlist.error localizedDescription]);
+			self.playlist = nil;
+		}
 	}
 }
 
