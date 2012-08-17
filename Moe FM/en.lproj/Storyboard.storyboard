@@ -230,7 +230,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="L8C-wo-0nW" kind="push" identifier="ShowFavMusics" id="W15-3q-ak4"/>
+                                            <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavMusics" id="1f9-zx-TOI"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="fSQ-Yv-X5I" style="IBUITableViewCellStyleDefault" id="yZu-bv-Wxt">
@@ -272,7 +272,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="9rR-qf-4ZI" kind="push" identifier="ShowFavRadios" id="mxg-73-5ev"/>
+                                            <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavRadios" id="ZdV-Hy-T1N"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -293,66 +293,6 @@
             </objects>
             <point key="canvasLocation" x="91" y="622"/>
         </scene>
-        <!--Table View Controller - MUSICS_DISPLAY-->
-        <scene sceneID="ES5-IJ-bei">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TWb-EK-w1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="L8C-wo-0nW" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="JUf-hm-eVN">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="3x8-GN-zK5">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="L8C-wo-0nW" id="ydF-qX-Slu"/>
-                            <outlet property="delegate" destination="L8C-wo-0nW" id="ewe-4Z-3Mr"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="MUSICS_DISPLAY" id="FFI-pO-M2f"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="631" y="-1"/>
-        </scene>
-        <!--Table View Controller - RADIOS_DISPLAY-->
-        <scene sceneID="Ma7-X3-EOs">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i27-ug-rJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="9rR-qf-4ZI" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RnZ-Tm-CaL">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="SpP-cR-cat">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="9rR-qf-4ZI" id="HEc-3y-aBi"/>
-                            <outlet property="delegate" destination="9rR-qf-4ZI" id="K8N-S7-27L"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="RADIOS_DISPLAY" id="Uer-gT-PIZ"/>
-                </tableViewController>
-            </objects>
-            <point key="canvasLocation" x="631" y="1059"/>
-        </scene>
         <!--Favs View Controller - SONGS_DISPLAY-->
         <scene sceneID="QeV-uE-cbU">
             <objects>
@@ -363,25 +303,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SongCell" textLabel="9O8-cZ-UeD" detailTextLabel="7xm-TE-IQw" style="IBUITableViewCellStyleValue1" id="hpa-ev-dsb">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavCell" textLabel="9O8-cZ-UeD" detailTextLabel="7xm-TE-IQw" style="IBUITableViewCellStyleSubtitle" id="hpa-ev-dsb">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9O8-cZ-UeD">
-                                            <rect key="frame" x="10" y="11" width="35" height="21"/>
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xm-TE-IQw">
-                                            <rect key="frame" x="266" y="11" width="44" height="21"/>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xm-TE-IQw">
+                                            <rect key="frame" x="10" y="24" width="36" height="18"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                     </subviews>
@@ -403,7 +343,7 @@
                     </navigationItem>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1172" y="622"/>
+            <point key="canvasLocation" x="631" y="622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WoM-66-2YS">
@@ -499,4 +439,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="ZdV-Hy-T1N"/>
+    </inferredMetricsTieBreakers>
 </document>

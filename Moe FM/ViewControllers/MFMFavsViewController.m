@@ -107,15 +107,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *CellIdentifier = @"SongCell";
+	static NSString *CellIdentifier = @"FavCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	NSArray *resources = self.resourceCollection.resources;
 
 	MFMResourceFav *resource = [resources objectAtIndex:indexPath.row];
-	MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
-
-	cell.textLabel.text = sub.subTitle;
-	cell.detailTextLabel.text = [sub.subId stringValue];
+	if ([resource.obj isKindOfClass:[MFMResourceSub class]]) {
+		MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
+		
+		cell.textLabel.text = sub.subTitle;
+		cell.detailTextLabel.text = [sub.subId stringValue];
+	}
+	else if ([resource.obj isKindOfClass:[MFMResourceWiki class]]) {
+		MFMResourceWiki *wiki = (MFMResourceWiki *)resource.obj;
+		
+		cell.textLabel.text = wiki.wikiTitle;
+		cell.detailTextLabel.text = [wiki.wikiId stringValue];
+	}
 
 	return cell;
 }

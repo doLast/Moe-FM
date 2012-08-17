@@ -50,9 +50,16 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 + (MFMResourcePlaylist *)playlistWithCollection:(MFMResourceCollection *)collection
 {
 	if ([collection isKindOfClass:[MFMResourceFavs class]]) {
-		
 		return [MFMResourcePlaylist playlistWithFavType:collection.objType];
 	}
+//	else if ([collection isKindOfClass:[MFMResourceWikis class]]) {
+//		NSMutableSet *ids = [NSMutableSet set];
+//		for (MFMResourceWiki *wiki in collection.resources) {
+//			[ids addObject:wiki.wikiId];
+//		}
+//		return [MFMResourcePlaylist playlistWIthObjType:collection.objType
+//												 andIds:[ids allObjects]];
+//	}
 	return nil;
 }
 
