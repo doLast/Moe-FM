@@ -53,7 +53,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
 - (BOOL)didAddToFavAsType:(MFMFavType)favType
 {
-	return self.favUid != nil;
+	return self.favUid != nil && self.favType == favType;
 }
 
 - (void)toggleFavAsType:(MFMFavType)favType
