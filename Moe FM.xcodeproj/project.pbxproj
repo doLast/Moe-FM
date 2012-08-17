@@ -39,7 +39,7 @@
 		254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */; };
 		2565D31315A5F4FB00A8BAA6 /* MFMResourceSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */; };
 		256B144215A6268000FD43D9 /* MFMResourceFavs.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144115A6267F00FD43D9 /* MFMResourceFavs.m */; };
-		256B144615A6381500FD43D9 /* MFMSongsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144515A6381400FD43D9 /* MFMSongsViewController.m */; };
+		256B144615A6381500FD43D9 /* MFMFavsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144515A6381400FD43D9 /* MFMFavsViewController.m */; };
 		257297CF15A53C87008EB903 /* MFMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297CE15A53C87008EB903 /* MFMMenuViewController.m */; };
 		257297D415A53CEF008EB903 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D315A53CEF008EB903 /* SVPullToRefresh.m */; };
 		257297D715A5459F008EB903 /* MFMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D615A5459F008EB903 /* MFMResource.m */; };
@@ -129,8 +129,8 @@
 		2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceSub.m; sourceTree = "<group>"; };
 		256B144015A6267F00FD43D9 /* MFMResourceFavs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceFavs.h; sourceTree = "<group>"; };
 		256B144115A6267F00FD43D9 /* MFMResourceFavs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceFavs.m; sourceTree = "<group>"; };
-		256B144415A6381400FD43D9 /* MFMSongsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMSongsViewController.h; sourceTree = "<group>"; };
-		256B144515A6381400FD43D9 /* MFMSongsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMSongsViewController.m; sourceTree = "<group>"; };
+		256B144415A6381400FD43D9 /* MFMFavsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMFavsViewController.h; sourceTree = "<group>"; };
+		256B144515A6381400FD43D9 /* MFMFavsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMFavsViewController.m; sourceTree = "<group>"; };
 		257297CD15A53C87008EB903 /* MFMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMMenuViewController.h; sourceTree = "<group>"; };
 		257297CE15A53C87008EB903 /* MFMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMMenuViewController.m; sourceTree = "<group>"; };
 		257297D215A53CEF008EB903 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -344,8 +344,8 @@
 				254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */,
 				257297CD15A53C87008EB903 /* MFMMenuViewController.h */,
 				257297CE15A53C87008EB903 /* MFMMenuViewController.m */,
-				256B144415A6381400FD43D9 /* MFMSongsViewController.h */,
-				256B144515A6381400FD43D9 /* MFMSongsViewController.m */,
+				256B144415A6381400FD43D9 /* MFMFavsViewController.h */,
+				256B144515A6381400FD43D9 /* MFMFavsViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -503,7 +503,7 @@
 				25A48C8F15A5E4C600EBFB59 /* MFMResourceWiki.m in Sources */,
 				2565D31315A5F4FB00A8BAA6 /* MFMResourceSub.m in Sources */,
 				256B144215A6268000FD43D9 /* MFMResourceFavs.m in Sources */,
-				256B144615A6381500FD43D9 /* MFMSongsViewController.m in Sources */,
+				256B144615A6381500FD43D9 /* MFMFavsViewController.m in Sources */,
 				250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */,
 				250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */,
 				250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */,

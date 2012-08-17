@@ -8,7 +8,7 @@
 
 #import "MFMMenuViewController.h"
 #import "PPRevealSideViewController.h"
-#import "MFMSongsViewController.h"
+#import "MFMFavsViewController.h"
 #import "MFMPlayerManager.h"
 
 #import "MFMResourcePlaylist.h"
@@ -162,7 +162,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
 	if ([segue.identifier isEqualToString:@"ShowFavSongs"]) {
-		MFMSongsViewController *vc = segue.destinationViewController;
+		MFMFavsViewController *vc = segue.destinationViewController;
 		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil
 													userName:nil
 													 objType:MFMResourceObjTypeSong

@@ -1,12 +1,12 @@
 //
-//  MFMSongsViewController.m
+//  MFMFavsViewController.h.m
 //  Moe FM
 //
 //  Created by Greg Wang on 12-7-5.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "MFMSongsViewController.h"
+#import "MFMFavsViewController.h"
 #import "SVPullToRefresh.h"
 #import "MFMPlayerManager.h"
 
@@ -15,12 +15,12 @@
 #import "MFMResourceFav.h"
 #import "MFMResourceSub.h"
 
-@interface MFMSongsViewController ()
+@interface MFMFavsViewController ()
 
 @end
 
 
-@implementation MFMSongsViewController
+@implementation MFMFavsViewController
 
 @synthesize resourceCollection = _resourceCollection;
 
@@ -43,7 +43,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
-	__weak MFMSongsViewController *_self = self;
+	__weak MFMFavsViewController *_self = self;
 
 	[self.tableView addPullToRefreshWithActionHandler:^{
 		NSLog(@"refresh dataSource");

@@ -353,11 +353,11 @@
             </objects>
             <point key="canvasLocation" x="631" y="1059"/>
         </scene>
-        <!--Songs View Controller - SONGS_DISPLAY-->
+        <!--Favs View Controller - SONGS_DISPLAY-->
         <scene sceneID="QeV-uE-cbU">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sko-r9-hod" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="v2f-4A-Rpb" customClass="MFMSongsViewController" sceneMemberID="viewController">
+                <tableViewController id="v2f-4A-Rpb" customClass="MFMFavsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QaZ-y4-TFT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -455,6 +455,12 @@
         <image name="play" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="MFMFavsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="playAll:"/>
+            </relationships>
+        </class>
         <class className="MFMMenuViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
             <relationships>
@@ -482,12 +488,6 @@
                 <relationship kind="outlet" name="songInfoLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="MFMSongsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMSongsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playAll:"/>
             </relationships>
         </class>
         <class className="MFMStartingViewController" superclassName="UIViewController">

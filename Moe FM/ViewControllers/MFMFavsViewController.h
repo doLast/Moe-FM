@@ -1,5 +1,5 @@
 //
-//  MFMSongsViewController.h
+//  MFMFavsViewController.h.h
 //  Moe FM
 //
 //  Created by Greg Wang on 12-7-5.
@@ -10,7 +10,7 @@
 
 @class MFMResourceFavs;
 
-@interface MFMSongsViewController : UITableViewController
+@interface MFMFavsViewController : UITableViewController
 
 @property (retain, nonatomic) MFMResourceFavs *resourceCollection;
 
