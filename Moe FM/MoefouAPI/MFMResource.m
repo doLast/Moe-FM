@@ -8,21 +8,19 @@
 
 #import "MFMResource.h"
 
-//const NSString * const MFMRresourceKeyStr[] = 
-//{@"wiki", @"sub", @"user", @"fav"};
-NSString * const MFMAPIFormat = @"json";
-
+const NSString * const MFMResourceObjTypeStr[] =
+{@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio",  @"wiki", @"ep", @"song", @"sub"};
 NSString * const MFMResourceNotification = @"MFMResourceNotification";
-
+NSString * const MFMAPIFormat = @"json";
 NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
 @interface MFMResource ()
 
 @property (retain, nonatomic) NSDictionary *response;
 @property (retain, nonatomic) NSError *error;
-@property (retain, nonatomic) NSURL *url;
 @property (retain, nonatomic) MFMDataFetcher *fetcher;
 
+- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType;
 - (BOOL)prepareTheResource:(NSDictionary *)resource;
 
 @end
@@ -31,28 +29,7 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
 @synthesize response = _response;
 @synthesize error = _error;
-@synthesize url = _url;
 @synthesize fetcher = _fetcher;
-
-- (MFMResource *)initWithURL:(NSURL *)url
-{
-	return [self initWithURL:url andStartFetch:NO];
-}
-
-- (MFMResource *)initWithURL:(NSURL *)url andStartFetch:(BOOL)inst
-{
-	self = [super init];
-	if (self != nil) {
-		self.response = nil;
-		self.url = url;
-		
-		if (inst && ![self startFetch]) {
-			NSLog(@"Fail to start fetcher");
-		}
-		NSLog(@"Resource created with url: %@", self.url);
-	}
-	return self;
-}
 
 - (MFMResource *)initWithResouce:(NSDictionary *)resource
 {
@@ -65,13 +42,14 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 	return self;
 }
 
-- (BOOL)startFetch
+- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType
 {
 	if (self.fetcher != nil){
-		return NO;
+		return YES;
 	}
 	
-	self.fetcher = [[MFMDataFetcher alloc] initWithURL:self.url dataType:MFMDataTypeJson];
+	NSLog(@"Resource start fetching URL: %@", url);
+	self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:dataType];
 	[self.fetcher beginFetchWithDelegate:self];
 	
 	return YES;

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MFMResource.h"
+
+@class MFMResourceFavs;
 
 @interface MFMSongsViewController : UITableViewController
 
-@property (retain, nonatomic) MFMResource <MFMResourceSubsInterface> *resource;
+@property (retain, nonatomic) MFMResourceFavs *resourceCollection;
 
 @end

@@ -6,16 +6,12 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "MFMResource.h"
+#import "MFMResourceCollection.h"
 #import "MFMResourceSong.h"
 
-@interface MFMResourcePlaylist : MFMResource
+@interface MFMResourcePlaylist : MFMResourceCollection
 
-@property (retain, nonatomic, readonly) NSNumber *page;
-@property (retain, nonatomic, readonly) NSNumber *itemCount;
-@property (assign, nonatomic, readonly) NSNumber *mayHaveNext;
-@property (retain, nonatomic, readonly) NSURL *nextURL;
-@property (retain, nonatomic, readonly) NSArray *resourceSongs;
+@property (nonatomic, strong, readonly) NSNumber *mayHaveNext;
 
 + (MFMResourcePlaylist *)magicPlaylist;
 

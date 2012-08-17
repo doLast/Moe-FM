@@ -17,13 +17,13 @@
 @property (retain, nonatomic) NSNumber *fileSize;
 @property (retain, nonatomic) NSString *fileType;
 @property (retain, nonatomic) NSNumber *wikiId;
-@property (assign, nonatomic) MFMWikiType wikiType;
+@property (assign, nonatomic) MFMResourceObjType wikiType;
 @property (retain, nonatomic) NSArray *cover;
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) NSString *wikiTitle;
 @property (retain, nonatomic) NSURL *wikiURL;
 @property (retain, nonatomic) NSNumber *subId;
-@property (assign, nonatomic) MFMSubType subType;
+@property (assign, nonatomic) MFMResourceObjType subType;
 @property (retain, nonatomic) NSString *subTitle;
 @property (retain, nonatomic) NSURL *subURL;
 @property (retain, nonatomic) NSString *artist;
@@ -58,7 +58,7 @@
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiURL: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubURL: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.streamURL, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMWikiTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiURL, self.subId, MFMSubTypeStr[self.subType], self.subTitle, self.subURL, self.artist, self.favWiki, self.favSub, nil];
+	return [NSString stringWithFormat:@"MFMResourceSong\nid: %@\nurl: %@\nlength: %@\ntime: %@\nfileSize: %@\nfileType: %@\nwikiId: %@\nwikiType: %@\ncover: %@\ntitle: %@\nwikiTitle: %@\nwikiURL: %@\nsubId: %@\nsubType: %@\nsubTitle: %@\nsubURL: %@\nartist: %@\nfavWiki: %@\nfavSub: %@\n", self.upId, self.streamURL, self.streamLength, self.streamTime, self.fileSize, self.fileType, self.wikiId, MFMResourceObjTypeStr[self.wikiType], self.cover, self.title, self.wikiTitle, self.wikiURL, self.subId, MFMResourceObjTypeStr[self.subType], self.subTitle, self.subURL, self.artist, self.favWiki, self.favSub, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -70,14 +70,14 @@
 	self.fileSize = [resource objectForKey:@"file_size"];
 	self.fileType = [resource objectForKey:@"file_type"];
 	self.wikiId = [resource objectForKey:@"wiki_id"];
-	self.wikiType = [[NSArray arrayWithObjects:MFMWikiTypeStr count:MFMSubTypeTotal]
+	self.wikiType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr count:MFMResourceObjTypeTotal]
 					 indexOfObject:[resource objectForKey:@"wiki_type"]];
 	self.cover = [resource objectForKey:@"cover"];
 	self.title = [resource objectForKey:@"title"];
 	self.wikiTitle = [resource objectForKey:@"wiki_title"];
 	self.wikiURL = [NSURL URLWithString:[resource objectForKey:@"wiki_url"]];
 	self.subId = [resource objectForKey:@"sub_id"];
-	self.subType = [[NSArray arrayWithObjects:MFMSubTypeStr count:MFMSubTypeTotal] indexOfObject:[resource objectForKey:@"sub_type"]];
+	self.subType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr count:MFMResourceObjTypeTotal] indexOfObject:[resource objectForKey:@"sub_type"]];
 	self.subTitle = [resource objectForKey:@"sub_title"];
 	self.subURL	= [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
 	self.artist = [resource objectForKey:@"artist"];
@@ -85,13 +85,13 @@
 		self.favWiki = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_wiki"]];
 	}
 	else {
-		self.favWiki = [[MFMResourceFav alloc] initWithObjId:self.wikiId andType:MFMFavObjTypeWiki];
+		self.favWiki = [[MFMResourceFav alloc] initWithObjId:self.wikiId andType:MFMResourceObjTypeWiki];
 	}
 	if (![[resource objectForKey:@"fav_sub"] isKindOfClass:[NSNull class]]) {
 		self.favSub = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_sub"]];
 	}
 	else {
-		self.favSub = [[MFMResourceFav alloc] initWithObjId:self.subId andType:MFMFavObjTypeSub];
+		self.favSub = [[MFMResourceFav alloc] initWithObjId:self.subId andType:MFMResourceObjTypeSub];
 	}
 			
 	return YES;

@@ -12,6 +12,7 @@
 		250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */; };
 		250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2415A662D4001B2D10 /* MFMResourceSong.m */; };
 		250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */; };
+		25124AC015DD6A5300B011AD /* MFMResourceCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 25124ABF15DD6A5200B011AD /* MFMResourceCollection.m */; };
 		25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 25161FA015DC46DE00B16227 /* MFMOAuth.m */; };
 		2535788A15309190008185BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788915309190008185BD /* UIKit.framework */; };
 		2535788C15309190008185BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2535788B15309190008185BD /* Foundation.framework */; };
@@ -83,6 +84,8 @@
 		250E7F2415A662D4001B2D10 /* MFMResourceSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceSong.m; sourceTree = "<group>"; };
 		250E7F2E15A68811001B2D10 /* MFMPlayerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerManager.h; sourceTree = "<group>"; };
 		250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerManager.m; sourceTree = "<group>"; };
+		25124ABE15DD6A5200B011AD /* MFMResourceCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceCollection.h; sourceTree = "<group>"; };
+		25124ABF15DD6A5200B011AD /* MFMResourceCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceCollection.m; sourceTree = "<group>"; };
 		25161F9F15DC46DE00B16227 /* MFMOAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMOAuth.h; sourceTree = "<group>"; };
 		25161FA015DC46DE00B16227 /* MFMOAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMOAuth.m; sourceTree = "<group>"; };
 		2535788515309190008185BD /* Moe FM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moe FM.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +192,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25124AC215DD73F700B011AD /* ResourceEntry */ = {
+			isa = PBXGroup;
+			children = (
+				25A48C8915A5D83400EBFB59 /* MFMResourceFav.h */,
+				25A48C8A15A5D83400EBFB59 /* MFMResourceFav.m */,
+				25A48C8D15A5E4C600EBFB59 /* MFMResourceWiki.h */,
+				25A48C8E15A5E4C600EBFB59 /* MFMResourceWiki.m */,
+				2565D31115A5F4FB00A8BAA6 /* MFMResourceSub.h */,
+				2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */,
+				250E7F2315A662D4001B2D10 /* MFMResourceSong.h */,
+				250E7F2415A662D4001B2D10 /* MFMResourceSong.m */,
+			);
+			name = ResourceEntry;
+			sourceTree = "<group>";
+		};
 		2513DEDB1535FCA200CB0B0A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,18 +364,13 @@
 			children = (
 				257297D515A5459F008EB903 /* MFMResource.h */,
 				257297D615A5459F008EB903 /* MFMResource.m */,
+				25124AC215DD73F700B011AD /* ResourceEntry */,
+				25124ABE15DD6A5200B011AD /* MFMResourceCollection.h */,
+				25124ABF15DD6A5200B011AD /* MFMResourceCollection.m */,
 				256B144015A6267F00FD43D9 /* MFMResourceFavs.h */,
 				256B144115A6267F00FD43D9 /* MFMResourceFavs.m */,
 				250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */,
 				250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */,
-				25A48C8915A5D83400EBFB59 /* MFMResourceFav.h */,
-				25A48C8A15A5D83400EBFB59 /* MFMResourceFav.m */,
-				25A48C8D15A5E4C600EBFB59 /* MFMResourceWiki.h */,
-				25A48C8E15A5E4C600EBFB59 /* MFMResourceWiki.m */,
-				2565D31115A5F4FB00A8BAA6 /* MFMResourceSub.h */,
-				2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */,
-				250E7F2315A662D4001B2D10 /* MFMResourceSong.h */,
-				250E7F2415A662D4001B2D10 /* MFMResourceSong.m */,
 			);
 			path = MoefouAPI;
 			sourceTree = "<group>";
@@ -497,6 +510,7 @@
 				2508D1D715DBEECB0035126A /* AudioStreamer.m in Sources */,
 				2508D1D915DBEECB0035126A /* UIDevice+Hardware.m in Sources */,
 				25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */,
+				25124AC015DD6A5300B011AD /* MFMResourceCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -121,9 +121,7 @@
 	if (indexPath.row == 0) {
 		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist magicPlaylist];
 		MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
-		playerManager.nextPlaylist = resourcePlaylist;
-		playerManager.nextTrackNum = 0;
-		[playerManager play];
+		playerManager.playlist = resourcePlaylist;
 		
 		PPRevealSideViewController *revealSideVC = (PPRevealSideViewController *)self.navigationController.parentViewController;
 		[revealSideVC popViewControllerAnimated:YES];
@@ -165,9 +163,9 @@
 {
 	if ([segue.identifier isEqualToString:@"ShowFavSongs"]) {
 		MFMSongsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *resourceFavs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMFavObjTypeSong favType:MFMFavTypeHeart page:nil perpage:nil];
+		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeSong favType:MFMFavTypeHeart fromPage:[NSNumber numberWithInt:1] perPage:[NSNumber numberWithInt:15]];
 		
-		vc.resource = resourceFavs;
+		vc.resourceCollection = favs;
 	}
 	else if ([segue.identifier isEqualToString:@"ShowFavMusics"]) {
 		

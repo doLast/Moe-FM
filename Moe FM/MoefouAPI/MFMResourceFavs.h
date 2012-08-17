@@ -6,25 +6,16 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "MFMResource.h"
+#import "MFMResourceCollection.h"
 #import "MFMResourceFav.h"
 
-@interface MFMResourceFavs : MFMResource <MFMResourceSubsInterface, MFMResourceWikisInterface>
-
-@property (retain, nonatomic, readonly) NSNumber *page;
-@property (retain, nonatomic, readonly) NSNumber *perpage;
-@property (retain, nonatomic, readonly) NSNumber *count;
-@property (retain, nonatomic, readonly) NSArray *resourceFavs;
-
-@property (readonly, nonatomic) NSArray *resourceSubs;
-@property (readonly, nonatomic) NSArray *resourceWikis;
-@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
+@interface MFMResourceFavs : MFMResourceCollection
 
 + (MFMResourceFavs *)favsWithUid:(NSNumber *)uid
 						userName:(NSString *)userName
-						 objType:(MFMFavObjType)objType
+						 objType:(MFMResourceObjType)objType
 						 favType:(MFMFavType)favType
-							page:(NSNumber *)page
-						 perpage:(NSNumber *)perpage;
+						fromPage:(NSNumber *)fromPage
+						 perPage:(NSNumber *)perPage;
 
 @end

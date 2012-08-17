@@ -12,31 +12,60 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourcePlaylist ()
 
-@property (retain, nonatomic) NSNumber *page;
-@property (retain, nonatomic) NSNumber *itemCount;
-@property (assign, nonatomic) NSNumber *mayHaveNext;
-@property (retain, nonatomic) NSURL *nextURL;
-@property (retain, nonatomic) NSArray *resourceSongs;
+@property (nonatomic, strong) NSArray *resources;
+@property (nonatomic, strong) NSNumber *nextPage;
+@property (nonatomic, strong) NSNumber *count;
+@property (nonatomic, strong) NSNumber *mayHaveNext;
+@property (nonatomic, strong) NSURL *playlistURL;
 
 @end
 
 @implementation MFMResourcePlaylist
 
-@synthesize page = _page;
-@synthesize itemCount = _itemCount;
 @synthesize mayHaveNext = _mayHaveNext;
-@synthesize nextURL = _nextURL;
-@synthesize resourceSongs = _resourceSongs;
+@synthesize playlistURL = _playlistURL;
+
+- (MFMResourcePlaylist *)initWithPlaylistURL:(NSURL *)playlistURL
+{
+	self = [super initWithObjType:MFMResourceObjTypeSong fromPageNumber:[NSNumber numberWithInteger:1] withItemsPerPage:[NSNumber numberWithInteger:10]];
+	if (self != nil) {
+		self.mayHaveNext = [NSNumber numberWithBool:YES];
+		self.playlistURL = playlistURL;
+		self.count = [NSNumber numberWithInteger:0];
+	}
+	return self;
+}
 
 + (MFMResourcePlaylist *)magicPlaylist
 {
-	static MFMResourcePlaylist *magicPlaylist;
-	if (magicPlaylist == nil) {
-		NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
-		NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:nil];
-		magicPlaylist = [[MFMResourcePlaylist alloc] initWithURL:url];
-	}
+	NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:nil];
+	MFMResourcePlaylist *magicPlaylist = [[MFMResourcePlaylist alloc] initWithPlaylistURL:url];
 	return magicPlaylist;
+}
+
+- (NSURL *)urlForPage:(NSNumber *)page
+{
+	NSURL *url = self.playlistURL;
+	url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", url, page]];
+	
+	return url;
+}
+
+- (BOOL)startFetchNextPage
+{
+	NSURL *url = nil;
+	if (self.nextPage == nil) {
+		url = [self urlForPage:self.fromPage];
+	}
+	else if (self.mayHaveNext.boolValue) {
+		url = [self urlForPage:self.nextPage];
+	}
+	else {
+		NSLog(@"No more pages in playlist");
+		return NO;
+	}
+	return [self startFetchWithURL:url andDataType:MFMDataTypeJson];
 }
 
 # pragma mark - Override MFMResource Methods
@@ -44,14 +73,18 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 - (NSString *)description
 {
 	NSMutableString *str = [NSMutableString string];
-	for (MFMResourceSong *resourceSong in self.resourceSongs) {
-		[str appendString:resourceSong.description];
+	for (NSObject *resource in self.resources) {
+		[str appendString:resource.description];
 	}
 	return str;
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {
+	if (self.nextPage == nil) {
+		self.resources = nil;
+	}
+	
 	NSDictionary *responseInfo = [resource objectForKey:@"information"];
 	NSArray *songs = [resource objectForKey:@"playlist"];
 	if (responseInfo == nil || songs == nil) {
@@ -59,17 +92,17 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 		return NO;
 	}
 	
-	self.page = [responseInfo objectForKey:@"page"];
-	self.itemCount = [responseInfo objectForKey:@"item_count"];
+	self.nextPage = [responseInfo objectForKey:@"page"];
+	self.nextPage = [NSNumber numberWithInteger:self.nextPage.integerValue + 1];
 	self.mayHaveNext = [responseInfo objectForKey:@"may_have_next"];
-	self.nextURL = [NSURL URLWithString:[responseInfo objectForKey:@"next_url"]];
 	
-	NSMutableArray *resourceSongs = [NSMutableArray array];
+	NSMutableArray *resources = [NSMutableArray arrayWithArray:self.resources];
 	for (NSDictionary *song in songs) {
 		MFMResourceSong *resourceSong = [[MFMResourceSong alloc] initWithResouce:song];
-		[resourceSongs addObject:resourceSong];
+		[resources addObject:resourceSong];
 	}
-	self.resourceSongs = resourceSongs;
+	self.resources = resources;
+	self.count = [NSNumber numberWithInt:[self.resources count]];
 	
 	return YES;
 }

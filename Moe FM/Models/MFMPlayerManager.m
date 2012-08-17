@@ -16,30 +16,38 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 @interface MFMPlayerManager ()
 
-@property (retain, atomic) MFMResourcePlaylist *playlist;
-@property (assign, atomic) NSUInteger trackNum;
 @property (retain, nonatomic) AudioStreamer *audioStreamer;
-//@property (retain, nonatomic) AudioStreamer *lastStreamer;
 
 @end
 
 @implementation MFMPlayerManager
 
 #pragma mark - getter & setter
-@synthesize nextPlaylist = _nextPlaylist;
-@synthesize nextTrackNum = _nextTrackNum;
-@synthesize playerStatus = _playerStatus;
-
 @synthesize playlist = _playlist;
 @synthesize trackNum = _trackNum;
+@synthesize playerStatus = _playerStatus;
 @synthesize audioStreamer = _audioStreamer;
+
+- (void)setPlaylist:(MFMResourcePlaylist *)playlist
+{
+	if (playlist != _playlist) {
+		_playlist = playlist;
+		self.trackNum = 0;
+	}
+}
+
+- (void)setTrackNum:(NSUInteger)trackNum
+{
+	_trackNum = trackNum;
+	[self start];
+}
 
 - (MFMResourceSong *)currentSong
 {
-	if (self.playlist == nil || self.playlist.resourceSongs == nil) {
+	if (self.playlist == nil || self.playlist.resources == nil) {
 		return nil;
 	}
-	return [self.playlist.resourceSongs objectAtIndex:self.trackNum];
+	return [self.playlist.resources objectAtIndex:self.trackNum];
 }
 
 - (void)setPlayerStatus:(MFMPlayerStatus)playerStatus
@@ -70,14 +78,12 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 #pragma mark - initializations
 + (MFMPlayerManager *)sharedPlayerManager
 {
-	static MFMPlayerManager *playerManager;
+	static MFMPlayerManager *playerManager = nil;
 	if (playerManager == nil) {
 		playerManager = [[MFMPlayerManager alloc] init];
 		// Give it a magic playlist to begin
 		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist magicPlaylist];
-		playerManager.nextPlaylist = resourcePlaylist;
-		playerManager.nextTrackNum = 0;
-		[playerManager start];
+		playerManager.playlist = resourcePlaylist;
 	}
 	return playerManager;
 }
@@ -86,10 +92,6 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 {
 	self = [super init];
 	if (self != nil) {
-		self.nextPlaylist = nil;
-		self.nextTrackNum = 0;
-		self.playlist = nil;
-		self.trackNum = 0;
 		self.audioStreamer = nil;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:ASStatusChangedNotification object:nil];
@@ -131,71 +133,36 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	}
 }
 
-- (void)prepareTrack
-{
-	self.trackNum = self.nextTrackNum;
-	return;
-}
-
-- (void)preparePlaylist
-{
-	// Set playlist
-	self.playlist = self.nextPlaylist;
-	self.nextPlaylist = nil;
-	
-	// If nil playlist
-	if (self.playlist == nil) {
-		NSLog(@"Got nil playlist");
-	}
-	else {
-		// Got new playlist, prepare to fetch resource
-		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.playlist];
-		
-		// If start failed
-		if ([self.playlist startFetch] == NO) {
-			NSLog(@"Fail to start fetching");
-			[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
-			self.playlist = nil;
-		}
-		else {
-			NSLog(@"Waiting for Playlist to ready");
-		}
-	}
-}
-
 - (BOOL)start
 {
-	if (self.nextPlaylist != nil && self.nextPlaylist != self.playlist) {
-		[self stop];
-		[self preparePlaylist];
-		[self prepareTrack];
+	if (self.playlist == nil) {
+		return NO;
+	}
+	
+	[self stop];
+	
+	// If no more song
+	if (self.trackNum >= self.playlist.count.integerValue) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.playlist];
+		// If start failed
+		if ([self.playlist startFetchNextPage] == NO) {
+			NSLog(@"Fail to start fetching");
+			[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
+			return NO;
+		}
+		
+		NSLog(@"Waiting for Playlist to ready");
 		return YES;
 	}
-	else if (self.nextTrackNum != self.trackNum) {
-		[self stop];
-		[self prepareTrack];
-		[self play];
-		return YES;
-	}
-	return NO;
+	
+	return [self play];
 }
 
 - (BOOL)play
 {
 	// If no resource
-	if (self.playlist.resourceSongs == nil) {
+	if (self.playlist.resources == nil) {
 		// Wait for resource to load
-		return NO;
-	}
-	
-	// If no more song
-	if (self.trackNum >= self.playlist.resourceSongs.count) {
-		if ([self.playlist.mayHaveNext boolValue]) {
-			NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&", self.playlist.nextURL]];
-			self.nextPlaylist = [[MFMResourcePlaylist alloc] initWithURL:url];
-			self.nextTrackNum = 0;
-			[self start];
-		}
 		return NO;
 	}
 	
@@ -206,9 +173,6 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		[[NSNotificationCenter defaultCenter] postNotificationName:MFMPlayerSongChangedNotification object:self];
 	}
 	
-//	if ([self.audioStreamer start] == NO) {
-//		return [self.audioStreamer play];
-//	}
 	[self.audioStreamer start];
 	
 	return YES;
@@ -223,9 +187,8 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (void)next
 {
-	if (self.playlist != nil && self.playlist.resourceSongs != nil) {
-		self.nextTrackNum = self.trackNum + 1;
-		[self start];
+	if (self.playlist != nil) {
+		self.trackNum = self.trackNum + 1;
 	}
 }
 
@@ -251,7 +214,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	if (resource == self.playlist) {
 		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
 		if (self.playlist.error == nil) {
-			[self play];
+			[self start];
 		}
 		else {
 			NSLog(@"Fail to obtain the playlist, error: %@", [self.playlist.error localizedDescription]);

@@ -7,8 +7,7 @@
 //
 
 #import "MFMResourceWiki.h"
-const NSString * const MFMWikiTypeStr[] = 
-{@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio"};
+
 const NSString * const MFMWikiCoverStr[] = 
 {@"small", @"medium", @"square", @"large"};
 
@@ -19,7 +18,7 @@ NSString * const MFMWikisURLStr = @"http://api.moefou.org/wikis.json?";
 @property (retain, nonatomic) NSNumber *wikiId;
 @property (retain, nonatomic) NSString *wikiTitle;
 @property (retain, nonatomic) NSString *wikiTitleEncode;
-@property (assign, nonatomic) MFMWikiType wikiType;
+@property (assign, nonatomic) MFMResourceObjType wikiType;
 @property (retain, nonatomic) NSDate *wikiDate;
 @property (retain, nonatomic) NSDate *wikiModified;
 @property (retain, nonatomic) NSNumber *wikiModifiedUser;
@@ -48,7 +47,7 @@ NSString * const MFMWikisURLStr = @"http://api.moefou.org/wikis.json?";
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceWiki\nid: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\ndate: %@\nmodified: %@\nmodifiedUser: %@\nmeta: %@\nfmURL: %@\nurl: %@\ncover: %@\n", self.wikiId, self.wikiTitle, self.wikiTitleEncode, MFMWikiTypeStr[self.wikiType], self.wikiDate, self.wikiModified, self.wikiModifiedUser, self.wikiMeta, self.wikiFmURL, self.wikiURL, self.wikiCover, nil];
+	return [NSString stringWithFormat:@"MFMResourceWiki\nid: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\ndate: %@\nmodified: %@\nmodifiedUser: %@\nmeta: %@\nfmURL: %@\nurl: %@\ncover: %@\n", self.wikiId, self.wikiTitle, self.wikiTitleEncode, MFMResourceObjTypeStr[self.wikiType], self.wikiDate, self.wikiModified, self.wikiModifiedUser, self.wikiMeta, self.wikiFmURL, self.wikiURL, self.wikiCover, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -56,7 +55,7 @@ NSString * const MFMWikisURLStr = @"http://api.moefou.org/wikis.json?";
 	self.wikiId = [resource objectForKey:@"wiki_id"];
 	self.wikiTitle = [resource objectForKey:@"wiki_title"];
 	self.wikiTitleEncode = [resource objectForKey:@"wiki_title_encode"];
-	self.wikiType = [[NSArray arrayWithObjects:MFMWikiTypeStr count:MFMWikiTypeTotal]
+	self.wikiType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr count:MFMResourceObjTypeTotal]
 					 indexOfObject:[resource objectForKey:@"wiki_type"]];
 	self.wikiDate = [NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[resource objectForKey:@"wiki_date"] doubleValue]];
 	self.wikiModified = [NSDate dateWithTimeIntervalSince1970:[(NSNumber *)[resource objectForKey:@"wiki_modified"] doubleValue]];

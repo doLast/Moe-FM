@@ -20,13 +20,13 @@
 @property (retain, nonatomic, readonly) NSNumber *fileSize;
 @property (retain, nonatomic, readonly) NSString *fileType;
 @property (retain, nonatomic, readonly) NSNumber *wikiId;
-@property (assign, nonatomic, readonly) MFMWikiType wikiType;
+@property (assign, nonatomic, readonly) MFMResourceObjType wikiType;
 @property (retain, nonatomic, readonly) NSArray *cover;
 @property (retain, nonatomic, readonly) NSString *title;
 @property (retain, nonatomic, readonly) NSString *wikiTitle;
 @property (retain, nonatomic, readonly) NSURL *wikiURL;
 @property (retain, nonatomic, readonly) NSNumber *subId;
-@property (assign, nonatomic, readonly) MFMSubType subType;
+@property (assign, nonatomic, readonly) MFMResourceObjType subType;
 @property (retain, nonatomic, readonly) NSString *subTitle;
 @property (retain, nonatomic, readonly) NSURL *subURL;
 @property (retain, nonatomic, readonly) NSString *artist;

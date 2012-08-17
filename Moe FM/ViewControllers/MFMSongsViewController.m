@@ -9,20 +9,18 @@
 #import "MFMSongsViewController.h"
 #import "SVPullToRefresh.h"
 
+#import "MFMResourceFavs.h"
+#import "MFMResourceFav.h"
 #import "MFMResourceSub.h"
 
 @interface MFMSongsViewController ()
-
-@property (retain, nonatomic) NSArray *resourceSubs;
 
 @end
 
 
 @implementation MFMSongsViewController
 
-@synthesize resource = _resource;
-
-@synthesize resourceSubs = _resourceSubs;
+@synthesize resourceCollection = _resourceCollection;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,15 +45,16 @@
 
 	[self.tableView addPullToRefreshWithActionHandler:^{
 		NSLog(@"refresh dataSource");
-		[_self performSelector:@selector(refreshTableData)];
+		[_self performSelector:@selector(refreshData)];
 	}];
 
 	[self.tableView addInfiniteScrollingWithActionHandler:^{
 		NSLog(@"load more data");
+		[_self performSelector:@selector(loadMoreData)];
 	}];
 	
 	[[NSNotificationCenter defaultCenter]
-	 addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.resource];
+	 addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.resourceCollection];
 	
 	[self.tableView.pullToRefreshView triggerRefresh];
 }
@@ -67,6 +66,7 @@
     // e.g. self.myOutlet = nil;
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[self.resourceCollection stopFetch];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -85,65 +85,29 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+	NSArray *resources = self.resourceCollection.resources;
     // Return the number of rows in the section.
-	if (self.resourceSubs != nil) {
-		NSLog(@"Have %d rows", self.resourceSubs.count);
-		return self.resourceSubs.count;
+	if (resources != nil) {
+		NSLog(@"Have %d rows", resources.count);
+		return resources.count;
 	}
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SongCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    MFMResourceSub *resourceSub = [self.resourceSubs objectAtIndex:indexPath.row];
-	
-	cell.textLabel.text = resourceSub.subTitle;
-	cell.detailTextLabel.text = [resourceSub.subId stringValue];
-    
-    return cell;
-}
+	static NSString *CellIdentifier = @"SongCell";
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	NSArray *resources = self.resourceCollection.resources;
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+	MFMResourceFav *resource = [resources objectAtIndex:indexPath.row];
+	MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+	cell.textLabel.text = sub.subTitle;
+	cell.detailTextLabel.text = [sub.subId stringValue];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+	return cell;
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -158,23 +122,33 @@
      */
 }
 
-- (void)refreshTableData
+- (void)refreshData
 {
-	if ([self.resource startFetch] == NO){
+	if ([self.resourceCollection reloadResources] == NO){
+		NSLog(@"Cannot refresh");
 		[self.tableView.pullToRefreshView stopAnimating];
+	}
+}
+
+- (void)loadMoreData
+{
+	if ([self.resourceCollection startFetchNextPage] == NO) {
+		NSLog(@"No more pages");
+		[self.tableView.infiniteScrollingView stopAnimating];
 	}
 }
 
 - (void)handleNotification:(NSNotification *)notification
 {
 	if (notification.name == MFMResourceNotification  && 
-		notification.object == self.resource) {
-		self.resourceSubs = self.resource.resourceSubs;
-		if (self.resourceSubs == nil) {
-			NSLog(@"Got error: %@", self.resource.error.localizedDescription);
+		notification.object == self.resourceCollection) {
+		if (self.resourceCollection.error != nil) {
+			[self.tableView.pullToRefreshView stopAnimating];
+			return;
 		}
 		[self.tableView reloadData];
-		[self.tableView.pullToRefreshView stopAnimating]; 
+		[self.tableView.pullToRefreshView stopAnimating];
+		[self.tableView.infiniteScrollingView stopAnimating];
 	}
 }
 

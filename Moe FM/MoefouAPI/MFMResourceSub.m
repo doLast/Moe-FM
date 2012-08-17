@@ -8,16 +8,13 @@
 
 #import "MFMResourceSub.h"
 
-const NSString * const MFMSubTypeStr[] = 
-{@"ep", @"song"};
-
 @interface MFMResourceSub ()
 
 @property (retain, nonatomic) NSNumber *subId;
 @property (retain, nonatomic) NSNumber *subParentWiki;
 @property (retain, nonatomic) NSString *subTitle;
 @property (retain, nonatomic) NSString *subTitleEncode;
-@property (assign, nonatomic) MFMSubType subType;
+@property (assign, nonatomic) MFMResourceObjType subType;
 @property (retain, nonatomic) NSString *subOrder;
 @property (retain, nonatomic) NSArray *subMeta;
 @property (retain, nonatomic) NSString *subAbout;
@@ -49,7 +46,7 @@ const NSString * const MFMSubTypeStr[] =
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmURL: %@\nurl: %@\nviewTitle: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMSubTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmURL, self.subURL, self.subViewTitle, nil];
+	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmURL: %@\nurl: %@\nviewTitle: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMResourceObjTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmURL, self.subURL, self.subViewTitle, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -58,7 +55,7 @@ const NSString * const MFMSubTypeStr[] =
 	self.subParentWiki = [resource objectForKey:@"sub_parent_wiki"];
 	self.subTitle = [resource objectForKey:@"sub_title"];
 	self.subTitleEncode = [resource objectForKey:@"sub_title_encode"];
-	self.subType = [[NSArray arrayWithObjects:MFMSubTypeStr count:MFMSubTypeTotal]
+	self.subType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr count:MFMResourceObjTypeTotal]
 					 indexOfObject:[resource objectForKey:@"sub_type"]];
 	self.subOrder = [resource objectForKey:@"sub_order"];
 	self.subMeta = [resource objectForKey:@"sub_meta"];

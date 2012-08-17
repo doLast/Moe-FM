@@ -10,9 +10,6 @@
 #import "MFMResourceWiki.h"
 #import "MFMResourceSub.h"
 
-const NSString * const MFMFavObjTypeStr[] = 
-{@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio",  @"wiki", @"ep", @"song", @"sub"};
-
 NSString * const kAddFavURLStr = @"http://api.moefou.org/fav/add.";
 NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
@@ -20,7 +17,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
 @property (retain, nonatomic) NSNumber *favId;
 @property (retain, nonatomic) NSNumber *favObjId;
-@property (assign, nonatomic) MFMFavObjType favObjType;
+@property (assign, nonatomic) MFMResourceObjType favObjType;
 @property (retain, nonatomic) NSNumber *favUid;
 @property (retain, nonatomic) NSDate *favDate;
 @property (assign, nonatomic) MFMFavType favType;
@@ -39,7 +36,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 @synthesize favType = _favType;
 @synthesize obj = _obj;
 
-- (MFMResourceFav *)initWithObjId:(NSNumber *)objId andType:(MFMFavObjType)objType
+- (MFMResourceFav *)initWithObjId:(NSNumber *)objId andType:(MFMResourceObjType)objType
 {
 	self = [super init];
 	if (self != nil) {
@@ -63,7 +60,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 {
 	NSString *urlPrefix = nil;
 	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-	[parameters setValue:MFMFavObjTypeStr[self.favObjType] forKey:@"fav_obj_type"];
+	[parameters setValue:MFMResourceObjTypeStr[self.favObjType] forKey:@"fav_obj_type"];
 	[parameters setValue:self.favObjId forKey:@"fav_obj_id"];
 	
 	if ([self didAddToFavAsType:favType]) {
@@ -93,7 +90,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceFav\nid: %@\nobjId: %@\nobjType: %@\nuid: %@\ndate: %@\ntype: %d\nobj: %@\n", self.favId, self.favObjId, MFMFavObjTypeStr[self.favObjType], self.favUid, self.favDate, self.favType, self.obj];
+	return [NSString stringWithFormat:@"MFMResourceFav\nid: %@\nobjId: %@\nobjType: %@\nuid: %@\ndate: %@\ntype: %d\nobj: %@\n", self.favId, self.favObjId, MFMResourceObjTypeStr[self.favObjType], self.favUid, self.favDate, self.favType, self.obj];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -110,8 +107,8 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 	
 	if (self.favUid != nil) {
 		self.favObjId = [resource objectForKey:@"fav_obj_id"]; 
-		self.favObjType = [[NSArray arrayWithObjects:MFMFavObjTypeStr
-											   count:MFMFavObjTypeTotal]
+		self.favObjType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr
+											   count:MFMResourceObjTypeTotal]
 						   indexOfObject:[resource objectForKey:@"fav_obj_type"]];
 	}
 	
@@ -122,21 +119,21 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 	
 	// If have obj create it
 	switch (self.favObjType) {
-		case MFMFavObjTypeTv:
-		case MFMFavObjTypeOva:
-		case MFMFavObjTypeOad: 
-		case MFMFavObjTypeMovie: 
-		case MFMFavObjTypeAnime: 
-		case MFMFavObjTypeComic: 
-		case MFMFavObjTypeMusic: 
-		case MFMFavObjTypeRadio:
-		case MFMFavObjTypeWiki:
+		case MFMResourceObjTypeTv:
+		case MFMResourceObjTypeOva:
+		case MFMResourceObjTypeOad: 
+		case MFMResourceObjTypeMovie: 
+		case MFMResourceObjTypeAnime: 
+		case MFMResourceObjTypeComic: 
+		case MFMResourceObjTypeMusic: 
+		case MFMResourceObjTypeRadio:
+		case MFMResourceObjTypeWiki:
 			self.obj = [[MFMResourceWiki alloc]
 						initWithResouce:[resource objectForKey:@"obj"]];
 			break;
-		case MFMFavObjTypeEp: 
-		case MFMFavObjTypeSong:
-		case MFMFavObjTypeSub:
+		case MFMResourceObjTypeEp: 
+		case MFMResourceObjTypeSong:
+		case MFMResourceObjTypeSub:
 			self.obj = [[MFMResourceSub alloc]
 						initWithResouce:[resource objectForKey:@"obj"]];
 			break;

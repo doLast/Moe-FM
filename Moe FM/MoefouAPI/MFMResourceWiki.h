@@ -9,19 +9,6 @@
 #import "MFMResource.h"
 
 typedef enum {
-	MFMWikiTypeTv = 0, 
-	MFMWIkiTypeOva, 
-	MFMWikiTypeOad, 
-	MFMWikiTypeMovie, 
-	MFMWikiTypeAnime, 
-	MFMWikiTypeComic, 
-	MFMWikiTypeMusic, 
-	MFMWikiTypeRadio, 
-	MFMWikiTypeTotal
-} MFMWikiType;
-extern const NSString * const MFMWikiTypeStr[];
-
-typedef enum {
 	MFMWikiCoverSmall = 0, 
 	MFMWikiCoverMedium, 
 	MFMWikiCoverSquare, 
@@ -35,7 +22,7 @@ extern const NSString * const MFMWikiCoverStr[];
 @property (retain, nonatomic, readonly) NSNumber *wikiId;
 @property (retain, nonatomic, readonly) NSString *wikiTitle;
 @property (retain, nonatomic, readonly) NSString *wikiTitleEncode;
-@property (assign, nonatomic, readonly) MFMWikiType wikiType;
+@property (assign, nonatomic, readonly) MFMResourceObjType wikiType;
 @property (retain, nonatomic, readonly) NSDate *wikiDate;
 @property (retain, nonatomic, readonly) NSDate *wikiModified;
 @property (retain, nonatomic, readonly) NSNumber *wikiModifiedUser;

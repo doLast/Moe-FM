@@ -8,20 +8,13 @@
 
 #import "MFMResource.h"
 
-typedef enum {
-	MFMSubTypeEp = 0, 
-	MFMSubTypeSong, 
-	MFMSubTypeTotal
-} MFMSubType;
-extern const NSString * const MFMSubTypeStr[];
-
 @interface MFMResourceSub : MFMResource
 
 @property (retain, nonatomic, readonly) NSNumber *subId;
 @property (retain, nonatomic, readonly) NSNumber *subParentWiki;
 @property (retain, nonatomic, readonly) NSString *subTitle;
 @property (retain, nonatomic, readonly) NSString *subTitleEncode;
-@property (assign, nonatomic, readonly) MFMSubType subType;
+@property (assign, nonatomic, readonly) MFMResourceObjType subType;
 @property (retain, nonatomic, readonly) NSString *subOrder;
 @property (retain, nonatomic, readonly) NSArray *subMeta;
 @property (retain, nonatomic, readonly) NSString *subAbout;

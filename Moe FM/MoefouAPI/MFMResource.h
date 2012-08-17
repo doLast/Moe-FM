@@ -9,38 +9,32 @@
 #import <Foundation/Foundation.h>
 #import "MFMDataFetcher.h"
 
-//typedef enum {
-//	MFMResourceKeyWiki = 0, 
-//	MFMResourceKeySub, 
-//	MFMResourceKeyUser, 
-//	MFMResourceKeyFav
-//} MFMResourceKey;
-//extern const NSString * const MFMRresourceKeyStr[];
-extern NSString * const MFMAPIFormat;
+typedef enum {
+	MFMResourceObjTypeTv = 0,
+	MFMResourceObjTypeOva,
+	MFMResourceObjTypeOad,
+	MFMResourceObjTypeMovie,
+	MFMResourceObjTypeAnime,
+	MFMResourceObjTypeComic,
+	MFMResourceObjTypeMusic,
+	MFMResourceObjTypeRadio,
+	MFMResourceObjTypeWiki,
+	MFMResourceObjTypeEp,
+	MFMResourceObjTypeSong,
+	MFMResourceObjTypeSub,
+	MFMResourceObjTypeTotal
+} MFMResourceObjType;
+extern const NSString * const MFMResourceObjTypeStr[];
 
 extern NSString * const MFMResourceNotification;
-
-@class MFMResourcePlaylist;
-
-@protocol MFMResourceSubsInterface <NSObject>
-@property (readonly, nonatomic) NSArray *resourceSubs;
-@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
-@end
-
-@protocol MFMResourceWikisInterface <NSObject>
-@property (readonly, nonatomic) NSArray *resourceWikis;
-@property (readonly, nonatomic) MFMResourcePlaylist *playlist;
-@end
+extern NSString * const MFMAPIFormat;
 
 @interface MFMResource : NSObject <MFMDataFetcherDelegate>
 
-@property (readonly, retain, nonatomic) NSDictionary *response;
 @property (readonly, retain, nonatomic) NSError *error;
 
-- (MFMResource *)initWithURL:(NSURL *)url;
-- (MFMResource *)initWithURL:(NSURL *)url andStartFetch:(BOOL)inst;
 - (MFMResource *)initWithResouce:(NSDictionary *)resource;
-- (BOOL)startFetch;
+- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType;
 - (void)stopFetch;
 + (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters;
 

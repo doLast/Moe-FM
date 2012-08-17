@@ -24,8 +24,8 @@ typedef enum {
 
 @interface MFMPlayerManager : NSObject
 
-@property (strong, nonatomic) MFMResourcePlaylist *nextPlaylist;
-@property (nonatomic) NSUInteger nextTrackNum;
+@property (strong, nonatomic) MFMResourcePlaylist *playlist;
+@property (nonatomic) NSUInteger trackNum;
 @property (readonly, nonatomic) MFMResourceSong *currentSong;
 @property (readonly, nonatomic) MFMPlayerStatus playerStatus;
 @property (readonly, nonatomic) double progress;
@@ -33,7 +33,6 @@ typedef enum {
 
 + (MFMPlayerManager *)sharedPlayerManager;
 
-- (BOOL)start;
 - (BOOL)play;
 - (BOOL)pause;
 - (void)next;
