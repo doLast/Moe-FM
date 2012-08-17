@@ -163,7 +163,12 @@
 {
 	if ([segue.identifier isEqualToString:@"ShowFavSongs"]) {
 		MFMSongsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeSong favType:MFMFavTypeHeart fromPage:[NSNumber numberWithInt:1] perPage:[NSNumber numberWithInt:15]];
+		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil
+													userName:nil
+													 objType:MFMResourceObjTypeSong
+													 favType:MFMFavTypeHeart
+													fromPage:[NSNumber numberWithInt:1]
+													 perPage:[NSNumber numberWithInteger:MFMResourcePerPageDefault]];
 		
 		vc.resourceCollection = favs;
 	}
