@@ -30,7 +30,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (void)setPlaylist:(MFMResourcePlaylist *)playlist
 {
-	if (playlist != _playlist) {
+	if (playlist != nil && playlist != _playlist) {
 		_playlist = playlist;
 		self.trackNum = 0;
 	}
@@ -146,9 +146,9 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.playlist];
 		// If start failed
 		if ([self.playlist startFetchNextPage] == NO) {
-			NSLog(@"Fail to start fetching");
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
-			return NO;
+			self.trackNum = 0;
+			return YES;
 		}
 		
 		NSLog(@"Waiting for Playlist to ready");
