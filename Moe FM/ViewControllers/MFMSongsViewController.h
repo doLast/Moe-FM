@@ -14,4 +14,6 @@
 
 @property (retain, nonatomic) MFMResourceFavs *resourceCollection;
 
+- (IBAction)playAll:(id)sender;
+
 @end

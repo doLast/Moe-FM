@@ -14,5 +14,8 @@
 @property (nonatomic, strong, readonly) NSNumber *mayHaveNext;
 
 + (MFMResourcePlaylist *)magicPlaylist;
++ (MFMResourcePlaylist *)playlistWithCollection:(MFMResourceCollection *)collection;
++ (MFMResourcePlaylist *)playlistWithFavType:(MFMResourceObjType)favType;
++ (MFMResourcePlaylist *)playlistWIthObjType:(MFMResourceObjType)objType andIds:(NSArray *)ids;
 
 @end

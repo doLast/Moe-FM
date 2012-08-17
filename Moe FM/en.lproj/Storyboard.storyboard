@@ -394,7 +394,13 @@
                             <outlet property="delegate" destination="v2f-4A-Rpb" id="bKs-aT-1yg"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="SONGS_DISPLAY" id="4pQ-qa-L2P"/>
+                    <navigationItem key="navigationItem" title="SONGS_DISPLAY" id="4pQ-qa-L2P">
+                        <barButtonItem key="rightBarButtonItem" title="PLAY_ALL" id="eUo-K9-Gyl">
+                            <connections>
+                                <action selector="playAll:" destination="v2f-4A-Rpb" id="NGD-8c-lCX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1172" y="622"/>
@@ -480,6 +486,9 @@
         </class>
         <class className="MFMSongsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMSongsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="playAll:"/>
+            </relationships>
         </class>
         <class className="MFMStartingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>

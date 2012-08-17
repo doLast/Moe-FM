@@ -7,6 +7,7 @@
 //
 
 #import "MFMResourcePlaylist.h"
+#import "MFMResourceFavs.h"
 
 static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
@@ -39,9 +40,65 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 + (MFMResourcePlaylist *)magicPlaylist
 {
 	NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
-	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:nil];
+	NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithInteger:MFMResourcePerPageDefault], @"perpage", nil];
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
 	MFMResourcePlaylist *magicPlaylist = [[MFMResourcePlaylist alloc] initWithPlaylistURL:url];
 	return magicPlaylist;
+}
+
++ (MFMResourcePlaylist *)playlistWithCollection:(MFMResourceCollection *)collection
+{
+	if ([collection isKindOfClass:[MFMResourceFavs class]]) {
+		
+		return [MFMResourcePlaylist playlistWithFavType:collection.objType];
+	}
+	return nil;
+}
+
++ (MFMResourcePlaylist *)playlistWithFavType:(MFMResourceObjType)favType
+{
+	if (favType != MFMResourceObjTypeMusic &&
+		favType != MFMResourceObjTypeSong &&
+		favType != MFMResourceObjTypeRadio) {
+		return nil;
+	}
+	NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
+	NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithInteger:MFMResourcePerPageDefault], @"perpage",
+								MFMResourceObjTypeStr[favType], @"fav", 
+								nil];
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
+	MFMResourcePlaylist *playlist = [[MFMResourcePlaylist alloc] initWithPlaylistURL:url];
+	return playlist;
+}
+
++ (MFMResourcePlaylist *)playlistWIthObjType:(MFMResourceObjType)objType andIds:(NSArray *)ids
+{
+	if ((objType != MFMResourceObjTypeMusic &&
+		objType != MFMResourceObjTypeSong &&
+		objType != MFMResourceObjTypeRadio) ||
+		ids == nil ||
+		[ids count] < 1) {
+		return nil;
+	}
+	NSString *urlPrefix = [kPlaylistURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
+	NSMutableString *idStr = [NSMutableString string];
+	for (NSNumber *resourceId in ids) {
+		if ([resourceId isKindOfClass:[NSNumber class]]) {
+			[idStr appendFormat:@"%d,", resourceId.integerValue];
+		}
+	}
+	if (idStr.length > 0) {
+		[idStr substringToIndex:idStr.length - 1];
+	}
+	NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+								[NSNumber numberWithInteger:MFMResourcePerPageDefault], @"perpage",
+								idStr, MFMResourceObjTypeStr[objType], 
+								nil];
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
+	MFMResourcePlaylist *playlist = [[MFMResourcePlaylist alloc] initWithPlaylistURL:url];
+	return playlist;
 }
 
 - (NSURL *)urlForPage:(NSNumber *)page

@@ -8,7 +8,9 @@
 
 #import "MFMSongsViewController.h"
 #import "SVPullToRefresh.h"
+#import "MFMPlayerManager.h"
 
+#import "MFMResourcePlaylist.h"
 #import "MFMResourceFavs.h"
 #import "MFMResourceFav.h"
 #import "MFMResourceSub.h"
@@ -72,6 +74,15 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+#pragma mark - Actions
+
+- (IBAction)playAll:(id)sender
+{
+	MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist playlistWithCollection:self.resourceCollection];
+	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+	playerManager.playlist = resourcePlaylist;
 }
 
 #pragma mark - Table view data source
