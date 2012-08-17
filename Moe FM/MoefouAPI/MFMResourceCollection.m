@@ -8,6 +8,8 @@
 
 #import "MFMResourceCollection.h"
 
+const NSInteger MFMResourcePerPageDefault = 10;
+
 @interface MFMResourceCollection ()
 
 @property (nonatomic, strong) NSArray *resources;
