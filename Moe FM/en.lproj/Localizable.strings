@@ -14,6 +14,7 @@
 "SIGN_OUT" = "Sign out";
 
 /* Metadata */
+"CURRENT_PLAYING" = "Current Playing";
 "UNKNOWN_SONG" = "Unknown Song";
 "UNKNOWN_ARTIST" = "Unknown Artist";
 "UNKNOWN_ALBUM" = "Unknown Album";

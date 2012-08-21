@@ -14,6 +14,7 @@
 "SIGN_OUT" = "登出";
 
 /* Metadata */
+"CURRENT_PLAYING" = "正在播放";
 "UNKNOWN_SONG" = "未知歌曲";
 "UNKNOWN_ARTIST" = "未知艺术家";
 "UNKNOWN_ALBUM" = "未知专辑";

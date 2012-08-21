@@ -8,6 +8,7 @@
 
 #import "MFMPlayerViewController.h"
 #import "MFMHttpImageView.h"
+#import "MFMReflectedImageView.h"
 
 #import "PPRevealSideViewController.h"
 #import "MFMPlayerManager.h"
@@ -25,17 +26,15 @@
 
 @implementation MFMPlayerViewController
 
-@synthesize navTitle = _navTitle;
+@synthesize songInfoView = _songInfoView;
 @synthesize songNameLabel = _songNameLabel;
 @synthesize songInfoLabel = _songInfoLabel;
 @synthesize songProgressIndicator = _songProgressIndicator;
 @synthesize songArtworkImage = _songArtworkImage;
+@synthesize songArtworkReflection = _songArtworkReflection;
 @synthesize songArtworkLoadingIndicator = _songArtworkLoadingIndicator;
 @synthesize songBufferingIndicator = _songBufferingIndicator;
 @synthesize playButton = _playButton;
-@synthesize favButton = _favButton;
-@synthesize dislikeButton = _dislikeButton;
-@synthesize nextButton = _nextButton;
 
 @synthesize progressTimer = _progressTimer;
 
@@ -52,29 +51,22 @@
 		[application beginReceivingRemoteControlEvents];
 	[self becomeFirstResponder]; // this enables listening for events
 	
-	// Decorate the songArtworkImage
-//	CALayer *layer = self.songArtworkImage.layer;
-//    [layer setBorderColor: [[UIColor whiteColor] CGColor]];
-//    [layer setBorderWidth:4.0f];
-//    [layer setShadowColor: [[UIColor blackColor] CGColor]];
-//    [layer setShadowOpacity:0.5f];
-//    [layer setShadowOffset: CGSizeMake(1, 3)];
-//    [layer setShadowRadius:2.0];
-//    [self.songArtworkImage setClipsToBounds:NO];
 	self.songArtworkImage.delegate = self;
+	self.songInfoView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BarLCD"]];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerSongChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerStatusChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 	
 	[self updatePlaybackStatus];
-	[self updateAuthorization];
+	
+	self.title = NSLocalizedString(@"CURRENT_PLAYING", @"");
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
 	// Hide Navigation bar
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -88,18 +80,6 @@
 }
 
 #pragma mark - view updates
-
-- (void)updateAuthorization
-{
-	if ([MFMOAuth sharedOAuth].canAuthorize) {
-		self.favButton.enabled = YES;
-		self.dislikeButton.enabled = YES;
-	}
-	else {
-		self.favButton.enabled = NO;
-		self.dislikeButton.enabled = NO;
-	}
-}
 
 - (void)updateSongInfo
 {
@@ -139,14 +119,6 @@
 			self.songArtworkImage.imageURL = [NSURL URLWithString:coverURLStr];
 			[self.songArtworkLoadingIndicator startAnimating];
 		}
-		
-		// Toggle like
-		if ([currentSong.favSub didAddToFavAsType:MFMFavTypeHeart]) {
-			self.favButton.selected = YES;
-		}
-		else {
-			self.favButton.selected = NO;
-		}
 	}
 }
 
@@ -167,7 +139,7 @@
 			[self toggleTimer:YES];
 			break;
 		case MFMPlayerStatusPaused:
-			self.playButton.alpha = 0.5;
+			self.playButton.alpha = 0.2;
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:NO];
 			break;
@@ -220,27 +192,6 @@
 	}
 }
 
-- (IBAction)toggleFavourite:(id)sender
-{
-	self.favButton.enabled = NO;
-	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:favSub];
-	[favSub toggleFavAsType:MFMFavTypeHeart];
-}
-
-- (IBAction)toggleDislike:(id)sender
-{
-	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
-	[favSub toggleFavAsType:MFMFavTypeTrash];
-	[self nextTrack:self];
-}
-
-- (IBAction)nextTrack:(id)sender
-{
-	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
-	[playerManager next];
-}
-
 /* The iPod controls will send these events when the app is in the background */
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
@@ -257,7 +208,7 @@
 		case UIEventSubtypeRemoteControlStop:
 			break;
 		case UIEventSubtypeRemoteControlNextTrack:
-			[self nextTrack:self];
+			[[MFMPlayerManager sharedPlayerManager] next];
 			break;
 		case UIEventSubtypeRemoteControlPreviousTrack:
 			break;
@@ -271,6 +222,8 @@
 - (void)imageView:(MFMHttpImageView *)imageView didFinishLoadingImage:(UIImage *)image
 {
 	[self.songArtworkLoadingIndicator stopAnimating];
+	
+	self.songArtworkReflection.image = image;
 	
 	MPNowPlayingInfoCenter *nowPlayingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
 	MPMediaItemArtwork *mediaItemArtwork = [[MPMediaItemArtwork alloc] initWithImage:image];
@@ -290,19 +243,9 @@
 {
 	if (notification.name == MFMPlayerSongChangedNotification) {
 		[self updateSongInfo];
-		[self updateAuthorization];
 	}
 	else if (notification.name == MFMPlayerStatusChangedNotification) {
 		[self updatePlaybackStatus];
-	}
-	else if (notification.name == MFMOAuthStatusChangedNotification) {
-		[self updateAuthorization];
-	}
-	else if (notification.name == MFMResourceNotification) {
-		[self updateSongInfo];
-		[self updateAuthorization];
-
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:notification.object];
 	}
 }
 
