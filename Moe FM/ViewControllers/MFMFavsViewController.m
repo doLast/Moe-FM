@@ -116,13 +116,30 @@
 		MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
 		
 		cell.textLabel.text = sub.subTitle;
-		cell.detailTextLabel.text = [sub.subId stringValue];
+		cell.detailTextLabel.text = sub.wiki.wikiTitle;
 	}
 	else if ([resource.obj isKindOfClass:[MFMResourceWiki class]]) {
 		MFMResourceWiki *wiki = (MFMResourceWiki *)resource.obj;
-		
 		cell.textLabel.text = wiki.wikiTitle;
-		cell.detailTextLabel.text = [wiki.wikiId stringValue];
+		cell.detailTextLabel.text = @"";
+		
+		if (wiki.wikiType == MFMResourceObjTypeMusic) 
+		for (NSDictionary *meta in wiki.wikiMeta) {
+			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
+				cell.detailTextLabel.text = [meta objectForKey:@"meta_value"];
+			}
+		}
+		
+		if (cell.detailTextLabel.text.length == 0) 
+		for (NSDictionary *meta in wiki.wikiMeta) {
+			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
+				cell.detailTextLabel.text = [meta objectForKey:@"meta_value"];
+			}
+		}
+		
+		if (cell.detailTextLabel.text.length == 0) {
+			cell.detailTextLabel.text = NSLocalizedString(@"UNKNOWN_ARTIST", @"");
+		}
 	}
 
 	return cell;

@@ -7,6 +7,7 @@
 //
 
 #import "MFMResourceSub.h"
+#import "MFMResourceWiki.h"
 
 @interface MFMResourceSub ()
 
@@ -23,30 +24,32 @@
 @property (retain, nonatomic) NSURL *subFmURL;
 @property (retain, nonatomic) NSURL *subURL;
 @property (retain, nonatomic) NSString *subViewTitle;
+@property (retain, nonatomic) MFMResourceWiki *wiki;
 
 @end
 
 @implementation MFMResourceSub
 
-@synthesize subId;
-@synthesize subParentWiki;
-@synthesize subTitle;
-@synthesize subTitleEncode;
-@synthesize subType;
-@synthesize subOrder;
-@synthesize subMeta;
-@synthesize subAbout;
-@synthesize subDate;
-@synthesize subModified;
-@synthesize subFmURL;
-@synthesize subURL;
-@synthesize subViewTitle;
+@synthesize subId = _subId;
+@synthesize subParentWiki = _subParentWiki;
+@synthesize subTitle = _subTitle;
+@synthesize subTitleEncode = _subTitleEncode;
+@synthesize subType = _subType;
+@synthesize subOrder = _subOrder;
+@synthesize subMeta = _subMeta;
+@synthesize subAbout = _subAbout;
+@synthesize subDate = _subDate;
+@synthesize subModified = _subModified;
+@synthesize subFmURL = _subFmURL;
+@synthesize subURL = _subURL;
+@synthesize subViewTitle = _subViewTitle;
+@synthesize wiki = _wiki;
 
 # pragma mark - Override MFMResource Methods
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmURL: %@\nurl: %@\nviewTitle: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMResourceObjTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmURL, self.subURL, self.subViewTitle, nil];
+	return [NSString stringWithFormat:@"MFMResourceSub\nid: %@\nparentWiki: %@\ntitle: %@\ntitleEncode: %@\ntype: %@\norder: %@\nmeta: %@\nabout: %@\ndate: %@\nmodified: %@\nfmURL: %@\nurl: %@\nviewTitle: %@\nwiki: %@\n", self.subId, self.subParentWiki, self.subTitle, self.subTitleEncode, MFMResourceObjTypeStr[self.subType], self.subOrder, self.subMeta, self.subAbout, self.subDate, self.subModified, self.subFmURL, self.subURL, self.subViewTitle, self.wiki, nil];
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
@@ -65,6 +68,9 @@
 	self.subFmURL = [NSURL URLWithString:[resource objectForKey:@"sub_fm_url"]];
 	self.subURL = [NSURL URLWithString:[resource objectForKey:@"sub_url"]];
 	self.subViewTitle = [resource objectForKey:@"sub_view_title"];
+	if ([resource objectForKey:@"wiki"] != nil) {
+		self.wiki = [[MFMResourceWiki alloc] initWithResouce:[resource objectForKey:@"wiki"]];
+	}
 	
 	return YES;
 }

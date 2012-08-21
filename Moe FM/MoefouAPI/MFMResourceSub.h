@@ -8,6 +8,8 @@
 
 #import "MFMResource.h"
 
+@class MFMResourceWiki;
+
 @interface MFMResourceSub : MFMResource
 
 @property (retain, nonatomic, readonly) NSNumber *subId;
@@ -23,5 +25,6 @@
 @property (retain, nonatomic, readonly) NSURL *subFmURL;
 @property (retain, nonatomic, readonly) NSURL *subURL;
 @property (retain, nonatomic, readonly) NSString *subViewTitle;
+@property (retain, nonatomic, readonly) MFMResourceWiki *wiki;
 
 @end
