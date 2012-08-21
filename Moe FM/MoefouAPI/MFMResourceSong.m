@@ -85,13 +85,13 @@
 		self.favWiki = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_wiki"]];
 	}
 	else {
-		self.favWiki = [[MFMResourceFav alloc] initWithObjId:self.wikiId andType:MFMResourceObjTypeWiki];
+		self.favWiki = [[MFMResourceFav alloc] initWithObjId:self.wikiId andType:MFMResourceObjTypeMusic];
 	}
 	if (![[resource objectForKey:@"fav_sub"] isKindOfClass:[NSNull class]]) {
 		self.favSub = [[MFMResourceFav alloc] initWithResouce:[resource objectForKey:@"fav_sub"]];
 	}
 	else {
-		self.favSub = [[MFMResourceFav alloc] initWithObjId:self.subId andType:MFMResourceObjTypeSub];
+		self.favSub = [[MFMResourceFav alloc] initWithObjId:self.subId andType:MFMResourceObjTypeSong];
 	}
 			
 	return YES;
