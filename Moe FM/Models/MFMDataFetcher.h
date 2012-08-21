@@ -27,7 +27,7 @@ typedef enum {
 
 @interface MFMDataFetcher : NSObject
 
-@property (readonly, assign, nonatomic) BOOL didFinish;
+@property (readonly, nonatomic) BOOL didFinish;
 @property (readonly, nonatomic) BOOL isFetching;
 
 - (MFMDataFetcher *)initWithURL:(NSURL *)url dataType:(MFMDataType)type;

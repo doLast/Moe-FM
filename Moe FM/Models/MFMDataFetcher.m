@@ -31,6 +31,9 @@
 
 - (BOOL)isFetching
 {
+	if (self.fetcher == nil) {
+		return NO;
+	}
 	return self.fetcher.isFetching;
 }
 
@@ -47,7 +50,9 @@
 		}
 		
 		self.request = request;
+		self.fetcher = nil;
 		self.type = type;
+		self.delegate = nil;
 		self.didFinish = NO;
 	}
 	return self;
@@ -56,23 +61,22 @@
 - (void)beginFetchWithDelegate:(id <MFMDataFetcherDelegate>)delegate
 {
 	@synchronized(self) {
-		self.delegate = delegate;
+		if ([self isFetching] || delegate == nil) {
+			return;
+		}
 		
+		self.delegate = delegate;
 		self.fetcher = [GTMHTTPFetcher fetcherWithRequest:self.request];
 
 		switch (self.type) {
 			case MFMDataTypeImage:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(imageFetcher:finishedWithData:error:)];
-				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
 				break;
 			case MFMDataTypeJson:
 			default:
 				[self.fetcher beginFetchWithDelegate:self didFinishSelector:@selector(jsonFetcher:finishedWithData:error:)];
-				NSLog(@"Fetcher begin %d", self.fetcher.isFetching);
 				break;
 		}
-		
-		
 	}
 }
 
@@ -111,8 +115,9 @@
 		if (error != nil) {
 			[self handelError:error];
 		}
-		
-		[self.delegate fetcher:self didFinishWithJson:json];
+		else {
+			[self.delegate fetcher:self didFinishWithJson:json];
+		}
 	}
 	else {
 		[self handelError:error];
