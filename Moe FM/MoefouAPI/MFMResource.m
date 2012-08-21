@@ -7,6 +7,7 @@
 //
 
 #import "MFMResource.h"
+#import "MFMDataFetcher.h"
 
 const NSString * const MFMResourceObjTypeStr[] =
 {@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio",  @"wiki", @"ep", @"song", @"sub"};
@@ -14,13 +15,12 @@ NSString * const MFMResourceNotification = @"MFMResourceNotification";
 NSString * const MFMAPIFormat = @"json";
 NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
-@interface MFMResource ()
+@interface MFMResource () <MFMDataFetcherDelegate>
 
 @property (retain, nonatomic) NSDictionary *response;
 @property (retain, nonatomic) NSError *error;
 @property (retain, nonatomic) MFMDataFetcher *fetcher;
 
-- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType;
 - (BOOL)prepareTheResource:(NSDictionary *)resource;
 
 @end
@@ -42,14 +42,14 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 	return self;
 }
 
-- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType
+- (BOOL)startFetchWithURL:(NSURL *)url
 {
 	if (self.fetcher != nil){
 		return YES;
 	}
 	
 	NSLog(@"Resource start fetching URL: %@", url);
-	self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:dataType];
+	self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
 	[self.fetcher beginFetchWithDelegate:self];
 	
 	return YES;

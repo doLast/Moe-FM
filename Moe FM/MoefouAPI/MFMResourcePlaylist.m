@@ -129,7 +129,7 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 		NSLog(@"No more pages in playlist");
 		return NO;
 	}
-	return [self startFetchWithURL:url andDataType:MFMDataTypeJson];
+	return [self startFetchWithURL:url];
 }
 
 # pragma mark - Override MFMResource Methods

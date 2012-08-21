@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MFMDataFetcher.h"
 
 typedef enum {
 	MFMResourceObjTypeTv = 0,
@@ -29,12 +28,12 @@ extern const NSString * const MFMResourceObjTypeStr[];
 extern NSString * const MFMResourceNotification;
 extern NSString * const MFMAPIFormat;
 
-@interface MFMResource : NSObject <MFMDataFetcherDelegate>
+@interface MFMResource : NSObject
 
 @property (readonly, retain, nonatomic) NSError *error;
 
 - (MFMResource *)initWithResouce:(NSDictionary *)resource;
-- (BOOL)startFetchWithURL:(NSURL *)url andDataType:(MFMDataType)dataType;
+- (BOOL)startFetchWithURL:(NSURL *)url;
 - (void)stopFetch;
 + (NSURL *)urlWithPrefix:(NSString *)urlPrefix parameters:(NSDictionary *)parameters;
 

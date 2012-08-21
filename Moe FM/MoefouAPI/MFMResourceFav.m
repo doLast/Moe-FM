@@ -9,11 +9,12 @@
 #import "MFMResourceFav.h"
 #import "MFMResourceWiki.h"
 #import "MFMResourceSub.h"
+#import "MFMDataFetcher.h"
 
 NSString * const kAddFavURLStr = @"http://api.moefou.org/fav/add.";
 NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
-@interface MFMResourceFav ()
+@interface MFMResourceFav () <MFMDataFetcherDelegate>
 
 @property (retain, nonatomic) NSNumber *favId;
 @property (retain, nonatomic) NSNumber *favObjId;
@@ -22,7 +23,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 @property (retain, nonatomic) NSDate *favDate;
 @property (assign, nonatomic) MFMFavType favType;
 @property (retain, nonatomic) MFMResource *obj;
-@property (retain, nonatomic) MFMDataFetcher *fetcher;
+@property (retain, nonatomic) MFMDataFetcher *favFetcher;
 
 @end
 
@@ -35,6 +36,7 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 @synthesize favDate = _favDate;
 @synthesize favType = _favType;
 @synthesize obj = _obj;
+@synthesize favFetcher = _favFetcher;
 
 - (MFMResourceFav *)initWithObjId:(NSNumber *)objId andType:(MFMResourceObjType)objType
 {
@@ -75,13 +77,13 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
 	NSLog(@"Toggling fav with url: %@", url);
 	
-	if (self.fetcher != nil){
-		[self.fetcher stop];
-		self.fetcher = nil;
+	if (self.favFetcher != nil){
+		[self.favFetcher stop];
+		self.favFetcher = nil;
 	}
 	
-	self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
-	[self.fetcher beginFetchWithDelegate:self];
+	self.favFetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
+	[self.favFetcher beginFetchWithDelegate:self];
 	
 	return;
 }

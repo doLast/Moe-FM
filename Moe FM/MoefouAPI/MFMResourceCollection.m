@@ -71,7 +71,7 @@ const NSInteger MFMResourcePerPageDefault = 10;
 		return NO;
 	}
 	
-	return [self startFetchWithURL:url andDataType:MFMDataTypeJson];
+	return [self startFetchWithURL:url];
 }
 
 - (NSURL *)urlForPage:(NSNumber *)page
