@@ -87,8 +87,8 @@
 		[oldFetcher stop];
 	}
 	
-	self.image = self.placeholderImage;
-	self.highlightedImage = self.highlightedPlaceholderImage;
+//	self.image = self.placeholderImage;
+//	self.highlightedImage = self.highlightedPlaceholderImage;
 }
 
 # pragma mark - MFMDataFetcherDelegate
