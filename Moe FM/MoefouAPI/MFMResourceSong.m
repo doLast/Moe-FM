@@ -18,7 +18,7 @@
 @property (retain, nonatomic) NSString *fileType;
 @property (retain, nonatomic) NSNumber *wikiId;
 @property (assign, nonatomic) MFMResourceObjType wikiType;
-@property (retain, nonatomic) NSArray *cover;
+@property (retain, nonatomic) NSDictionary *cover;
 @property (retain, nonatomic) NSString *title;
 @property (retain, nonatomic) NSString *wikiTitle;
 @property (retain, nonatomic) NSURL *wikiURL;
