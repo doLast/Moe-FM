@@ -68,6 +68,7 @@
 - (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPushController:(UIViewController *)pushedController {
 	if (pushedController == self.menuNavigationController) {
 		[self.playerNavigationController setNavigationBarHidden:NO animated:YES];
+		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 	}
 }
 
@@ -81,6 +82,7 @@
 
 - (void) pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController {
 	[self.playerNavigationController setNavigationBarHidden:YES animated:YES];
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
 }
 
 //- (void) pprevealSideViewController:(PPRevealSideViewController *)controller didChangeCenterController:(UIViewController *)newCenterController {
