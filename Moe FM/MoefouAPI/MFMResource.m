@@ -57,8 +57,11 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
 - (void)stopFetch
 {
-	[self.fetcher stop];
-	self.fetcher = nil;
+	if (self.fetcher != nil) {
+		MFMDataFetcher *oldFetcher = self.fetcher;
+		self.fetcher = nil;
+		[oldFetcher stop];
+	}
 }
 
 # pragma mark - class helpers
