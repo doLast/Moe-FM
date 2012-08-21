@@ -50,6 +50,7 @@
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
 		25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */; };
 		25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */; };
+		25BA9FA915E38E98004B37BB /* MFMPlaybackControlViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BA9FA815E38E97004B37BB /* MFMPlaybackControlViewController.m */; };
 		25E3F5C015395B78003FABD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E3F5BF15395723003FABD2 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		25E3F5CA15396020003FABD2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E3F5C915396020003FABD2 /* SystemConfiguration.framework */; };
 		25E3F5D11539A474003FABD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5D31539A474003FABD2 /* Localizable.strings */; };
@@ -148,6 +149,8 @@
 		25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		25BA9FA415E36A66004B37BB /* MFMHttpImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMHttpImageView.h; sourceTree = "<group>"; };
 		25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMHttpImageView.m; sourceTree = "<group>"; };
+		25BA9FA715E38E96004B37BB /* MFMPlaybackControlViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlaybackControlViewController.h; sourceTree = "<group>"; };
+		25BA9FA815E38E97004B37BB /* MFMPlaybackControlViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlaybackControlViewController.m; sourceTree = "<group>"; };
 		25E3F5BE15395723003FABD2 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		25E3F5BF15395723003FABD2 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		25E3F5C915396020003FABD2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -350,6 +353,8 @@
 				257297CE15A53C87008EB903 /* MFMMenuViewController.m */,
 				256B144415A6381400FD43D9 /* MFMFavsViewController.h */,
 				256B144515A6381400FD43D9 /* MFMFavsViewController.m */,
+				25BA9FA715E38E96004B37BB /* MFMPlaybackControlViewController.h */,
+				25BA9FA815E38E97004B37BB /* MFMPlaybackControlViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */,
 				25124AC015DD6A5300B011AD /* MFMResourceCollection.m in Sources */,
 				25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */,
+				25BA9FA915E38E98004B37BB /* MFMPlaybackControlViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

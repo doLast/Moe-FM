@@ -11,7 +11,10 @@
 
 @interface MFMStartingViewController ()
 
-@property (retain, nonatomic) PPRevealSideViewController *revealSideViewController;
+@property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
+@property (nonatomic, weak) UINavigationController *playerNavigationController;
+@property (nonatomic, weak) UINavigationController *menuNavigationController;
+@property (nonatomic, weak) UIViewController *playbackControlViewController;
 
 @end
 
@@ -35,16 +38,22 @@
 {
 	[super viewDidAppear:animated];
 	
-	UINavigationController *playerController = [self.storyboard instantiateViewControllerWithIdentifier:@"PlayerNavigation"];
-	UINavigationController *menuController = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuNavigation"];
+	UINavigationController *player = [self.storyboard instantiateViewControllerWithIdentifier:@"PlayerNavigation"];
+	UINavigationController *menu = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuNavigation"];
+	UIViewController *playbackControl = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaybackControl"];
+	PPRevealSideViewController *revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:player];
 	
-	PPRevealSideViewController *revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:playerController];
-	[revealSideViewController preloadViewController:menuController forSide:PPRevealSideDirectionTop withOffset:53];
+	[revealSideViewController preloadViewController:menu forSide:PPRevealSideDirectionTop withOffset:53];
+	[revealSideViewController preloadViewController:playbackControl forSide:PPRevealSideDirectionLeft withOffset:250];
+	[revealSideViewController preloadViewController:playbackControl forSide:PPRevealSideDirectionRight withOffset:250];
+	
 	revealSideViewController.panInteractionsWhenClosed = PPRevealSideInteractionContentView | PPRevealSideInteractionNavigationBar;
-	
 	revealSideViewController.delegate = self;
 	
 	self.revealSideViewController = revealSideViewController;
+	self.playerNavigationController = player;
+	self.menuNavigationController = menu;
+	self.playbackControlViewController = playbackControl;
 	
 	[self presentViewController:self.revealSideViewController animated:NO completion:nil];
 }
@@ -56,33 +65,34 @@
 
 #pragma mark - PPRevealSideViewController delegate
 
-//- (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPushController:(UIViewController *)pushedController {
-//    
-//}
-//
+- (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPushController:(UIViewController *)pushedController {
+	if (pushedController == self.menuNavigationController) {
+		[self.playerNavigationController setNavigationBarHidden:NO animated:YES];
+	}
+}
+
 //- (void) pprevealSideViewController:(PPRevealSideViewController *)controller didPushController:(UIViewController *)pushedController {
-//    
+//	
 //}
-//
+
 //- (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPopToController:(UIViewController *)centerController {
 //    
 //}
-//
-//- (void) pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController {
-//    
-//}
-//
+
+- (void) pprevealSideViewController:(PPRevealSideViewController *)controller didPopToController:(UIViewController *)centerController {
+	[self.playerNavigationController setNavigationBarHidden:YES animated:YES];
+}
+
 //- (void) pprevealSideViewController:(PPRevealSideViewController *)controller didChangeCenterController:(UIViewController *)newCenterController {
 //    
 //}
-//
+
 //- (BOOL) pprevealSideViewController:(PPRevealSideViewController *)controller shouldDeactivateDirectionGesture:(UIGestureRecognizer*)gesture forView:(UIView*)view {
 //    return NO;    
 //}
 
-- (PPRevealSideDirection)pprevealSideViewController:(PPRevealSideViewController*)controller directionsAllowedForPanningOnView:(UIView*)view {
-	
-    return PPRevealSideDirectionTop;
+- (PPRevealSideDirection)pprevealSideViewController:(PPRevealSideViewController*)controller directionsAllowedForPanningOnView:(UIView*)view {	
+    return PPRevealSideDirectionTop | PPRevealSideDirectionLeft | PPRevealSideDirectionRight;
 }
 
 

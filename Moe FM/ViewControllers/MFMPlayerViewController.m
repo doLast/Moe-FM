@@ -34,7 +34,6 @@
 @synthesize songBufferingIndicator = _songBufferingIndicator;
 @synthesize playButton = _playButton;
 @synthesize favButton = _favButton;
-@synthesize favProcessingIndicator = _favProcessingIndicator;
 @synthesize dislikeButton = _dislikeButton;
 @synthesize nextButton = _nextButton;
 
@@ -70,6 +69,12 @@
 	
 	[self updatePlaybackStatus];
 	[self updateAuthorization];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	// Hide Navigation bar
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -160,13 +165,11 @@
 			self.playButton.alpha = 0;
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:YES];
-			[self.navigationController setNavigationBarHidden:YES animated:YES];
 			break;
 		case MFMPlayerStatusPaused:
 			self.playButton.alpha = 0.5;
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:NO];
-			[self.navigationController setNavigationBarHidden:NO animated:YES];
 			break;
 		case MFMPlayerStatusWaiting:
 			self.playButton.alpha = 0;
