@@ -7,6 +7,8 @@
 //
 
 #import "MFMPlayerViewController.h"
+#import "MFMHttpImageView.h"
+
 #import "PPRevealSideViewController.h"
 #import "MFMPlayerManager.h"
 #import "MFMResourceSong.h"
@@ -15,7 +17,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface MFMPlayerViewController ()
+@interface MFMPlayerViewController () <MFMHttpImageViewDelegate>
 
 @property (strong, nonatomic) NSTimer *progressTimer;
 
@@ -52,14 +54,15 @@
 	[self becomeFirstResponder]; // this enables listening for events
 	
 	// Decorate the songArtworkImage
-	CALayer *layer = self.songArtworkImage.layer;
-    [layer setBorderColor: [[UIColor whiteColor] CGColor]];
-    [layer setBorderWidth:4.0f];
-    [layer setShadowColor: [[UIColor blackColor] CGColor]];
-    [layer setShadowOpacity:0.5f];
-    [layer setShadowOffset: CGSizeMake(1, 3)];
-    [layer setShadowRadius:2.0];
-    [self.songArtworkImage setClipsToBounds:NO];
+//	CALayer *layer = self.songArtworkImage.layer;
+//    [layer setBorderColor: [[UIColor whiteColor] CGColor]];
+//    [layer setBorderWidth:4.0f];
+//    [layer setShadowColor: [[UIColor blackColor] CGColor]];
+//    [layer setShadowOpacity:0.5f];
+//    [layer setShadowOffset: CGSizeMake(1, 3)];
+//    [layer setShadowRadius:2.0];
+//    [self.songArtworkImage setClipsToBounds:NO];
+	self.songArtworkImage.delegate = self;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerSongChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerStatusChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
@@ -125,6 +128,13 @@
 		// Post to NowPlayingInfoCenter
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
 		
+		// Update Artwork
+		NSString *coverURLStr = [currentSong.cover objectForKey:@"large"];
+		if (coverURLStr != nil) {
+			self.songArtworkImage.imageURL = [NSURL URLWithString:coverURLStr];
+			[self.songArtworkLoadingIndicator startAnimating];
+		}
+		
 		// Toggle like
 		if ([currentSong.favSub didAddToFavAsType:MFMFavTypeHeart]) {
 			self.favButton.selected = YES;
@@ -150,11 +160,13 @@
 			self.playButton.alpha = 0;
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:YES];
+			[self.navigationController setNavigationBarHidden:YES animated:YES];
 			break;
 		case MFMPlayerStatusPaused:
 			self.playButton.alpha = 0.5;
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:NO];
+			[self.navigationController setNavigationBarHidden:NO animated:YES];
 			break;
 		case MFMPlayerStatusWaiting:
 			self.playButton.alpha = 0;
@@ -249,6 +261,24 @@
 		default:
 			break;
 	}
+}
+
+#pragma mark - MFMHttpImageViewDelegate
+
+- (void)imageView:(MFMHttpImageView *)imageView didFinishLoadingImage:(UIImage *)image
+{
+	[self.songArtworkLoadingIndicator stopAnimating];
+	
+	MPNowPlayingInfoCenter *nowPlayingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
+	MPMediaItemArtwork *mediaItemArtwork = [[MPMediaItemArtwork alloc] initWithImage:image];
+	NSMutableDictionary *newInfo = [NSMutableDictionary dictionaryWithDictionary:nowPlayingInfoCenter.nowPlayingInfo];
+	[newInfo setValue:mediaItemArtwork forKey:MPMediaItemPropertyArtwork];
+	nowPlayingInfoCenter.nowPlayingInfo = newInfo;
+}
+
+- (void)imageView:(MFMHttpImageView *)imageView didFailLoadingURL:(NSURL *)url
+{
+	[self.songArtworkLoadingIndicator stopAnimating];
 }
 
 #pragma mark - NotificationCenter

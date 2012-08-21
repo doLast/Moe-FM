@@ -20,7 +20,7 @@
                                 <subviews>
                                     <view alpha="0.80000000000000004" contentMode="scaleToFill" id="c07-ZP-6Va">
                                         <rect key="frame" x="0.0" y="316" width="320" height="100"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="47m-zx-rHA">
                                                 <rect key="frame" x="136" y="26" width="48" height="48"/>
@@ -70,7 +70,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="C9Z-lL-iY7">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
@@ -99,13 +99,13 @@
                                                 <size key="shadowOffset" width="1" height="1"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="20G-j2-d9N">
                                         <rect key="frame" x="64" y="112" width="192" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" id="Yqi-7F-20s">
+                                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="cover_large" id="Yqi-7F-20s" customClass="MFMHttpImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="192" height="192"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
@@ -149,7 +149,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.9647059440612793" green="0.9647059440612793" blue="0.9647059440612793" alpha="1" colorSpace="deviceRGB"/>
@@ -391,6 +391,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cover_large" width="16" height="16"/>
         <image name="cover_small" width="16" height="16"/>
         <image name="dislike_no" width="16" height="16"/>
         <image name="dislike_yes" width="16" height="16"/>
@@ -405,6 +406,9 @@
             <relationships>
                 <relationship kind="action" name="playAll:"/>
             </relationships>
+        </class>
+        <class className="MFMHttpImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMHttpImageView.h"/>
         </class>
         <class className="MFMMenuViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
@@ -427,7 +431,7 @@
                 <relationship kind="outlet" name="navTitle" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="songArtworkImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="songArtworkImage" candidateClass="MFMHttpImageView"/>
                 <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="songInfoLabel" candidateClass="UILabel"/>

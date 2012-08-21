@@ -49,6 +49,7 @@
 		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
 		25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */; };
+		25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */; };
 		25E3F5C015395B78003FABD2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 25E3F5BF15395723003FABD2 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		25E3F5CA15396020003FABD2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E3F5C915396020003FABD2 /* SystemConfiguration.framework */; };
 		25E3F5D11539A474003FABD2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5D31539A474003FABD2 /* Localizable.strings */; };
@@ -145,6 +146,8 @@
 		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		25BA9FA415E36A66004B37BB /* MFMHttpImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMHttpImageView.h; sourceTree = "<group>"; };
+		25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMHttpImageView.m; sourceTree = "<group>"; };
 		25E3F5BE15395723003FABD2 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		25E3F5BF15395723003FABD2 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		25E3F5C915396020003FABD2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -338,6 +341,7 @@
 		254ECAB115A4BB9500251A0F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				25BA9FA315E369C8004B37BB /* UIComponents */,
 				254ECAB215A4BC1A00251A0F /* MFMPlayerViewController.h */,
 				254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */,
 				254ECAC415A4C0F800251A0F /* MFMStartingViewController.h */,
@@ -367,10 +371,7 @@
 				25124AC215DD73F700B011AD /* ResourceEntry */,
 				25124ABE15DD6A5200B011AD /* MFMResourceCollection.h */,
 				25124ABF15DD6A5200B011AD /* MFMResourceCollection.m */,
-				256B144015A6267F00FD43D9 /* MFMResourceFavs.h */,
-				256B144115A6267F00FD43D9 /* MFMResourceFavs.m */,
-				250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */,
-				250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */,
+				25BA9FA215E3698A004B37BB /* ResourceCollection */,
 			);
 			path = MoefouAPI;
 			sourceTree = "<group>";
@@ -393,6 +394,26 @@
 				2508D1D615DBEECB0035126A /* UIDevice+Hardware.m */,
 			);
 			path = AudioStreamer;
+			sourceTree = "<group>";
+		};
+		25BA9FA215E3698A004B37BB /* ResourceCollection */ = {
+			isa = PBXGroup;
+			children = (
+				256B144015A6267F00FD43D9 /* MFMResourceFavs.h */,
+				256B144115A6267F00FD43D9 /* MFMResourceFavs.m */,
+				250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */,
+				250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */,
+			);
+			name = ResourceCollection;
+			sourceTree = "<group>";
+		};
+		25BA9FA315E369C8004B37BB /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				25BA9FA415E36A66004B37BB /* MFMHttpImageView.h */,
+				25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */,
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,6 +532,7 @@
 				2508D1D915DBEECB0035126A /* UIDevice+Hardware.m in Sources */,
 				25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */,
 				25124AC015DD6A5300B011AD /* MFMResourceCollection.m in Sources */,
+				25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class MFMHttpImageView;
+
 @interface MFMPlayerViewController : UIViewController
 
 @property (assign, nonatomic) IBOutlet UINavigationItem *navTitle;
@@ -15,7 +17,7 @@
 @property (assign, nonatomic) IBOutlet UILabel *songNameLabel;
 @property (assign, nonatomic) IBOutlet UILabel *songInfoLabel;
 @property (assign, nonatomic) IBOutlet UIProgressView *songProgressIndicator;
-@property (assign, nonatomic) IBOutlet UIImageView *songArtworkImage;
+@property (assign, nonatomic) IBOutlet MFMHttpImageView *songArtworkImage;
 @property (assign, nonatomic) IBOutlet UIActivityIndicatorView *songArtworkLoadingIndicator;
 @property (assign, nonatomic) IBOutlet UIActivityIndicatorView *songBufferingIndicator;
 @property (assign, nonatomic) IBOutlet UIButton *playButton;
