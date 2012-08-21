@@ -133,8 +133,8 @@
 	NSLog(@"Succeeded! Received %d bytes of data",[data length]);
 	
 	if (error == nil && 
-		self.delegate && 
-		[self.delegate respondsToSelector:@selector(fetcher:didFinishWithJson:)]) {
+		self.delegate &&
+		[self.delegate respondsToSelector:@selector(fetcher:didFinishWithImage:)]) {
 		
 		UIImage *image = [UIImage imageWithData:data];
 		
