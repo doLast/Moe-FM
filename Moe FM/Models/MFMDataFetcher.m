@@ -8,6 +8,7 @@
 
 #import "MFMDataFetcher.h"
 #import "MFMOAuth.h"
+#import "MFMNetworkManager.h"
 
 @interface MFMDataFetcher ()
 
@@ -61,6 +62,11 @@
 - (void)beginFetchWithDelegate:(id <MFMDataFetcherDelegate>)delegate
 {
 	@synchronized(self) {
+		if ([MFMNetworkManager sharedNetworkManager].allowConnection == NO) {
+			NSError *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:ENETUNREACH userInfo:nil];
+			[self handelError:error];
+			return;
+		}
 		if ([self isFetching] || delegate == nil) {
 			return;
 		}
