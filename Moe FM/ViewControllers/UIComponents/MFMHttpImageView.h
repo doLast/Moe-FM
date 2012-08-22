@@ -15,7 +15,7 @@
 @optional
 - (void)imageView:(MFMHttpImageView *)imageView willFinishLoadingImage:(UIImage *)image;
 - (void)imageView:(MFMHttpImageView *)imageView didFinishLoadingImage:(UIImage *)image;
-- (void)imageView:(MFMHttpImageView *)imageView didFailLoadingURL:(NSURL *)url;
+- (void)imageView:(MFMHttpImageView *)imageView didFailLoadingWithError:(NSError *)error;
 
 @end
 

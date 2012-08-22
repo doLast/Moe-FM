@@ -235,7 +235,7 @@
 	nowPlayingInfoCenter.nowPlayingInfo = newInfo;
 }
 
-- (void)imageView:(MFMHttpImageView *)imageView didFailLoadingURL:(NSURL *)url
+- (void)imageView:(MFMHttpImageView *)imageView didFailLoadingWithError:(NSError *)error
 {
 	[self.songArtworkLoadingIndicator stopAnimating];
 }

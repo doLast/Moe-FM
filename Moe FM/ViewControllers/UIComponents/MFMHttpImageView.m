@@ -108,11 +108,10 @@
 - (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithError:(NSError *)error
 {
 	NSLog(@"ImageView fail to load %@", self.imageURL);
-	self.fetcher = nil;
 	[self stopFetching];
 	
 	if (self.delegate != nil && [self.delegate respondsToSelector:@selector(imageView:didFailLoadingURL:)]) {
-		[self.delegate imageView:self didFailLoadingURL:self.imageURL];
+		[self.delegate imageView:self didFailLoadingWithError:error];
 	}
 }
 
