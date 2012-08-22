@@ -51,6 +51,7 @@
 		25A515D115E3E1AC00D1267A /* table-BG-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */; };
 		25A515D215E3E1AC00D1267A /* table-BG-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */; };
 		25A515D415E4595600D1267A /* BarLCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D315E4595600D1267A /* BarLCD.png */; };
+		25A515DA15E46BF800D1267A /* MFMNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A515D915E46BF800D1267A /* MFMNetworkManager.m */; };
 		25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B281531DC7900D1EAEC /* MediaPlayer.framework */; };
 		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
@@ -156,6 +157,8 @@
 		25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-BG-pattern.png"; sourceTree = "<group>"; };
 		25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-BG-pattern@2x.png"; sourceTree = "<group>"; };
 		25A515D315E4595600D1267A /* BarLCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarLCD.png; sourceTree = "<group>"; };
+		25A515D815E46BF800D1267A /* MFMNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMNetworkManager.h; sourceTree = "<group>"; };
+		25A515D915E46BF800D1267A /* MFMNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMNetworkManager.m; sourceTree = "<group>"; };
 		25B35B281531DC7900D1EAEC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -235,6 +238,8 @@
 				2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */,
 				250E7F2E15A68811001B2D10 /* MFMPlayerManager.h */,
 				250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */,
+				25A515D815E46BF800D1267A /* MFMNetworkManager.h */,
+				25A515D915E46BF800D1267A /* MFMNetworkManager.m */,
 				25E3F5BE15395723003FABD2 /* Reachability.h */,
 				25E3F5BF15395723003FABD2 /* Reachability.m */,
 			);
@@ -565,6 +570,7 @@
 				25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */,
 				25BA9FA915E38E98004B37BB /* MFMPlaybackControlViewController.m in Sources */,
 				25A515CA15E3DA3300D1267A /* MFMReflectedImageView.m in Sources */,
+				25A515DA15E46BF800D1267A /* MFMNetworkManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

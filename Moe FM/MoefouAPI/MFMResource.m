@@ -44,9 +44,10 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 
 - (BOOL)startFetchWithURL:(NSURL *)url
 {
-	if (self.fetcher != nil){
+	if (self.fetcher != nil && [self.fetcher isFetching]){
 		return YES;
 	}
+	[self stopFetch];
 	
 	NSLog(@"Resource start fetching URL: %@", url);
 	self.fetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
