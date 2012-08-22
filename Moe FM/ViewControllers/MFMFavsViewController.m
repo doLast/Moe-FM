@@ -49,13 +49,18 @@
 	[self.tableView.pullToRefreshView triggerRefresh];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[super viewWillDisappear:animated];
+	
+	[self.resourceCollection stopFetch];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[self.resourceCollection stopFetch];
-	self.resourceCollection = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -140,9 +145,11 @@
 
 - (void)refreshData
 {
+	NSUInteger page = self.page;
 	self.page = 0;
 	if ([self.resourceCollection reloadResources] == NO){
 		NSLog(@"Cannot refresh");
+		self.page = page;
 		[self.tableView.pullToRefreshView stopAnimating];
 	}
 }
@@ -157,6 +164,9 @@
 
 - (void)handleNotification:(NSNotification *)notification
 {
+	if (self.navigationController.visibleViewController != self) {
+		return;
+	}
 	if (notification.name == MFMResourceNotification  && 
 		notification.object == self.resourceCollection) {
 		if (self.resourceCollection.error != nil) {

@@ -90,6 +90,7 @@
 - (void)stop
 {
 	@synchronized(self) {
+		self.delegate = nil;
 		[self.fetcher stopFetching];
 	}
 }
@@ -104,6 +105,7 @@
 		// inform the user
 		[self.delegate fetcher:self didFinishWithError:error];
 	}
+	self.delegate = nil;
 }
 
 - (void)jsonFetcher:(GTMHTTPFetcher *)fetcher finishedWithData:(NSData *)data error:(NSError *)error
@@ -130,6 +132,7 @@
 		[self handelError:error];
 	}
 	
+	self.delegate = nil;
 	self.didFinish = YES;
 	
 	return;
@@ -151,6 +154,7 @@
 		[self handelError:error];
 	}
 	
+	self.delegate = nil;
 	self.didFinish = YES;
 	
 	return;
