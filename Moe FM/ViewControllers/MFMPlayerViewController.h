@@ -15,7 +15,8 @@
 
 @property (assign, nonatomic) IBOutlet UIView *songInfoView;
 @property (assign, nonatomic) IBOutlet UILabel *songNameLabel;
-@property (assign, nonatomic) IBOutlet UILabel *songInfoLabel;
+@property (assign, nonatomic) IBOutlet UILabel *songArtistLabel;
+@property (assign, nonatomic) IBOutlet UILabel *songAlbumLabel;
 @property (assign, nonatomic) IBOutlet UIProgressView *songProgressIndicator;
 @property (assign, nonatomic) IBOutlet MFMHttpImageView *songArtworkImage;
 @property (assign, nonatomic) IBOutlet MFMReflectedImageView *songArtworkReflection;

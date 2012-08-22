@@ -28,7 +28,8 @@
 
 @synthesize songInfoView = _songInfoView;
 @synthesize songNameLabel = _songNameLabel;
-@synthesize songInfoLabel = _songInfoLabel;
+@synthesize songArtistLabel = _songArtistLabel;
+@synthesize songAlbumLabel = _songAlbumLabel;
 @synthesize songProgressIndicator = _songProgressIndicator;
 @synthesize songArtworkImage = _songArtworkImage;
 @synthesize songArtworkReflection = _songArtworkReflection;
@@ -100,6 +101,7 @@
 			artist = NSLocalizedString(@"UNKNOWN_ARTIST", @"");;
 		}
 		[nowPlayingInfo setValue:artist forKey:MPMediaItemPropertyArtist];
+		self.songArtistLabel.text = artist;
 		
 		// Update Album
 		NSString *album = currentSong.wikiTitle;
@@ -107,8 +109,9 @@
 			album = NSLocalizedString(@"UNKNOWN_ALBUM", @"");
 		}
 		[nowPlayingInfo setValue:album forKey:MPMediaItemPropertyAlbumTitle];
+		self.songAlbumLabel.text = album;
 		
-		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ | %@", artist, album];
+//		self.songInfoLabel.text = [NSString stringWithFormat:@"%@ | %@", artist, album];
 		
 		// Post to NowPlayingInfoCenter
 		[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
