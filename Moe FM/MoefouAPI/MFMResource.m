@@ -94,6 +94,7 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 	if (self.response == nil || [self prepareTheResource:self.response] == NO) {
 		return [self fetcher:dataFetcher didFinishWithError:nil];
 	}
+	self.error = nil;
 	self.fetcher = nil;
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:MFMResourceNotification object:self];
