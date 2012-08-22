@@ -13,26 +13,29 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourcePlaylist ()
 
-@property (nonatomic, strong) NSArray *resources;
-@property (nonatomic, strong) NSNumber *nextPage;
-@property (nonatomic, strong) NSNumber *count;
-@property (nonatomic, strong) NSNumber *mayHaveNext;
+@property (nonatomic) NSUInteger total;
+
+@property (nonatomic) BOOL mayHaveNext;
 @property (nonatomic, strong) NSURL *playlistURL;
 
 @end
 
 @implementation MFMResourcePlaylist
 
+#pragma mark - Getter & Setter
+
 @synthesize mayHaveNext = _mayHaveNext;
 @synthesize playlistURL = _playlistURL;
 
+#pragma mark - life cycle
+
 - (MFMResourcePlaylist *)initWithPlaylistURL:(NSURL *)playlistURL
 {
-	self = [super initWithObjType:MFMResourceObjTypeSong fromPageNumber:[NSNumber numberWithInteger:1] withItemsPerPage:[NSNumber numberWithInteger:10]];
+	self = [super initWithObjType:MFMResourceObjTypeSong withItemsPerPage:MFMResourcePerPageDefault];
 	if (self != nil) {
-		self.mayHaveNext = [NSNumber numberWithBool:YES];
+		self.mayHaveNext = YES;
 		self.playlistURL = playlistURL;
-		self.count = [NSNumber numberWithInteger:0];
+		self.total = UINT_MAX;
 	}
 	return self;
 }
@@ -108,47 +111,27 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 	return playlist;
 }
 
-- (NSURL *)urlForPage:(NSNumber *)page
+# pragma mark - Override Methods
+
+- (BOOL)loadPage:(NSUInteger)page
+{
+	if (self.mayHaveNext) {
+		return [super loadPage:page];
+	}
+	NSLog(@"No more page.");
+	return NO;
+}
+
+- (NSURL *)urlForPage:(NSUInteger)page
 {
 	NSURL *url = self.playlistURL;
-	url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", url, page]];
+	url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%d", url, page + 1]];
 	
 	return url;
 }
 
-- (BOOL)startFetchNextPage
-{
-	NSURL *url = nil;
-	if (self.nextPage == nil) {
-		url = [self urlForPage:self.fromPage];
-	}
-	else if (self.mayHaveNext.boolValue) {
-		url = [self urlForPage:self.nextPage];
-	}
-	else {
-		NSLog(@"No more pages in playlist");
-		return NO;
-	}
-	return [self startFetchWithURL:url];
-}
-
-# pragma mark - Override MFMResource Methods
-
-- (NSString *)description
-{
-	NSMutableString *str = [NSMutableString string];
-	for (NSObject *resource in self.resources) {
-		[str appendString:resource.description];
-	}
-	return str;
-}
-
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {
-	if (self.nextPage == nil) {
-		self.resources = nil;
-	}
-	
 	NSDictionary *responseInfo = [resource objectForKey:@"information"];
 	NSArray *songs = [resource objectForKey:@"playlist"];
 	if (responseInfo == nil || songs == nil) {
@@ -156,17 +139,16 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 		return NO;
 	}
 	
-	self.nextPage = [responseInfo objectForKey:@"page"];
-	self.nextPage = [NSNumber numberWithInteger:self.nextPage.integerValue + 1];
-	self.mayHaveNext = [responseInfo objectForKey:@"may_have_next"];
+	NSNumber *mayHaveNext = [responseInfo objectForKey:@"may_have_next"];
+	self.mayHaveNext = mayHaveNext.boolValue;
+	NSNumber *page = [responseInfo objectForKey:@"page"];
 	
-	NSMutableArray *resources = [NSMutableArray arrayWithArray:self.resources];
+	int i = 0;
 	for (NSDictionary *song in songs) {
 		MFMResourceSong *resourceSong = [[MFMResourceSong alloc] initWithResouce:song];
-		[resources addObject:resourceSong];
+		[self addObject:resourceSong toIndex:(page.integerValue - 1) * self.perPage + i];
+		i++;
 	}
-	self.resources = resources;
-	self.count = [NSNumber numberWithInt:[self.resources count]];
 	
 	return YES;
 }

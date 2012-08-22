@@ -15,7 +15,6 @@
 						userName:(NSString *)userName
 						 objType:(MFMResourceObjType)objType
 						 favType:(MFMFavType)favType
-						fromPage:(NSNumber *)fromPage
-						 perPage:(NSNumber *)perPage;
+						 perPage:(NSUInteger)perPage;
 
 @end

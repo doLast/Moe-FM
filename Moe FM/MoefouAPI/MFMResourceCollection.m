@@ -12,69 +12,98 @@ const NSInteger MFMResourcePerPageDefault = 10;
 
 @interface MFMResourceCollection ()
 
-@property (nonatomic, strong) NSArray *resources;
+@property (nonatomic, strong) NSMutableDictionary *resources;
 @property (nonatomic) MFMResourceObjType objType;
-@property (nonatomic, strong) NSNumber *fromPage;
-@property (nonatomic, strong) NSNumber *nextPage;
-@property (nonatomic, strong) NSNumber *perPage;
-@property (nonatomic, strong) NSNumber *count;
+@property (nonatomic) NSUInteger perPage;
+@property (nonatomic) NSUInteger total;
 
-- (NSURL *)urlForPage:(NSNumber *)page;
+- (NSURL *)urlForPage:(NSUInteger)page;
 
 @end
 
 @implementation MFMResourceCollection
 
+#pragma mark - Getter & Setter
+
 @synthesize resources = _resources;
 @synthesize objType = _objType;
-@synthesize fromPage = _fromPage;
-@synthesize nextPage = _nextPage;
 @synthesize perPage = _perPage;
-@synthesize count = _count;
+@synthesize total = _total;
+
+- (NSUInteger)count
+{
+	if (self.resources == nil) {
+		return 0;
+	}
+	return [self.resources count];
+}
+
+#pragma mark - Life cycle
 
 - (MFMResourceCollection *)initWithObjType:(MFMResourceObjType)objType
-							fromPageNumber:(NSNumber *)fromPage
-						  withItemsPerPage:(NSNumber *)perPage
+						  withItemsPerPage:(NSUInteger)perPage
 {
-	assert(fromPage != nil);
-	assert(perPage != nil);
 	self = [super init];
 	if (self != nil) {
 		self.resources = nil;
 		self.objType = objType;
-		self.fromPage = fromPage;
-		self.nextPage = nil;
 		self.perPage = perPage;
-		self.count = nil;
+		self.total = 0;
 	}
 	return self;
+}
+
+- (NSString *)description
+{
+	NSMutableString *str = [NSMutableString string];
+	for (NSObject *resource in self.resources) {
+		[str appendString:resource.description];
+	}
+	return str;
 }
 
 - (BOOL)reloadResources
 {
 	[self stopFetch];
-	self.nextPage = nil;
-	self.count = nil;
-	return [self startFetchNextPage];
-}
-
-- (BOOL)startFetchNextPage
-{
-	NSURL *url = nil;
-	if (self.nextPage == nil) {
-		url = [self urlForPage:self.fromPage];
-	}
-	else if (self.count != nil && self.nextPage.doubleValue < self.count.doubleValue / self.perPage.doubleValue + 1) {
-		url = [self urlForPage:self.nextPage];
-	}
-	else {
+	NSMutableDictionary *resources = self.resources;
+	NSUInteger total = self.total;
+	self.resources = nil;
+	self.total = 0;
+	if ([self loadPage:0] == NO) {
+		self.resources = resources;
+		self.total = total;
 		return NO;
 	}
-	
-	return [self startFetchWithURL:url];
+	return YES;
 }
 
-- (NSURL *)urlForPage:(NSNumber *)page
+- (BOOL)loadPage:(NSUInteger)page
+{
+	if (self.resources == nil || page * self.perPage < self.total) {
+		return [self startFetchWithURL:[self urlForPage:page]];
+	}
+	return NO;
+}
+
+- (BOOL)loadObjectAtIndex:(NSUInteger)index
+{
+	return [self loadPage:index / self.perPage];
+}
+
+- (id)objectAtIndex:(NSUInteger)index
+{
+	return [self.resources objectForKey:[NSNumber numberWithInteger:index]];
+}
+
+- (void)addObject:(NSObject *)object toIndex:(NSUInteger)index
+{
+	if (self.resources == nil) {
+		self.resources = [NSMutableDictionary dictionary];
+	}
+	[self.resources setObject:object forKey:[NSNumber numberWithInteger:index]];
+}
+
+- (NSURL *)urlForPage:(NSUInteger)page
 {
 	return nil;
 }

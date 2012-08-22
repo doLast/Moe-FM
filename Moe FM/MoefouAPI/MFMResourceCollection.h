@@ -12,18 +12,18 @@ extern const NSInteger MFMResourcePerPageDefault;
 
 @interface MFMResourceCollection : MFMResource
 
-@property (nonatomic, strong, readonly) NSArray *resources;
 @property (nonatomic, readonly) MFMResourceObjType objType;
-@property (nonatomic, strong, readonly) NSNumber *fromPage;
-@property (nonatomic, strong, readonly) NSNumber *nextPage;
-@property (nonatomic, strong, readonly) NSNumber *perPage;
-@property (nonatomic, strong, readonly) NSNumber *count;
+@property (nonatomic, readonly) NSUInteger perPage;
+@property (nonatomic, readonly) NSUInteger count;
+@property (nonatomic, readonly) NSUInteger total;
 
 - (MFMResourceCollection *)initWithObjType:(MFMResourceObjType)objType
-							fromPageNumber:(NSNumber *)fromPage
-						  withItemsPerPage:(NSNumber *)perPage;
+						  withItemsPerPage:(NSUInteger)perPage;
 
 - (BOOL)reloadResources;
-- (BOOL)startFetchNextPage;
+- (BOOL)loadPage:(NSUInteger)page;
+- (BOOL)loadObjectAtIndex:(NSUInteger)index;
+- (id)objectAtIndex:(NSUInteger)index;
+- (void)addObject:(NSObject *)object toIndex:(NSUInteger)index;
 
 @end

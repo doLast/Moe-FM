@@ -16,21 +16,18 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourceFavs ()
 
-//@property (retain, nonatomic) NSURL *playlistURL;
-
-@property (nonatomic, strong) NSArray *resources;
-@property (nonatomic, strong) NSNumber *nextPage;
-@property (nonatomic, strong) NSNumber *count;
 @property (nonatomic, strong) NSNumber *uid;
 @property (nonatomic, strong) NSString *userName;
 @property (nonatomic) MFMFavType favType;
+
+@property (nonatomic) NSUInteger total;
+
+- (NSURL *)urlForPage:(NSUInteger)page;
 
 @end
 
 
 @implementation MFMResourceFavs
-
-//@synthesize playlistURL = _playlistURL;
 
 @synthesize uid = _uid;
 @synthesize userName = _userName;
@@ -40,10 +37,9 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 						userName:(NSString *)userName
 						 objType:(MFMResourceObjType)objType
 						 favType:(MFMFavType)favType
-						fromPage:(NSNumber *)fromPage
-						 perPage:(NSNumber *)perPage
+						 perPage:(NSUInteger)perPage
 {
-	self = [super initWithObjType:objType fromPageNumber:fromPage withItemsPerPage:perPage];
+	self = [super initWithObjType:objType withItemsPerPage:perPage];
 	if (self != nil) {
 		self.uid = uid;
 		self.userName = userName;
@@ -56,15 +52,14 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 						userName:(NSString *)userName
 						 objType:(MFMResourceObjType)objType
 						 favType:(MFMFavType)favType
-						fromPage:(NSNumber *)fromPage
-						 perPage:(NSNumber *)perPage
+						 perPage:(NSUInteger)perPage
 {
 	MFMResourceFavs *instance = 
-	[[MFMResourceFavs alloc] initWithUid:uid userName:userName objType:objType favType:favType fromPage:fromPage perPage:perPage];
+	[[MFMResourceFavs alloc] initWithUid:uid userName:userName objType:objType favType:favType perPage:perPage];
 	return instance;
 }
 
-- (NSURL *)urlForPage:(NSNumber *)page
+- (NSURL *)urlForPage:(NSUInteger)page
 {
 	const NSString * category;
 	if (self.objType < MFMResourceObjTypeWiki) {
@@ -83,10 +78,10 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 	[parameters setValue:MFMResourceObjTypeStr[self.objType] forKey: @"obj_type"];
 	[parameters setValue:[NSNumber numberWithInt:self.favType] forKey:@"fav_type"];
 //	[parameters setValue:page forKey:@"page"];
-	[parameters setValue:self.perPage forKey:@"perpage"];
+	[parameters setValue:[NSNumber numberWithInteger:self.perPage] forKey:@"perpage"];
 	
 	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
-	url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%@", url, page]];
+	url = [NSURL URLWithString:[NSString stringWithFormat:@"%@&page=%d", url, page + 1]];
 	
 	return url;
 }
@@ -101,21 +96,8 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 #pragma mark - Override MFMResource Methods
 
-- (NSString *)description
-{
-	NSMutableString *str = [NSMutableString string];
-	for (MFMResourceFav *resource in self.resources) {
-		[str appendString:resource.description];
-	}
-	return str;
-}
-
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {
-	if (self.nextPage == nil) {
-		self.resources = nil;
-	}
-	
 	NSDictionary *responseInfo = [resource objectForKey:@"information"];
 	NSArray *favs = [resource objectForKey:@"favs"];
 	if (responseInfo == nil || favs == nil) {
@@ -123,16 +105,16 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 		return NO;
 	}
 	
-	self.nextPage = [responseInfo objectForKey:@"page"];
-	self.nextPage = [NSNumber numberWithInteger:self.nextPage.integerValue + 1];
-	self.count = [responseInfo objectForKey:@"count"];
+	NSNumber *total = [responseInfo objectForKey:@"count"];
+	self.total = total.integerValue;
+	NSNumber *page = [responseInfo objectForKey:@"page"];
 	
-	NSMutableArray *resources = [NSMutableArray arrayWithArray:self.resources];
+	int i = 0;
 	for (NSDictionary *fav in favs) {
 		MFMResourceFav *resourceFav = [[MFMResourceFav alloc] initWithResouce:fav];
-		[resources addObject:resourceFav];
+		[self addObject:resourceFav toIndex:(page.integerValue - 1) * self.perPage + i];
+		i++;
 	}
-	self.resources = resources;
 	
 	return YES;
 }

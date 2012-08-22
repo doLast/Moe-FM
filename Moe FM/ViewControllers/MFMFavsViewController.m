@@ -17,6 +17,8 @@
 
 @interface MFMFavsViewController ()
 
+@property (nonatomic) NSUInteger page;
+
 @end
 
 
@@ -24,25 +26,11 @@
 
 @synthesize resourceCollection = _resourceCollection;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+		
+	// Pull to refresh config
 	__weak MFMFavsViewController *_self = self;
 
 	[self.tableView addPullToRefreshWithActionHandler:^{
@@ -64,11 +52,10 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[self.resourceCollection stopFetch];
+	self.resourceCollection = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -96,22 +83,15 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	NSArray *resources = self.resourceCollection.resources;
-    // Return the number of rows in the section.
-	if (resources != nil) {
-		NSLog(@"Have %d rows", resources.count);
-		return resources.count;
-	}
-    return 0;
+	return [self.resourceCollection count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *CellIdentifier = @"FavCell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	NSArray *resources = self.resourceCollection.resources;
 
-	MFMResourceFav *resource = [resources objectAtIndex:indexPath.row];
+	MFMResourceFav *resource = [self.resourceCollection objectAtIndex:indexPath.row];
 	if ([resource.obj isKindOfClass:[MFMResourceSub class]]) {
 		MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
 		
@@ -160,6 +140,7 @@
 
 - (void)refreshData
 {
+	self.page = 0;
 	if ([self.resourceCollection reloadResources] == NO){
 		NSLog(@"Cannot refresh");
 		[self.tableView.pullToRefreshView stopAnimating];
@@ -168,7 +149,7 @@
 
 - (void)loadMoreData
 {
-	if ([self.resourceCollection startFetchNextPage] == NO) {
+	if ([self.resourceCollection loadPage:self.page] == NO) {
 		NSLog(@"No more pages");
 		[self.tableView.infiniteScrollingView stopAnimating];
 	}
@@ -182,6 +163,8 @@
 			[self.tableView.pullToRefreshView stopAnimating];
 			return;
 		}
+		
+		self.page++;
 		[self.tableView reloadData];
 		[self.tableView.pullToRefreshView stopAnimating];
 		[self.tableView.infiniteScrollingView stopAnimating];

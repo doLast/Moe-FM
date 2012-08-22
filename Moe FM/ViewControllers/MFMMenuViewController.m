@@ -163,18 +163,18 @@
 {
 	if ([segue.identifier isEqualToString:@"ShowFavSongs"]) {
 		MFMFavsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeSong favType:MFMFavTypeHeart fromPage:[NSNumber numberWithInt:1] perPage:[NSNumber numberWithInteger:MFMResourcePerPageDefault]];
+		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeSong favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		
 		vc.resourceCollection = favs;
 	}
 	else if ([segue.identifier isEqualToString:@"ShowFavMusics"]) {
 		MFMFavsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeMusic favType:MFMFavTypeHeart fromPage:[NSNumber numberWithInt:1] perPage:[NSNumber numberWithInteger:MFMResourcePerPageDefault]];
+		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeMusic favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		vc.resourceCollection = favs;
 	}
 	else if ([segue.identifier isEqualToString:@"ShowFavRadios"]) {
 		MFMFavsViewController *vc = segue.destinationViewController;
-		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeRadio favType:MFMFavTypeHeart fromPage:[NSNumber numberWithInt:1] perPage:[NSNumber numberWithInteger:MFMResourcePerPageDefault]];
+		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeRadio favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		vc.resourceCollection = favs;
 	}
 }

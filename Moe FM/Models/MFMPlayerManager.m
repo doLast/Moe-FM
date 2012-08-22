@@ -51,10 +51,10 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (MFMResourceSong *)currentSong
 {
-	if (self.playlist == nil || self.playlist.resources == nil) {
+	if (self.playlist == nil || [self.playlist count] == 0) {
 		return nil;
 	}
-	return [self.playlist.resources objectAtIndex:self.trackNum];
+	return [self.playlist objectAtIndex:self.trackNum];
 }
 
 - (void)setPlayerStatus:(MFMPlayerStatus)playerStatus
@@ -149,10 +149,10 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	[self stop];
 	
 	// If no more song
-	if (self.trackNum >= self.playlist.count.integerValue) {
+	if ([self.playlist objectAtIndex:self.trackNum] == nil) {
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.playlist];
 		// If start failed
-		if ([self.playlist startFetchNextPage] == NO) {
+		if ([self.playlist loadObjectAtIndex:self.trackNum] == NO) {
 			[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:self.playlist];
 			self.trackNum = 0;
 			return YES;
@@ -175,7 +175,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	}
 	
 	// If no resource
-	if (self.playlist.resources == nil) {
+	if ([self.playlist count] == 0) {
 		// Wait for resource to load
 		return [self start];
 	}

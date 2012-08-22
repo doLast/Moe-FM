@@ -11,7 +11,7 @@
 
 @interface MFMResourcePlaylist : MFMResourceCollection
 
-@property (nonatomic, strong, readonly) NSNumber *mayHaveNext;
+@property (nonatomic, readonly) BOOL mayHaveNext;
 
 + (MFMResourcePlaylist *)magicPlaylist;
 + (MFMResourcePlaylist *)playlistWithCollection:(MFMResourceCollection *)collection;
