@@ -62,16 +62,17 @@
 - (void)beginFetchWithDelegate:(id <MFMDataFetcherDelegate>)delegate
 {
 	@synchronized(self) {
-		if ([MFMNetworkManager sharedNetworkManager].allowConnection == NO) {
-			NSError *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:ENETUNREACH userInfo:nil];
-			[self handelError:error];
-			return;
-		}
 		if ([self isFetching] || delegate == nil) {
 			return;
 		}
 		
 		self.delegate = delegate;
+		if ([MFMNetworkManager sharedNetworkManager].allowConnection == NO) {
+			NSError *error = [NSError errorWithDomain:NSPOSIXErrorDomain code:ENETUNREACH userInfo:nil];
+			[self handelError:error];
+			return;
+		}
+		
 		self.fetcher = [GTMHTTPFetcher fetcherWithRequest:self.request];
 
 		switch (self.type) {
