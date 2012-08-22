@@ -48,8 +48,9 @@
 		25A515BC15E3BE6300D1267A /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515BB15E3BE6300D1267A /* noise.png */; };
 		25A515C215E3D51500D1267A /* BarLCD@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515C115E3D51500D1267A /* BarLCD@2x.png */; };
 		25A515CA15E3DA3300D1267A /* MFMReflectedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A515C915E3DA3300D1267A /* MFMReflectedImageView.m */; };
-		25A515D115E3E1AC00D1267A /* ipad-BG-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515CF15E3E1AC00D1267A /* ipad-BG-pattern.png */; };
-		25A515D215E3E1AC00D1267A /* ipad-BG-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D015E3E1AC00D1267A /* ipad-BG-pattern@2x.png */; };
+		25A515D115E3E1AC00D1267A /* table-BG-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */; };
+		25A515D215E3E1AC00D1267A /* table-BG-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */; };
+		25A515D415E4595600D1267A /* BarLCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D315E4595600D1267A /* BarLCD.png */; };
 		25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B281531DC7900D1EAEC /* MediaPlayer.framework */; };
 		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
@@ -152,8 +153,9 @@
 		25A515C115E3D51500D1267A /* BarLCD@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BarLCD@2x.png"; sourceTree = "<group>"; };
 		25A515C815E3DA3300D1267A /* MFMReflectedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMReflectedImageView.h; sourceTree = "<group>"; };
 		25A515C915E3DA3300D1267A /* MFMReflectedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMReflectedImageView.m; sourceTree = "<group>"; };
-		25A515CF15E3E1AC00D1267A /* ipad-BG-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-BG-pattern.png"; sourceTree = "<group>"; };
-		25A515D015E3E1AC00D1267A /* ipad-BG-pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-BG-pattern@2x.png"; sourceTree = "<group>"; };
+		25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-BG-pattern.png"; sourceTree = "<group>"; };
+		25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "table-BG-pattern@2x.png"; sourceTree = "<group>"; };
+		25A515D315E4595600D1267A /* BarLCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarLCD.png; sourceTree = "<group>"; };
 		25B35B281531DC7900D1EAEC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -309,29 +311,30 @@
 		253578AD1530A0C0008185BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				25A515CF15E3E1AC00D1267A /* ipad-BG-pattern.png */,
-				25A515D015E3E1AC00D1267A /* ipad-BG-pattern@2x.png */,
+				25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */,
+				25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */,
+				25A515D315E4595600D1267A /* BarLCD.png */,
 				25A515C115E3D51500D1267A /* BarLCD@2x.png */,
 				25A515BB15E3BE6300D1267A /* noise.png */,
 				25E3F5FE1539D3DA003FABD2 /* Icon.png */,
 				25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */,
 				25E3F5FA1539C87C003FABD2 /* default.png */,
 				25E3F5FB1539C87C003FABD2 /* default@2x.png */,
-				25E3F5EB1539B866003FABD2 /* dislike_no@2x.png */,
-				25E3F5EC1539B866003FABD2 /* dislike_yes@2x.png */,
-				25E3F5ED1539B866003FABD2 /* fav_no@2x.png */,
-				25E3F5EE1539B866003FABD2 /* fav_yes@2x.png */,
-				25E3F5EF1539B866003FABD2 /* next@2x.png */,
-				25E3F5F01539B866003FABD2 /* pause@2x.png */,
-				25E3F5F11539B866003FABD2 /* play@2x.png */,
 				25E3F5E91539B4AF003FABD2 /* bg_sand.png */,
 				25E3F5DB1539B174003FABD2 /* dislike_no.png */,
+				25E3F5EB1539B866003FABD2 /* dislike_no@2x.png */,
 				25E3F5DC1539B174003FABD2 /* dislike_yes.png */,
+				25E3F5EC1539B866003FABD2 /* dislike_yes@2x.png */,
 				25E3F5DD1539B174003FABD2 /* fav_no.png */,
+				25E3F5ED1539B866003FABD2 /* fav_no@2x.png */,
 				25E3F5DE1539B174003FABD2 /* fav_yes.png */,
+				25E3F5EE1539B866003FABD2 /* fav_yes@2x.png */,
 				25E3F5DF1539B175003FABD2 /* next.png */,
+				25E3F5EF1539B866003FABD2 /* next@2x.png */,
 				25E3F5E01539B175003FABD2 /* pause.png */,
+				25E3F5F01539B866003FABD2 /* pause@2x.png */,
 				25E3F5E11539B175003FABD2 /* play.png */,
+				25E3F5F11539B866003FABD2 /* play@2x.png */,
 				253578AE1530A0C0008185BD /* buttons.png */,
 				253578AF1530A0C0008185BD /* cover_large.png */,
 				253578B01530A0C0008185BD /* cover_medium.png */,
@@ -519,8 +522,9 @@
 				254ECA9415A236B700251A0F /* GTMOAuthViewTouch.xib in Resources */,
 				25A515BC15E3BE6300D1267A /* noise.png in Resources */,
 				25A515C215E3D51500D1267A /* BarLCD@2x.png in Resources */,
-				25A515D115E3E1AC00D1267A /* ipad-BG-pattern.png in Resources */,
-				25A515D215E3E1AC00D1267A /* ipad-BG-pattern@2x.png in Resources */,
+				25A515D115E3E1AC00D1267A /* table-BG-pattern.png in Resources */,
+				25A515D215E3E1AC00D1267A /* table-BG-pattern@2x.png in Resources */,
+				25A515D415E4595600D1267A /* BarLCD.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

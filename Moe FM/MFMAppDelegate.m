@@ -17,6 +17,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table-BG-pattern.png"]];
+	[[UITableView appearance] setBackgroundColor:bgColor];
+	
     return YES;
 }
 
