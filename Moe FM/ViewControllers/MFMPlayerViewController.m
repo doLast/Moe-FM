@@ -141,6 +141,8 @@
 			[self.songBufferingIndicator stopAnimating];
 			[self toggleTimer:YES];
 			break;
+		case MFMPlayerStatusError:
+			NSLog(@"Player error: %@", [[MFMPlayerManager sharedPlayerManager].error localizedDescription]);
 		case MFMPlayerStatusPaused:
 			self.playButton.alpha = 0.2;
 			[self.songBufferingIndicator stopAnimating];
@@ -190,7 +192,6 @@
 {
 	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
 	if ([playerManager pause] == NO) {
-		NSLog(@"Toggle to Play");
 		[playerManager play];
 	}
 }
