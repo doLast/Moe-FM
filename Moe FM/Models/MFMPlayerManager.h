@@ -14,7 +14,8 @@ extern NSString * const MFMPlayerSongChangedNotification;
 typedef enum {
 	MFMPlayerStatusPlaying = 0, 
 	MFMPlayerStatusPaused, 
-	MFMPlayerStatusWaiting, 
+	MFMPlayerStatusWaiting,
+	MFMPlayerStatusError, 
 	MFMPlayerStatusTotal
 } MFMPlayerStatus;
 
@@ -30,6 +31,7 @@ typedef enum {
 @property (readonly, nonatomic) MFMPlayerStatus playerStatus;
 @property (readonly, nonatomic) double progress;
 @property (readonly, nonatomic) double duration;
+@property (readonly, nonatomic, strong) NSError *error;
 
 + (MFMPlayerManager *)sharedPlayerManager;
 

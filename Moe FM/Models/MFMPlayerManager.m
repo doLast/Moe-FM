@@ -7,26 +7,33 @@
 //
 
 #import "MFMPlayerManager.h"
+#import "MFMNetworkManager.h"
 #import "AudioStreamer.h"
+
 #import "MFMResourcePlaylist.h"
 #import "MFMResourceSong.h"
 
+NSString * const MFMPlayerErrorDomain = @"MFMPlayerErrorDomain";
 NSString * const MFMPlayerStatusChangedNotification = @"MFMPlayerStatusChangedNotification";
 NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotification";
 
 @interface MFMPlayerManager ()
 
 @property (retain, nonatomic) AudioStreamer *audioStreamer;
+@property (nonatomic) MFMPlayerStatus playerStatus;
+@property (nonatomic, strong) NSError *error;
 
 @end
 
 @implementation MFMPlayerManager
 
 #pragma mark - getter & setter
+@synthesize audioStreamer = _audioStreamer;
+
 @synthesize playlist = _playlist;
 @synthesize trackNum = _trackNum;
 @synthesize playerStatus = _playerStatus;
-@synthesize audioStreamer = _audioStreamer;
+@synthesize error = _error;
 
 - (void)setPlaylist:(MFMResourcePlaylist *)playlist
 {
@@ -160,10 +167,17 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (BOOL)play
 {
+	// If no connection
+	if ([MFMNetworkManager sharedNetworkManager].allowConnection == NO) {
+		self.error = [NSError errorWithDomain:NSPOSIXErrorDomain code:ENETUNREACH userInfo:nil];
+		self.playerStatus = MFMPlayerStatusError;
+		return NO;
+	}
+	
 	// If no resource
 	if (self.playlist.resources == nil) {
 		// Wait for resource to load
-		return NO;
+		return [self start];
 	}
 	
 	// If have song and no streamer
@@ -181,8 +195,11 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (BOOL)pause
 {
-	[self.audioStreamer pause];
-	return YES;
+	if ([self.audioStreamer isPlaying] || [self.audioStreamer isWaiting]) {
+		[self.audioStreamer pause];
+		return YES;
+	}
+	return NO;
 }
 
 - (void)next
@@ -218,7 +235,8 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 		}
 		else {
 			NSLog(@"Fail to obtain the playlist, error: %@", [self.playlist.error localizedDescription]);
-			self.playlist = nil;
+			self.error = self.playlist.error;
+			self.playerStatus = MFMPlayerStatusError;
 		}
 	}
 }
@@ -228,8 +246,12 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	if (streamer == self.audioStreamer) {
 		if (streamer.errorCode != AS_NO_ERROR) {
 			// handle the error via a UI, retrying the stream, etc.
-			NSLog(@"Streamer error: %@", [AudioStreamer stringForErrorCode:streamer.errorCode]);
-			self.playerStatus = MFMPlayerStatusPaused;
+			NSString *description = [AudioStreamer stringForErrorCode:streamer.errorCode];
+			NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description };
+			self.error = [NSError errorWithDomain:MFMPlayerErrorDomain code:streamer.errorCode userInfo:errorDictionary];
+			self.playerStatus = MFMPlayerStatusError;
+			
+			NSLog(@"Streamer error: %@", [self.error localizedDescription]);
 			[self next];
 		} else if ([streamer isPlaying]) {
 			NSLog(@"Is Playing");
