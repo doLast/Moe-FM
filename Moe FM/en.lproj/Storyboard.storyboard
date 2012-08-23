@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ffI-ND-MLC">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -278,7 +277,7 @@
         <scene sceneID="Oaw-NX-OJs">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ydd-io-sWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController storyboardIdentifier="PlaybackControl" id="SFe-vy-Eof" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RightPlaybackControl" id="SFe-vy-Eof" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Las-ZL-J5p">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -289,7 +288,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TDh-1x-cQz">
                                         <rect key="frame" x="9" y="388" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="next">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -304,7 +303,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UuQ-1t-snq">
                                         <rect key="frame" x="9" y="313" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="dislike_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -320,7 +319,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GA9-3n-7iC">
                                         <rect key="frame" x="9" y="238" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="fav_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -353,13 +352,35 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" id="ExQ-Mn-fKY">
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="dislikeButton" destination="UuQ-1t-snq" id="nUo-Lw-1RH"/>
+                        <outlet property="favButton" destination="GA9-3n-7iC" id="Kbf-fW-ZcU"/>
+                        <outlet property="nextButton" destination="TDh-1x-cQz" id="fkZ-id-ZAH"/>
+                        <outlet property="playButton" destination="veV-gE-mRw" id="vuA-PI-KaM"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-443" y="1245"/>
+        </scene>
+        <!--Playback Control View Controller-->
+        <scene sceneID="LA6-fI-dSa">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAj-ci-gaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="LeftPlaybackControl" id="JCx-JQ-vnZ" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="G5o-xU-3sh">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="Xec-l1-Wjs">
                                 <rect key="frame" x="0.0" y="0.0" width="70" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AUR-eW-jEc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="X0o-rf-Ad1">
                                         <rect key="frame" x="9" y="388" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="next">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -369,12 +390,12 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextTrack:" destination="SFe-vy-Eof" eventType="touchUpInside" id="vEy-Sx-w4y"/>
+                                            <action selector="nextTrack:" destination="JCx-JQ-vnZ" eventType="touchUpInside" id="W2F-tB-Vho"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="llN-xp-JdG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hpf-AV-K6U">
                                         <rect key="frame" x="9" y="313" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="dislike_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -385,12 +406,12 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="toggleDislike:" destination="SFe-vy-Eof" eventType="touchUpInside" id="djY-Mv-H9q"/>
+                                            <action selector="toggleDislike:" destination="JCx-JQ-vnZ" eventType="touchUpInside" id="5wh-yM-usr"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Aqv-cf-SuG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rR6-z7-4gT">
                                         <rect key="frame" x="9" y="238" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="fav_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -401,10 +422,10 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="toggleFavourite:" destination="SFe-vy-Eof" eventType="touchUpInside" id="1eG-TI-FXl"/>
+                                            <action selector="toggleFavourite:" destination="JCx-JQ-vnZ" eventType="touchUpInside" id="WCU-fD-1eG"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hSY-0C-I2w">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ABX-xF-NRe">
                                         <rect key="frame" x="9" y="163" width="52" height="52"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -417,7 +438,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="togglePlaybackState:" destination="SFe-vy-Eof" eventType="touchUpInside" id="qzN-r8-yhc"/>
+                                            <action selector="togglePlaybackState:" destination="JCx-JQ-vnZ" eventType="touchUpInside" id="8j6-Sy-E15"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -427,18 +448,106 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="dislikeButtonL" destination="llN-xp-JdG" id="xfn-In-3HP"/>
-                        <outlet property="dislikeButtonR" destination="UuQ-1t-snq" id="e9j-Rf-UBY"/>
-                        <outlet property="favButtonL" destination="Aqv-cf-SuG" id="KNI-xw-wNB"/>
-                        <outlet property="favButtonR" destination="GA9-3n-7iC" id="aOk-36-H5l"/>
-                        <outlet property="nextButtonL" destination="AUR-eW-jEc" id="gkR-hX-gQ8"/>
-                        <outlet property="nextButtonR" destination="TDh-1x-cQz" id="wf4-zO-JLR"/>
-                        <outlet property="playButtonL" destination="hSY-0C-I2w" id="zeq-Hl-lbb"/>
-                        <outlet property="playButtonR" destination="veV-gE-mRw" id="gq2-3V-r1y"/>
+                        <outlet property="dislikeButton" destination="hpf-AV-K6U" id="M3X-fZ-ELC"/>
+                        <outlet property="favButton" destination="rR6-z7-4gT" id="EHN-iy-dK6"/>
+                        <outlet property="nextButton" destination="X0o-rf-Ad1" id="GxF-m0-3tb"/>
+                        <outlet property="playButton" destination="ABX-xF-NRe" id="vL8-3X-VZ4"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="-443" y="1245"/>
+            <point key="canvasLocation" x="91" y="1245"/>
+        </scene>
+        <!--Playback Control View Controller-->
+        <scene sceneID="4z2-cw-93O">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mv-jm-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="BottomPlaybackControl" id="Bgt-cY-Uuh" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wmv-ZZ-PuG">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="eOJ-Lc-dOC">
+                                <rect key="frame" x="0.0" y="390" width="320" height="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="0Jd-LE-N2F">
+                                        <rect key="frame" x="248" y="9" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="next">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextTrack:" destination="Bgt-cY-Uuh" eventType="touchUpInside" id="NXA-d7-t3x"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="kvz-N6-OMp">
+                                        <rect key="frame" x="172" y="9" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="dislike_no">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="dislike_yes"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleDislike:" destination="Bgt-cY-Uuh" eventType="touchUpInside" id="dFj-Ab-2F1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OxA-m9-cat">
+                                        <rect key="frame" x="96" y="9" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="fav_no">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="fav_yes"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleFavourite:" destination="Bgt-cY-Uuh" eventType="touchUpInside" id="u6d-vl-cUi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uvB-My-TKb">
+                                        <rect key="frame" x="20" y="9" width="52" height="52"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="play">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" image="pause"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePlaybackState:" destination="Bgt-cY-Uuh" eventType="touchUpInside" id="IBp-aI-Ge7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="dislikeButton" destination="kvz-N6-OMp" id="jhw-wo-Col"/>
+                        <outlet property="favButton" destination="OxA-m9-cat" id="lw5-z0-dL2"/>
+                        <outlet property="nextButton" destination="0Jd-LE-N2F" id="8RZ-2n-ShX"/>
+                        <outlet property="playButton" destination="uvB-My-TKb" id="LAV-Xh-aQO"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="631" y="1245"/>
         </scene>
         <!--Starting View Controller-->
         <scene sceneID="XOk-mn-IfF">
@@ -495,7 +604,6 @@
         <class className="MFMMenuViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
             <relationships>
-                <relationship kind="action" name="showLogin:"/>
                 <relationship kind="action" name="toggleSignIn:"/>
                 <relationship kind="outlet" name="authorizationButton" candidateClass="UIBarButtonItem"/>
             </relationships>
@@ -503,14 +611,10 @@
         <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="dislikeButtonL" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dislikeButtonR" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favButtonL" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favButtonR" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nextButtonL" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nextButtonR" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="playButtonL" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="playButtonR" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
             </relationships>
         </class>
         <class className="MFMPlayerViewController" superclassName="UIViewController">
@@ -536,7 +640,6 @@
         <class className="MFMResourceCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourceCell.h"/>
             <relationships>
-                <relationship kind="outlet" name="accessoryButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="httpImageView" candidateClass="MFMHttpImageView"/>
                 <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>

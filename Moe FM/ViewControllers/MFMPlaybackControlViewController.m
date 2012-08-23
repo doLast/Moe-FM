@@ -19,14 +19,10 @@
 
 @implementation MFMPlaybackControlViewController
 
-@synthesize playButtonR = _playButtonR;
-@synthesize favButtonR = _favButtonR;
-@synthesize dislikeButtonR = _dislikeButtonR;
-@synthesize nextButtonR = _nextButtonR;
-@synthesize playButtonL = _playButtonL;
-@synthesize favButtonL = _favButtonL;
-@synthesize dislikeButtonL = _dislikeButtonL;
-@synthesize nextButtonL = _nextButtonL;
+@synthesize playButton = _playButton;
+@synthesize favButton = _favButton;
+@synthesize dislikeButton = _dislikeButton;
+@synthesize nextButton = _nextButton;
 
 - (void)viewDidLoad
 {
@@ -53,16 +49,12 @@
 - (void)updateAuthorization
 {
 	if ([MFMOAuth sharedOAuth].canAuthorize) {
-		self.favButtonR.enabled = YES;
-		self.dislikeButtonR.enabled = YES;
-		self.favButtonL.enabled = YES;
-		self.dislikeButtonL.enabled = YES;
+		self.favButton.enabled = YES;
+		self.dislikeButton.enabled = YES;
 	}
 	else {
-		self.favButtonR.enabled = NO;
-		self.dislikeButtonR.enabled = NO;
-		self.favButtonL.enabled = NO;
-		self.dislikeButtonL.enabled = NO;
+		self.favButton.enabled = NO;
+		self.dislikeButton.enabled = NO;
 	}
 }
 
@@ -72,12 +64,10 @@
 	if (currentSong != nil) {
 		// Toggle like
 		if ([currentSong.favSub didAddToFavAsType:MFMFavTypeHeart]) {
-			self.favButtonR.selected = YES;
-			self.favButtonL.selected = YES;
+			self.favButton.selected = YES;
 		}
 		else {
-			self.favButtonR.selected = NO;
-			self.favButtonL.selected = NO;
+			self.favButton.selected = NO;
 		}
 	}
 }
@@ -87,16 +77,13 @@
 	MFMPlayerStatus status = [MFMPlayerManager sharedPlayerManager].playerStatus;
 	switch (status) {
 		case MFMPlayerStatusPlaying:
-			self.playButtonR.selected = YES;
-			self.playButtonL.selected = YES;
+			self.playButton.selected = YES;
 			break;
 		case MFMPlayerStatusPaused:
-			self.playButtonR.selected = NO;
-			self.playButtonL.selected = NO;
+			self.playButton.selected = NO;
 			break;
 		case MFMPlayerStatusWaiting:
-			self.playButtonR.selected = YES;
-			self.playButtonL.selected = YES;
+			self.playButton.selected = YES;
 			break;
 		default:
 			break;
@@ -115,8 +102,7 @@
 
 - (IBAction)toggleFavourite:(id)sender
 {
-	self.favButtonR.enabled = NO;
-	self.favButtonL.enabled = NO;
+	self.favButton.enabled = NO;
 	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:favSub];
 	[favSub toggleFavAsType:MFMFavTypeHeart];

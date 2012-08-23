@@ -10,13 +10,9 @@
 
 @interface MFMPlaybackControlViewController : UIViewController
 
-@property (assign, nonatomic) IBOutlet UIButton *playButtonR;
-@property (assign, nonatomic) IBOutlet UIButton *favButtonR;
-@property (assign, nonatomic) IBOutlet UIButton *dislikeButtonR;
-@property (assign, nonatomic) IBOutlet UIButton *nextButtonR;
-@property (assign, nonatomic) IBOutlet UIButton *playButtonL;
-@property (assign, nonatomic) IBOutlet UIButton *favButtonL;
-@property (assign, nonatomic) IBOutlet UIButton *dislikeButtonL;
-@property (assign, nonatomic) IBOutlet UIButton *nextButtonL;
+@property (assign, nonatomic) IBOutlet UIButton *playButton;
+@property (assign, nonatomic) IBOutlet UIButton *favButton;
+@property (assign, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (assign, nonatomic) IBOutlet UIButton *nextButton;
 
 @end

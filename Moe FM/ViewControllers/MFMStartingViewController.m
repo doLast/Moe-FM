@@ -14,13 +14,20 @@
 @property (nonatomic, strong) PPRevealSideViewController *revealSideViewController;
 @property (nonatomic, weak) UINavigationController *playerNavigationController;
 @property (nonatomic, weak) UINavigationController *menuNavigationController;
-@property (nonatomic, weak) UIViewController *playbackControlViewController;
+@property (nonatomic, weak) UIViewController *leftControlViewController;
+@property (nonatomic, weak) UIViewController *rightControlViewController;
+@property (nonatomic, weak) UIViewController *bottomControlViewController;
 
 @end
 
 @implementation MFMStartingViewController
 
 @synthesize revealSideViewController = _revealSideViewController;
+@synthesize playerNavigationController = _playerNavigationController;
+@synthesize menuNavigationController = _menuNavigationController;
+@synthesize leftControlViewController = _leftControlViewController;
+@synthesize rightControlViewController = _rightControlViewController;
+@synthesize bottomControlViewController = _bottomControlViewController;
 
 - (void)viewDidLoad
 {
@@ -40,12 +47,15 @@
 	
 	UINavigationController *player = [self.storyboard instantiateViewControllerWithIdentifier:@"PlayerNavigation"];
 	UINavigationController *menu = [self.storyboard instantiateViewControllerWithIdentifier:@"MenuNavigation"];
-	UIViewController *playbackControl = [self.storyboard instantiateViewControllerWithIdentifier:@"PlaybackControl"];
+	UIViewController *leftControl = [self.storyboard instantiateViewControllerWithIdentifier:@"LeftPlaybackControl"];
+	UIViewController *rightControl = [self.storyboard instantiateViewControllerWithIdentifier:@"RightPlaybackControl"];
+	UIViewController *bottomControl = [self.storyboard instantiateViewControllerWithIdentifier:@"BottomPlaybackControl"];
 	PPRevealSideViewController *revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:player];
 	
 	[revealSideViewController preloadViewController:menu forSide:PPRevealSideDirectionTop withOffset:53];
-	[revealSideViewController preloadViewController:playbackControl forSide:PPRevealSideDirectionLeft withOffset:250];
-	[revealSideViewController preloadViewController:playbackControl forSide:PPRevealSideDirectionRight withOffset:250];
+	[revealSideViewController preloadViewController:leftControl forSide:PPRevealSideDirectionLeft withOffset:250];
+	[revealSideViewController preloadViewController:rightControl forSide:PPRevealSideDirectionRight withOffset:250];
+	[revealSideViewController preloadViewController:bottomControl forSide:PPRevealSideDirectionBottom withOffset:390];
 	
 	revealSideViewController.panInteractionsWhenClosed = PPRevealSideInteractionContentView | PPRevealSideInteractionNavigationBar;
 	revealSideViewController.delegate = self;
@@ -53,7 +63,9 @@
 	self.revealSideViewController = revealSideViewController;
 	self.playerNavigationController = player;
 	self.menuNavigationController = menu;
-	self.playbackControlViewController = playbackControl;
+	self.leftControlViewController = leftControl;
+	self.rightControlViewController = rightControl;
+	self.bottomControlViewController = bottomControl;
 	
 	[self presentViewController:self.revealSideViewController animated:NO completion:nil];
 }
@@ -66,7 +78,7 @@
 #pragma mark - PPRevealSideViewController delegate
 
 - (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPushController:(UIViewController *)pushedController {
-	if (pushedController == self.menuNavigationController) {
+	if (pushedController == self.menuNavigationController || pushedController == self.bottomControlViewController) {
 		[self.playerNavigationController setNavigationBarHidden:NO animated:YES];
 		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 	}
@@ -94,7 +106,7 @@
 //}
 
 - (PPRevealSideDirection)pprevealSideViewController:(PPRevealSideViewController*)controller directionsAllowedForPanningOnView:(UIView*)view {	
-    return PPRevealSideDirectionTop | PPRevealSideDirectionLeft | PPRevealSideDirectionRight;
+    return PPRevealSideDirectionTop | PPRevealSideDirectionLeft | PPRevealSideDirectionRight | PPRevealSideDirectionBottom;
 }
 
 
