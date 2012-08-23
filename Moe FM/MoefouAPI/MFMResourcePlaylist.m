@@ -100,7 +100,7 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 		}
 	}
 	if (idStr.length > 0) {
-		[idStr substringToIndex:idStr.length - 1];
+		[idStr setString:[idStr substringToIndex:idStr.length - 1]];
 	}
 	NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
 								[NSNumber numberWithInteger:MFMResourcePerPageDefault], @"perpage",

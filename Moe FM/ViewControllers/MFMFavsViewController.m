@@ -101,13 +101,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	MFMPlayerManager *playerManager = [MFMPlayerManager sharedPlayerManager];
+	if (self.resourceCollection.objType == MFMResourceObjTypeSong) {
+		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist playlistWithCollection:self.resourceCollection];
+		playerManager.playlist = resourcePlaylist;
+		playerManager.trackNum = indexPath.row;
+	}
+	else {
+		MFMResourceFav *fav = [self.resourceCollection objectAtIndex:indexPath.row];
+		MFMResourceWiki *wiki = (MFMResourceWiki *)fav.obj;
+		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist playlistWIthObjType:self.resourceCollection.objType andIds:[NSArray arrayWithObject:wiki.wikiId]];
+		playerManager.playlist = resourcePlaylist;
+		playerManager.trackNum = 0;
+	}
 }
 
 - (void)refreshData
