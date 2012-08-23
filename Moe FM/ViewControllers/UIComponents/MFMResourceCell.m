@@ -56,12 +56,12 @@
 	else
 	{
 		[self.titleLabel setTextColor:[UIColor colorWithRed:0.0 green:68.0/255 blue:118.0/255 alpha:1.0]];
-		[self.titleLabel setShadowColor:[UIColor whiteColor]];
-		[self.titleLabel setShadowOffset:CGSizeMake(0, 1)];
+		[self.titleLabel setShadowColor:[UIColor colorWithRed:0.0 green:68.0/255 blue:118.0/255 alpha:0.3]];
+		[self.titleLabel setShadowOffset:CGSizeMake(0.8, 0.5)];
 
 		[self.subtitleLabel setTextColor:[UIColor colorWithRed:113.0/255 green:133.0/255 blue:148.0/255 alpha:1.0]];
-		[self.subtitleLabel setShadowColor:[UIColor whiteColor]];
-		[self.subtitleLabel setShadowOffset:CGSizeMake(0, 1)];
+		[self.subtitleLabel setShadowColor:[UIColor colorWithRed:113.0/255 green:133.0/255 blue:148.0/255 alpha:0.3]];
+		[self.subtitleLabel setShadowOffset:CGSizeMake(0.5, 0.3)];
 	}
 }
 

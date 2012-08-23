@@ -74,20 +74,20 @@
 		self.subtitleLabel.text = @"";
 		
 		if (wiki.wikiType == MFMResourceObjTypeMusic)
-			for (NSDictionary *meta in wiki.wikiMeta) {
-				if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
-					self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
-				}
+		for (NSDictionary *meta in wiki.wikiMeta) {
+			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
+				self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
 			}
+		}
 		
-		if (self.detailTextLabel.text.length == 0)
-			for (NSDictionary *meta in wiki.wikiMeta) {
-				if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
-					self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
-				}
+		if (self.subtitleLabel.text.length == 0)
+		for (NSDictionary *meta in wiki.wikiMeta) {
+			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
+				self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
 			}
+		}
 		
-		if (self.detailTextLabel.text.length == 0) {
+		if (self.subtitleLabel.text.length == 0) {
 			self.subtitleLabel.text = NSLocalizedString(@"UNKNOWN_ARTIST", @"");
 		}
 		
