@@ -279,6 +279,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="toggleFav:" destination="hpa-ev-dsb" eventType="touchUpInside" id="AM4-ae-e8k"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Lorem ipsum dolor sit amet, sed do   consectetur" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" adjustsFontSizeToFit="NO" id="30K-Kq-KZy">
                                             <rect key="frame" x="72" y="25" width="210" height="36"/>
@@ -549,6 +552,9 @@
     <classes>
         <class className="MFMFavCell" superclassName="MFMResourceCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleFav:"/>
+            </relationships>
         </class>
         <class className="MFMFavsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
@@ -569,7 +575,6 @@
         <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
             <relationships>
-                <relationship kind="action" name="togglePlaybackState:"/>
                 <relationship kind="outlet" name="dislikeButtonL" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dislikeButtonR" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favButtonL" candidateClass="UIButton"/>

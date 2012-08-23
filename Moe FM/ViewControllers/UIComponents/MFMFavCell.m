@@ -97,4 +97,23 @@
 	}
 }
 
+- (IBAction)toggleFav:(id)sender
+{
+	if (self.resourceFav != nil) {
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.resourceFav];
+		[self.resourceFav toggleFavAsType:self.favType];
+	}
+}
+
+#pragma mark - NotificationCenter
+
+- (void)handleNotification:(NSNotification *)notification
+{
+	if (notification.name == MFMResourceNotification) {
+		[self updateFavStatus];
+		
+		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:notification.object];
+	}
+}
+
 @end

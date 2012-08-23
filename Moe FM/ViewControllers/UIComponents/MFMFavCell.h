@@ -13,4 +13,6 @@
 
 @property (nonatomic, retain) MFMResourceFav *resourceFav;
 
+- (IBAction)toggleFav:(id)sender;
+
 @end
