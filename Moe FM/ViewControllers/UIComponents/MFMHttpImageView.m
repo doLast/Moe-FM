@@ -114,6 +114,7 @@
 	if (self.delegate != nil && [self.delegate respondsToSelector:@selector(imageView:didFinishLoadingImage:)]) {
 		[self.delegate imageView:self didFinishLoadingImage:image];
 	}
+	self.fetcher = nil;
 }
 
 - (void)fetcher:(MFMDataFetcher *)dataFetcher didFinishWithError:(NSError *)error
@@ -124,6 +125,7 @@
 	if (self.delegate != nil && [self.delegate respondsToSelector:@selector(imageView:didFailLoadingURL:)]) {
 		[self.delegate imageView:self didFailLoadingWithError:error];
 	}
+	self.fetcher = nil;
 }
 
 @end
