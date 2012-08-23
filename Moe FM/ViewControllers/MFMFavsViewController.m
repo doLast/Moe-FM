@@ -7,6 +7,8 @@
 //
 
 #import "MFMFavsViewController.h"
+#import "MFMFavCell.h"
+
 #import "SVPullToRefresh.h"
 #import "MFMPlayerManager.h"
 
@@ -49,13 +51,6 @@
 	[self.tableView.pullToRefreshView triggerRefresh];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-	
-	[self.resourceCollection stopFetch];
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -94,38 +89,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *CellIdentifier = @"FavCell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	MFMFavCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
 	MFMResourceFav *resource = [self.resourceCollection objectAtIndex:indexPath.row];
-	if ([resource.obj isKindOfClass:[MFMResourceSub class]]) {
-		MFMResourceSub *sub = (MFMResourceSub *)resource.obj;
-		
-		cell.textLabel.text = sub.subTitle;
-		cell.detailTextLabel.text = sub.wiki.wikiTitle;
-	}
-	else if ([resource.obj isKindOfClass:[MFMResourceWiki class]]) {
-		MFMResourceWiki *wiki = (MFMResourceWiki *)resource.obj;
-		cell.textLabel.text = wiki.wikiTitle;
-		cell.detailTextLabel.text = @"";
-		
-		if (wiki.wikiType == MFMResourceObjTypeMusic) 
-		for (NSDictionary *meta in wiki.wikiMeta) {
-			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
-				cell.detailTextLabel.text = [meta objectForKey:@"meta_value"];
-			}
-		}
-		
-		if (cell.detailTextLabel.text.length == 0) 
-		for (NSDictionary *meta in wiki.wikiMeta) {
-			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
-				cell.detailTextLabel.text = [meta objectForKey:@"meta_value"];
-			}
-		}
-		
-		if (cell.detailTextLabel.text.length == 0) {
-			cell.detailTextLabel.text = NSLocalizedString(@"UNKNOWN_ARTIST", @"");
-		}
-	}
+	cell.resourceFav = resource;
 
 	return cell;
 }
@@ -171,11 +138,22 @@
 		notification.object == self.resourceCollection) {
 		if (self.resourceCollection.error != nil) {
 			[self.tableView.pullToRefreshView stopAnimating];
+			[self.tableView.infiniteScrollingView stopAnimating];
 			return;
 		}
 		
 		self.page++;
-		[self.tableView reloadData];
+		if (self.page == 1) {
+			[self.tableView reloadData];
+		}
+		else {
+			int i;
+			NSMutableArray *indexPaths = [NSMutableArray array];
+			for (i = [self.tableView numberOfRowsInSection:0]; i < [self.resourceCollection count]; i++) {
+				[indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+			}
+			[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:NO];
+		}
 		[self.tableView.pullToRefreshView stopAnimating];
 		[self.tableView.infiniteScrollingView stopAnimating];
 	}

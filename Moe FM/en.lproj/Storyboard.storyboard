@@ -252,39 +252,64 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sko-r9-hod" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="v2f-4A-Rpb" customClass="MFMFavsViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QaZ-y4-TFT">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" id="QaZ-y4-TFT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavCell" textLabel="9O8-cZ-UeD" detailTextLabel="7xm-TE-IQw" imageView="wcM-ST-rLe" style="IBUITableViewCellStyleSubtitle" id="hpa-ev-dsb">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavCell" id="hpa-ev-dsb" customClass="MFMFavCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="67"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="NAME" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9O8-cZ-UeD">
-                                            <rect key="frame" x="36" y="2" width="53" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="ARTIST_OR_DETAIL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7xm-TE-IQw">
-                                            <rect key="frame" x="36" y="24" width="136" height="18"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="cover_small" id="wcM-ST-rLe">
-                                            <rect key="frame" x="10" y="13" width="16" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cover_small" id="qqG-De-IKl" customClass="MFMHttpImageView">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4g0-Yp-Z1Z">
+                                            <rect key="frame" x="284" y="17.5" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal">
+                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Lorem ipsum dolor sit amet, sed do   consectetur" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" adjustsFontSizeToFit="NO" id="30K-Kq-KZy">
+                                            <rect key="frame" x="72" y="25" width="210" height="36"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" red="0.4431372549" green="0.52156862749999999" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Lance Maeyer" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lqO-ID-v4k">
+                                            <rect key="frame" x="72" y="5" width="210" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="shadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="shadowOffset" width="0.0" height="1"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="accessoryButton" destination="4g0-Yp-Z1Z" id="HMI-4g-CGE"/>
+                                    <outlet property="httpImageView" destination="qqG-De-IKl" id="t38-B4-3TG"/>
+                                    <outlet property="subtitleLabel" destination="30K-Kq-KZy" id="Kkb-A2-vma"/>
+                                    <outlet property="titleLabel" destination="lqO-ID-v4k" id="rhL-60-g3W"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -522,6 +547,9 @@
         <image name="play" width="16" height="16"/>
     </resources>
     <classes>
+        <class className="MFMFavCell" superclassName="MFMResourceCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavCell.h"/>
+        </class>
         <class className="MFMFavsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
             <relationships>
@@ -541,6 +569,7 @@
         <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
             <relationships>
+                <relationship kind="action" name="togglePlaybackState:"/>
                 <relationship kind="outlet" name="dislikeButtonL" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="dislikeButtonR" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favButtonL" candidateClass="UIButton"/>
@@ -557,11 +586,12 @@
                 <relationship kind="action" name="showMenu:"/>
                 <relationship kind="action" name="togglePlaybackState:"/>
                 <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songAlbumLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songArtistLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songArtworkImage" candidateClass="MFMHttpImageView"/>
                 <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
                 <relationship kind="outlet" name="songArtworkReflection" candidateClass="MFMReflectedImageView"/>
                 <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="songInfoLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songInfoView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
@@ -569,6 +599,15 @@
         </class>
         <class className="MFMReflectedImageView" superclassName="UIImageView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMReflectedImageView.h"/>
+        </class>
+        <class className="MFMResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="accessoryButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="httpImageView" candidateClass="MFMHttpImageView"/>
+                <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="MFMStartingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>

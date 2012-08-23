@@ -52,6 +52,12 @@
 		25A515D215E3E1AC00D1267A /* table-BG-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */; };
 		25A515D415E4595600D1267A /* BarLCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515D315E4595600D1267A /* BarLCD.png */; };
 		25A515DA15E46BF800D1267A /* MFMNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A515D915E46BF800D1267A /* MFMNetworkManager.m */; };
+		25A515E115E5C4A500D1267A /* MFMResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A515E015E5C4A400D1267A /* MFMResourceCell.m */; };
+		25A515E415E5CA9A00D1267A /* list-item-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515E215E5CA9900D1267A /* list-item-bg.png */; };
+		25A515E515E5CA9A00D1267A /* list-item-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515E315E5CA9900D1267A /* list-item-bg@2x.png */; };
+		25A515EC15E5CF1F00D1267A /* list-item-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515EA15E5CF1E00D1267A /* list-item-selected.png */; };
+		25A515ED15E5CF1F00D1267A /* list-item-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515EB15E5CF1E00D1267A /* list-item-selected@2x.png */; };
+		25A515F015E5E65400D1267A /* MFMFavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A515EF15E5E65400D1267A /* MFMFavCell.m */; };
 		25B35B291531DC7900D1EAEC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B281531DC7900D1EAEC /* MediaPlayer.framework */; };
 		25B35B2B1531DC8300D1EAEC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */; };
 		25B35B2D1531DC9200D1EAEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */; };
@@ -159,6 +165,14 @@
 		25A515D315E4595600D1267A /* BarLCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BarLCD.png; sourceTree = "<group>"; };
 		25A515D815E46BF800D1267A /* MFMNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMNetworkManager.h; sourceTree = "<group>"; };
 		25A515D915E46BF800D1267A /* MFMNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMNetworkManager.m; sourceTree = "<group>"; };
+		25A515DF15E5C4A400D1267A /* MFMResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceCell.h; sourceTree = "<group>"; };
+		25A515E015E5C4A400D1267A /* MFMResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceCell.m; sourceTree = "<group>"; };
+		25A515E215E5CA9900D1267A /* list-item-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-bg.png"; sourceTree = "<group>"; };
+		25A515E315E5CA9900D1267A /* list-item-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-bg@2x.png"; sourceTree = "<group>"; };
+		25A515EA15E5CF1E00D1267A /* list-item-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-selected.png"; sourceTree = "<group>"; };
+		25A515EB15E5CF1E00D1267A /* list-item-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-item-selected@2x.png"; sourceTree = "<group>"; };
+		25A515EE15E5E65300D1267A /* MFMFavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMFavCell.h; sourceTree = "<group>"; };
+		25A515EF15E5E65400D1267A /* MFMFavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMFavCell.m; sourceTree = "<group>"; };
 		25B35B281531DC7900D1EAEC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		25B35B2A1531DC8300D1EAEC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		25B35B2C1531DC9200D1EAEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -318,6 +332,10 @@
 			children = (
 				25A515CF15E3E1AC00D1267A /* table-BG-pattern.png */,
 				25A515D015E3E1AC00D1267A /* table-BG-pattern@2x.png */,
+				25A515E215E5CA9900D1267A /* list-item-bg.png */,
+				25A515E315E5CA9900D1267A /* list-item-bg@2x.png */,
+				25A515EA15E5CF1E00D1267A /* list-item-selected.png */,
+				25A515EB15E5CF1E00D1267A /* list-item-selected@2x.png */,
 				25A515D315E4595600D1267A /* BarLCD.png */,
 				25A515C115E3D51500D1267A /* BarLCD@2x.png */,
 				25A515BB15E3BE6300D1267A /* noise.png */,
@@ -442,6 +460,10 @@
 				25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */,
 				25A515C815E3DA3300D1267A /* MFMReflectedImageView.h */,
 				25A515C915E3DA3300D1267A /* MFMReflectedImageView.m */,
+				25A515DF15E5C4A400D1267A /* MFMResourceCell.h */,
+				25A515E015E5C4A400D1267A /* MFMResourceCell.m */,
+				25A515EE15E5E65300D1267A /* MFMFavCell.h */,
+				25A515EF15E5E65400D1267A /* MFMFavCell.m */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -530,6 +552,10 @@
 				25A515D115E3E1AC00D1267A /* table-BG-pattern.png in Resources */,
 				25A515D215E3E1AC00D1267A /* table-BG-pattern@2x.png in Resources */,
 				25A515D415E4595600D1267A /* BarLCD.png in Resources */,
+				25A515E415E5CA9A00D1267A /* list-item-bg.png in Resources */,
+				25A515E515E5CA9A00D1267A /* list-item-bg@2x.png in Resources */,
+				25A515EC15E5CF1F00D1267A /* list-item-selected.png in Resources */,
+				25A515ED15E5CF1F00D1267A /* list-item-selected@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,6 +597,8 @@
 				25BA9FA915E38E98004B37BB /* MFMPlaybackControlViewController.m in Sources */,
 				25A515CA15E3DA3300D1267A /* MFMReflectedImageView.m in Sources */,
 				25A515DA15E46BF800D1267A /* MFMNetworkManager.m in Sources */,
+				25A515E115E5C4A500D1267A /* MFMResourceCell.m in Sources */,
+				25A515F015E5E65400D1267A /* MFMFavCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
