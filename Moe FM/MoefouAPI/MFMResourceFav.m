@@ -105,9 +105,9 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 	self.favUid = [resource objectForKey:@"fav_uid"];
 	self.favDate = [NSDate dateWithTimeIntervalSince1970:
 					[(NSNumber *)[resource objectForKey:@"fav_date"] doubleValue]];
-	self.favType = [[resource objectForKey:@"fav_type"] integerValue];
 	
 	if (self.favUid != nil) {
+		self.favType = [[resource objectForKey:@"fav_type"] integerValue];
 		self.favObjId = [resource objectForKey:@"fav_obj_id"]; 
 		self.favObjType = [[NSArray arrayWithObjects:MFMResourceObjTypeStr
 											   count:MFMResourceObjTypeTotal]
