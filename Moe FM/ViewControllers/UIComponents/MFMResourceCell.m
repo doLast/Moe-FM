@@ -7,6 +7,9 @@
 //
 
 #import "MFMResourceCell.h"
+#import "MFMResource.h"
+#import "MFMResourceWiki.h"
+#import "MFMResourceSub.h"
 
 @interface MFMResourceCell ()
 
@@ -16,10 +19,17 @@
 
 #pragma mark - Getter & Setter
 
+@synthesize resource = _resource;
+
 @synthesize httpImageView = _httpImageView;
 @synthesize titleLabel = _titleLabel;
 @synthesize subtitleLabel = _subtitleLabel;
-@synthesize accessoryButton = _accessoryButton;
+
+- (void)setResource:(MFMResource *)resource
+{
+	_resource = resource;
+	[self updateInfo];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -37,6 +47,48 @@
 	
 	UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"list-item-bg"]];
 	self.backgroundView = backgroundView;
+}
+
+- (void)updateInfo
+{
+	if ([self.resource isKindOfClass:[MFMResourceSub class]]) {
+		MFMResourceSub *sub = (MFMResourceSub *)self.resource;
+		
+		self.titleLabel.text = sub.subTitle;
+		self.subtitleLabel.text = sub.wiki.wikiTitle;
+		NSURL *url = [NSURL URLWithString:[sub.wiki.wikiCover objectForKey:@"small"]];
+		[self.httpImageView resetImage];
+		self.httpImageView.imageURL = url;
+		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	else if ([self.resource isKindOfClass:[MFMResourceWiki class]]) {
+		MFMResourceWiki *wiki = (MFMResourceWiki *)self.resource;
+		self.titleLabel.text = wiki.wikiTitle;
+		self.subtitleLabel.text = @"";
+		
+		if (wiki.wikiType == MFMResourceObjTypeMusic)
+			for (NSDictionary *meta in wiki.wikiMeta) {
+				if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
+					self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
+				}
+			}
+		
+		if (self.subtitleLabel.text.length == 0)
+			for (NSDictionary *meta in wiki.wikiMeta) {
+				if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
+					self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
+				}
+			}
+		
+		if (self.subtitleLabel.text.length == 0) {
+			self.subtitleLabel.text = NSLocalizedString(@"UNKNOWN_ARTIST", @"");
+		}
+		
+		NSURL *url = [NSURL URLWithString:[wiki.wikiCover objectForKey:@"small"]];
+		[self.httpImageView resetImage];
+		self.httpImageView.imageURL = url;
+		self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+	}
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

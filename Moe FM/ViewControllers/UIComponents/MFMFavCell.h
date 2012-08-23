@@ -14,5 +14,7 @@
 @property (nonatomic, retain) MFMResourceFav *resourceFav;
 
 - (IBAction)toggleFav:(id)sender;
+- (void)showFavButton;
+- (void)hideFavButton;
 
 @end

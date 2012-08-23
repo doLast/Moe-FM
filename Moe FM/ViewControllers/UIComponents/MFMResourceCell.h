@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MFMHttpImageView.h"
 
+@class MFMResource;
+
 @interface MFMResourceCell : UITableViewCell
+
+@property (nonatomic, strong) MFMResource *resource;
 
 @property (nonatomic, strong) IBOutlet MFMHttpImageView *httpImageView;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
 @property (nonatomic, strong) IBOutlet UILabel *subtitleLabel;
-@property (nonatomic, strong) IBOutlet UIButton *accessoryButton;
 
 @end

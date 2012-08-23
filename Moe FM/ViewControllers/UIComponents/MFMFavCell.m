@@ -14,12 +14,14 @@
 @interface MFMFavCell ()
 
 @property (nonatomic, readonly) MFMResourceObjType favType;
+@property (nonatomic, strong) UIButton *favButton;
 
 @end
 
 @implementation MFMFavCell
 
 @synthesize resourceFav = _resourceFav;
+@synthesize favButton = _favButton;
 
 - (MFMResourceObjType)favType
 {
@@ -34,11 +36,17 @@
 	_resourceFav = resourceFav;
 	[self updateFavInfo];
 	[self updateFavStatus];
+	self.resource = resourceFav.obj;
 }
 
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
+	
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+	[button setFrame:CGRectMake(0, 0, 32, 32)];
+	[button addTarget:self action:@selector(toggleFav:) forControlEvents:UIControlEventTouchUpInside];
+	self.favButton = button;
 	
 	[self updateFavStatus];
 }
@@ -46,54 +54,21 @@
 - (void)updateFavStatus
 {
 	if (self.favType == MFMFavTypeHeart) {
-		[self.accessoryButton setImage:[UIImage imageNamed:@"fav_no"] forState:UIControlStateNormal];
-		[self.accessoryButton setImage:[UIImage imageNamed:@"fav_yes"] forState:UIControlStateSelected];
+		[self.favButton setImage:[UIImage imageNamed:@"fav_no"] forState:UIControlStateNormal];
+		[self.favButton setImage:[UIImage imageNamed:@"fav_yes"] forState:UIControlStateSelected];
 	}
 	else if (self.favType == MFMFavTypeTrash) {
-		[self.accessoryButton setImage:[UIImage imageNamed:@"dislike_no"] forState:UIControlStateNormal];
-		[self.accessoryButton setImage:[UIImage imageNamed:@"dislike_yes"] forState:UIControlStateSelected];
+		[self.favButton setImage:[UIImage imageNamed:@"dislike_no"] forState:UIControlStateNormal];
+		[self.favButton setImage:[UIImage imageNamed:@"dislike_yes"] forState:UIControlStateSelected];
 	}
 	
-	self.accessoryButton.selected = [self.resourceFav didAddToFavAsType:self.favType];
+	self.favButton.selected = [self.resourceFav didAddToFavAsType:self.favType];
 }
 
 - (void)updateFavInfo
 {
 	if ([self.resourceFav.obj isKindOfClass:[MFMResourceSub class]]) {
-		MFMResourceSub *sub = (MFMResourceSub *)self.resourceFav.obj;
-		
-		self.titleLabel.text = sub.subTitle;
-		self.subtitleLabel.text = sub.wiki.wikiTitle;
-		NSURL *url = [NSURL URLWithString:[sub.wiki.wikiCover objectForKey:@"small"]];
-		[self.httpImageView resetImage];
-		self.httpImageView.imageURL = url;
-	}
-	else if ([self.resourceFav.obj isKindOfClass:[MFMResourceWiki class]]) {
-		MFMResourceWiki *wiki = (MFMResourceWiki *)self.resourceFav.obj;
-		self.titleLabel.text = wiki.wikiTitle;
-		self.subtitleLabel.text = @"";
-		
-		if (wiki.wikiType == MFMResourceObjTypeMusic)
-		for (NSDictionary *meta in wiki.wikiMeta) {
-			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"艺术家"]) {
-				self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
-			}
-		}
-		
-		if (self.subtitleLabel.text.length == 0)
-		for (NSDictionary *meta in wiki.wikiMeta) {
-			if ([[meta objectForKey:@"meta_key"] isEqualToString:@"简介"]) {
-				self.subtitleLabel.text = [meta objectForKey:@"meta_value"];
-			}
-		}
-		
-		if (self.subtitleLabel.text.length == 0) {
-			self.subtitleLabel.text = NSLocalizedString(@"UNKNOWN_ARTIST", @"");
-		}
-		
-		NSURL *url = [NSURL URLWithString:[wiki.wikiCover objectForKey:@"small"]];
-		[self.httpImageView resetImage];
-		self.httpImageView.imageURL = url;
+		[self showFavButton];
 	}
 }
 
@@ -103,6 +78,16 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:self.resourceFav];
 		[self.resourceFav toggleFavAsType:self.favType];
 	}
+}
+
+- (void)showFavButton
+{
+	self.accessoryView = self.favButton;
+}
+
+- (void)hideFavButton
+{
+	self.accessoryView = nil;
 }
 
 #pragma mark - NotificationCenter

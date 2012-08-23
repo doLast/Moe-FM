@@ -208,26 +208,11 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cover_small" id="qqG-De-IKl" customClass="MFMHttpImageView">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="66" height="66"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4g0-Yp-Z1Z">
-                                            <rect key="frame" x="284" y="17.5" width="32" height="32"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                            <state key="normal">
-                                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <state key="highlighted">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="toggleFav:" destination="hpa-ev-dsb" eventType="touchUpInside" id="AM4-ae-e8k"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="SUBTITLE" lineBreakMode="tailTruncation" numberOfLines="2" minimumFontSize="10" adjustsFontSizeToFit="NO" id="30K-Kq-KZy">
-                                            <rect key="frame" x="72" y="25" width="210" height="36"/>
+                                            <rect key="frame" x="72" y="25" width="240" height="36"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -237,7 +222,7 @@
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TITLE" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontSizeToFit="NO" id="lqO-ID-v4k">
-                                            <rect key="frame" x="72" y="5" width="210" height="21"/>
+                                            <rect key="frame" x="72" y="5" width="240" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -251,7 +236,6 @@
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <outlet property="accessoryButton" destination="4g0-Yp-Z1Z" id="HMI-4g-CGE"/>
                                     <outlet property="httpImageView" destination="qqG-De-IKl" id="t38-B4-3TG"/>
                                     <outlet property="subtitleLabel" destination="30K-Kq-KZy" id="Kkb-A2-vma"/>
                                     <outlet property="titleLabel" destination="lqO-ID-v4k" id="rhL-60-g3W"/>
@@ -492,6 +476,76 @@
         <image name="pause" width="16" height="16"/>
         <image name="play" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="MFMFavCell" superclassName="MFMResourceCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleFav:"/>
+            </relationships>
+        </class>
+        <class className="MFMFavsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="playAll:"/>
+            </relationships>
+        </class>
+        <class className="MFMHttpImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMHttpImageView.h"/>
+        </class>
+        <class className="MFMMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showLogin:"/>
+                <relationship kind="action" name="toggleSignIn:"/>
+                <relationship kind="outlet" name="authorizationButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dislikeButtonL" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dislikeButtonR" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favButtonL" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favButtonR" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButtonL" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButtonR" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButtonL" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButtonR" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MFMPlayerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlayerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="togglePlaybackState:"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songAlbumLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songArtistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songArtworkImage" candidateClass="MFMHttpImageView"/>
+                <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songArtworkReflection" candidateClass="MFMReflectedImageView"/>
+                <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songInfoView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="MFMReflectedImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMReflectedImageView.h"/>
+        </class>
+        <class className="MFMResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="accessoryButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="httpImageView" candidateClass="MFMHttpImageView"/>
+                <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MFMStartingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
