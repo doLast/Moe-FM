@@ -61,7 +61,7 @@
 - (void)beginFetchWithDelegate:(id <MFMDataFetcherDelegate>)delegate
 {
 	@synchronized(self) {
-		if ([self isFetching] || delegate == nil) {
+		if ([self isFetching]) {
 			return;
 		}
 		
@@ -111,10 +111,7 @@
 {
 	NSLog(@"Succeeded! Received %d bytes of data",[data length]);
 	
-	if (error == nil && 
-		self.delegate && 
-		[self.delegate respondsToSelector:@selector(fetcher:didFinishWithJson:)]) {
-		
+	if (error == nil) {
 		NSDictionary* json = [NSJSONSerialization 
 							  JSONObjectWithData:data
 							  options:kNilOptions 
@@ -123,7 +120,8 @@
 		if (error != nil) {
 			[self handelError:error];
 		}
-		else {
+		else if (self.delegate &&
+				 [self.delegate respondsToSelector:@selector(fetcher:didFinishWithJson:)]) {
 			[self.delegate fetcher:self didFinishWithJson:json];
 		}
 	}
@@ -141,13 +139,12 @@
 {
 	NSLog(@"Succeeded! Received %d bytes of data",[data length]);
 	
-	if (error == nil && 
-		self.delegate &&
-		[self.delegate respondsToSelector:@selector(fetcher:didFinishWithImage:)]) {
-		
-		UIImage *image = [UIImage imageWithData:data];
-		
-		[self.delegate fetcher:self didFinishWithImage:image];
+	if (error == nil) {
+		if (self.delegate &&
+			[self.delegate respondsToSelector:@selector(fetcher:didFinishWithImage:)]) {
+			UIImage *image = [UIImage imageWithData:data];
+			[self.delegate fetcher:self didFinishWithImage:image];
+		}
 	}
 	else {
 		[self handelError:error];
