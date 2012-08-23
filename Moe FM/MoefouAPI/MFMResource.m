@@ -42,7 +42,7 @@ NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
 	return self;
 }
 
-- (void)finalize
+- (void)dealloc
 {
 	[self stopFetch];
 }

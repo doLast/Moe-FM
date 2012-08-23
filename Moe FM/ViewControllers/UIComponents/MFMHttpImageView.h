@@ -24,6 +24,7 @@
 @property (nonatomic, weak) id <MFMHttpImageViewDelegate> delegate;
 @property (nonatomic, strong) NSURL *imageURL;
 
+- (void)resetImage;
 - (void)stopFetching;
 
 @end

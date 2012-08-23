@@ -44,10 +44,9 @@
 	if (self) {
 		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 		// If signed in, sign the request with OAuth
-		NSLog(@"Authorizing");
 		BOOL authorized = [[MFMOAuth sharedOAuth] authorizeRequest:request];
 		if (!authorized) {
-			NSLog(@"Failed to authorized");
+			NSLog(@"Not authorized");
 		}
 		
 		self.request = request;

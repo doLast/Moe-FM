@@ -64,7 +64,18 @@
 	return self;
 }
 
+- (void)dealloc
+{
+	[self stopFetching];
+}
+
 #pragma mark - Actions
+
+- (void)resetImage
+{
+	self.image = self.placeholderImage;
+	self.highlightedImage = self.highlightedImage;
+}
 
 - (void)startFetching
 {
