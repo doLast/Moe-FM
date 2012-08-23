@@ -261,6 +261,7 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 			self.playerStatus = MFMPlayerStatusPaused;
 		} else if ([streamer isIdle]) {
 			NSLog(@"Is Idle");
+			[self.currentSong postListenLog];
 			self.playerStatus = MFMPlayerStatusPaused;
 			[self next];
 		} else if ([streamer isWaiting]){

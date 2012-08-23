@@ -33,4 +33,6 @@
 @property (retain, nonatomic, readonly) MFMResourceFav *favWiki;
 @property (retain, nonatomic, readonly) MFMResourceFav *favSub;
 
+- (void)postListenLog;
+
 @end

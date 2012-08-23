@@ -6,7 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
+NSString * const kListenLogURLStr = @"http://moe.fm/ajax/log?log_obj_type=sub&log_type=listen&obj_type=song&api=";
+
 #import "MFMResourceSong.h"
+#import "MFMDataFetcher.h"
 
 @interface MFMResourceSong ()
 
@@ -30,6 +33,7 @@
 @property (retain, nonatomic) MFMResourceFav *favWiki;
 @property (retain, nonatomic) MFMResourceFav *favSub;
 
+@property (retain, nonatomic) MFMDataFetcher *logFetcher;
 @end
 
 @implementation MFMResourceSong
@@ -54,6 +58,29 @@
 @synthesize favWiki = _favWiki;
 @synthesize favSub = _favSub;
 
+@synthesize logFetcher = _logFetcher;
+
+- (void)postListenLog
+{
+	NSString *urlPrefix = [kListenLogURLStr stringByAppendingFormat:@"%@&", MFMAPIFormat];
+	NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+	[parameters setValue:self.subId forKey:@"obj_id"];
+	
+	NSURL *url = [MFMResource urlWithPrefix:urlPrefix parameters:parameters];
+	NSLog(@"Posting listen log with url: %@", url);
+	
+	if (self.logFetcher != nil){
+		[self.logFetcher stop];
+		self.logFetcher = nil;
+	}
+	
+	self.logFetcher = [[MFMDataFetcher alloc] initWithURL:url dataType:MFMDataTypeJson];
+	[self.logFetcher beginFetchWithDelegate:nil];
+	
+	return;
+
+}
+
 # pragma mark - Override MFMResource Methods
 
 - (NSString *)description
@@ -62,7 +89,7 @@
 }
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
-{	
+{
 	self.upId = [resource objectForKey:@"up_id"];
 	self.streamURL = [NSURL URLWithString:[resource objectForKey:@"url"]];
 	self.streamLength = [resource objectForKey:@"stream_length"];
