@@ -10,6 +10,7 @@
 #import "PPRevealSideViewController.h"
 #import "MFMFavsViewController.h"
 #import "MFMPlayerManager.h"
+#import "MFMResourceCell.h"
 
 #import "MFMResourcePlaylist.h"
 #import "MFMResourceFavs.h"
@@ -17,12 +18,15 @@
 
 @interface MFMMenuViewController ()
 
+@property (nonatomic, strong) NSArray *menuItems;
+
 @end
 
 
 @implementation MFMMenuViewController
 
 @synthesize authorizationButton = _authorizationButton;
+@synthesize menuItems = _menuItems;
 
 - (void)viewDidLoad
 {
@@ -30,6 +34,8 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOAuthStatusChanged:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 	[self updateAuthorization];
+	
+	self.menuItems = [NSArray arrayWithObjects:@"RANDOM_PLAY", @"FAV_SONGS", @"FAV_MUSICS", @"FAV_RADIOS", nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -51,68 +57,21 @@
 
 #pragma mark - Table view data source
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 0;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//#warning Incomplete method implementation.
-//    // Return the number of rows in the section.
-//    return 0;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *CellIdentifier = @"Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//    
-//    // Configure the cell...
-//    
-//    return cell;
-//}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    // Return the number of rows in the section.
+    return [self.menuItems count];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    static NSString *CellIdentifier = @"MenuCell";
+    MFMResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    cell.titleLabel.text = [self.menuItems objectAtIndex:indexPath.row];
+    
+    return cell;
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -125,6 +84,18 @@
 		
 		PPRevealSideViewController *revealSideVC = (PPRevealSideViewController *)self.navigationController.parentViewController;
 		[revealSideVC popViewControllerAnimated:YES];
+	}
+	else if (![MFMOAuth sharedOAuth].canAuthorize) {
+		[[MFMOAuth sharedOAuth] signInWithNavigationController:self.navigationController];
+	}
+	else if (indexPath.row == 1) {
+		[self performSegueWithIdentifier:@"ShowFavSongs" sender:self];
+	}
+	else if (indexPath.row == 2) {
+		[self performSegueWithIdentifier:@"ShowFavMusics" sender:self];
+	}
+	else if (indexPath.row == 3) {
+		[self performSegueWithIdentifier:@"ShowFavRadios" sender:self];
 	}
 }
 
