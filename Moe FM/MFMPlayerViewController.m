@@ -111,6 +111,9 @@ typedef enum {
 	[super viewDidAppear:animated];
 	
 	[self start];
+	
+	[[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
 }
 
 - (BOOL)canBecomeFirstResponder {
@@ -202,6 +205,9 @@ typedef enum {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
         [self.songProgressIndicator setProgress:1 animated:YES];//ios5
     }
+	else {
+		self.songProgressIndicator.progress = 1;
+	}
 }
 
 #pragma mark - Player Controls
@@ -343,8 +349,11 @@ typedef enum {
 - (void)player:(MoeFmPlayer *)player updateProgress:(float)percentage
 {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
-	[self.songProgressIndicator setProgress:percentage animated:YES];//ios5
+		[self.songProgressIndicator setProgress:percentage animated:YES];//ios5
     }
+	else {
+		self.songProgressIndicator.progress = percentage;
+	}
 }
 
 - (void)player:(MoeFmPlayer *)player updateMetadata:(NSDictionary *)metadata
