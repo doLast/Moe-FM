@@ -29,6 +29,8 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 
 @implementation MFMResourceFav
 
+#pragma mark - getter & setter
+
 @synthesize favId = _favId;
 @synthesize favObjId = _favObjId;
 @synthesize favObjType = _favObjType;
@@ -37,6 +39,8 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 @synthesize favType = _favType;
 @synthesize obj = _obj;
 @synthesize favFetcher = _favFetcher;
+
+#pragma mark - life cycle
 
 - (MFMResourceFav *)initWithObjId:(NSNumber *)objId andType:(MFMResourceObjType)objType
 {
@@ -52,6 +56,8 @@ NSString * const kDeleteFavURLStr = @"http://api.moefou.org/fav/delete.";
 	}
 	return self;
 }
+
+#pragma mark - fav manipulation
 
 - (BOOL)didAddToFavAsType:(MFMFavType)favType
 {

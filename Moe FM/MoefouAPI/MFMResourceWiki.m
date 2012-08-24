@@ -31,6 +31,8 @@ NSString * const MFMWikisURLStr = @"http://api.moefou.org/wikis.json?";
 
 @implementation MFMResourceWiki
 
+#pragma mark - getter & setter
+
 @synthesize wikiId = _wikiId;
 @synthesize wikiTitle = _wikiTitle;
 @synthesize wikiTitleEncode = _wikiTitleEncode;

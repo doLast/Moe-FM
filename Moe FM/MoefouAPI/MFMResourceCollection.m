@@ -62,6 +62,8 @@ const NSInteger MFMResourcePerPageDefault = 10;
 	return str;
 }
 
+#pragma mark - Loading request
+
 - (BOOL)reloadResources
 {
 	[self stopFetch];
@@ -90,6 +92,8 @@ const NSInteger MFMResourcePerPageDefault = 10;
 	return [self loadPage:index / self.perPage];
 }
 
+#pragma mark - Object manipulation
+
 - (id)objectAtIndex:(NSUInteger)index
 {
 	return [self.resources objectForKey:[NSNumber numberWithInteger:index]];
@@ -102,6 +106,8 @@ const NSInteger MFMResourcePerPageDefault = 10;
 	}
 	[self.resources setObject:object forKey:[NSNumber numberWithInteger:index]];
 }
+
+#pragma mark - Abstract method
 
 - (NSURL *)urlForPage:(NSUInteger)page
 {

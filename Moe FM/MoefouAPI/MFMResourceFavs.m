@@ -12,7 +12,6 @@
 #import "MFMResourcePlaylist.h"
 
 static NSString * const kUserFavsURLStr = @"http://api.moefou.org/user/favs/";
-static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @interface MFMResourceFavs ()
 
@@ -29,9 +28,13 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
 @implementation MFMResourceFavs
 
+#pragma mark - getter & setter
+
 @synthesize uid = _uid;
 @synthesize userName = _userName;
 @synthesize favType = _favType;
+
+#pragma mark - life cycle
 
 - (MFMResourceFavs *)initWithUid:(NSNumber *)uid
 						userName:(NSString *)userName
@@ -59,6 +62,8 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 	return instance;
 }
 
+#pragma mark - Override Methods
+
 - (NSURL *)urlForPage:(NSUInteger)page
 {
 	const NSString * category;
@@ -85,16 +90,6 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 	
 	return url;
 }
-
-#pragma mark - getter & setter
-
-- (MFMResourcePlaylist *)playlist
-{
-	MFMResourcePlaylist *resourcePlaylist = [[MFMResourcePlaylist alloc] init];
-	return resourcePlaylist;
-}
-
-#pragma mark - Override MFMResource Methods
 
 - (BOOL)prepareTheResource:(NSDictionary *)resource
 {

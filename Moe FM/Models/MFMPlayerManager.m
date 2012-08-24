@@ -246,12 +246,12 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 	if (streamer == self.audioStreamer) {
 		if (streamer.errorCode != AS_NO_ERROR) {
 			// handle the error via a UI, retrying the stream, etc.
+			NSLog(@"Streamer error: %@", [self.error localizedDescription]);
 			NSString *description = [AudioStreamer stringForErrorCode:streamer.errorCode];
 			NSDictionary *errorDictionary = @{ NSLocalizedDescriptionKey : description };
 			self.error = [NSError errorWithDomain:MFMPlayerErrorDomain code:streamer.errorCode userInfo:errorDictionary];
-			self.playerStatus = MFMPlayerStatusError;
 			
-			NSLog(@"Streamer error: %@", [self.error localizedDescription]);
+			self.playerStatus = MFMPlayerStatusError;
 			[self next];
 		} else if ([streamer isPlaying]) {
 			NSLog(@"Is Playing");

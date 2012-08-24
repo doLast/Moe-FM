@@ -38,6 +38,8 @@ NSString * const kListenLogURLStr = @"http://moe.fm/ajax/log?log_obj_type=sub&lo
 
 @implementation MFMResourceSong
 
+#pragma mark - getter & setter
+
 @synthesize upId = _upId;
 @synthesize streamURL = _streamURL;
 @synthesize streamLength = _streamLength;
@@ -59,6 +61,8 @@ NSString * const kListenLogURLStr = @"http://moe.fm/ajax/log?log_obj_type=sub&lo
 @synthesize favSub = _favSub;
 
 @synthesize logFetcher = _logFetcher;
+
+#pragma mark - log manipulation
 
 - (void)postListenLog
 {

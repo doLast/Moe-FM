@@ -30,6 +30,8 @@
 
 @implementation MFMResourceSub
 
+#pragma mark - getter & setter
+
 @synthesize subId = _subId;
 @synthesize subParentWiki = _subParentWiki;
 @synthesize subTitle = _subTitle;
