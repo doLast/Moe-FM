@@ -31,12 +31,14 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerSongChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMPlayerStatusChangedNotification object:[MFMPlayerManager sharedPlayerManager]];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -104,7 +106,6 @@
 {
 	self.favButton.enabled = NO;
 	MFMResourceFav *favSub = [MFMPlayerManager sharedPlayerManager].currentSong.favSub;
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNotification:) name:MFMResourceNotification object:favSub];
 	[favSub toggleFavAsType:MFMFavTypeHeart];
 }
 
@@ -135,11 +136,9 @@
 	else if (notification.name == MFMOAuthStatusChangedNotification) {
 		[self updateAuthorization];
 	}
-	else if (notification.name == MFMResourceNotification) {
+	else if (notification.name == MFMResourceNotification && notification.object == [MFMPlayerManager sharedPlayerManager].currentSong.favSub) {
 		[self updateSongInfo];
 		[self updateAuthorization];
-		
-		[[NSNotificationCenter defaultCenter] removeObserver:self name:MFMResourceNotification object:notification.object];
 	}
 }
 
