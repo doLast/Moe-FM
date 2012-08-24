@@ -11,7 +11,8 @@
 
 @interface MFMFavCell : MFMResourceCell
 
-@property (nonatomic, retain) MFMResourceFav *resourceFav;
+@property (nonatomic, strong) MFMResourceFav *resourceFav;
+@property (nonatomic, strong, readonly) UIButton *favButton;
 
 - (IBAction)toggleFav:(id)sender;
 - (void)showFavButton;
