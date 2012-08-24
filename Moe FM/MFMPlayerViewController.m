@@ -86,6 +86,7 @@ typedef enum {
 	
 	[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
 	
+    /*
 	// Decorate the songArtworkImage
 	CALayer *layer = self.songArtworkImage.layer;
     [layer setBorderColor: [[UIColor whiteColor] CGColor]];
@@ -95,6 +96,7 @@ typedef enum {
     [layer setShadowOffset: CGSizeMake(1, 3)];
     [layer setShadowRadius:4.0];
     [self.songArtworkImage setClipsToBounds:NO];
+    */
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -143,10 +145,11 @@ typedef enum {
 	[nowPlayingInfo setValue:album forKey:MPMediaItemPropertyAlbumTitle];
 	
 	self.songInfoLabel.text = [NSString stringWithFormat:@"%@ / %@", artist, album];
-	
-	// Post to NowPlayingInfoCenter
-	[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
-
+    
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
+        // Post to NowPlayingInfoCenter
+        [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nowPlayingInfo;
+    }
 	
 	// Update image async
 	NSString *coverSize = nil;
@@ -180,12 +183,14 @@ typedef enum {
 	self.songArtworkImage.image = image;
 	[self.songArtworkLoadingIndicator stopAnimating];
 		
-	MPMediaItemArtwork *mediaItemArtwork = [[MPMediaItemArtwork alloc] initWithImage:image];
 	
-	MPNowPlayingInfoCenter *nowPlayingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
-	NSMutableDictionary *newInfo = [NSMutableDictionary dictionaryWithDictionary:nowPlayingInfoCenter.nowPlayingInfo];
-	[newInfo setValue:mediaItemArtwork forKey:MPMediaItemPropertyArtwork];
-	nowPlayingInfoCenter.nowPlayingInfo = newInfo;
+	if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
+        MPMediaItemArtwork *mediaItemArtwork = [[MPMediaItemArtwork alloc] initWithImage:image];
+        MPNowPlayingInfoCenter *nowPlayingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
+        NSMutableDictionary *newInfo = [NSMutableDictionary dictionaryWithDictionary:nowPlayingInfoCenter.nowPlayingInfo];
+        [newInfo setValue:mediaItemArtwork forKey:MPMediaItemPropertyArtwork];
+        nowPlayingInfoCenter.nowPlayingInfo = newInfo;
+	}
 }
 
 - (void) resetMetadataView
@@ -193,7 +198,10 @@ typedef enum {
 	self.songNameLabel.text = NSLocalizedString(@"DEFAULT_SONG", @"");;
 	self.songInfoLabel.text = NSLocalizedString(@"DEFAULT_INFO_LABEL", @"");;
 	self.songArtworkImage.image = [UIImage imageNamed:@"cover_large.png"];
-	[self.songProgressIndicator setProgress:1 animated:YES];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
+        [self.songProgressIndicator setProgress:1 animated:YES];//ios5
+    }
 }
 
 #pragma mark - Player Controls
@@ -334,7 +342,9 @@ typedef enum {
 
 - (void)player:(MoeFmPlayer *)player updateProgress:(float)percentage
 {
-	[self.songProgressIndicator setProgress:percentage animated:YES];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
+	[self.songProgressIndicator setProgress:percentage animated:YES];//ios5
+    }
 }
 
 - (void)player:(MoeFmPlayer *)player updateMetadata:(NSDictionary *)metadata
@@ -346,23 +356,28 @@ typedef enum {
 {
 	switch (state) {
 		case AS_WAITING_FOR_DATA:
-			self.playButton.alpha = 0;
+			self.playButton.alpha = 1;
+            self.playButton.imageView.image = [UIImage imageNamed:@"pause.png"];
 			[self.songBufferingIndicator startAnimating];
 			break;
 		case AS_BUFFERING:
-			self.playButton.alpha = 0;
+            self.playButton.imageView.image = [UIImage imageNamed:@"pause.png"];
+			self.playButton.alpha = 1;
 			[self.songBufferingIndicator startAnimating];
 			break;
 		case AS_PLAYING:
-			self.playButton.alpha = 0;
+			self.playButton.alpha = 1;
+            self.playButton.imageView.image = [UIImage imageNamed:@"pause.png"];
 			[self.songBufferingIndicator stopAnimating];
 			break;
 		case AS_PAUSED:
-			self.playButton.alpha = 0.5;
+			self.playButton.alpha = 1;
+            self.playButton.imageView.image = [UIImage imageNamed:@"play.png"];
 			[self.songBufferingIndicator stopAnimating];
 			break;
 		case AS_STOPPED:
-			self.playButton.alpha = 0.5;
+            self.playButton.imageView.image = [UIImage imageNamed:@"play.png"];
+			self.playButton.alpha = 1;
 			[self.songBufferingIndicator stopAnimating];
 			break;
 			

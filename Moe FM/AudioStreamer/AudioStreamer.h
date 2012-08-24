@@ -20,7 +20,7 @@
 #endif
 #else
 #import <Cocoa/Cocoa.h>
-#endif // TARGET_OS_IPHONE			
+#endif TARGET_OS_IPHONE			
 
 #import <Foundation/Foundation.h>
 #include <pthread.h>
@@ -208,7 +208,6 @@ extern NSString * const ASUpdateMetadataNotification;
 - (float)peakPowerForChannel:(NSUInteger)channelNumber;
 - (float)averagePowerForChannel:(NSUInteger)channelNumber;
 
-+ (NSString *)stringForErrorCode:(AudioStreamerErrorCode)anErrorCode;
 
 @end
 

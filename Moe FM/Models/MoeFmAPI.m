@@ -7,7 +7,7 @@
 //
 
 #import "MoeFmAPI.h"
-
+#import "CJSONDeserializer.h"
 typedef enum
 {
 	MFMAPI_JSON = 0,
@@ -164,10 +164,15 @@ NSString * const MoeFmAPIListenPlaylistAddress = @"http://moe.fm/listen/playlist
 	
 	if(self.requestType == MFMAPI_PLAYLIST){
 		NSError* error;
-		NSDictionary* json = [NSJSONSerialization 
-							  JSONObjectWithData:[NSData dataWithData:self.receivedData]
-							  options:kNilOptions 
-							  error:&error];
+        /*
+		NSDictionary* json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithData:self.receivedData]
+                                                             options:kNilOptions
+                                                               error:&error];//ios5
+         */
+        
+        
+        NSDictionary *json = [[CJSONDeserializer deserializer] deserializeAsDictionary:[NSData dataWithData:self.receivedData] error:&error];
+        NSLog(@"%@",json);
 		if(json == nil){
 			// TODO
 			NSLog(@"Json data is nil");

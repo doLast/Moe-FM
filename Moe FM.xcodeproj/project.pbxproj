@@ -21,7 +21,6 @@
 		253578B31530A0C0008185BD /* cover_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578AF1530A0C0008185BD /* cover_large.png */; };
 		253578B41530A0C0008185BD /* cover_medium.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B01530A0C0008185BD /* cover_medium.png */; };
 		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
-		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
 		25B35B1015314F7500D1EAEC /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */; };
 		25B35B1F1531B30200D1EAEC /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B1E1531B30200D1EAEC /* AudioStreamer.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
 		25B35B261531DA1100D1EAEC /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 25B35B251531DA1000D1EAEC /* UIDevice+Hardware.m */; settings = {COMPILER_FLAGS = " -fno-objc-arc"; }; };
@@ -51,6 +50,18 @@
 		25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FB1539C87C003FABD2 /* default@2x.png */; };
 		25E3F6001539D3DB003FABD2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FE1539D3DA003FABD2 /* Icon.png */; };
 		25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */; };
+		4752974C15DFE32C00F85CFE /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752973515DFE32C00F85CFE /* CDataScanner.m */; };
+		4752974D15DFE32C00F85CFE /* CFilteringJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752973815DFE32C00F85CFE /* CFilteringJSONSerializer.m */; };
+		4752974E15DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752973A15DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.m */; };
+		4752974F15DFE32C00F85CFE /* CJSONSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752973C15DFE32C00F85CFE /* CJSONSerialization.m */; };
+		4752975015DFE32C00F85CFE /* CJSONSerializedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752973E15DFE32C00F85CFE /* CJSONSerializedData.m */; };
+		4752975115DFE32C00F85CFE /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752974115DFE32C00F85CFE /* CDataScanner_Extensions.m */; };
+		4752975215DFE32C00F85CFE /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752974315DFE32C00F85CFE /* NSDictionary_JSONExtensions.m */; };
+		4752975315DFE32C00F85CFE /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752974615DFE32C00F85CFE /* CJSONDeserializer.m */; };
+		4752975415DFE32C00F85CFE /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752974815DFE32C00F85CFE /* CJSONScanner.m */; };
+		4752975515DFE32C00F85CFE /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4752974A15DFE32C00F85CFE /* CJSONSerializer.m */; };
+		4753D40015DD3F9800B6267C /* Mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4753D3FF15DD3F9800B6267C /* Mainwindow.xib */; };
+		4753D40215DD431200B6267C /* MFMPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4753D40115DD431200B6267C /* MFMPlayerViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +85,6 @@
 		253578AF1530A0C0008185BD /* cover_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_large.png; sourceTree = "<group>"; };
 		253578B01530A0C0008185BD /* cover_medium.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_medium.png; sourceTree = "<group>"; };
 		253578B11530A0C0008185BD /* cover_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover_small.png; sourceTree = "<group>"; };
-		253578BC1530A173008185BD /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/gregwang/Dropbox/Projects/iOS/Moe FM/Moe FM/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
-		253578C11530A37B008185BD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/Storyboard.storyboard; sourceTree = "<group>"; };
 		25B35B0E15314F7500D1EAEC /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
 		25B35B0F15314F7500D1EAEC /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
 		25B35B1D1531B30200D1EAEC /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
@@ -110,6 +119,29 @@
 		25E3F5FB1539C87C003FABD2 /* default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default@2x.png"; sourceTree = "<group>"; };
 		25E3F5FE1539D3DA003FABD2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		4752973415DFE32C00F85CFE /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner.h; sourceTree = "<group>"; };
+		4752973515DFE32C00F85CFE /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner.m; sourceTree = "<group>"; };
+		4752973715DFE32C00F85CFE /* CFilteringJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFilteringJSONSerializer.h; sourceTree = "<group>"; };
+		4752973815DFE32C00F85CFE /* CFilteringJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFilteringJSONSerializer.m; sourceTree = "<group>"; };
+		4752973915DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer_BlocksExtensions.h; sourceTree = "<group>"; };
+		4752973A15DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer_BlocksExtensions.m; sourceTree = "<group>"; };
+		4752973B15DFE32C00F85CFE /* CJSONSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerialization.h; sourceTree = "<group>"; };
+		4752973C15DFE32C00F85CFE /* CJSONSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerialization.m; sourceTree = "<group>"; };
+		4752973D15DFE32C00F85CFE /* CJSONSerializedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializedData.h; sourceTree = "<group>"; };
+		4752973E15DFE32C00F85CFE /* CJSONSerializedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializedData.m; sourceTree = "<group>"; };
+		4752974015DFE32C00F85CFE /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		4752974115DFE32C00F85CFE /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		4752974215DFE32C00F85CFE /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		4752974315DFE32C00F85CFE /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		4752974515DFE32C00F85CFE /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		4752974615DFE32C00F85CFE /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		4752974715DFE32C00F85CFE /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		4752974815DFE32C00F85CFE /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		4752974915DFE32C00F85CFE /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		4752974A15DFE32C00F85CFE /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		4752974B15DFE32C00F85CFE /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		4753D3FF15DD3F9800B6267C /* Mainwindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Mainwindow.xib; sourceTree = "<group>"; };
+		4753D40115DD431200B6267C /* MFMPlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MFMPlayerViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +173,7 @@
 				2513DEDD1535FCA200CB0B0A /* MoeFmAPI.m */,
 				2513DEDF1535FCB800CB0B0A /* MoeFmPlayer.h */,
 				2513DEE01535FCB800CB0B0A /* MoeFmPlayer.m */,
+				4752973315DFE32C00F85CFE /* TouchJSON */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,7 +230,8 @@
 		2535789215309190008185BD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				253578C21530A37B008185BD /* Storyboard.storyboard */,
+				4753D3FF15DD3F9800B6267C /* Mainwindow.xib */,
+				4753D40115DD431200B6267C /* MFMPlayerViewController.xib */,
 				25E3F5D31539A474003FABD2 /* Localizable.strings */,
 				2535789315309190008185BD /* Moe FM-Info.plist */,
 				2535789415309190008185BD /* InfoPlist.strings */,
@@ -246,6 +280,58 @@
 				25B35B1E1531B30200D1EAEC /* AudioStreamer.m */,
 			);
 			path = AudioStreamer;
+			sourceTree = "<group>";
+		};
+		4752973315DFE32C00F85CFE /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				4752973415DFE32C00F85CFE /* CDataScanner.h */,
+				4752973515DFE32C00F85CFE /* CDataScanner.m */,
+				4752973615DFE32C00F85CFE /* Experimental */,
+				4752973F15DFE32C00F85CFE /* Extensions */,
+				4752974415DFE32C00F85CFE /* JSON */,
+			);
+			path = TouchJSON;
+			sourceTree = "<group>";
+		};
+		4752973615DFE32C00F85CFE /* Experimental */ = {
+			isa = PBXGroup;
+			children = (
+				4752973715DFE32C00F85CFE /* CFilteringJSONSerializer.h */,
+				4752973815DFE32C00F85CFE /* CFilteringJSONSerializer.m */,
+				4752973915DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.h */,
+				4752973A15DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.m */,
+				4752973B15DFE32C00F85CFE /* CJSONSerialization.h */,
+				4752973C15DFE32C00F85CFE /* CJSONSerialization.m */,
+				4752973D15DFE32C00F85CFE /* CJSONSerializedData.h */,
+				4752973E15DFE32C00F85CFE /* CJSONSerializedData.m */,
+			);
+			path = Experimental;
+			sourceTree = "<group>";
+		};
+		4752973F15DFE32C00F85CFE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4752974015DFE32C00F85CFE /* CDataScanner_Extensions.h */,
+				4752974115DFE32C00F85CFE /* CDataScanner_Extensions.m */,
+				4752974215DFE32C00F85CFE /* NSDictionary_JSONExtensions.h */,
+				4752974315DFE32C00F85CFE /* NSDictionary_JSONExtensions.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4752974415DFE32C00F85CFE /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4752974515DFE32C00F85CFE /* CJSONDeserializer.h */,
+				4752974615DFE32C00F85CFE /* CJSONDeserializer.m */,
+				4752974715DFE32C00F85CFE /* CJSONScanner.h */,
+				4752974815DFE32C00F85CFE /* CJSONScanner.m */,
+				4752974915DFE32C00F85CFE /* CJSONSerializer.h */,
+				4752974A15DFE32C00F85CFE /* CJSONSerializer.m */,
+				4752974B15DFE32C00F85CFE /* JSONRepresentation.h */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,7 +391,6 @@
 				253578B31530A0C0008185BD /* cover_large.png in Resources */,
 				253578B41530A0C0008185BD /* cover_medium.png in Resources */,
 				253578B51530A0C0008185BD /* cover_small.png in Resources */,
-				253578C01530A37B008185BD /* Storyboard.storyboard in Resources */,
 				25E3F5D11539A474003FABD2 /* Localizable.strings in Resources */,
 				25E3F5E21539B175003FABD2 /* dislike_no.png in Resources */,
 				25E3F5E31539B175003FABD2 /* dislike_yes.png in Resources */,
@@ -326,6 +411,8 @@
 				25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */,
 				25E3F6001539D3DB003FABD2 /* Icon.png in Resources */,
 				25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */,
+				4753D40015DD3F9800B6267C /* Mainwindow.xib in Resources */,
+				4753D40215DD431200B6267C /* MFMPlayerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +432,16 @@
 				2513DEDE1535FCA200CB0B0A /* MoeFmAPI.m in Sources */,
 				2513DEE11535FCB800CB0B0A /* MoeFmPlayer.m in Sources */,
 				25E3F5C015395B78003FABD2 /* Reachability.m in Sources */,
+				4752974C15DFE32C00F85CFE /* CDataScanner.m in Sources */,
+				4752974D15DFE32C00F85CFE /* CFilteringJSONSerializer.m in Sources */,
+				4752974E15DFE32C00F85CFE /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				4752974F15DFE32C00F85CFE /* CJSONSerialization.m in Sources */,
+				4752975015DFE32C00F85CFE /* CJSONSerializedData.m in Sources */,
+				4752975115DFE32C00F85CFE /* CDataScanner_Extensions.m in Sources */,
+				4752975215DFE32C00F85CFE /* NSDictionary_JSONExtensions.m in Sources */,
+				4752975315DFE32C00F85CFE /* CJSONDeserializer.m in Sources */,
+				4752975415DFE32C00F85CFE /* CJSONScanner.m in Sources */,
+				4752975515DFE32C00F85CFE /* CJSONSerializer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,17 +452,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				2535789515309190008185BD /* en */,
-				253578BC1530A173008185BD /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		253578C21530A37B008185BD /* Storyboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				253578C11530A37B008185BD /* en */,
-			);
-			name = Storyboard.storyboard;
 			sourceTree = "<group>";
 		};
 		25E3F5D31539A474003FABD2 /* Localizable.strings */ = {
@@ -384,8 +472,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -397,11 +488,11 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
@@ -411,17 +502,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -436,7 +530,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -450,7 +544,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

@@ -17,7 +17,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    // Override point for customization after application launch.
+    UIViewController *viewController1 = [[[MFMPlayerViewController alloc] initWithNibName:@"MFMPlayerViewController" bundle:nil] autorelease];
+    
+    self.viewcontroller = [[[UITabBarController alloc] init] autorelease];
+    self.viewcontroller = viewController1;
+    self.window.rootViewController = self.viewcontroller;
+    [self.window makeKeyAndVisible];
     return YES;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
