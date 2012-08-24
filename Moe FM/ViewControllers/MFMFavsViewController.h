@@ -6,14 +6,10 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "MFMResourcesViewController.h"
 
 @class MFMResourceFavs;
 
-@interface MFMFavsViewController : UITableViewController
-
-@property (retain, nonatomic) MFMResourceFavs *resourceCollection;
-
-- (IBAction)playAll:(id)sender;
+@interface MFMFavsViewController : MFMResourcesViewController
 
 @end
