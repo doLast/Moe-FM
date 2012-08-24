@@ -43,6 +43,10 @@
 		257297CF15A53C87008EB903 /* MFMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297CE15A53C87008EB903 /* MFMMenuViewController.m */; };
 		257297D415A53CEF008EB903 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D315A53CEF008EB903 /* SVPullToRefresh.m */; };
 		257297D715A5459F008EB903 /* MFMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D615A5459F008EB903 /* MFMResource.m */; };
+		257C9EE915E7BB15004AF278 /* MFMWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EE815E7BB15004AF278 /* MFMWikiViewController.m */; };
+		257C9EEC15E7C5F1004AF278 /* MFMWikiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EEB15E7C5F1004AF278 /* MFMWikiCell.m */; };
+		257C9EEF15E7D2BC004AF278 /* MFMResourceSubs.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EEE15E7D2BC004AF278 /* MFMResourceSubs.m */; };
+		257C9EF215E7DD43004AF278 /* MFMResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EF115E7DD42004AF278 /* MFMResourcesViewController.m */; };
 		25A48C8B15A5D83400EBFB59 /* MFMResourceFav.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A48C8A15A5D83400EBFB59 /* MFMResourceFav.m */; };
 		25A48C8F15A5E4C600EBFB59 /* MFMResourceWiki.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A48C8E15A5E4C600EBFB59 /* MFMResourceWiki.m */; };
 		25A515BC15E3BE6300D1267A /* noise.png in Resources */ = {isa = PBXBuildFile; fileRef = 25A515BB15E3BE6300D1267A /* noise.png */; };
@@ -152,6 +156,14 @@
 		257297D315A53CEF008EB903 /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
 		257297D515A5459F008EB903 /* MFMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResource.h; sourceTree = "<group>"; };
 		257297D615A5459F008EB903 /* MFMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResource.m; sourceTree = "<group>"; };
+		257C9EE715E7BB15004AF278 /* MFMWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMWikiViewController.h; sourceTree = "<group>"; };
+		257C9EE815E7BB15004AF278 /* MFMWikiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMWikiViewController.m; sourceTree = "<group>"; };
+		257C9EEA15E7C5F1004AF278 /* MFMWikiCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMWikiCell.h; sourceTree = "<group>"; };
+		257C9EEB15E7C5F1004AF278 /* MFMWikiCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMWikiCell.m; sourceTree = "<group>"; };
+		257C9EED15E7D2BC004AF278 /* MFMResourceSubs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceSubs.h; sourceTree = "<group>"; };
+		257C9EEE15E7D2BC004AF278 /* MFMResourceSubs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceSubs.m; sourceTree = "<group>"; };
+		257C9EF015E7DD42004AF278 /* MFMResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourcesViewController.h; sourceTree = "<group>"; };
+		257C9EF115E7DD42004AF278 /* MFMResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourcesViewController.m; sourceTree = "<group>"; };
 		25A48C8915A5D83400EBFB59 /* MFMResourceFav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceFav.h; sourceTree = "<group>"; };
 		25A48C8A15A5D83400EBFB59 /* MFMResourceFav.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceFav.m; sourceTree = "<group>"; };
 		25A48C8D15A5E4C600EBFB59 /* MFMResourceWiki.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceWiki.h; sourceTree = "<group>"; };
@@ -394,8 +406,12 @@
 				25BA9FA815E38E97004B37BB /* MFMPlaybackControlViewController.m */,
 				257297CD15A53C87008EB903 /* MFMMenuViewController.h */,
 				257297CE15A53C87008EB903 /* MFMMenuViewController.m */,
+				257C9EF015E7DD42004AF278 /* MFMResourcesViewController.h */,
+				257C9EF115E7DD42004AF278 /* MFMResourcesViewController.m */,
 				256B144415A6381400FD43D9 /* MFMFavsViewController.h */,
 				256B144515A6381400FD43D9 /* MFMFavsViewController.m */,
+				257C9EE715E7BB15004AF278 /* MFMWikiViewController.h */,
+				257C9EE815E7BB15004AF278 /* MFMWikiViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -449,6 +465,8 @@
 				256B144115A6267F00FD43D9 /* MFMResourceFavs.m */,
 				250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */,
 				250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */,
+				257C9EED15E7D2BC004AF278 /* MFMResourceSubs.h */,
+				257C9EEE15E7D2BC004AF278 /* MFMResourceSubs.m */,
 			);
 			name = ResourceCollection;
 			sourceTree = "<group>";
@@ -464,6 +482,8 @@
 				25A515E015E5C4A400D1267A /* MFMResourceCell.m */,
 				25A515EE15E5E65300D1267A /* MFMFavCell.h */,
 				25A515EF15E5E65400D1267A /* MFMFavCell.m */,
+				257C9EEA15E7C5F1004AF278 /* MFMWikiCell.h */,
+				257C9EEB15E7C5F1004AF278 /* MFMWikiCell.m */,
 			);
 			path = UIComponents;
 			sourceTree = "<group>";
@@ -599,6 +619,10 @@
 				25A515DA15E46BF800D1267A /* MFMNetworkManager.m in Sources */,
 				25A515E115E5C4A500D1267A /* MFMResourceCell.m in Sources */,
 				25A515F015E5E65400D1267A /* MFMFavCell.m in Sources */,
+				257C9EE915E7BB15004AF278 /* MFMWikiViewController.m in Sources */,
+				257C9EEC15E7C5F1004AF278 /* MFMWikiCell.m in Sources */,
+				257C9EEF15E7D2BC004AF278 /* MFMResourceSubs.m in Sources */,
+				257C9EF215E7DD43004AF278 /* MFMResourcesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
