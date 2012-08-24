@@ -13,14 +13,14 @@
 //
 #define SHOUTCAST_METADATA
 
-#if TARGET_OS_IPHONE			
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #ifndef kCFCoreFoundationVersionNumber_iPhoneOS_4_0
 #define kCFCoreFoundationVersionNumber_iPhoneOS_4_0 550.32
 #endif
 #else
 #import <Cocoa/Cocoa.h>
-#endif TARGET_OS_IPHONE			
+#endif //TARGET_OS_IPHONE
 
 #import <Foundation/Foundation.h>
 #include <pthread.h>
@@ -39,7 +39,7 @@
 								// buffers are queued at any time -- if it drops
 								// to zero too often, this value may need to
 								// increase. Min 3, typical 8-24.
-								
+
 #define kAQDefaultBufSize 2048	// Number of bytes in each audio queue buffer
 								// Needs to be big enough to hold a packet of
 								// audio from the audio file. If number is too
@@ -109,11 +109,11 @@ extern NSString * const ASUpdateMetadataNotification;
 
 @interface AudioStreamer : NSObject
 {
-#if TARGET_OS_IPHONE    
+#if TARGET_OS_IPHONE
 	UIBackgroundTaskIdentifier bgTaskId;
-#endif    
+#endif
 	NSURL *url;
-
+	
 	//
 	// Special threading consideration:
 	//	The audioQueue property should only ever be accessed inside a
@@ -144,7 +144,7 @@ extern NSString * const ASUpdateMetadataNotification;
 	
 	pthread_mutex_t queueBuffersMutex;			// a mutex to protect the inuse flags
 	pthread_cond_t queueBufferReadyCondition;	// a condition varable for handling the inuse flags
-
+	
 	CFReadStreamRef stream;
 	NSNotificationCenter *notificationCenter;
 	
@@ -155,10 +155,10 @@ extern NSString * const ASUpdateMetadataNotification;
 	UInt64 audioDataByteCount;  // Used when the actual number of audio bytes in
 								// the file is known (more accurate than assuming
 								// the whole file is audio)
-
+	
 	UInt64 processedPacketsCount;		// number of packets accumulated for bitrate estimation
 	UInt64 processedPacketsSizeTotal;	// byte size of accumulated estimation packets
-
+	
 	double seekTime;
 	BOOL seekWasRequested;
 	double requestedSeekTime;
@@ -168,7 +168,7 @@ extern NSString * const ASUpdateMetadataNotification;
 	double packetDuration;		// sample rate times frames per packet
 	double lastProgress;		// last calculated progress point
 	UInt32 numberOfChannels;	// Number of audio channels in the stream (1 = mono, 2 = stereo)
-
+	
 #ifdef SHOUTCAST_METADATA
 	BOOL foundIcyStart;
 	BOOL foundIcyEnd;
@@ -208,6 +208,8 @@ extern NSString * const ASUpdateMetadataNotification;
 - (float)peakPowerForChannel:(NSUInteger)channelNumber;
 - (float)averagePowerForChannel:(NSUInteger)channelNumber;
 
+// error string
++ (NSString *)stringForErrorCode:(AudioStreamerErrorCode)anErrorCode;
 
 @end
 
