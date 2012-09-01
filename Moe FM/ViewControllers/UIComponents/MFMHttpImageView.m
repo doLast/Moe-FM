@@ -14,6 +14,7 @@
 @property (nonatomic, strong) UIImage *placeholderImage;
 @property (nonatomic, strong) UIImage *highlightedPlaceholderImage;
 @property (nonatomic, strong) MFMDataFetcher *fetcher;
+@property (nonatomic, readonly) NSCache *imageCache;
 
 @end
 
@@ -34,6 +35,16 @@
 	}
 	_imageURL = imageURL;
 	[self startFetching];
+}
+
+- (NSCache *)imageCache
+{
+	static NSCache * imageCache = nil;
+	if (imageCache == nil) {
+		imageCache = [[NSCache alloc] init];
+		imageCache.countLimit = 500;
+	}
+	return imageCache;
 }
 
 #pragma mark - Constructors
@@ -82,8 +93,15 @@
 	if (self.imageURL == nil) {
 		return;
 	}
-	
 	[self stopFetching];
+	
+	UIImage *image = [self.imageCache objectForKey:self.imageURL];
+	if (image != nil) {
+//		NSLog(@"ImageView loaded from cache for URL: %@", self.imageURL);
+		[self fetcher:nil didFinishWithImage:image];
+		return;
+	}
+	
 	self.fetcher = [[MFMDataFetcher alloc] initWithURL:self.imageURL dataType:MFMDataTypeImage];
 	
 	NSLog(@"ImageView start fetching URL: %@", self.imageURL);
@@ -109,6 +127,12 @@
 	if (self.delegate != nil && [self.delegate respondsToSelector:@selector(imageView:willFinishLoadingImage:)]) {
 		[self.delegate imageView:self willFinishLoadingImage:image];
 	}
+	
+	if (dataFetcher != nil) {
+		[self.imageCache setObject:image forKey:self.imageURL];
+		NSLog(@"Image cached for URL: %@", self.imageURL);
+	}
+	
 	self.image = image;
 	self.highlightedImage = image;
 	if (self.delegate != nil && [self.delegate respondsToSelector:@selector(imageView:didFinishLoadingImage:)]) {
