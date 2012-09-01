@@ -8,7 +8,7 @@
 
 #import "MFMResourceCollection.h"
 
-const NSInteger MFMResourcePerPageDefault = 10;
+const NSInteger MFMResourcePerPageDefault = 20;
 
 @interface MFMResourceCollection ()
 
