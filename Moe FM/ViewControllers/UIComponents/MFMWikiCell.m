@@ -44,7 +44,7 @@
 - (void)awakeFromNib
 {
 	[super awakeFromNib];
-	self.userInteractionEnabled = NO;
+//	self.userInteractionEnabled = NO;
 	[self.buttonView addSubview:self.favButton];
 }
 

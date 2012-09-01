@@ -30,11 +30,14 @@
 - (void)viewDidLoad
 {
     if (self.resourceWiki != nil && [self.resourceWiki isKindOfClass:[MFMResourceWiki class]]) {
-		MFMResourceObjType subType = MFMResourceObjTypeEp;
+		MFMResourceObjType subType = MFMResourceObjTypeSong;
+		
 		if (self.resourceWiki.wikiType == MFMResourceObjTypeMusic) {
-			subType = MFMResourceObjTypeSong;
+			self.resourceCollection = [MFMResourceSubs subsWithWikiId:self.resourceWiki.wikiId wikiName:nil wikiType:self.resourceWiki.wikiType subType:subType perPage:MFMResourcePerPageDefault];
 		}
-		self.resourceCollection = [MFMResourceSubs subsWithWikiId:self.resourceWiki.wikiId wikiName:nil wikiType:self.resourceWiki.wikiType subType:subType perPage:MFMResourcePerPageDefault];
+		else if (self.resourceWiki.wikiType == MFMResourceObjTypeRadio) {
+			self.resourceCollection = [MFMResourceSubs relationshipsWithWikiId:self.resourceWiki.wikiId wikiName:nil wikiType:self.resourceWiki.wikiType objType:subType];
+		}
 		
 		[super viewDidLoad];
 	}
@@ -75,7 +78,6 @@
 		static NSString *CellIdentifier = @"WikiCell";
 		MFMWikiCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		
-		cell.bounds = CGRectMake(cell.bounds.origin.x, cell.bounds.origin.y, cell.bounds.size.width, 200);
 		cell.resource = self.resourceWiki;
 		cell.resourceFav = self.resourceFav;
         
@@ -103,15 +105,12 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	if (indexPath.section == 0) {
+		return nil;
+	}
+	return indexPath;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

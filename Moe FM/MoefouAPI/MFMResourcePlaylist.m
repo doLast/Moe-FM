@@ -8,6 +8,7 @@
 
 #import "MFMResourcePlaylist.h"
 #import "MFMResourceFavs.h"
+#import "MFMResourceSubs.h"
 
 static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 
@@ -55,6 +56,11 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 	if ([collection isKindOfClass:[MFMResourceFavs class]]) {
 		return [MFMResourcePlaylist playlistWithFavType:collection.objType];
 	}
+	
+	if ([collection isKindOfClass:[MFMResourceSubs class]]) {
+		MFMResourceSubs *subs = (MFMResourceSubs *)collection;
+		return [MFMResourcePlaylist playlistWIthObjType:subs.wikiType andIds:[NSArray arrayWithObject:subs.wikiId]];
+	}
 //	else if ([collection isKindOfClass:[MFMResourceWikis class]]) {
 //		NSMutableSet *ids = [NSMutableSet set];
 //		for (MFMResourceWiki *wiki in collection.resources) {
@@ -63,6 +69,30 @@ static NSString * const kPlaylistURLStr = @"http://moe.fm/listen/playlist?api=";
 //		return [MFMResourcePlaylist playlistWIthObjType:collection.objType
 //												 andIds:[ids allObjects]];
 //	}
+	return nil;
+}
+
++ (MFMResourcePlaylist *)playlistWithResource:(MFMResource *)resource
+{
+	if ([resource isKindOfClass:[MFMResourceCollection class]]) {
+		return [MFMResourcePlaylist playlistWithCollection:(MFMResourceCollection *)resource];
+	}
+	
+	if ([resource isKindOfClass:[MFMResourceFav class]]) {
+		MFMResourceFav *fav = (MFMResourceFav *)resource;
+		return [MFMResourcePlaylist playlistWithResource:fav.obj];
+	}
+	
+	if ([resource isKindOfClass:[MFMResourceWiki class]]) {
+		MFMResourceWiki *wiki = (MFMResourceWiki *)resource;
+		return [MFMResourcePlaylist playlistWIthObjType:wiki.wikiType andIds:[NSArray arrayWithObject:wiki.wikiId]];
+	}
+	
+	if ([resource isKindOfClass:[MFMResourceSub class]]) {
+		MFMResourceSub *sub = (MFMResourceSub *)resource;
+		return [MFMResourcePlaylist playlistWIthObjType:sub.subType andIds:[NSArray arrayWithObject:sub.subId]];
+	}
+	
 	return nil;
 }
 

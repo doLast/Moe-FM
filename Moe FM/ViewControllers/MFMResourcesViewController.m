@@ -125,9 +125,8 @@
 		playerManager.trackNum = indexPath.row;
 	}
 	else {
-		MFMResourceFav *fav = [self.resourceCollection objectAtIndex:indexPath.row];
-		MFMResourceWiki *wiki = (MFMResourceWiki *)fav.obj;
-		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist playlistWIthObjType:self.resourceCollection.objType andIds:[NSArray arrayWithObject:wiki.wikiId]];
+		MFMResource *resource = [self.resourceCollection objectAtIndex:indexPath.row];
+		MFMResourcePlaylist *resourcePlaylist = [MFMResourcePlaylist playlistWithResource:resource];
 		playerManager.playlist = resourcePlaylist;
 		playerManager.trackNum = 0;
 	}
