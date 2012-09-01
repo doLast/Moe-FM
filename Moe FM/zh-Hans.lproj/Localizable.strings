@@ -9,17 +9,26 @@
 /* Global */
 "APP_NAME" = "萌否电台";
 
+/* Titles */
+"RANDOM_PLAY" = "魔力播放";
+"FAV_SONGS" = "喜爱的歌曲";
+"FAV_MUSICS" = "喜爱的专辑";
+"FAV_RADIOS" = "喜爱的电台";
+"WIKI_DETAIL" = "详情";
+"MUSIC_DETAIL" = "专辑详情";
+"RADIO_DETAIL" = "电台详情";
+
 /* Controls */
 "SIGN_IN" = "登录";
 "SIGN_OUT" = "登出";
+"PLAY_ALL" = "全部播放";
 
 /* Metadata */
 "CURRENT_PLAYING" = "正在播放";
 "UNKNOWN_SONG" = "未知歌曲";
 "UNKNOWN_ARTIST" = "未知艺术家";
 "UNKNOWN_ALBUM" = "未知专辑";
-"DEFAULT_SONG" = "点击播放键开始";
-"DEFAULT_INFO_LABEL" = "";
+"UNKNOWN_DATE" = "未知日期";
 
 /* Alert */
 "ALERT_YES" = "没问题";

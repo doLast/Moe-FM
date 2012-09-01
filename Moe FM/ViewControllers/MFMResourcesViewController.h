@@ -12,6 +12,7 @@
 
 @interface MFMResourcesViewController : UITableViewController
 
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *playAllButton;
 @property (retain, nonatomic) MFMResourceCollection *resourceCollection;
 
 - (IBAction)playAll:(id)sender;

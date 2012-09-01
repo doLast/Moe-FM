@@ -23,12 +23,15 @@
 
 @implementation MFMResourcesViewController
 
+@synthesize playAllButton = _playAllButton;
 @synthesize resourceCollection = _resourceCollection;
 @synthesize page = _page;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	
+	self.playAllButton.title = NSLocalizedString(@"PLAY_ALL", @"");
 
 	// Pull to refresh config
 	__weak MFMResourcesViewController *_self = self;

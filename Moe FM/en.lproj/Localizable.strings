@@ -9,17 +9,26 @@
 /* Global */
 "APP_NAME" = "Moe FM";
 
+/* Titles */
+"RANDOM_PLAY" = "Random Play";
+"FAV_SONGS" = "Favorite Songs";
+"FAV_MUSICS" = "Favorite Albums";
+"FAV_RADIOS" = "Favorite Radios";
+"WIKI_DETAIL" = "Detail";
+"MUSIC_DETAIL" = "Album Detail";
+"RADIO_DETAIL" = "Radio Detail";
+
 /* Controls */
-"SIGN_IN" = "Sign in";
-"SIGN_OUT" = "Sign out";
+"SIGN_IN" = "Sign In";
+"SIGN_OUT" = "Sign Out";
+"PLAY_ALL" = "Play All";
 
 /* Metadata */
 "CURRENT_PLAYING" = "Current Playing";
 "UNKNOWN_SONG" = "Unknown Song";
 "UNKNOWN_ARTIST" = "Unknown Artist";
 "UNKNOWN_ALBUM" = "Unknown Album";
-"DEFAULT_SONG" = "Press play to start";
-"DEFAULT_INFO_LABEL" = "";
+"UNKNOWN_DATE" = "Unkown Date";
 
 /* Alert */
 "ALERT_YES" = "Yes";

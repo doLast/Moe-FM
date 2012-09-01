@@ -11,7 +11,7 @@
 #import "MFMFavCell.h"
 
 #import "MFMResourceFavs.h"
-#import "MFMResourceFav.h"
+//#import "MFMResourceWiki.h"
 
 @interface MFMFavsViewController ()
 
@@ -67,12 +67,21 @@
 	if ([segue.identifier isEqualToString:@"ShowDetail"] && [sender isKindOfClass:[MFMFavCell class]]) {
 		MFMFavCell *cell = (MFMFavCell *)sender;
 		MFMResourceFav *fav = cell.resourceFav;
-		assert(fav.favType < MFMResourceObjTypeWiki);
+		NSAssert(fav.favObjType < MFMResourceObjTypeWiki, @"Fav is not a wiki");
 		MFMResourceWiki *wiki = (MFMResourceWiki *) fav.obj;
 		
 		MFMWikiViewController *vc = segue.destinationViewController;
 		vc.resourceWiki = wiki;
 		vc.resourceFav = fav;
+		if (fav.favObjType == MFMResourceObjTypeMusic) {
+			vc.title = NSLocalizedString(@"MUSIC_DETAIL", @"");
+		}
+		else if (fav.favObjType == MFMResourceObjTypeRadio) {
+			vc.title = NSLocalizedString(@"RADIO_DETAIL", @"");
+		}
+		else {
+			vc.title = NSLocalizedString(@"WIKI_DETAIL", @"");
+		}
 	}
 }
 

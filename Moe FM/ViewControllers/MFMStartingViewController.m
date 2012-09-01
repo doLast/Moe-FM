@@ -78,7 +78,7 @@
 #pragma mark - PPRevealSideViewController delegate
 
 - (void) pprevealSideViewController:(PPRevealSideViewController *)controller willPushController:(UIViewController *)pushedController {
-	if (pushedController == self.menuNavigationController || pushedController == self.bottomControlViewController) {
+	if (pushedController == self.menuNavigationController) {
 		[self.playerNavigationController setNavigationBarHidden:NO animated:YES];
 		[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 	}

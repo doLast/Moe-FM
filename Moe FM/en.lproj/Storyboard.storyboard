@@ -187,7 +187,7 @@
             </objects>
             <point key="canvasLocation" x="91" y="622"/>
         </scene>
-        <!--Wiki View Controller-->
+        <!--Wiki View Controller - WIKI_DETAIL-->
         <scene sceneID="788-gk-0QT">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cIt-Jv-S54" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -297,7 +297,7 @@
                             <outlet property="delegate" destination="Lfx-1q-1aB" id="ds9-ZL-nDk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="RQz-3U-ayd"/>
+                    <navigationItem key="navigationItem" title="WIKI_DETAIL" id="RQz-3U-ayd"/>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="1150" y="622"/>
@@ -367,6 +367,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="playAllButton" destination="eUo-K9-Gyl" id="nFW-IU-fs4"/>
                         <segue destination="Lfx-1q-1aB" kind="push" identifier="ShowDetail" id="H4C-6s-HlZ"/>
                     </connections>
                 </tableViewController>
@@ -724,6 +725,7 @@
         <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
             <relationships>
+                <relationship kind="action" name="togglePlaybackState:"/>
                 <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="favButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
@@ -762,6 +764,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourcesViewController.h"/>
             <relationships>
                 <relationship kind="action" name="playAll:"/>
+                <relationship kind="outlet" name="playAllButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
         <class className="MFMStartingViewController" superclassName="UIViewController">

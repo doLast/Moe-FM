@@ -94,6 +94,7 @@
 			self.songNameLabel.text = NSLocalizedString(@"UNKNOWN_SONG", @"");
 		}
 		[nowPlayingInfo setValue:self.songNameLabel.text forKey:MPMediaItemPropertyTitle];
+		self.title = self.songNameLabel.text;
 		
 		// Update Artist
 		NSString *artist = currentSong.artist;
@@ -119,8 +120,8 @@
 		// Update Artwork
 		NSString *coverURLStr = [currentSong.cover objectForKey:@"large"];
 		if (coverURLStr != nil) {
-			self.songArtworkImage.imageURL = [NSURL URLWithString:coverURLStr];
 			[self.songArtworkLoadingIndicator startAnimating];
+			self.songArtworkImage.imageURL = [NSURL URLWithString:coverURLStr];
 		}
 	}
 }

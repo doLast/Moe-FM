@@ -8,8 +8,6 @@
 
 #import "MFMResourcesViewController.h"
 
-@class MFMResourceFavs;
-
 @interface MFMFavsViewController : MFMResourcesViewController
 
 @end

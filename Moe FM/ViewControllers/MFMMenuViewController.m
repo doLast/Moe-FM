@@ -32,6 +32,8 @@
 {
     [super viewDidLoad];
 	
+	self.title = NSLocalizedString(@"APP_NAME", @"");
+	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOAuthStatusChanged:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 	[self updateAuthorization];
 	
@@ -68,7 +70,7 @@
     static NSString *CellIdentifier = @"MenuCell";
     MFMResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.titleLabel.text = [self.menuItems objectAtIndex:indexPath.row];
+    cell.titleLabel.text = NSLocalizedString([self.menuItems objectAtIndex:indexPath.row], @"");
     
     return cell;
 }
@@ -137,16 +139,19 @@
 		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeSong favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		
 		vc.resourceCollection = favs;
+		vc.title = NSLocalizedString(@"FAV_SONGS", @"");
 	}
 	else if ([segue.identifier isEqualToString:@"ShowFavMusics"]) {
 		MFMFavsViewController *vc = segue.destinationViewController;
 		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeMusic favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		vc.resourceCollection = favs;
+		vc.title = NSLocalizedString(@"FAV_MUSICS", @"");
 	}
 	else if ([segue.identifier isEqualToString:@"ShowFavRadios"]) {
 		MFMFavsViewController *vc = segue.destinationViewController;
 		MFMResourceFavs *favs = [MFMResourceFavs favsWithUid:nil userName:nil objType:MFMResourceObjTypeRadio favType:MFMFavTypeHeart perPage:MFMResourcePerPageDefault];
 		vc.resourceCollection = favs;
+		vc.title = NSLocalizedString(@"FAV_RADIOS", @"");
 	}
 }
 
