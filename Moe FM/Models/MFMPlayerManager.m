@@ -59,11 +59,11 @@ NSString * const MFMPlayerSongChangedNotification = @"MFMPlayerSongChangedNotifi
 
 - (void)setPlayerStatus:(MFMPlayerStatus)playerStatus
 {
-	if (_playerStatus != playerStatus) {
+//	if (_playerStatus != playerStatus) {
 		_playerStatus = playerStatus;
 		[[NSNotificationCenter defaultCenter]
 		 postNotificationName:MFMPlayerStatusChangedNotification object:self];
-	}
+//	}
 }
 
 - (double)progress
