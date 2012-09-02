@@ -8,10 +8,10 @@
 
 #import "MFMResourcesViewController.h"
 #import "MFMResourceCell.h"
-
 #import "SVPullToRefresh.h"
-#import "MFMPlayerManager.h"
+#import "YRDropdownView.h"
 
+#import "MFMPlayerManager.h"
 #import "MFMResourceCollection.h"
 #import "MFMResourcePlaylist.h"
 
@@ -143,6 +143,7 @@
 	if (notification.name == MFMResourceNotification  &&
 		notification.object == self.resourceCollection) {
 		if (self.resourceCollection.error != nil) {
+			[YRDropdownView showDropdownInView:self.navigationController.view title:@"Error" detail:[self.resourceCollection.error localizedDescription] accessoryView:nil animated:YES hideAfter:2.0f];
 			[self.tableView.pullToRefreshView stopAnimating];
 			[self.tableView.infiniteScrollingView stopAnimating];
 			return;

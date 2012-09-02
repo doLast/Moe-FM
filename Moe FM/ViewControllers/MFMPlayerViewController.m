@@ -9,8 +9,9 @@
 #import "MFMPlayerViewController.h"
 #import "MFMHttpImageView.h"
 #import "MFMReflectedImageView.h"
-
 #import "PPRevealSideViewController.h"
+#import "YRDropdownView.h"
+
 #import "MFMPlayerManager.h"
 #import "MFMResourceSong.h"
 #import "MFMOAuth.h"
@@ -144,6 +145,7 @@
 			break;
 		case MFMPlayerStatusError:
 			NSLog(@"Player error: %@", [[MFMPlayerManager sharedPlayerManager].error localizedDescription]);
+			[YRDropdownView showDropdownInView:self.navigationController.view title:@"Error" detail:[[MFMPlayerManager sharedPlayerManager].error localizedDescription] accessoryView:nil animated:YES hideAfter:0];
 		case MFMPlayerStatusPaused:
 			self.playButton.alpha = 0.2;
 			[self.songBufferingIndicator stopAnimating];
