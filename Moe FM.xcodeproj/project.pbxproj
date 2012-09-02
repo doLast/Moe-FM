@@ -32,12 +32,12 @@
 		255A8ADA15F3980E00D9D0C0 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AD915F3980E00D9D0C0 /* YRDropdownView.m */; };
 		255A8ADF15F3989400D9D0C0 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8ADE15F3989400D9D0C0 /* PPRevealSideViewController.m */; };
 		255A8AE315F398A500D9D0C0 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE215F398A500D9D0C0 /* SVPullToRefresh.m */; };
-		255A8AF315F3992400D9D0C0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE615F3992300D9D0C0 /* AudioStreamer.m */; };
-		255A8AF415F3992400D9D0C0 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE815F3992300D9D0C0 /* UIDevice+Hardware.m */; };
-		255A8AF515F3992400D9D0C0 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEB15F3992300D9D0C0 /* GTMHTTPFetcher.m */; };
-		255A8AF615F3992400D9D0C0 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AED15F3992300D9D0C0 /* GTMOAuthAuthentication.m */; };
-		255A8AF715F3992400D9D0C0 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEF15F3992300D9D0C0 /* GTMOAuthSignIn.m */; };
-		255A8AF815F3992400D9D0C0 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AF115F3992300D9D0C0 /* GTMOAuthViewControllerTouch.m */; };
+		255A8AF315F3992400D9D0C0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE615F3992300D9D0C0 /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		255A8AF415F3992400D9D0C0 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE815F3992300D9D0C0 /* UIDevice+Hardware.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		255A8AF515F3992400D9D0C0 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEB15F3992300D9D0C0 /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		255A8AF615F3992400D9D0C0 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AED15F3992300D9D0C0 /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		255A8AF715F3992400D9D0C0 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEF15F3992300D9D0C0 /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		255A8AF815F3992400D9D0C0 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AF115F3992300D9D0C0 /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		255A8AF915F3992400D9D0C0 /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A8AF215F3992300D9D0C0 /* GTMOAuthViewTouch.xib */; };
 		2565D31315A5F4FB00A8BAA6 /* MFMResourceSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */; };
 		256B144215A6268000FD43D9 /* MFMResourceFavs.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144115A6267F00FD43D9 /* MFMResourceFavs.m */; };
