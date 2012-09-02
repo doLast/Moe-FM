@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2508D1D715DBEECB0035126A /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2508D1D515DBEECB0035126A /* AudioStreamer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2508D1D915DBEECB0035126A /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 2508D1D615DBEECB0035126A /* UIDevice+Hardware.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */; };
 		250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2415A662D4001B2D10 /* MFMResourceSong.m */; };
 		250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */; };
@@ -28,20 +26,23 @@
 		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
 		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
 		2539E7B215A4DFDC00E5668A /* MFMDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */; };
-		254ECA7F15A2333F00251A0F /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		254ECA8215A233CE00251A0F /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		254ECA8715A233DC00251A0F /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		254ECA8815A233DC00251A0F /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254ECA8915A2343A00251A0F /* Security.framework */; };
-		254ECA9415A236B700251A0F /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */; };
 		254ECAB415A4BC1A00251A0F /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */; };
-		254ECABB15A4BEFA00251A0F /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */; };
 		254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */; };
+		255A8ADA15F3980E00D9D0C0 /* YRDropdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AD915F3980E00D9D0C0 /* YRDropdownView.m */; };
+		255A8ADF15F3989400D9D0C0 /* PPRevealSideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8ADE15F3989400D9D0C0 /* PPRevealSideViewController.m */; };
+		255A8AE315F398A500D9D0C0 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE215F398A500D9D0C0 /* SVPullToRefresh.m */; };
+		255A8AF315F3992400D9D0C0 /* AudioStreamer.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE615F3992300D9D0C0 /* AudioStreamer.m */; };
+		255A8AF415F3992400D9D0C0 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AE815F3992300D9D0C0 /* UIDevice+Hardware.m */; };
+		255A8AF515F3992400D9D0C0 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEB15F3992300D9D0C0 /* GTMHTTPFetcher.m */; };
+		255A8AF615F3992400D9D0C0 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AED15F3992300D9D0C0 /* GTMOAuthAuthentication.m */; };
+		255A8AF715F3992400D9D0C0 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AEF15F3992300D9D0C0 /* GTMOAuthSignIn.m */; };
+		255A8AF815F3992400D9D0C0 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A8AF115F3992300D9D0C0 /* GTMOAuthViewControllerTouch.m */; };
+		255A8AF915F3992400D9D0C0 /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 255A8AF215F3992300D9D0C0 /* GTMOAuthViewTouch.xib */; };
 		2565D31315A5F4FB00A8BAA6 /* MFMResourceSub.m in Sources */ = {isa = PBXBuildFile; fileRef = 2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */; };
 		256B144215A6268000FD43D9 /* MFMResourceFavs.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144115A6267F00FD43D9 /* MFMResourceFavs.m */; };
 		256B144615A6381500FD43D9 /* MFMFavsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 256B144515A6381400FD43D9 /* MFMFavsViewController.m */; };
 		257297CF15A53C87008EB903 /* MFMMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297CE15A53C87008EB903 /* MFMMenuViewController.m */; };
-		257297D415A53CEF008EB903 /* SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D315A53CEF008EB903 /* SVPullToRefresh.m */; };
 		257297D715A5459F008EB903 /* MFMResource.m in Sources */ = {isa = PBXBuildFile; fileRef = 257297D615A5459F008EB903 /* MFMResource.m */; };
 		257C9EE915E7BB15004AF278 /* MFMWikiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EE815E7BB15004AF278 /* MFMWikiViewController.m */; };
 		257C9EEC15E7C5F1004AF278 /* MFMWikiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 257C9EEB15E7C5F1004AF278 /* MFMWikiCell.m */; };
@@ -93,10 +94,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2508D1D315DBEECB0035126A /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
-		2508D1D415DBEECB0035126A /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
-		2508D1D515DBEECB0035126A /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
-		2508D1D615DBEECB0035126A /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
 		250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourcePlaylist.h; sourceTree = "<group>"; };
 		250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourcePlaylist.m; sourceTree = "<group>"; };
 		250E7F2315A662D4001B2D10 /* MFMResourceSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceSong.h; sourceTree = "<group>"; };
@@ -128,22 +125,30 @@
 		2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMDataFetcher.h; sourceTree = "<group>"; };
 		2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMDataFetcher.m; sourceTree = "<group>"; };
 		2539E7B915A4E07C00E5668A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		254ECA7D15A2333B00251A0F /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
-		254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
-		254ECA8015A233CE00251A0F /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
-		254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
-		254ECA8315A233DC00251A0F /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
-		254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
-		254ECA8515A233DC00251A0F /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
-		254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
 		254ECA8915A2343A00251A0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
 		254ECAB215A4BC1A00251A0F /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
 		254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
-		254ECAB915A4BEFA00251A0F /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
-		254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
 		254ECAC415A4C0F800251A0F /* MFMStartingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMStartingViewController.h; sourceTree = "<group>"; };
 		254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMStartingViewController.m; sourceTree = "<group>"; };
+		255A8AD815F3980E00D9D0C0 /* YRDropdownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRDropdownView.h; sourceTree = "<group>"; };
+		255A8AD915F3980E00D9D0C0 /* YRDropdownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRDropdownView.m; sourceTree = "<group>"; };
+		255A8ADD15F3989400D9D0C0 /* PPRevealSideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPRevealSideViewController.h; sourceTree = "<group>"; };
+		255A8ADE15F3989400D9D0C0 /* PPRevealSideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPRevealSideViewController.m; sourceTree = "<group>"; };
+		255A8AE115F398A500D9D0C0 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		255A8AE215F398A500D9D0C0 /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
+		255A8AE515F3992300D9D0C0 /* AudioStreamer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioStreamer.h; sourceTree = "<group>"; };
+		255A8AE615F3992300D9D0C0 /* AudioStreamer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioStreamer.m; sourceTree = "<group>"; };
+		255A8AE715F3992300D9D0C0 /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		255A8AE815F3992300D9D0C0 /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		255A8AEA15F3992300D9D0C0 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		255A8AEB15F3992300D9D0C0 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		255A8AEC15F3992300D9D0C0 /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
+		255A8AED15F3992300D9D0C0 /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
+		255A8AEE15F3992300D9D0C0 /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
+		255A8AEF15F3992300D9D0C0 /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
+		255A8AF015F3992300D9D0C0 /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
+		255A8AF115F3992300D9D0C0 /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
+		255A8AF215F3992300D9D0C0 /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
 		2565D31115A5F4FB00A8BAA6 /* MFMResourceSub.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceSub.h; sourceTree = "<group>"; };
 		2565D31215A5F4FB00A8BAA6 /* MFMResourceSub.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourceSub.m; sourceTree = "<group>"; };
 		256B144015A6267F00FD43D9 /* MFMResourceFavs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceFavs.h; sourceTree = "<group>"; };
@@ -152,8 +157,6 @@
 		256B144515A6381400FD43D9 /* MFMFavsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMFavsViewController.m; sourceTree = "<group>"; };
 		257297CD15A53C87008EB903 /* MFMMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMMenuViewController.h; sourceTree = "<group>"; };
 		257297CE15A53C87008EB903 /* MFMMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMMenuViewController.m; sourceTree = "<group>"; };
-		257297D215A53CEF008EB903 /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
-		257297D315A53CEF008EB903 /* SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVPullToRefresh.m; sourceTree = "<group>"; };
 		257297D515A5459F008EB903 /* MFMResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResource.h; sourceTree = "<group>"; };
 		257297D615A5459F008EB903 /* MFMResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResource.m; sourceTree = "<group>"; };
 		257C9EE715E7BB15004AF278 /* MFMWikiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMWikiViewController.h; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 		2513DEDB1535FCA200CB0B0A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				255A8AE415F3992300D9D0C0 /* AudioStreamer */,
+				255A8AE915F3992300D9D0C0 /* GTMOAuth */,
 				25161F9F15DC46DE00B16227 /* MFMOAuth.h */,
 				25161FA015DC46DE00B16227 /* MFMOAuth.m */,
 				2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */,
@@ -316,10 +321,6 @@
 				254ECAB115A4BB9500251A0F /* ViewControllers */,
 				255E7ADE15A535D0007C0E5A /* MoefouAPI */,
 				2513DEDB1535FCA200CB0B0A /* Models */,
-				254ECA7B15A2331500251A0F /* GTMOAuth */,
-				257297D115A53CEF008EB903 /* SVPullToRefresh */,
-				254ECAB815A4BEF900251A0F /* PPRevealSideViewController */,
-				25B35B1C1531B30200D1EAEC /* AudioStreamer */,
 				253578AD1530A0C0008185BD /* Resources */,
 				2535789215309190008185BD /* Supporting Files */,
 			);
@@ -378,25 +379,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		254ECA7B15A2331500251A0F /* GTMOAuth */ = {
-			isa = PBXGroup;
-			children = (
-				254ECA8015A233CE00251A0F /* GTMHTTPFetcher.h */,
-				254ECA8115A233CE00251A0F /* GTMHTTPFetcher.m */,
-				254ECA8315A233DC00251A0F /* GTMOAuthAuthentication.h */,
-				254ECA8415A233DC00251A0F /* GTMOAuthAuthentication.m */,
-				254ECA8515A233DC00251A0F /* GTMOAuthSignIn.h */,
-				254ECA8615A233DC00251A0F /* GTMOAuthSignIn.m */,
-				254ECA7D15A2333B00251A0F /* GTMOAuthViewControllerTouch.h */,
-				254ECA7E15A2333B00251A0F /* GTMOAuthViewControllerTouch.m */,
-				254ECA9315A236B700251A0F /* GTMOAuthViewTouch.xib */,
-			);
-			path = GTMOAuth;
-			sourceTree = "<group>";
-		};
 		254ECAB115A4BB9500251A0F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				255A8ADC15F3989400D9D0C0 /* PPRevealSideviewController */,
 				25BA9FA315E369C8004B37BB /* UIComponents */,
 				254ECAC415A4C0F800251A0F /* MFMStartingViewController.h */,
 				254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */,
@@ -416,13 +402,58 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		254ECAB815A4BEF900251A0F /* PPRevealSideViewController */ = {
+		255A8AD715F3980E00D9D0C0 /* YRDropdownView */ = {
 			isa = PBXGroup;
 			children = (
-				254ECAB915A4BEFA00251A0F /* PPRevealSideViewController.h */,
-				254ECABA15A4BEFA00251A0F /* PPRevealSideViewController.m */,
+				255A8AD815F3980E00D9D0C0 /* YRDropdownView.h */,
+				255A8AD915F3980E00D9D0C0 /* YRDropdownView.m */,
 			);
-			path = PPRevealSideViewController;
+			path = YRDropdownView;
+			sourceTree = "<group>";
+		};
+		255A8ADC15F3989400D9D0C0 /* PPRevealSideviewController */ = {
+			isa = PBXGroup;
+			children = (
+				255A8ADD15F3989400D9D0C0 /* PPRevealSideViewController.h */,
+				255A8ADE15F3989400D9D0C0 /* PPRevealSideViewController.m */,
+			);
+			path = PPRevealSideviewController;
+			sourceTree = "<group>";
+		};
+		255A8AE015F398A500D9D0C0 /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				255A8AE115F398A500D9D0C0 /* SVPullToRefresh.h */,
+				255A8AE215F398A500D9D0C0 /* SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		255A8AE415F3992300D9D0C0 /* AudioStreamer */ = {
+			isa = PBXGroup;
+			children = (
+				255A8AE515F3992300D9D0C0 /* AudioStreamer.h */,
+				255A8AE615F3992300D9D0C0 /* AudioStreamer.m */,
+				255A8AE715F3992300D9D0C0 /* UIDevice+Hardware.h */,
+				255A8AE815F3992300D9D0C0 /* UIDevice+Hardware.m */,
+			);
+			path = AudioStreamer;
+			sourceTree = "<group>";
+		};
+		255A8AE915F3992300D9D0C0 /* GTMOAuth */ = {
+			isa = PBXGroup;
+			children = (
+				255A8AEA15F3992300D9D0C0 /* GTMHTTPFetcher.h */,
+				255A8AEB15F3992300D9D0C0 /* GTMHTTPFetcher.m */,
+				255A8AEC15F3992300D9D0C0 /* GTMOAuthAuthentication.h */,
+				255A8AED15F3992300D9D0C0 /* GTMOAuthAuthentication.m */,
+				255A8AEE15F3992300D9D0C0 /* GTMOAuthSignIn.h */,
+				255A8AEF15F3992300D9D0C0 /* GTMOAuthSignIn.m */,
+				255A8AF015F3992300D9D0C0 /* GTMOAuthViewControllerTouch.h */,
+				255A8AF115F3992300D9D0C0 /* GTMOAuthViewControllerTouch.m */,
+				255A8AF215F3992300D9D0C0 /* GTMOAuthViewTouch.xib */,
+			);
+			path = GTMOAuth;
 			sourceTree = "<group>";
 		};
 		255E7ADE15A535D0007C0E5A /* MoefouAPI */ = {
@@ -436,26 +467,6 @@
 				25BA9FA215E3698A004B37BB /* ResourceCollection */,
 			);
 			path = MoefouAPI;
-			sourceTree = "<group>";
-		};
-		257297D115A53CEF008EB903 /* SVPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				257297D215A53CEF008EB903 /* SVPullToRefresh.h */,
-				257297D315A53CEF008EB903 /* SVPullToRefresh.m */,
-			);
-			path = SVPullToRefresh;
-			sourceTree = "<group>";
-		};
-		25B35B1C1531B30200D1EAEC /* AudioStreamer */ = {
-			isa = PBXGroup;
-			children = (
-				2508D1D315DBEECB0035126A /* AudioStreamer.h */,
-				2508D1D515DBEECB0035126A /* AudioStreamer.m */,
-				2508D1D415DBEECB0035126A /* UIDevice+Hardware.h */,
-				2508D1D615DBEECB0035126A /* UIDevice+Hardware.m */,
-			);
-			path = AudioStreamer;
 			sourceTree = "<group>";
 		};
 		25BA9FA215E3698A004B37BB /* ResourceCollection */ = {
@@ -474,6 +485,8 @@
 		25BA9FA315E369C8004B37BB /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				255A8AE015F398A500D9D0C0 /* SVPullToRefresh */,
+				255A8AD715F3980E00D9D0C0 /* YRDropdownView */,
 				25BA9FA415E36A66004B37BB /* MFMHttpImageView.h */,
 				25BA9FA515E36A66004B37BB /* MFMHttpImageView.m */,
 				25A515C815E3DA3300D1267A /* MFMReflectedImageView.h */,
@@ -566,7 +579,6 @@
 				25E3F5FD1539C87D003FABD2 /* default@2x.png in Resources */,
 				25E3F6001539D3DB003FABD2 /* Icon.png in Resources */,
 				25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */,
-				254ECA9415A236B700251A0F /* GTMOAuthViewTouch.xib in Resources */,
 				25A515BC15E3BE6300D1267A /* noise.png in Resources */,
 				25A515C215E3D51500D1267A /* BarLCD@2x.png in Resources */,
 				25A515D115E3E1AC00D1267A /* table-BG-pattern.png in Resources */,
@@ -576,6 +588,7 @@
 				25A515E515E5CA9A00D1267A /* list-item-bg@2x.png in Resources */,
 				25A515EC15E5CF1F00D1267A /* list-item-selected.png in Resources */,
 				25A515ED15E5CF1F00D1267A /* list-item-selected@2x.png in Resources */,
+				255A8AF915F3992400D9D0C0 /* GTMOAuthViewTouch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,16 +603,10 @@
 				2535789C15309191008185BD /* MFMAppDelegate.m in Sources */,
 				2535789F15309191008185BD /* Moe_FM.xcdatamodeld in Sources */,
 				25E3F5C015395B78003FABD2 /* Reachability.m in Sources */,
-				254ECA7F15A2333F00251A0F /* GTMOAuthViewControllerTouch.m in Sources */,
-				254ECA8215A233CE00251A0F /* GTMHTTPFetcher.m in Sources */,
-				254ECA8715A233DC00251A0F /* GTMOAuthAuthentication.m in Sources */,
-				254ECA8815A233DC00251A0F /* GTMOAuthSignIn.m in Sources */,
 				254ECAB415A4BC1A00251A0F /* MFMPlayerViewController.m in Sources */,
-				254ECABB15A4BEFA00251A0F /* PPRevealSideViewController.m in Sources */,
 				254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */,
 				2539E7B215A4DFDC00E5668A /* MFMDataFetcher.m in Sources */,
 				257297CF15A53C87008EB903 /* MFMMenuViewController.m in Sources */,
-				257297D415A53CEF008EB903 /* SVPullToRefresh.m in Sources */,
 				257297D715A5459F008EB903 /* MFMResource.m in Sources */,
 				25A48C8B15A5D83400EBFB59 /* MFMResourceFav.m in Sources */,
 				25A48C8F15A5E4C600EBFB59 /* MFMResourceWiki.m in Sources */,
@@ -609,8 +616,6 @@
 				250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */,
 				250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */,
 				250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */,
-				2508D1D715DBEECB0035126A /* AudioStreamer.m in Sources */,
-				2508D1D915DBEECB0035126A /* UIDevice+Hardware.m in Sources */,
 				25161FA115DC46DE00B16227 /* MFMOAuth.m in Sources */,
 				25124AC015DD6A5300B011AD /* MFMResourceCollection.m in Sources */,
 				25BA9FA615E36A66004B37BB /* MFMHttpImageView.m in Sources */,
@@ -623,6 +628,15 @@
 				257C9EEC15E7C5F1004AF278 /* MFMWikiCell.m in Sources */,
 				257C9EEF15E7D2BC004AF278 /* MFMResourceSubs.m in Sources */,
 				257C9EF215E7DD43004AF278 /* MFMResourcesViewController.m in Sources */,
+				255A8ADA15F3980E00D9D0C0 /* YRDropdownView.m in Sources */,
+				255A8ADF15F3989400D9D0C0 /* PPRevealSideViewController.m in Sources */,
+				255A8AE315F398A500D9D0C0 /* SVPullToRefresh.m in Sources */,
+				255A8AF315F3992400D9D0C0 /* AudioStreamer.m in Sources */,
+				255A8AF415F3992400D9D0C0 /* UIDevice+Hardware.m in Sources */,
+				255A8AF515F3992400D9D0C0 /* GTMHTTPFetcher.m in Sources */,
+				255A8AF615F3992400D9D0C0 /* GTMOAuthAuthentication.m in Sources */,
+				255A8AF715F3992400D9D0C0 /* GTMOAuthSignIn.m in Sources */,
+				255A8AF815F3992400D9D0C0 /* GTMOAuthViewControllerTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
