@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25068EBA15FDE20500130211 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25068EB915FDE20500130211 /* MapKit.framework */; };
+		25068EBC15FDE25300130211 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25068EBB15FDE25300130211 /* CoreLocation.framework */; };
 		250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */; };
 		250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2415A662D4001B2D10 /* MFMResourceSong.m */; };
 		250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */; };
@@ -93,7 +95,34 @@
 		25E3F6011539D3DB003FABD2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		25068EB215FDE1E000130211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
+			remoteInfo = QuickDialogExample;
+		};
+		25068EB415FDE1E000130211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C542393145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+		25068EB715FDE1F200130211 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C542392145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
+		25068EB915FDE20500130211 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		25068EBB15FDE25300130211 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourcePlaylist.h; sourceTree = "<group>"; };
 		250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourcePlaylist.m; sourceTree = "<group>"; };
 		250E7F2315A662D4001B2D10 /* MFMResourceSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceSong.h; sourceTree = "<group>"; };
@@ -227,6 +256,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25068EBC15FDE25300130211 /* CoreLocation.framework in Frameworks */,
+				25068EBA15FDE20500130211 /* MapKit.framework in Frameworks */,
 				254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */,
 				25E3F5CA15396020003FABD2 /* SystemConfiguration.framework in Frameworks */,
 				25B35B2F1531DCA300D1EAEC /* QuartzCore.framework in Frameworks */,
@@ -243,6 +274,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25068EAA15FDE1DF00130211 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25068EB315FDE1E000130211 /* QuickDialogExample.app */,
+				25068EB515FDE1E000130211 /* libQuickDialog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		25124AC215DD73F700B011AD /* ResourceEntry */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +337,9 @@
 		2535788815309190008185BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */,
+				25068EB915FDE20500130211 /* MapKit.framework */,
+				25068EBB15FDE25300130211 /* CoreLocation.framework */,
 				254ECA8915A2343A00251A0F /* Security.framework */,
 				25E3F5C915396020003FABD2 /* SystemConfiguration.framework */,
 				25B35B2E1531DCA300D1EAEC /* QuartzCore.framework */,
@@ -515,6 +558,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				25068EB815FDE1F200130211 /* PBXTargetDependency */,
 			);
 			name = "Moe FM";
 			productName = "Moe FM";
@@ -541,12 +585,35 @@
 			mainGroup = 2535787A1530918E008185BD;
 			productRefGroup = 2535788615309190008185BD /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 25068EAA15FDE1DF00130211 /* Products */;
+					ProjectRef = 25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				253578841530918F008185BD /* Moe FM */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		25068EB315FDE1E000130211 /* QuickDialogExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = QuickDialogExample.app;
+			remoteRef = 25068EB215FDE1E000130211 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		25068EB515FDE1E000130211 /* libQuickDialog.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libQuickDialog.a;
+			remoteRef = 25068EB415FDE1E000130211 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		253578831530918F008185BD /* Resources */ = {
@@ -642,6 +709,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		25068EB815FDE1F200130211 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickDialog;
+			targetProxy = 25068EB715FDE1F200130211 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		2535789415309190008185BD /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -724,13 +799,16 @@
 		253578A315309191008185BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -738,13 +816,16 @@
 		253578A415309191008185BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moe FM/Moe FM-Prefix.pch";
 				INFOPLIST_FILE = "Moe FM/Moe FM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
