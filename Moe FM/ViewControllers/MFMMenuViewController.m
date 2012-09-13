@@ -9,6 +9,8 @@
 #import "MFMMenuViewController.h"
 #import "PPRevealSideViewController.h"
 #import "MFMFavsViewController.h"
+#import "MFMPreferencesViewController.h"
+
 #import "MFMPlayerManager.h"
 #import "MFMResourceCell.h"
 
@@ -25,7 +27,7 @@
 
 @implementation MFMMenuViewController
 
-@synthesize authorizationButton = _authorizationButton;
+@synthesize preferencesButton = _preferencesButton;
 @synthesize menuItems = _menuItems;
 
 - (void)viewDidLoad
@@ -33,9 +35,10 @@
     [super viewDidLoad];
 	
 	self.title = NSLocalizedString(@"APP_NAME", @"");
+	self.preferencesButton.title = NSLocalizedString(@"PREFERENCES", @"");
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOAuthStatusChanged:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
-	[self updateAuthorization];
+//	[self updateAuthorization];
 	
 	self.menuItems = [NSArray arrayWithObjects:@"RANDOM_PLAY", @"FAV_SONGS", @"FAV_MUSICS", @"FAV_RADIOS", nil];
 }
@@ -47,15 +50,15 @@
 
 #pragma mark - view updates
 
-- (void)updateAuthorization
-{
-	if ([MFMOAuth sharedOAuth].canAuthorize) {
-		self.authorizationButton.title = NSLocalizedString(@"SIGN_OUT", @"");
-	}
-	else {
-		self.authorizationButton.title = NSLocalizedString(@"SIGN_IN", @"");
-	}
-}
+//- (void)updateAuthorization
+//{
+//	if ([MFMOAuth sharedOAuth].canAuthorize) {
+//		self.authorizationButton.title = NSLocalizedString(@"SIGN_OUT", @"");
+//	}
+//	else {
+//		self.authorizationButton.title = NSLocalizedString(@"SIGN_IN", @"");
+//	}
+//}
 
 #pragma mark - Table view data source
 
@@ -123,11 +126,16 @@
 	}
 }
 
+- (IBAction)showPreferences:(id)sender
+{
+	[MFMPreferencesViewController showPreferencesInViewController:self];
+}
+
 #pragma mark - handle notification
 
 - (void)handleOAuthStatusChanged:(NSNotification *)notification
 {
-	[self updateAuthorization];
+//	[self updateAuthorization];
 }
 
 #pragma mark - segue

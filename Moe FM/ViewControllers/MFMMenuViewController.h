@@ -18,8 +18,8 @@ typedef enum {
 
 @interface MFMMenuViewController : UITableViewController
 
-@property (nonatomic, weak) IBOutlet UIBarButtonItem *authorizationButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *preferencesButton;
 
-- (IBAction)toggleSignIn:(id)sender;
+- (IBAction)showPreferences:(id)sender;
 
 @end

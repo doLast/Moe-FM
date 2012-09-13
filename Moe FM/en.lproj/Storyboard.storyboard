@@ -171,14 +171,14 @@
                         <sections/>
                     </tableView>
                     <navigationItem key="navigationItem" title="MOE_FM" id="ImM-3s-B29">
-                        <barButtonItem key="leftBarButtonItem" title="AUTHORIZATION" id="MUB-rG-kTX">
+                        <barButtonItem key="rightBarButtonItem" title="PREFERENCES" id="Ysg-M7-NHp">
                             <connections>
-                                <action selector="toggleSignIn:" destination="tVI-E8-mQT" id="PXX-ZO-xRU"/>
+                                <action selector="showPreferences:" destination="tVI-E8-mQT" id="B1J-fr-VAk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="authorizationButton" destination="MUB-rG-kTX" id="pyu-ad-w2f"/>
+                        <outlet property="preferencesButton" destination="Ysg-M7-NHp" id="hfr-sR-tSO"/>
                         <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavSongs" id="tUq-jf-3IS"/>
                         <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavMusics" id="Af9-Z1-kMG"/>
                         <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavRadios" id="Ooi-r6-vcb"/>
@@ -713,85 +713,6 @@
         <image name="pause" width="16" height="16"/>
         <image name="play" width="16" height="16"/>
     </resources>
-    <classes>
-        <class className="MFMFavCell" superclassName="MFMResourceCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavCell.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleFav:"/>
-            </relationships>
-        </class>
-        <class className="MFMFavsViewController" superclassName="MFMResourcesViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
-        </class>
-        <class className="MFMHttpImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMHttpImageView.h"/>
-        </class>
-        <class className="MFMMenuViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="toggleSignIn:"/>
-                <relationship kind="outlet" name="authorizationButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="favButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="MFMPlayerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlayerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showMenu:"/>
-                <relationship kind="action" name="togglePlaybackState:"/>
-                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="songAlbumLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="songArtistLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="songArtworkImage" candidateClass="MFMHttpImageView"/>
-                <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="songArtworkReflection" candidateClass="MFMReflectedImageView"/>
-                <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="songInfoView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="MFMReflectedImageView" superclassName="UIImageView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMReflectedImageView.h"/>
-        </class>
-        <class className="MFMResourceCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourceCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="httpImageView" candidateClass="MFMHttpImageView"/>
-                <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MFMResourcesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourcesViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="playAll:"/>
-                <relationship kind="outlet" name="playAllButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="MFMStartingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>
-        </class>
-        <class className="MFMWikiCell" superclassName="MFMFavCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMWikiCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="detailLabelOne" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="detailLabelTwo" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MFMWikiViewController" superclassName="MFMResourcesViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMWikiViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

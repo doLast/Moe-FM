@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		25068EBA15FDE20500130211 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25068EB915FDE20500130211 /* MapKit.framework */; };
 		25068EBC15FDE25300130211 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25068EBB15FDE25300130211 /* CoreLocation.framework */; };
+		25068EC315FEF22C00130211 /* MFMPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25068EC215FEF22C00130211 /* MFMPreferencesViewController.m */; };
+		25068EC415FEF4A400130211 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 25068EB515FDE1E000130211 /* libQuickDialog.a */; };
 		250E7F2115A6628A001B2D10 /* MFMResourcePlaylist.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */; };
 		250E7F2515A662D4001B2D10 /* MFMResourceSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2415A662D4001B2D10 /* MFMResourceSong.m */; };
 		250E7F3015A68811001B2D10 /* MFMPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F2F15A68811001B2D10 /* MFMPlayerManager.m */; };
@@ -123,6 +125,8 @@
 		25068EA915FDE1DF00130211 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		25068EB915FDE20500130211 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		25068EBB15FDE25300130211 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		25068EC115FEF22C00130211 /* MFMPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPreferencesViewController.h; sourceTree = "<group>"; };
+		25068EC215FEF22C00130211 /* MFMPreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPreferencesViewController.m; sourceTree = "<group>"; };
 		250E7F1F15A6628A001B2D10 /* MFMResourcePlaylist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourcePlaylist.h; sourceTree = "<group>"; };
 		250E7F2015A6628A001B2D10 /* MFMResourcePlaylist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMResourcePlaylist.m; sourceTree = "<group>"; };
 		250E7F2315A662D4001B2D10 /* MFMResourceSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMResourceSong.h; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25068EC415FEF4A400130211 /* libQuickDialog.a in Frameworks */,
 				25068EBC15FDE25300130211 /* CoreLocation.framework in Frameworks */,
 				25068EBA15FDE20500130211 /* MapKit.framework in Frameworks */,
 				254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */,
@@ -441,6 +446,8 @@
 				256B144515A6381400FD43D9 /* MFMFavsViewController.m */,
 				257C9EE715E7BB15004AF278 /* MFMWikiViewController.h */,
 				257C9EE815E7BB15004AF278 /* MFMWikiViewController.m */,
+				25068EC115FEF22C00130211 /* MFMPreferencesViewController.h */,
+				25068EC215FEF22C00130211 /* MFMPreferencesViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -704,6 +711,7 @@
 				255A8AF615F3992400D9D0C0 /* GTMOAuthAuthentication.m in Sources */,
 				255A8AF715F3992400D9D0C0 /* GTMOAuthSignIn.m in Sources */,
 				255A8AF815F3992400D9D0C0 /* GTMOAuthViewControllerTouch.m in Sources */,
+				25068EC315FEF22C00130211 /* MFMPreferencesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
