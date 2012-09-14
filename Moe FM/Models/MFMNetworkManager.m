@@ -9,6 +9,8 @@
 #import "MFMNetworkManager.h"
 #import "Reachability.h"
 
+NSString * MFMAllowedNetworkTypeSetting = @"MFMAllowedNetworkTypeSetting";
+
 @interface MFMNetworkManager ()
 
 @property (nonatomic) BOOL allowConnection;
@@ -19,11 +21,16 @@
 @implementation MFMNetworkManager
 
 @synthesize allowConnection = _allowConnection;
-@synthesize allowedNetworkType = _allowedNetworkType;
+
+- (MFMNetworkType)allowedNetworkType
+{
+	NSNumber *networkType = [[NSUserDefaults standardUserDefaults] objectForKey:MFMAllowedNetworkTypeSetting];
+	return networkType.intValue;
+}
 
 - (void)setAllowedNetworkType:(MFMNetworkType)allowedNetworkType
 {
-	_allowedNetworkType	= allowedNetworkType;
+	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:allowedNetworkType] forKey:MFMAllowedNetworkTypeSetting];
 	[self updateReachability:self.reachability];
 }
 
@@ -40,9 +47,14 @@
 {
 	self = [super init];
 	if (self != nil) {
+		// Default network preferences
+		[[NSUserDefaults standardUserDefaults]
+		 registerDefaults:[NSDictionary
+						   dictionaryWithObjectsAndKeys:
+						   [NSNumber numberWithInt:MFMNetworkTypeWifi], MFMAllowedNetworkTypeSetting, nil]];
+		
 		[[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(reachabilityChanged:) name: kReachabilityChangedNotification object: nil];
 		self.reachability = [Reachability reachabilityForInternetConnection];
-		self.allowedNetworkType = MFMNetworkTypeWifi;
 		[self.reachability startNotifier];
 		[self updateReachability:self.reachability];
 	}
