@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MFMPreferencesViewController : QuickDialogController
+@interface MFMPreferencesViewController : QuickDialogController <QuickDialogStyleProvider>
 
 + (void)showPreferencesInViewController:(UIViewController *)viewController;
 

@@ -33,6 +33,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+	
+	// Default Control Direction
+	[[NSUserDefaults standardUserDefaults]
+	 registerDefaults:[NSDictionary
+					   dictionaryWithObjectsAndKeys:
+					   [NSNumber numberWithInteger:PPRevealSideDirectionBottom], @"MFMControlDirectionSetting", nil]];
 }
 
 - (void)viewDidUnload
@@ -105,8 +111,9 @@
 //    return NO;    
 //}
 
-- (PPRevealSideDirection)pprevealSideViewController:(PPRevealSideViewController*)controller directionsAllowedForPanningOnView:(UIView*)view {	
-    return PPRevealSideDirectionTop | PPRevealSideDirectionLeft | PPRevealSideDirectionRight | PPRevealSideDirectionBottom;
+- (PPRevealSideDirection)pprevealSideViewController:(PPRevealSideViewController*)controller directionsAllowedForPanningOnView:(UIView*)view {
+	NSUInteger controlSetting = ((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"MFMControlDirectionSetting"]).integerValue;
+    return PPRevealSideDirectionTop | controlSetting;
 }
 
 

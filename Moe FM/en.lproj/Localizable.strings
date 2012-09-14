@@ -18,6 +18,18 @@
 "MUSIC_DETAIL" = "Album Detail";
 "RADIO_DETAIL" = "Radio Detail";
 
+/* Preferences */
+"PREFERENCES" = "Preferences";
+"NETWORK" = "Network";
+"ACCOUNT" = "Account";
+"CONTROL" = "Show Playback Controll on...";
+
+"ALLOW_CELLULAR_DATA_ACCESS" = "Use Cellular Data";
+"MOE_FM" = "Moe FM Account";
+"LEFT" = "Left";
+"RIGHT" = "Right";
+"BOTTOM" = "Bottm";
+
 /* Controls */
 "SIGN_IN" = "Sign In";
 "SIGN_OUT" = "Sign Out";

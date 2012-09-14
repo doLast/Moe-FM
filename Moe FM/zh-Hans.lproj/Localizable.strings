@@ -18,6 +18,18 @@
 "MUSIC_DETAIL" = "专辑详情";
 "RADIO_DETAIL" = "电台详情";
 
+/* Preferences */
+"PREFERENCES" = "设置";
+"NETWORK" = "网络相关";
+"ACCOUNT" = "帐号";
+"CONTROL" = "播放控制显示在...";
+
+"ALLOW_CELLULAR_DATA_ACCESS" = "使用3G访问网络";
+"MOE_FM" = "萌否帐号";
+"LEFT" = "左侧";
+"RIGHT" = "右侧";
+"BOTTOM" = "底部";
+
 /* Controls */
 "SIGN_IN" = "登录";
 "SIGN_OUT" = "登出";
