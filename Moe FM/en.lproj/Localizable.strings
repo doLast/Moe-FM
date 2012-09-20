@@ -17,6 +17,7 @@
 "WIKI_DETAIL" = "Detail";
 "MUSIC_DETAIL" = "Album Detail";
 "RADIO_DETAIL" = "Radio Detail";
+"ABOUT" = "About";
 
 /* Preferences */
 "PREFERENCES" = "Preferences";

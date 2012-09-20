@@ -17,6 +17,7 @@
 "WIKI_DETAIL" = "详情";
 "MUSIC_DETAIL" = "专辑详情";
 "RADIO_DETAIL" = "电台详情";
+"ABOUT" = "关于";
 
 /* Preferences */
 "PREFERENCES" = "设置";
@@ -43,8 +44,8 @@
 "UNKNOWN_DATE" = "未知日期";
 
 /* Alert */
-"ALERT_YES" = "没问题";
+"ALERT_YES" = "好的";
 "ALERT_NO" = "不要><";
-"ALERT_OK" = "好";
+"ALERT_OK" = "知道啦";
 "USE_CELLULAR_ALERT_TITLE" = "使用手机网络进行连接？";
 "USE_CELLULAR_ALERT_MSG" = "黑心的运营商可能会收钱哦";
