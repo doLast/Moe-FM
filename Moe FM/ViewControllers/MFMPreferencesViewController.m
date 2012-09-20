@@ -30,9 +30,9 @@
 
 - (void)setQuickDialogTableView:(QuickDialogTableView *)quickDialogTableView
 {
-	[super setQuickDialogTableView:quickDialogTableView];
 	UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table-BG-pattern"]];
 	[quickDialogTableView setBackgroundColor:bgColor];
+	[super setQuickDialogTableView:quickDialogTableView];
 }
 
 - (void)cell:(UITableViewCell *)cell willAppearForElement:(QElement *)element atIndexPath:(NSIndexPath *)indexPath
@@ -65,6 +65,43 @@
 	else {
 		[[MFMOAuth sharedOAuth] signOut];
 	}
+}
+
++ (QRootElement *)createAboutElements {
+    QRootElement *root = [[QRootElement alloc] init];
+    root.title = NSLocalizedString(@"ABOUT", @"");
+	root.grouped = YES;
+	
+	NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    QTextElement *title = [[QTextElement alloc] initWithText:
+						   [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"APP_NAME", @""), appVersion]];
+	title.font = [UIFont boldSystemFontOfSize:24];
+    title.color = [UIColor blueColor];
+	
+    QTextElement *intro = [[QTextElement alloc] initWithText:
+							  @"This is an unofficial Moe FM iOS Client, built by Greg Wang. "];
+	
+    QSection *info = [[QSection alloc] init];
+    [info addElement:title];
+    [info addElement:intro];
+	[root addSection:info];
+	
+    QTextElement *audioStreamer = [[QTextElement alloc] initWithText:@"AudioStreamer: \nhttps://github.com/DigitalDJ/AudioStreamer"];
+	QTextElement *gtmOAuth = [[QTextElement alloc] initWithText:@"GTMOAuth: \nhttp://code.google.com/p/gtm-oauth/"];
+	QTextElement *revealSideview = [[QTextElement alloc] initWithText:@"PPRevealSideviewController: \nhttps://github.com/ipup/PPRevealSideViewController"];
+	QTextElement *pullToRefresh = [[QTextElement alloc] initWithText:@"SVPullToRefresh: \nhttps://github.com/samvermette/SVPullToRefresh"];
+	QTextElement *dropdownView = [[QTextElement alloc] initWithText:@"YRDropdownView: \nhttps://github.com/gregwym/YRDropdownView"];
+//    legal.font = [UIFont boldSystemFontOfSize:12];
+	
+	QSection *credit = [[QSection alloc] initWithTitle:@"Open Source Credits"];
+    [credit addElement:audioStreamer];
+	[credit addElement:gtmOAuth];
+	[credit addElement:revealSideview];
+	[credit addElement:pullToRefresh];
+	[credit addElement:dropdownView];
+	[root addSection:credit];
+	
+    return root;
 }
 
 + (QRootElement *)createElements
@@ -103,7 +140,7 @@
 		[controlSelected addObject:[NSNumber numberWithInt:2]];
 	}
 	
-	NSLog(@"Selected: %@", controlSelected);
+	
 	QSelectSection *control = [[QSelectSection alloc] initWithItems:controlItems selectedIndexes:controlSelected title:NSLocalizedString(@"CONTROL", @"")];
 	control.multipleAllowed = YES;
 	[control setOnSelected:^{
@@ -122,6 +159,12 @@
 		[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:directions] forKey:@"MFMControlDirectionSetting"];
 	}];
 	[root addSection:control];
+	
+	
+	QSection *about = [[QSection alloc] init];
+	[root addSection:about];
+	
+	[about addElement:[MFMPreferencesViewController createAboutElements]];
 	
 	return root;
 }
