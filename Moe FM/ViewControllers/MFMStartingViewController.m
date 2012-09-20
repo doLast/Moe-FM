@@ -58,10 +58,11 @@
 	UIViewController *bottomControl = [self.storyboard instantiateViewControllerWithIdentifier:@"BottomPlaybackControl"];
 	PPRevealSideViewController *revealSideViewController = [[PPRevealSideViewController alloc] initWithRootViewController:player];
 	
+	CGSize viewSize = self.view.bounds.size;
 	[revealSideViewController preloadViewController:menu forSide:PPRevealSideDirectionTop withOffset:53];
-	[revealSideViewController preloadViewController:leftControl forSide:PPRevealSideDirectionLeft withOffset:250];
-	[revealSideViewController preloadViewController:rightControl forSide:PPRevealSideDirectionRight withOffset:250];
-	[revealSideViewController preloadViewController:bottomControl forSide:PPRevealSideDirectionBottom withOffset:390];
+	[revealSideViewController preloadViewController:leftControl forSide:PPRevealSideDirectionLeft withOffset:viewSize.width - 70];
+	[revealSideViewController preloadViewController:rightControl forSide:PPRevealSideDirectionRight withOffset:viewSize.width - 70];
+	[revealSideViewController preloadViewController:bottomControl forSide:PPRevealSideDirectionBottom withOffset:viewSize.height - 70];
 	
 	revealSideViewController.panInteractionsWhenClosed = PPRevealSideInteractionContentView | PPRevealSideInteractionNavigationBar;
 	revealSideViewController.delegate = self;

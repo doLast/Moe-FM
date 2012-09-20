@@ -30,6 +30,7 @@
 		253578B51530A0C0008185BD /* cover_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 253578B11530A0C0008185BD /* cover_small.png */; };
 		253578C01530A37B008185BD /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253578C21530A37B008185BD /* Storyboard.storyboard */; };
 		2539E7B215A4DFDC00E5668A /* MFMDataFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */; };
+		2547E6D1160B7D3000AAEEE2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2547E6D0160B7D3000AAEEE2 /* Default-568h@2x.png */; };
 		254ECA8A15A2343A00251A0F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254ECA8915A2343A00251A0F /* Security.framework */; };
 		254ECAB415A4BC1A00251A0F /* MFMPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */; };
 		254ECAC615A4C0F800251A0F /* MFMStartingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254ECAC515A4C0F800251A0F /* MFMStartingViewController.m */; };
@@ -158,6 +159,7 @@
 		2539E7B015A4DFDC00E5668A /* MFMDataFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMDataFetcher.h; sourceTree = "<group>"; };
 		2539E7B115A4DFDC00E5668A /* MFMDataFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMDataFetcher.m; sourceTree = "<group>"; };
 		2539E7B915A4E07C00E5668A /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		2547E6D0160B7D3000AAEEE2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		254ECA8915A2343A00251A0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		254ECAB215A4BC1A00251A0F /* MFMPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFMPlayerViewController.h; sourceTree = "<group>"; };
 		254ECAB315A4BC1A00251A0F /* MFMPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFMPlayerViewController.m; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				25E3F5FF1539D3DA003FABD2 /* Icon@2x.png */,
 				25E3F5FA1539C87C003FABD2 /* default.png */,
 				25E3F5FB1539C87C003FABD2 /* default@2x.png */,
+				2547E6D0160B7D3000AAEEE2 /* Default-568h@2x.png */,
 				25E3F5E91539B4AF003FABD2 /* bg_sand.png */,
 				25E3F5DB1539B174003FABD2 /* dislike_no.png */,
 				25E3F5EB1539B866003FABD2 /* dislike_no@2x.png */,
@@ -663,6 +666,7 @@
 				25A515EC15E5CF1F00D1267A /* list-item-selected.png in Resources */,
 				25A515ED15E5CF1F00D1267A /* list-item-selected@2x.png in Resources */,
 				255A8AF915F3992400D9D0C0 /* GTMOAuthViewTouch.xib in Resources */,
+				2547E6D1160B7D3000AAEEE2 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

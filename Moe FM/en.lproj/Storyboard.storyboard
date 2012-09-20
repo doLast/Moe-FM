@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ffI-ND-MLC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ffI-ND-MLC">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
     </dependencies>
     <scenes>
         <!--Player View Controller - MOE_FM-->
         <scene sceneID="WhY-lB-0us">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jRF-GF-QsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="FYs-Kr-2oo" customClass="MFMPlayerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x6q-O4-QDY">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -25,19 +24,19 @@
                                         <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </progressView>
                                     <view contentMode="scaleToFill" id="20G-j2-d9N">
-                                        <rect key="frame" x="0.0" y="9" width="320" height="451"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                        <rect key="frame" x="0.0" y="9" width="320" height="320"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" image="cover_large" id="Yqi-7F-20s" customClass="MFMHttpImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="mnE-gK-T2O">
-                                                <rect key="frame" x="142" y="141" width="37" height="37"/>
+                                                <rect key="frame" x="141" y="142" width="37" height="37"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </activityIndicatorView>
                                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="whiteLarge" id="u36-Bl-e3C">
-                                                <rect key="frame" x="142" y="141" width="37" height="37"/>
+                                                <rect key="frame" x="141" y="142" width="37" height="37"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </activityIndicatorView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VcV-BF-Yht">
@@ -71,9 +70,16 @@
                                                     <action selector="togglePlaybackState:" destination="FYs-Kr-2oo" eventType="touchUpInside" id="udI-sg-1kz"/>
                                                 </connections>
                                             </button>
-                                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="6tC-pc-Wn2" customClass="MFMReflectedImageView">
-                                                <rect key="frame" x="0.0" y="320" width="320" height="131"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="mJW-EK-Mc5">
+                                        <rect key="frame" x="0.0" y="329" width="320" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <subviews>
+                                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" id="XZt-a0-COW" customClass="MFMReflectedImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="131"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -123,20 +129,20 @@
                         <outlet property="songArtistLabel" destination="OiM-5t-pem" id="Cuq-mo-4IB"/>
                         <outlet property="songArtworkImage" destination="Yqi-7F-20s" id="ftH-oS-2k3"/>
                         <outlet property="songArtworkLoadingIndicator" destination="mnE-gK-T2O" id="Hj7-Bi-CO9"/>
-                        <outlet property="songArtworkReflection" destination="6tC-pc-Wn2" id="bfU-L4-Iv8"/>
+                        <outlet property="songArtworkReflection" destination="XZt-a0-COW" id="jbf-cJ-6Ib"/>
                         <outlet property="songBufferingIndicator" destination="u36-Bl-e3C" id="mDR-kI-1Bw"/>
                         <outlet property="songInfoView" destination="C9Z-lL-iY7" id="cSl-e5-dFQ"/>
                         <outlet property="songNameLabel" destination="n5b-Ez-PTd" id="aTg-Q5-nKA"/>
                         <outlet property="songProgressIndicator" destination="QLF-vb-3Du" id="dYn-7X-p5L"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jRF-GF-QsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="91" y="-1"/>
         </scene>
         <!--Menu View Controller - MOE_FM-->
         <scene sceneID="hOR-1K-F3F">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhK-zs-rax" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="tVI-E8-mQT" customClass="MFMMenuViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W1v-ga-esl">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -184,13 +190,13 @@
                         <segue destination="v2f-4A-Rpb" kind="push" identifier="ShowFavRadios" id="Ooi-r6-vcb"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhK-zs-rax" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="91" y="622"/>
         </scene>
         <!--Wiki View Controller - WIKI_DETAIL-->
         <scene sceneID="788-gk-0QT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cIt-Jv-S54" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Lfx-1q-1aB" customClass="MFMWikiViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mnf-0b-av3">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -310,13 +316,13 @@
                         <outlet property="playAllButton" destination="cQ3-O3-xa5" id="UI3-4d-BSB"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIt-Jv-S54" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1150" y="622"/>
         </scene>
         <!--Favs View Controller - SONGS_DISPLAY-->
         <scene sceneID="QeV-uE-cbU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sko-r9-hod" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="v2f-4A-Rpb" customClass="MFMFavsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="67" sectionHeaderHeight="22" sectionFooterHeight="22" id="QaZ-y4-TFT">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
@@ -382,13 +388,13 @@
                         <segue destination="Lfx-1q-1aB" kind="push" identifier="ShowDetail" id="H4C-6s-HlZ"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sko-r9-hod" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="631" y="622"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WoM-66-2YS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Si2-ML-IVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MenuNavigation" definesPresentationContext="YES" id="q5X-dL-Xs9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5ZN-L8-sAA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -398,13 +404,13 @@
                         <segue destination="tVI-E8-mQT" kind="relationship" relationship="rootViewController" id="qZB-NG-B37"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Si2-ML-IVc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-443" y="622"/>
         </scene>
         <!--Playback Control View Controller-->
         <scene sceneID="Oaw-NX-OJs">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ydd-io-sWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="RightPlaybackControl" id="SFe-vy-Eof" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Las-ZL-J5p">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -431,7 +437,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UuQ-1t-snq">
                                         <rect key="frame" x="9" y="313" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="dislike_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -447,7 +453,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GA9-3n-7iC">
                                         <rect key="frame" x="9" y="238" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="fav_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -463,7 +469,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="veV-gE-mRw">
                                         <rect key="frame" x="9" y="163" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="play">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -490,13 +496,13 @@
                         <outlet property="playButton" destination="veV-gE-mRw" id="vuA-PI-KaM"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydd-io-sWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-443" y="1245"/>
         </scene>
         <!--Playback Control View Controller-->
         <scene sceneID="LA6-fI-dSa">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cAj-ci-gaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="LeftPlaybackControl" id="JCx-JQ-vnZ" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5o-xU-3sh">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -523,7 +529,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hpf-AV-K6U">
                                         <rect key="frame" x="9" y="313" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="dislike_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -539,7 +545,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rR6-z7-4gT">
                                         <rect key="frame" x="9" y="238" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="fav_no">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -555,7 +561,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ABX-xF-NRe">
                                         <rect key="frame" x="9" y="163" width="52" height="52"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" image="play">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -582,13 +588,13 @@
                         <outlet property="playButton" destination="ABX-xF-NRe" id="vL8-3X-VZ4"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cAj-ci-gaR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="91" y="1245"/>
         </scene>
         <!--Playback Control View Controller-->
         <scene sceneID="4z2-cw-93O">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7mv-jm-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="BottomPlaybackControl" id="Bgt-cY-Uuh" customClass="MFMPlaybackControlViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wmv-ZZ-PuG">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -674,21 +680,21 @@
                         <outlet property="playButton" destination="uvB-My-TKb" id="LAV-Xh-aQO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mv-jm-oqd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="631" y="1245"/>
         </scene>
         <!--Starting View Controller-->
         <scene sceneID="XOk-mn-IfF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D1y-Bj-Y4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ffI-ND-MLC" customClass="MFMStartingViewController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1y-Bj-Y4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-963" y="325"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AhQ-ZN-54U">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q18-JL-zVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="PlayerNavigation" definesPresentationContext="YES" id="dC6-Vp-MNL" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oaD-h8-gG3">
                         <autoresizingMask key="autoresizingMask"/>
@@ -698,6 +704,7 @@
                         <segue destination="FYs-Kr-2oo" kind="relationship" relationship="rootViewController" id="UHy-Yg-jeD"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q18-JL-zVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-443" y="-1"/>
         </scene>
@@ -713,6 +720,85 @@
         <image name="pause" width="16" height="16"/>
         <image name="play" width="16" height="16"/>
     </resources>
+    <classes>
+        <class className="MFMFavCell" superclassName="MFMResourceCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavCell.h"/>
+            <relationships>
+                <relationship kind="action" name="toggleFav:"/>
+            </relationships>
+        </class>
+        <class className="MFMFavsViewController" superclassName="MFMResourcesViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMFavsViewController.h"/>
+        </class>
+        <class className="MFMHttpImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMHttpImageView.h"/>
+        </class>
+        <class className="MFMMenuViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMMenuViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showPreferences:"/>
+                <relationship kind="outlet" name="preferencesButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MFMPlaybackControlViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlaybackControlViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="dislikeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="favButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="nextButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="MFMPlayerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMPlayerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showMenu:"/>
+                <relationship kind="action" name="togglePlaybackState:"/>
+                <relationship kind="outlet" name="playButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songAlbumLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songArtistLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songArtworkImage" candidateClass="MFMHttpImageView"/>
+                <relationship kind="outlet" name="songArtworkLoadingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songArtworkReflection" candidateClass="MFMReflectedImageView"/>
+                <relationship kind="outlet" name="songBufferingIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="songInfoView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="songNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songProgressIndicator" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="MFMReflectedImageView" superclassName="UIImageView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMReflectedImageView.h"/>
+        </class>
+        <class className="MFMResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourceCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="httpImageView" candidateClass="MFMHttpImageView"/>
+                <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MFMResourcesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMResourcesViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="playAll:"/>
+                <relationship kind="outlet" name="playAllButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="MFMStartingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMStartingViewController.h"/>
+        </class>
+        <class className="MFMWikiCell" superclassName="MFMFavCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMWikiCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="buttonView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="detailLabelOne" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="detailLabelTwo" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="MFMWikiViewController" superclassName="MFMResourcesViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMWikiViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
