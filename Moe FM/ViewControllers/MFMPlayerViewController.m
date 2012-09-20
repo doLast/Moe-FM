@@ -62,6 +62,9 @@
 	[self updatePlaybackStatus];
 	
 	self.title = NSLocalizedString(@"CURRENT_PLAYING", @"");
+	self.songNameLabel.text = @"";
+	self.songArtistLabel.text = @"";
+	self.songAlbumLabel.text = @"";
 	
 	// Hide Navigation bar
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
