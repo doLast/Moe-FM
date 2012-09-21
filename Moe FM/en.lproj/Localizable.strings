@@ -17,19 +17,23 @@
 "WIKI_DETAIL" = "Detail";
 "MUSIC_DETAIL" = "Album Detail";
 "RADIO_DETAIL" = "Radio Detail";
-"ABOUT" = "About";
 
 /* Preferences */
 "PREFERENCES" = "Preferences";
 "NETWORK" = "Network";
 "ACCOUNT" = "Account";
 "CONTROL" = "Show Playback Controll on...";
+"ABOUT" = "About";
 
 "ALLOW_CELLULAR_DATA_ACCESS" = "Use Cellular Data";
 "MOE_FM" = "Moe FM Account";
 "LEFT" = "Left";
 "RIGHT" = "Right";
 "BOTTOM" = "Bottm";
+"RATE_THIS_APP" = "If you like this app, rate it?";
+"SEND_FEEDBACK" = "Send Me Feedback";
+
+"NETWORK_PREF_HINT" = "Disable the cellular data do not interrupt buffering. Press next track to stop it.";
 
 /* Controls */
 "SIGN_IN" = "Sign In";

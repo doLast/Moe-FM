@@ -17,19 +17,23 @@
 "WIKI_DETAIL" = "详情";
 "MUSIC_DETAIL" = "专辑详情";
 "RADIO_DETAIL" = "电台详情";
-"ABOUT" = "关于";
 
 /* Preferences */
 "PREFERENCES" = "设置";
 "NETWORK" = "网络相关";
 "ACCOUNT" = "帐号";
 "CONTROL" = "播放控制显示在...";
+"ABOUT" = "关于";
 
 "ALLOW_CELLULAR_DATA_ACCESS" = "使用3G访问网络";
 "MOE_FM" = "萌否帐号";
 "LEFT" = "左侧";
 "RIGHT" = "右侧";
 "BOTTOM" = "底部";
+"RATE_THIS_APP" = "如果你喜欢这个App, 评个分吧 ^^";
+"SEND_FEEDBACK" = "给我提建议";
+
+"NETWORK_PREF_HINT" = "禁用3G数据并不会中断当前的歌曲缓冲";
 
 /* Controls */
 "SIGN_IN" = "登录";

@@ -30,6 +30,7 @@
 
 - (void)setQuickDialogTableView:(QuickDialogTableView *)quickDialogTableView
 {
+	quickDialogTableView.backgroundView = nil;
 	UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"table-BG-pattern"]];
 	[quickDialogTableView setBackgroundColor:bgColor];
 	[super setQuickDialogTableView:quickDialogTableView];
@@ -76,10 +77,9 @@
     QTextElement *title = [[QTextElement alloc] initWithText:
 						   [NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"APP_NAME", @""), appVersion]];
 	title.font = [UIFont boldSystemFontOfSize:24];
-    title.color = [UIColor blueColor];
 	
     QTextElement *intro = [[QTextElement alloc] initWithText:
-							  @"This is an unofficial Moe FM iOS Client, built by Greg Wang. "];
+						   @"This is an unofficial Moe FM iOS Client, built by Greg Wang. \nMoe FM: http://moe.fm\nBlog: http://blog.gregwym.info\n"];
 	
     QSection *info = [[QSection alloc] init];
     [info addElement:title];
@@ -91,7 +91,6 @@
 	QTextElement *revealSideview = [[QTextElement alloc] initWithText:@"PPRevealSideviewController: \nhttps://github.com/ipup/PPRevealSideViewController"];
 	QTextElement *pullToRefresh = [[QTextElement alloc] initWithText:@"SVPullToRefresh: \nhttps://github.com/samvermette/SVPullToRefresh"];
 	QTextElement *dropdownView = [[QTextElement alloc] initWithText:@"YRDropdownView: \nhttps://github.com/gregwym/YRDropdownView"];
-//    legal.font = [UIFont boldSystemFontOfSize:12];
 	
 	QSection *credit = [[QSection alloc] initWithTitle:@"Open Source Credits"];
     [credit addElement:audioStreamer];
@@ -102,6 +101,29 @@
 	[root addSection:credit];
 	
     return root;
+}
+
++ (QSection *)createAboutSection
+{
+	QSection *section = [[QSection alloc] init];
+	
+	QElement *rating = [[QLabelElement alloc] initWithTitle:NSLocalizedString(@"RATE_THIS_APP", @"") Value:nil];
+	[rating setOnSelected:^{
+		NSString* url = [NSString stringWithFormat: @"itms-apps://ax.itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=519428135"];
+		[[UIApplication sharedApplication] openURL: [NSURL URLWithString:url]];
+	}];
+	QElement *feedback = [[QLabelElement alloc] initWithTitle:NSLocalizedString(@"SEND_FEEDBACK", @"") Value:nil];
+	[feedback setOnSelected:^{
+		NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+		NSString* url = [NSString stringWithFormat: @"mailto:moefm@dolast.com?subject=UserFeedback&body=MoeFM%@", appVersion];
+		[[UIApplication sharedApplication] openURL: [NSURL URLWithString:url]];
+	}];
+	
+	[section addElement:rating];
+	[section addElement:feedback];
+	[section addElement:[MFMPreferencesViewController createAboutElements]];
+	
+	return section;
 }
 
 + (QRootElement *)createElements
@@ -118,6 +140,7 @@
 	QBooleanElement *allowCellularData = [[QBooleanElement alloc] initWithTitle:NSLocalizedString(@"ALLOW_CELLULAR_DATA_ACCESS", @"") BoolValue:[MFMNetworkManager sharedNetworkManager].allowedNetworkType > MFMNetworkTypeWifi];
 	[allowCellularData setControllerAction:@"toggleCellularData:"];
 	[network addElement:allowCellularData];
+	network.footer = NSLocalizedString(@"NETWORK_PREF_HINT", @"");
 	
 	
 	QSection *account = [[QSection alloc] initWithTitle:NSLocalizedString(@"ACCOUNT", @"")];
@@ -161,10 +184,7 @@
 	[root addSection:control];
 	
 	
-	QSection *about = [[QSection alloc] init];
-	[root addSection:about];
-	
-	[about addElement:[MFMPreferencesViewController createAboutElements]];
+	[root addSection:[MFMPreferencesViewController createAboutSection]];
 	
 	return root;
 }
