@@ -398,7 +398,6 @@
                 <navigationController storyboardIdentifier="MenuNavigation" definesPresentationContext="YES" id="q5X-dL-Xs9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5ZN-L8-sAA">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.19215688110000001" green="0.58039218189999997" blue="0.96862751250000001" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="tVI-E8-mQT" kind="relationship" relationship="rootViewController" id="qZB-NG-B37"/>
@@ -698,7 +697,6 @@
                 <navigationController storyboardIdentifier="PlayerNavigation" definesPresentationContext="YES" id="dC6-Vp-MNL" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oaD-h8-gG3">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.19215688110000001" green="0.58039218189999997" blue="0.96862751250000001" alpha="1" colorSpace="deviceRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="FYs-Kr-2oo" kind="relationship" relationship="rootViewController" id="UHy-Yg-jeD"/>

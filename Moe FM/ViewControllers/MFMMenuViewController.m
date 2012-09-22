@@ -36,6 +36,7 @@
 	
 	self.title = NSLocalizedString(@"APP_NAME", @"");
 	self.preferencesButton.title = NSLocalizedString(@"PREFERENCES", @"");
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.157809 green:0.492767 blue:0.959104 alpha:1];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleOAuthStatusChanged:) name:MFMOAuthStatusChangedNotification object:[MFMOAuth sharedOAuth]];
 //	[self updateAuthorization];

@@ -69,6 +69,7 @@
 	// Hide Navigation bar
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent animated:YES];
+	self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.157809 green:0.492767 blue:0.959104 alpha:1];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
