@@ -13,10 +13,12 @@
 
 NSString * MFMOAuthStatusChangedNotification = @"MFMOAuthStatusChangedNotification";
 
-NSString * const kConsumerKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
-NSString * const kConsumerSecret = @"dd1d8a2678f44dda3432efcb93dc8b9b";
+NSString * const kConsumerKey = @"a8e4132d642cecaf4293f4eb9edc6395052242880";
+NSString * const kConsumerSecret = @"1df6d74cd3aed8ecb1f7b905d1b72e8d";
 NSString * const kServiceName = @"Moe FM";
 NSString * const kAppServiceName = @"Moe FM: Moe FM";
+
+NSString * const kSavedConsumerKey = @"SavedConsumerKey";
 
 @interface MFMOAuth ()
 
@@ -57,7 +59,15 @@ NSString * const kAppServiceName = @"Moe FM: Moe FM";
 {
 	self = [super init];
 	if (self != nil) {
-		[self updateFromKeychain];
+		NSString *prevConsumerKey = [[NSUserDefaults standardUserDefaults] stringForKey:kSavedConsumerKey];
+		if (prevConsumerKey == nil || ![prevConsumerKey isEqualToString:kConsumerKey]) {
+			NSLog(@"Failed to match ComsumerKey, sign out. ");
+			[self signOut];
+		} else {
+			[self updateFromKeychain];
+		}
+		[[NSUserDefaults standardUserDefaults] setValue:kConsumerKey forKey:kSavedConsumerKey];
+		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
 	return self;
 }
