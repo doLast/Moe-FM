@@ -13,7 +13,7 @@ const NSString * const MFMResourceObjTypeStr[] =
 {@"tv", @"ova", @"oad", @"movie", @"anime", @"comic", @"music", @"radio",  @"wiki", @"ep", @"song", @"sub"};
 NSString * const MFMResourceNotification = @"MFMResourceNotification";
 NSString * const MFMAPIFormat = @"json";
-NSString * const kApiKey = @"302182858672af62ebf4524ee8d9a06304f7db527";
+NSString * const kApiKey = @"a8e4132d642cecaf4293f4eb9edc6395052242880";
 
 @interface MFMResource () <MFMDataFetcherDelegate>
 
